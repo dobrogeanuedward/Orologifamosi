@@ -282,7 +282,10 @@ h1 span {
   content: "";
   position: absolute;
   inset: 45% 0 0;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.65)); /* taste-skill-ignore: neutral photo scrim for caption contrast, allowed by the skill. */
+  background: linear-gradient(
+    transparent,
+    rgba(0, 0, 0, 0.65)
+  ); /* taste-skill-ignore: neutral photo scrim for caption contrast, allowed by the skill. */
 }
 .image-caption {
   position: absolute;
@@ -1990,4 +1993,339 @@ footer {
   text-decoration: underline;
   text-underline-offset: 7px;
 }
-.process .section-heading > p { color: #bfc5c1; }
+.process .section-heading > p {
+  color: #bfc5c1;
+}
+/* Brand continuity: source site's Open Sans, antique gold and rounded actions. */
+@font-face {
+  font-family: "OF Open Sans";
+  src: url("/fonts/opensans-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "OF Open Sans";
+  src: url("/fonts/opensans-semibold.woff2") format("woff2");
+  font-weight: 500 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "OF Open Sans";
+  src: url("/fonts/opensans-bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+:root {
+  --sans: "OF Open Sans", Arial, sans-serif;
+  --serif: "OF Open Sans", Arial, sans-serif;
+  --metal: #9a7221;
+  --soft: #f1f1f1;
+  --ink: #222;
+  --muted: #555;
+}
+h1,
+h2 {
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 1.12;
+  color: var(--metal);
+}
+.hero h1 {
+  font-size: clamp(46px, 4.5vw, 70px);
+}
+h2 {
+  font-size: clamp(32px, 3.4vw, 50px);
+}
+.identity > span {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+.identity small {
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.hero-visual::after {
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+}
+.image-caption p {
+  font-size: 23px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+.process h2,
+.contact h2 {
+  color: #e7cfb0;
+}
+.contact {
+  background: #222;
+  color: #fff;
+}
+.contact p,
+.contact-inner > div > p,
+.contact address p {
+  color: #ddd;
+}
+.contact address a {
+  color: #fff;
+}
+.brand-card-title h3,
+.model-list h3 {
+  font-size: 29px;
+  font-weight: 600;
+  color: var(--metal);
+}
+.factor-grid h3 {
+  font-size: 27px;
+  font-weight: 600;
+  color: var(--metal);
+}
+.footer-brand {
+  font-size: 33px;
+  font-weight: 600;
+  color: #e7cfb0;
+}
+.valuation legend {
+  font-size: 29px;
+  line-height: 1.2;
+  color: var(--metal);
+  font-weight: 600;
+}
+.button,
+.button.small,
+.button.light {
+  border: 0;
+  border-radius: 30px;
+  background: var(--metal);
+  color: #fff;
+  gap: 22px;
+  padding: 15px 20px 15px 25px;
+  transition:
+    background 0.25s,
+    transform 0.25s var(--ease),
+    box-shadow 0.25s;
+}
+.button > span {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #ffffff1c;
+  transition:
+    transform 0.3s var(--ease),
+    background 0.3s;
+}
+.button:hover,
+.button.light:hover {
+  background: #78591a;
+  color: white;
+  box-shadow: 0 7px 20px #9a722126;
+}
+.button:hover > span {
+  transform: rotate(45deg);
+  background: #ffffff30;
+}
+.button:active {
+  transform: scale(0.98);
+}
+.button.small {
+  padding: 8px 10px 8px 19px;
+  font-size: 12px;
+}
+.button.small > span {
+  width: 27px;
+  height: 27px;
+}
+.button:focus-visible {
+  outline: 3px solid #9a7221;
+  outline-offset: 5px;
+}
+.text-link {
+  text-decoration-color: var(--metal);
+  text-decoration-thickness: 2px;
+}
+.header nav a[aria-current="page"] {
+  color: var(--metal);
+}
+.form-progress .active {
+  color: #78591a;
+}
+.valuation input:focus,
+.valuation select:focus,
+.valuation textarea:focus {
+  outline: 2px solid var(--metal);
+  outline-offset: 2px;
+}
+.faq-items summary > span {
+  color: var(--metal);
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #ebe6dd;
+  transition: transform 0.25s;
+}
+.faq-items details[open] {
+  border-radius: 12px;
+}
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--metal);
+  z-index: 50;
+  transform: scaleX(0);
+  transform-origin: left;
+  pointer-events: none;
+}
+.other-brands {
+  margin-top: 75px;
+}
+.other-brands-heading {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 30px;
+}
+.other-brands-heading h3 {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--metal);
+  letter-spacing: -0.03em;
+}
+.other-brands-heading p {
+  max-width: 58ch;
+  font-size: 14px;
+  color: var(--muted);
+}
+.other-brands-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 26px 22px;
+}
+.other-brands-grid li {
+  min-width: 0;
+  cursor: default;
+}
+.other-brands-grid img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 4px;
+}
+.other-brands-grid h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 12px 0 0;
+  line-height: 1.4;
+}
+.brand-independence {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 26px;
+}
+.contact .section-kicker {
+  color: #e7cfb0;
+}
+@media (max-width: 980px) {
+  .hero h1 {
+    font-size: 49px;
+  }
+  .other-brands-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px 15px;
+  }
+  .other-brands-heading {
+    display: block;
+  }
+  .other-brands-heading p {
+    margin-top: 15px;
+  }
+  .identity > span {
+    font-size: 18px;
+  }
+  .header .button.small {
+    font-size: 11px;
+  }
+  .image-caption p {
+    font-size: 20px;
+  }
+}
+@media (max-width: 700px) {
+  .hero h1 {
+    font-size: 44px;
+  }
+  h2 {
+    font-size: 35px;
+  }
+  .header .identity > span {
+    font-size: 19px;
+  }
+  .header .identity small {
+    font-size: 11px;
+  }
+  .other-brands {
+    margin-top: 45px;
+  }
+  .other-brands-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 23px 16px;
+  }
+  .other-brands-heading h3 {
+    font-size: 25px;
+  }
+  .other-brands-grid h4 {
+    font-size: 13px;
+  }
+  .other-brands-heading p {
+    font-size: 14px;
+  }
+  .contact h2 {
+    font-size: 35px;
+  }
+  .factor-grid h3 {
+    font-size: 24px;
+  }
+  .valuation legend {
+    font-size: 26px;
+  }
+  .button {
+    font-size: 13px;
+  }
+  .brand-card-title h3 {
+    font-size: 28px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress {
+    display: none;
+  }
+  .button,
+  .button > span,
+  .faq-items summary > span {
+    transition: none !important;
+  }
+}
+@media (min-width: 981px) and (max-width: 1280px) {
+  .header-cta.button {
+    display: none;
+  }
+  .header nav {
+    gap: 18px;
+    font-size: 12px;
+  }
+  .header {
+    gap: 20px;
+  }
+}
+/* Same antique-gold hue, darkened slightly on filled actions for AA contrast. */
+.button,.button.small,.button.light{background:#946d1f}

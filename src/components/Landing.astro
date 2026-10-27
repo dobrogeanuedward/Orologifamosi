@@ -123,32 +123,43 @@ const { page } = Astro.props as { page: Landing };
         </div>
       )}
       {!page.brand && (
-        <details class="all-brands">
-          <summary>
-            Il tuo marchio non è tra questi?{" "}
-            <span>
-              Vedi tutti i 19 marchi <b aria-hidden="true">+</b>
-            </span>
-          </summary>
-          <div>
-            {brands.map((b) => (
-              <a
-                href={
-                  ["Rolex", "Omega", "Cartier"].includes(b)
-                    ? "/vendi-" + b.toLowerCase() + "/"
-                    : "#valutazione"
-                }
-              >
-                {b}
-              </a>
-            ))}
+        <div class="other-brands" aria-labelledby="other-brands-title">
+          <div class="other-brands-heading">
+            <h3 id="other-brands-title">Anche il tuo marchio.</h3>
+            <p>
+              Puoi proporci anche questi marchi. Valutiamo l’interesse
+              all’acquisto sul singolo orologio, in base a modello, condizioni e
+              corredo.
+            </p>
           </div>
-          <p>
-            I marchi appartengono ai rispettivi titolari. Orologi Famosi opera
-            come attività indipendente. L’interesse all’acquisto viene
-            verificato per ogni esemplare.
+          <ul class="other-brands-grid">
+            {brands
+              .filter((b) => !["Rolex", "Omega", "Cartier"].includes(b))
+              .map((b) => {
+                const slug = b
+                  .toLowerCase()
+                  .replace(" & ", "-et-")
+                  .replaceAll(" ", "-")
+                  .replace("bulgari", "bvlgari");
+                return (
+                  <li>
+                    <img
+                      src={"/images/brands/" + slug + ".webp"}
+                      alt={"Orologio " + b + " fotografato da Orologi Famosi"}
+                      width="480"
+                      height="360"
+                      loading="lazy"
+                    />
+                    <h4>{b}</h4>
+                  </li>
+                );
+              })}
+          </ul>
+          <p class="brand-independence">
+            Orologi Famosi è un’attività indipendente. I marchi appartengono ai
+            rispettivi titolari.
           </p>
-        </details>
+        </div>
       )}
       {page.brand && (
         <div class="brand-detail-photos">

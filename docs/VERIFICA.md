@@ -44,3 +44,12 @@ Top three problems (most visible first), each with the screenshot it shows in an
 1. Primo fold mobile troppo testuale: risolto anticipando la fotografia e semplificando il titolo.
 2. Controlli piccoli e gerarchia debole: aumentati corpo e dimensioni, rimossi ornamenti e titoletti ridondanti.
 3. Foto del catalogo di qualità non uniforme: conservate perché reali; un set fotografico dedicato potrebbe migliorare la prossima revisione.
+
+## Revisione marchi e continuità con il sito principale
+- Riletto l’allegato contrattuale: quattro landing, altri 16 marchi nella generale; nessuna nuova pagina marchio o migrazione catalogo.
+- Sostituito il disclosure con 16 riquadri fotografici sempre presenti nell’HTML, senza link né azioni. Quattro colonne desktop, due mobile. Nomi testuali e alt descrittivi, nessuna disponibilità o promessa d’acquisto aggiunta.
+- Fotografie originali selezionate dalle categorie del catalogo: provenienza in `brand-images.json`, visualizzate in un foglio di controllo prima dell’uso.
+- Ripristinati Open Sans locale, oro originale #9a7221, pulsanti arrotondati e tono bianco/nero/beige. Riempimento pulsanti #946d1f per mantenere il contrasto AA del testo bianco. Il riferimento è il CSS del sito originale, verificato il 27 ottobre 2026.
+- Collegamento «Acquista un orologio» al catalogo principale, mantenendo qui l’intento di valutazione/acquisto da privati.
+- Feedback dei pulsanti, indicatori delle FAQ, avanzamento di lettura e ingressi fotografici; movimento ridotto rispettato.
+- Build e typecheck senza errori; quattro flussi WhatsApp e tre viewport verificati; griglia con 16 elementi non cliccabili. Axe automatico sulle quattro pagine e controllo reduced motion superati.

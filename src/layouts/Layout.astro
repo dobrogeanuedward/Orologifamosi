@@ -1,8 +1,4 @@
 ---
-import "@fontsource/manrope/400.css";
-import "@fontsource/manrope/500.css";
-import "@fontsource/manrope/600.css";
-import "@fontsource/cormorant-garamond/400.css";
 import "../styles/global.css";
 import { business } from "../data/business";
 interface Props {
@@ -96,6 +92,7 @@ const schema = {
     />
   </head>
   <body>
+    <div class="scroll-progress" aria-hidden="true"></div>
     <a class="skip" href="#contenuto">
       Vai al contenuto
     </a>
@@ -112,7 +109,7 @@ const schema = {
       </a>
       <nav aria-label="Navigazione principale" id="main-nav">
         <a href="/vendi-orologio/" aria-current={!brand ? "page" : undefined}>
-          Il tuo orologio
+          Vendi il tuo orologio
         </a>
         <a
           href="/vendi-rolex/"
@@ -131,6 +128,9 @@ const schema = {
           aria-current={brand === "Cartier" ? "page" : undefined}
         >
           Cartier
+        </a>
+        <a href={business.original + "catalogo"} class="catalog-link">
+          Acquista un orologio ↗
         </a>
         <a href="#contatti">Contatti</a>
       </nav>
@@ -190,6 +190,25 @@ const schema = {
     </footer>
 
     <script>
+      const progress = document.querySelector<HTMLElement>(".scroll-progress");
+      let framePending = false;
+      const updateProgress = () => {
+        const range = document.documentElement.scrollHeight - innerHeight;
+        if (progress)
+          progress.style.transform = `scaleX(${range > 0 ? Math.min(1, scrollY / range) : 0})`;
+        framePending = false;
+      };
+      addEventListener(
+        "scroll",
+        () => {
+          if (!framePending) {
+            framePending = true;
+            requestAnimationFrame(updateProgress);
+          }
+        },
+        { passive: true },
+      );
+      updateProgress();
       const toggle = document.querySelector<HTMLButtonElement>(".menu-toggle");
       const nav = document.querySelector<HTMLElement>("#main-nav");
       function closeMenu() {
@@ -207,7 +226,7 @@ const schema = {
         ?.querySelectorAll("a")
         .forEach((a) => a.addEventListener("click", closeMenu));
       const photos = document.querySelectorAll<HTMLElement>(
-        ".brand-card-img,.expert-photo",
+        ".brand-card-img,.expert-photo,.other-brands-grid li",
       );
       if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
         const observer = new IntersectionObserver(
