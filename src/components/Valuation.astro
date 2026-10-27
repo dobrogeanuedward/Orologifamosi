@@ -1,22 +1,24 @@
 ---
 import Arrow from "./Arrow.astro";
 import RequestIcon from "./RequestIcon.astro";
+import RequestIllustration from "./RequestIllustration.astro";
+import { OTHER_BRAND } from "../lib/request.mjs";
 import { brands, business, wa } from "../data/business";
 import "../styles/valuation.css";
 const { brand = "" } = Astro.props;
 const conditions = [
-  ["Ottime", "Ottime, pochi segni d’uso"],
-  ["Usato", "Usato, con segni visibili"],
-  ["Da revisionare", "Da revisionare o non funzionante"],
-  ["Da verificare", "Da verificare insieme"],
-];
+  ["Ottime", "Ottime, pochi segni d’uso", "watch"],
+  ["Usato", "Usato, con segni visibili", "used"],
+  ["Da revisionare", "Da revisionare o non funzionante", "service"],
+  ["Da verificare", "Da verificare insieme", "inspection"],
+] as const;
 const sets = [
-  ["Completo", "Scatola e documenti"],
-  ["Solo scatola", "Solo scatola"],
-  ["Solo documenti", "Solo documenti"],
-  ["Senza corredo", "Nessuno dei due"],
-  ["Da verificare", "Non so, da verificare"],
-];
+  ["Completo", "Scatola e documenti", "complete"],
+  ["Solo scatola", "Solo scatola", "box"],
+  ["Solo documenti", "Solo documenti", "documents"],
+  ["Senza corredo", "Nessuno dei due", "watch"],
+  ["Da verificare", "Non so, da verificare", "inspection"],
+] as const;
 ---
 
 <section
@@ -42,7 +44,7 @@ const sets = [
       </div>
       <div class="passport-watch">
         <div class="passport-photo">
-          <RequestIcon name="watch" />
+          <RequestIllustration name="watch" />
           <img
             id="passport-image"
             alt="Prima foto della tua selezione"
@@ -128,13 +130,30 @@ const sets = [
         </div>
         <label for="brand">Marchio</label>
         <select id="brand" name="brand" required>
-          <option value="">Scegli tra i 19 marchi</option>
+          <option value="">Scegli il marchio</option>
           {brands.map((b) => (
             <option value={b} selected={b === brand}>
               {b}
             </option>
           ))}
+          <option value={OTHER_BRAND}>Un altro marchio</option>
         </select>
+        <div id="other-brand-field" class="request-other-brand" hidden>
+          <label for="other-brand">Qual è il marchio?</label>
+          <input
+            id="other-brand"
+            name="otherBrand"
+            autocomplete="off"
+            spellcheck="false"
+            maxlength="80"
+            placeholder="Scrivi il nome del marchio"
+            aria-describedby="other-brand-help"
+            disabled
+          />
+          <p id="other-brand-help" class="request-field-note">
+            Indica il nome riportato sul quadrante o sui documenti.
+          </p>
+        </div>
         <label for="model">
           Modello o referenza <span>(se li conosci)</span>
         </label>
@@ -164,7 +183,7 @@ const sets = [
         <fieldset class="request-option-group">
           <legend>Condizioni</legend>
           <div class="request-options">
-            {conditions.map(([label, value], i) => (
+            {conditions.map(([label, value, illustration], i) => (
               <label>
                 <input
                   type="radio"
@@ -173,7 +192,7 @@ const sets = [
                   required={i === 0}
                 />
                 <span>
-                  <RequestIcon name="watch" />
+                  <RequestIllustration name={illustration} />
                   {label}
                 </span>
               </label>
@@ -183,7 +202,7 @@ const sets = [
         <fieldset class="request-option-group">
           <legend>Scatola e documenti</legend>
           <div class="request-options request-set-options">
-            {sets.map(([label, value], i) => (
+            {sets.map(([label, value, illustration], i) => (
               <label>
                 <input
                   type="radio"
@@ -192,7 +211,7 @@ const sets = [
                   required={i === 0}
                 />
                 <span>
-                  <RequestIcon name="box" />
+                  <RequestIllustration name={illustration} />
                   {label}
                 </span>
               </label>
@@ -230,15 +249,15 @@ const sets = [
         </p>
         <div class="request-shot-guide" id="foto">
           <span>
-            <RequestIcon name="watch" />
+            <RequestIllustration name="watch" />
             Quadrante
           </span>
           <span>
-            <RequestIcon name="watch" />
+            <RequestIllustration name="used" />
             Lati e fondello
           </span>
           <span>
-            <RequestIcon name="box" />
+            <RequestIllustration name="complete" />
             Corredo
           </span>
         </div>
@@ -272,8 +291,9 @@ const sets = [
           </label>
         </div>
         <p class="request-field-note" id="photo-file-help">
-          JPEG, PNG, WebP e HEIC leggibile dal dispositivo. Max 20 MB per foto,
-          40 MB in totale.
+          JPEG, PNG, WebP e HEIC leggibile dal dispositivo. Originali fino a
+          20 MB per foto. Li ottimizziamo qui: il limite totale di 40 MB si
+          applica alle foto già preparate.
         </p>
         <p
           id="photo-progress"

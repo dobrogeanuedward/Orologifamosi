@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import {
   PHOTO_LIMITS,
   validatePhoto,
+  validatePreparedPhoto,
   hasPhotoSignature,
 } from "../src/lib/photos.mjs";
 import { buildRequestMessage, canSharePhotos } from "../src/lib/request.mjs";
@@ -14,13 +15,17 @@ test("Photo selection limits reject unsupported files, empty files and excessive
   );
   assert.ok(validatePhoto({ ...photo, size: 0 }));
   assert.ok(validatePhoto({ ...photo, size: PHOTO_LIMITS.fileBytes + 1 }));
-  // More than six photos remain accepted while the combined byte budget allows it.
-  let bytes = 0;
+  // Original batches above 40 MB are allowed: the total budget is checked after preparation.
   for (let i = 0; i < 12; i++) {
-    assert.equal(validatePhoto(photo, { bytes }), "");
-    bytes += photo.size;
+    assert.equal(validatePhoto({ ...photo, size: PHOTO_LIMITS.fileBytes }), "");
   }
-  assert.ok(validatePhoto(photo, { bytes: PHOTO_LIMITS.totalBytes }));
+  assert.equal(
+    validatePreparedPhoto(photo, PHOTO_LIMITS.totalBytes - photo.size),
+    "",
+  );
+  assert.ok(
+    validatePreparedPhoto(photo, PHOTO_LIMITS.totalBytes - photo.size + 1),
+  );
   assert.equal(validatePhoto({ ...photo, name: "camera.heic", type: "" }), "");
 });
 test("Photographic signatures reject renamed markup and keep common photo formats", () => {

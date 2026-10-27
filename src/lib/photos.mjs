@@ -4,7 +4,7 @@ export const PHOTO_LIMITS = Object.freeze({
   edge: 2600,
   pixels: 60_000_000,
 });
-export function validatePhoto(file, { bytes = 0 } = {}) {
+export function validatePhoto(file) {
   const supported =
     /^(image\/(jpeg|png|webp|heic|heif))$/.test(file.type || "") ||
     (!file.type && /\.(jpe?g|png|webp|heic|heif)$/i.test(file.name));
@@ -13,8 +13,12 @@ export function validatePhoto(file, { bytes = 0 } = {}) {
   if (!file.size) return "Questa foto è vuota. Scegli un altro file.";
   if (file.size > PHOTO_LIMITS.fileBytes)
     return "Questa foto supera 20 MB. Scegli una versione più leggera.";
+  return "";
+}
+/** Apply the total budget to the re-encoded files, never to the original batch. */
+export function validatePreparedPhoto(file, bytes = 0) {
   if (bytes + file.size > PHOTO_LIMITS.totalBytes)
-    return "Le foto selezionate superano 40 MB complessivi. Rimuovine una o scegli file più leggeri.";
+    return "Le foto già ottimizzate supererebbero 40 MB in totale. Questa foto non è stata aggiunta: puoi rimuoverne una o scegliere un file più leggero.";
   return "";
 }
 /** Only photographic byte formats; a renamed SVG must never be decoded as a photo. */

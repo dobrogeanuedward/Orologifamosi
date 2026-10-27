@@ -2,11 +2,13 @@
 
 ## Comportamento reale
 
+La scelta «Un altro marchio» mostra un campo obbligatorio per il nome: la scheda e il messaggio usano quel nome. Passare a un marchio previsto nasconde e disabilita il campo, conservandone il valore per un eventuale ritorno.
+
 Il nuovo componente accompagna la persona in quattro passaggi: orologio, condizioni/corredo, foto, controllo e invio. La scheda laterale si aggiorna con i dati scelti e la prima foto effettiva. Il codice OF è un riferimento della bozza, non un lead registrato o un’offerta commerciale.
 
 Le foto vengono selezionate e preparate nel browser, senza upload a un server. Non si usa localStorage né un archivio remoto. Il ricaricamento della pagina perde la bozza; un ritorno da un'altra app può conservarla se il browser mantiene la pagina in memoria, senza garanzia contro chiusure del sistema.
 
-- Nessun tetto numerico alle immagini; limite di peso 20 MiB per originale e 40 MiB complessivi, per contenere l’uso della memoria sul dispositivo. Queste soglie sono scelte applicative, non limiti dichiarati da WhatsApp.
+- Nessun tetto numerico alle immagini; limite di peso 20 MiB per originale. Il limite complessivo di 40 MiB si applica ai JPEG già ottimizzati, non alla somma degli originali: un gruppo di originali da oltre 40 MiB può quindi essere preparato. Il peso effettivo dopo l’ottimizzazione è mostrato nella selezione. Queste soglie sono scelte applicative, non limiti dichiarati da WhatsApp.
 - JPEG, PNG, WebP e HEIC/HEIF solo se decodificabili dal browser.
 - Controllo di formato e firma dei byte: un SVG rinominato non viene caricato come fotografia.
 - Preparazione sequenziale locale in JPEG, lato lungo massimo 2600 px, qualità 0.9. I metadati dell’originale non vengono copiati.

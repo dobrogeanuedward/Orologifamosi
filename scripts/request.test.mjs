@@ -1,6 +1,10 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { buildRequest } from "../src/lib/request.mjs";
+import {
+  buildRequest,
+  OTHER_BRAND,
+  resolveRequestBrand,
+} from "../src/lib/request.mjs";
 test("WhatsApp opens the real business number with encoded details and no automatic send", () => {
   const url = new URL(
     buildRequest({
@@ -25,4 +29,13 @@ test("Unknown reference gets an honest fallback, and notes are bounded", () => {
   ).searchParams.get("text");
   assert.ok(text.includes("Da identificare"));
   assert.ok(!text.includes("x".repeat(601)));
+});
+test("An unlisted brand uses the written name in the WhatsApp draft", () => {
+  const data = { brand: OTHER_BRAND, otherBrand: "  Grand Seiko & Credor  " };
+  assert.equal(resolveRequestBrand(data), "Grand Seiko & Credor");
+  const message = new URL(buildRequest(data)).searchParams.get("text");
+  assert.ok(message.includes("Marchio: Grand Seiko & Credor"));
+  assert.ok(!message.includes(OTHER_BRAND));
+  assert.equal(resolveRequestBrand({ ...data, brand: "Rolex" }), "Rolex");
+  assert.equal(resolveRequestBrand({ brand: OTHER_BRAND }), "");
 });

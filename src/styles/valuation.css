@@ -70,15 +70,16 @@
   position: relative;
   overflow: hidden;
 }
-.passport-photo > .request-icon {
-  width: 49px;
-  height: 49px;
-  color: #8c712e;
+.passport-photo > .request-illustration {
+  width: 68px;
+  height: 86px;
+  object-fit: contain;
+  position: static;
 }
-.passport-photo.has-photo > .request-icon {
+.passport-photo.has-photo > .request-illustration {
   display: none;
 }
-.passport-photo img {
+.passport-photo > #passport-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -92,6 +93,10 @@
   line-height: 1.1;
   color: #222;
   display: block;
+  overflow-wrap: anywhere;
+}
+.passport-watch > div:last-child {
+  min-width: 0;
 }
 .passport-watch p {
   font-size: 12px;
@@ -296,6 +301,19 @@
   color: #fff;
   border-color: #222;
 }
+.request-other-brand {
+  margin-bottom: 24px;
+  border-left: 2px solid #9a7221;
+  padding: 17px 17px 2px;
+  background: #f4f0e6;
+  border-radius: 0 7px 7px 0;
+}
+.request-other-brand input {
+  background: #fff;
+}
+.request-other-brand .request-field-note {
+  margin-bottom: 13px;
+}
 .request-workspace .button {
   width: 100%;
   justify-content: space-between;
@@ -360,10 +378,12 @@
 .request-options input {
   position: absolute;
   opacity: 0;
-  width: 1px;
-  height: 1px;
-  inset: 50% auto auto 20px;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  z-index: 1;
   margin: 0;
+  cursor: pointer;
 }
 .request-options label > span {
   display: flex;
@@ -1339,5 +1359,79 @@
   }
   .concierge-directions {
     min-height: 46px;
+  }
+}
+
+/* Illustrated choices: seven assets made for this watch request. */
+.request-illustration {
+  object-fit: contain;
+  flex: none;
+}
+.request-options label > span {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  min-height: 128px;
+  padding: 13px 10px;
+  gap: 5px;
+  position: relative;
+}
+.request-options label .request-illustration {
+  width: 88px;
+  height: 78px;
+  transition: transform 0.24s ease;
+}
+.request-options label > span::after {
+  content: "";
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  width: 13px;
+  height: 13px;
+  border: 1px solid #c9c8bd;
+  border-radius: 50%;
+  background: #fff;
+}
+.request-options input:checked + span::after {
+  background: #8a671f;
+  border-color: #8a671f;
+  box-shadow: inset 0 0 0 3px #fff;
+}
+.request-set-options label:last-child > span {
+  min-height: 77px;
+  flex-direction: row;
+  gap: 16px;
+}
+.request-set-options label:last-child .request-illustration {
+  width: 62px;
+  height: 56px;
+}
+.request-shot-guide {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+.request-shot-guide > span {
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 9px 5px;
+  border: 1px solid #e2ded1;
+  border-radius: 7px;
+  background: #faf8f2;
+}
+.request-shot-guide .request-illustration {
+  width: 53px;
+  height: 53px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .request-options label:hover .request-illustration {
+    transform: translateY(-3px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .request-options label .request-illustration {
+    transition: none;
   }
 }

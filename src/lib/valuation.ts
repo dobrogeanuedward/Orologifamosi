@@ -2,15 +2,20 @@ import {
   buildRequest,
   buildRequestMessage,
   canSharePhotos,
+  OTHER_BRAND,
+  resolveRequestBrand,
 } from "./request.mjs";
-import { validatePhoto, preparePhoto } from "./photos.mjs";
+import {
+  validatePhoto,
+  validatePreparedPhoto,
+  preparePhoto,
+} from "./photos.mjs";
 
 type Photo = {
   id: number;
   file: File;
   preview: string;
   signature: string;
-  sourceBytes: number;
 };
 const form = document.querySelector<HTMLFormElement>("#valuation-form");
 if (form) {
@@ -36,10 +41,28 @@ if (form) {
     nextPhotoId = 0,
     preparing = false,
     sharing = false;
-  const read = () => ({
-    ...Object.fromEntries(new FormData(form).entries()),
-    draftId,
-  });
+  const brandSelect = get<HTMLSelectElement>("#brand"),
+    otherBrand = get<HTMLInputElement>("#other-brand"),
+    otherBrandField = get<HTMLElement>("#other-brand-field");
+  const read = () => {
+    const data = Object.fromEntries(new FormData(form).entries());
+    return { ...data, brand: resolveRequestBrand(data), draftId };
+  };
+  function syncOtherBrand(focus = false) {
+    const isOther = brandSelect.value === OTHER_BRAND;
+    otherBrandField.hidden = !isOther;
+    otherBrand.disabled = !isOther;
+    otherBrand.required = isOther;
+    otherBrand.setCustomValidity(
+      isOther && otherBrand.value.length > 0 && !otherBrand.value.trim()
+        ? "Scrivi il nome del marchio."
+        : "",
+    );
+    if (isOther && focus) otherBrand.focus();
+  }
+  brandSelect.addEventListener("change", () => syncOtherBrand(true));
+  otherBrand.addEventListener("input", () => syncOtherBrand());
+  syncOtherBrand();
   const announce = (text: string) => {
     deliveryStatus.textContent = text;
   };
@@ -195,6 +218,7 @@ if (form) {
     .forEach((button) =>
       button.addEventListener("click", () => {
         get<HTMLSelectElement>("#brand").value = button.dataset.brandChoice!;
+        syncOtherBrand();
         updatePassport();
       }),
     );
@@ -245,6 +269,16 @@ if (form) {
         button.disabled = value;
       });
   }
+  function updatePhotoStatus(emptyMessage = "") {
+    const bytes = photos.reduce((sum, photo) => sum + photo.file.size, 0);
+    const size =
+      bytes < 1024 * 1024
+        ? `${Math.max(1, Math.round(bytes / 1024))} KB`
+        : `${new Intl.NumberFormat("it-IT", { maximumFractionDigits: 1 }).format(bytes / (1024 * 1024))} MB`;
+    get("#photo-progress").textContent = photos.length
+      ? `${photos.length} ${photos.length === 1 ? "foto pronta" : "foto pronte"} · ${size} dopo l’ottimizzazione.`
+      : emptyMessage;
+  }
   async function addPhotos(files: File[]) {
     if (preparing || !files.length) return;
     const errors: string[] = [];
@@ -258,9 +292,7 @@ if (form) {
           errors.push("Una foto già selezionata è stata saltata.");
           continue;
         }
-        const error = validatePhoto(file, {
-          bytes: photos.reduce((sum, photo) => sum + photo.sourceBytes, 0),
-        });
+        const error = validatePhoto(file);
         if (error) {
           errors.push(error);
           continue;
@@ -273,12 +305,19 @@ if (form) {
             file,
             `${draftId.toLowerCase()}-foto-${id}.jpg`,
           );
+          const preparedError = validatePreparedPhoto(
+            prepared,
+            photos.reduce((sum, photo) => sum + photo.file.size, 0),
+          );
+          if (preparedError) {
+            errors.push(preparedError);
+            continue;
+          }
           photos.push({
             id,
             file: prepared,
             preview: URL.createObjectURL(prepared),
             signature,
-            sourceBytes: file.size,
           });
           renderPhotos();
         } catch (error) {
@@ -293,9 +332,7 @@ if (form) {
       setPreparing(false);
       renderPhotos();
       fileInput.value = cameraInput.value = "";
-      get("#photo-progress").textContent = photos.length
-        ? `${photos.length} ${photos.length === 1 ? "foto pronta" : "foto pronte"}. Puoi aggiungere altre foto.`
-        : "";
+      updatePhotoStatus();
       get("#photo-errors").textContent = Array.from(new Set(errors)).join(" ");
     }
   }
@@ -332,9 +369,7 @@ if (form) {
     get("#photo-errors").textContent = "";
     photos = photos.filter((p) => p.id !== photo.id);
     renderPhotos();
-    get("#photo-progress").textContent = photos.length
-      ? `${photos.length} ${photos.length === 1 ? "foto pronta" : "foto pronte"}.`
-      : "Foto rimossa. Puoi sceglierne altre.";
+    updatePhotoStatus("Foto rimossa. Puoi sceglierne altre.");
     const remaining = root!.querySelector<HTMLButtonElement>(
       "[data-remove-photo]",
     );

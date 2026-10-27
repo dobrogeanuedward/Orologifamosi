@@ -1,4 +1,12 @@
 /** Text and file sharing are separate capabilities. Nothing here sends a message. */
+export const OTHER_BRAND = "__other__";
+export function resolveRequestBrand(data) {
+  return String(
+    data.brand === OTHER_BRAND ? data.otherBrand || "" : data.brand || "",
+  )
+    .trim()
+    .slice(0, 80);
+}
 export function buildRequestMessage(
   data,
   { photoCount = 0, channel = "chat" } = {},
@@ -13,7 +21,7 @@ export function buildRequestMessage(
   return [
     "Buongiorno Salvatore, vorrei una valutazione per il mio orologio.",
     draftId ? `Riferimento bozza: ${draftId}` : "",
-    `Marchio: ${value("brand", 50)}`,
+    `Marchio: ${resolveRequestBrand(data)}`,
     `Modello / referenza: ${value("model", 120) || "Da identificare"}`,
     `Condizioni: ${value("condition", 100)}`,
     `Corredo: ${value("set", 100)}`,

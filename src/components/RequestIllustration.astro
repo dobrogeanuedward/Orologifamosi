@@ -1,0 +1,17 @@
+---
+interface Props {
+  name: "watch" | "used" | "service" | "inspection" | "complete" | "box" | "documents";
+}
+const { name } = Astro.props;
+---
+
+<img
+  class="request-illustration"
+  src={`/images/request/${name}.webp`}
+  width="256"
+  height="256"
+  alt=""
+  aria-hidden="true"
+  loading="lazy"
+  decoding="async"
+/>
