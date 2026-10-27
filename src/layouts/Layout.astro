@@ -1,0 +1,253 @@
+---
+import "@fontsource/manrope/400.css";
+import "@fontsource/manrope/500.css";
+import "@fontsource/manrope/600.css";
+import "@fontsource/cormorant-garamond/400.css";
+import "../styles/global.css";
+import { business } from "../data/business";
+interface Props {
+  title: string;
+  description: string;
+  canonicalPath?: string;
+  brand?: string;
+}
+const {
+  title,
+  description,
+  canonicalPath = Astro.url.pathname,
+  brand = "",
+} = Astro.props;
+const indexable = Boolean(
+  Astro.site && import.meta.env.PUBLIC_INDEXABLE === "true",
+);
+const canonical = Astro.site
+  ? new URL(canonicalPath, Astro.site).href
+  : undefined;
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": business.original + "#organization",
+      name: business.legalName,
+      url: business.original,
+      telephone: business.phone,
+      email: business.email,
+      taxID: business.vat,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: business.street,
+        addressLocality: business.locality,
+        addressRegion: business.region,
+        postalCode: business.postcode,
+        addressCountry: "IT",
+      },
+    },
+    {
+      "@type": "Service",
+      name: brand
+        ? `Valutazione e acquisto ${brand} da privati`
+        : "Valutazione e acquisto orologi da privati",
+      serviceType: "Valutazione e acquisto di orologi usati",
+      provider: { "@id": business.original + "#organization" },
+      areaServed: [{ "@type": "Country", name: "Italia" }],
+      ...(canonical ? { url: canonical } : {}),
+      description,
+    },
+    ...(canonical
+      ? [
+          {
+            "@type": "WebPage",
+            "@id": canonical,
+            name: title,
+            description,
+            url: canonical,
+            inLanguage: "it-IT",
+            about: { "@id": business.original + "#organization" },
+          },
+        ]
+      : []),
+  ],
+};
+---
+
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#171918" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta
+      name="robots"
+      content={indexable ? "index,follow" : "noindex,nofollow"}
+    />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="it_IT" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(schema).replace(/</g, "\\u003c")}
+    />
+  </head>
+  <body>
+    <a class="skip" href="#contenuto">
+      Vai al contenuto
+    </a>
+    <header class="header">
+      <a
+        class="identity"
+        href="/vendi-orologio/"
+        aria-label="Orologi Famosi, servizio acquisto da privati"
+      >
+        <img src="/images/logo.png" alt="" width="86" height="47" />
+        <span>
+          Orologi Famosi<small>Acquisto da privati</small>
+        </span>
+      </a>
+      <nav aria-label="Navigazione principale" id="main-nav">
+        <a href="/vendi-orologio/" aria-current={!brand ? "page" : undefined}>
+          Il tuo orologio
+        </a>
+        <a
+          href="/vendi-rolex/"
+          aria-current={brand === "Rolex" ? "page" : undefined}
+        >
+          Rolex
+        </a>
+        <a
+          href="/vendi-omega/"
+          aria-current={brand === "Omega" ? "page" : undefined}
+        >
+          Omega
+        </a>
+        <a
+          href="/vendi-cartier/"
+          aria-current={brand === "Cartier" ? "page" : undefined}
+        >
+          Cartier
+        </a>
+        <a href="#contatti">Contatti</a>
+      </nav>
+      <a class="button small header-cta" href="#valutazione">
+        Richiedi una valutazione <span aria-hidden="true">↗</span>
+      </a>
+      <button
+        class="menu-toggle"
+        aria-expanded="false"
+        aria-controls="main-nav"
+        aria-label="Apri menu"
+      >
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+    <slot />
+    <footer>
+      <div class="footer-top wrap">
+        <div>
+          <p class="footer-brand">Orologi Famosi</p>
+          <p>
+            Il servizio acquisto da privati
+            <br />
+            di {business.owner}.
+          </p>
+        </div>
+        <div>
+          <strong>Parliamone direttamente.</strong>
+          <a href={business.phoneHref}>{business.phone}</a>
+          <a href={"mailto:" + business.email}>{business.email}</a>
+        </div>
+        <div>
+          <strong>Il sito principale</strong>
+          <a href={business.original}>Scopri il catalogo Orologi Famosi ↗</a>
+          <p>
+            Gli orologi nelle fotografie sono immagini
+            <br />
+            dell’attività, non offerte di acquisto.
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom wrap">
+        <span>
+          {business.legalName} · P. IVA {business.vat}
+        </span>
+        <div>
+          <a href={business.privacy} target="_blank" rel="noopener noreferrer">
+            Privacy
+          </a>
+          <a href={business.cookies} target="_blank" rel="noopener noreferrer">
+            Cookie
+          </a>
+          <a href="https://www.dogostudio.it/">DOGO Studio</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const toggle = document.querySelector<HTMLButtonElement>(".menu-toggle");
+      const nav = document.querySelector<HTMLElement>("#main-nav");
+      function closeMenu() {
+        toggle?.setAttribute("aria-expanded", "false");
+        toggle?.setAttribute("aria-label", "Apri menu");
+        nav?.classList.remove("is-open");
+      }
+      toggle?.addEventListener("click", () => {
+        const open = toggle.getAttribute("aria-expanded") !== "true";
+        toggle.setAttribute("aria-expanded", String(open));
+        toggle.setAttribute("aria-label", open ? "Chiudi menu" : "Apri menu");
+        nav?.classList.toggle("is-open", open);
+      });
+      nav
+        ?.querySelectorAll("a")
+        .forEach((a) => a.addEventListener("click", closeMenu));
+      const photos = document.querySelectorAll<HTMLElement>(
+        ".brand-card-img,.expert-photo",
+      );
+      if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("photo-settled");
+                observer.unobserve(entry.target);
+              }
+            }
+          },
+          { threshold: 0.15 },
+        );
+        photos.forEach((photo) => observer.observe(photo));
+      }
+      document.addEventListener("click", (event) => {
+        const link = (event.target as Element)?.closest("a");
+        if (!link) return;
+        const href = link.getAttribute("href") || "";
+        const name = href.startsWith("tel:")
+          ? "phone_click"
+          : href.startsWith("https://wa.me/")
+            ? "whatsapp_direct_open"
+            : null;
+        if (name)
+          document.dispatchEvent(
+            new CustomEvent("orologi:action", {
+              detail: { name, page: location.pathname },
+            }),
+          );
+      });
+      document.addEventListener("keydown", (e) => {
+        if (
+          e.key === "Escape" &&
+          toggle?.getAttribute("aria-expanded") === "true"
+        ) {
+          closeMenu();
+          toggle.focus();
+        }
+      });
+    </script>
+  </body>
+</html>

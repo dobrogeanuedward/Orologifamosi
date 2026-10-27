@@ -1,0 +1,374 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Valuation from "./Valuation.astro";
+import { business, brands, wa } from "../data/business";
+import type { Landing } from "../data/landings";
+const { page } = Astro.props as { page: Landing };
+---
+
+<Layout
+  title={page.title}
+  description={page.description}
+  canonicalPath={"/" + page.slug + "/"}
+  brand={page.brand}
+>
+  <main id="contenuto">
+    <section class:list={["hero", { "hero-brand": !!page.brand }]}>
+      <div class="hero-copy">
+        <h1>
+          {page.heading.split("\n").map((line) => (
+            <span>{line + " "}</span>
+          ))}
+        </h1>
+        <p class="hero-intro">{page.intro}</p>
+        <p class="location">Medicina, Bologna · Su appuntamento</p>
+        <div class="hero-actions">
+          <a class="button" href="#valutazione">
+            Valuta il tuo {page.brand || "orologio"}{" "}
+            <span aria-hidden="true">↗</span>
+          </a>
+          <a class="understated" href="#come-funziona">
+            Come funziona <span aria-hidden="true">↓</span>
+          </a>
+        </div>
+        <div class="hero-assurance">
+          <span>Confronto diretto con Salvatore</span>
+          <span>Nessun obbligo di vendita</span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img
+          src={"/images/" + page.image}
+          alt={page.imageAlt}
+          width={page.image === "hero.webp" ? 1333 : 1600}
+          height={
+            page.image === "hero.webp"
+              ? 2000
+              : page.image === "omega.webp"
+                ? 1221
+                : 583
+          }
+          fetchpriority="high"
+        />
+        <div class="image-caption">
+          <p>{page.note}</p>
+        </div>
+      </div>
+    </section>
+    <div class="context-bar">
+      <div class="wrap">
+        <p>
+          Un orologio importante.
+          <br />
+          <strong>Un interlocutore preciso.</strong>
+        </p>
+        <p>Valutazione del singolo esemplare</p>
+        <p>Verifica prima della proposta definitiva</p>
+        <a href={business.original}>
+          Conosci Orologi Famosi <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+    <section class="models wrap" aria-labelledby="models-title">
+      <div class="section-heading">
+        <div>
+          <h2 id="models-title">{page.modelTitle}</h2>
+        </div>
+        <p>{page.modelIntro}</p>
+      </div>
+      {!page.brand ? (
+        <div class="brand-cards">
+          {page.models.map((model, i) => (
+            <a
+              class="brand-card"
+              href={["/vendi-rolex/", "/vendi-omega/", "/vendi-cartier/"][i]}
+            >
+              <div class="brand-card-img">
+                <img
+                  src={
+                    "/images/" + ["rolex.webp", "omega.webp", "cartier.webp"][i]
+                  }
+                  width="768"
+                  height="576"
+                  alt={
+                    [
+                      "Rolex Submariner del catalogo Orologi Famosi",
+                      "Omega Speedmaster del catalogo Orologi Famosi",
+                      "Cartier Santos del catalogo Orologi Famosi",
+                    ][i]
+                  }
+                  loading="lazy"
+                />
+              </div>
+              <div class="brand-card-title">
+                <h3>{model.name}</h3>
+                <span aria-hidden="true">↗</span>
+              </div>
+              <p>{model.text}</p>
+              <span class="card-link">Vendi il tuo {model.name}</span>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <div class="model-list">
+          {page.models.map((model) => (
+            <article>
+              <h3>{model.name}</h3>
+              <p>{model.text}</p>
+              <a class="text-link" href="#valutazione">
+                Parliamo del tuo esemplare <span aria-hidden="true">↗</span>
+              </a>
+            </article>
+          ))}
+        </div>
+      )}
+      {!page.brand && (
+        <details class="all-brands">
+          <summary>
+            Il tuo marchio non è tra questi?{" "}
+            <span>
+              Vedi tutti i 19 marchi <b aria-hidden="true">+</b>
+            </span>
+          </summary>
+          <div>
+            {brands.map((b) => (
+              <a
+                href={
+                  ["Rolex", "Omega", "Cartier"].includes(b)
+                    ? "/vendi-" + b.toLowerCase() + "/"
+                    : "#valutazione"
+                }
+              >
+                {b}
+              </a>
+            ))}
+          </div>
+          <p>
+            I marchi appartengono ai rispettivi titolari. Orologi Famosi opera
+            come attività indipendente. L’interesse all’acquisto viene
+            verificato per ogni esemplare.
+          </p>
+        </details>
+      )}
+      {page.brand && (
+        <div class="brand-detail-photos">
+          <figure>
+            <img
+              src="/images/hero.webp"
+              alt="Esame dell’orologio e documentazione sul tavolo di Orologi Famosi"
+              width="1333"
+              height="2000"
+              loading="lazy"
+            />
+            <figcaption>
+              Il corredo aiuta a ricostruire la storia dell’orologio.
+            </figcaption>
+          </figure>
+          <figure>
+            <img
+              src="/images/slide5.webp"
+              alt="Salvatore controlla la scatola e gli accessori di un orologio"
+              width="1600"
+              height="583"
+              loading="lazy"
+            />
+            <figcaption>
+              Scatola, documenti e accessori: indica ciò che hai conservato.
+            </figcaption>
+          </figure>
+        </div>
+      )}
+    </section>
+    <section class="process" id="come-funziona">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <h2>
+              Come vendere,
+              <br />
+              passo dopo passo.
+            </h2>
+          </div>
+          <p>
+            Conosci il percorso prima di cominciare. Ogni passaggio si concorda
+            direttamente con Salvatore.
+          </p>
+        </div>
+        <ol class="process-steps">
+          <li>
+            <h3>Ci presenti l’orologio.</h3>
+            <p>
+              Prepara marca, modello, condizioni e foto nitide. Puoi iniziare
+              anche se non conosci la referenza.
+            </p>
+          </li>
+          <li>
+            <h3>Ne parli con Salvatore.</h3>
+            <p>
+              Le informazioni servono a un primo esame. Se necessario, ti
+              verranno richiesti dettagli o fotografie aggiuntive.
+            </p>
+          </li>
+          <li>
+            <h3>Valuti la proposta.</h3>
+            <p>
+              Verifica dell’orologio, condizioni d’acquisto, pagamento e
+              consegna si definiscono prima di concludere.
+            </p>
+          </li>
+        </ol>
+        <div class="process-foot">
+          <p>La richiesta non ti impegna a vendere.</p>
+          <a href="#valutazione">
+            Inizia la tua richiesta <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+    <section class="expert wrap">
+      <div class="expert-photo">
+        <img
+          src="/images/slide4.webp"
+          alt="Salvatore Agresta esamina un orologio con una lente"
+          width="1600"
+          height="583"
+          loading="lazy"
+        />
+        <span>Salvatore Agresta · Orologi Famosi</span>
+      </div>
+      <div class="expert-copy">
+        <h2>
+          Il tuo orologio
+          <br />
+          merita attenzione.
+        </h2>
+        <p>
+          Orologi Famosi nasce nel 2018 dalla passione di Salvatore per l’alta
+          orologeria, in una famiglia legata al mondo dei preziosi.
+        </p>
+        <p>
+          Qui la valutazione passa attraverso un confronto personale: le
+          caratteristiche del tuo orologio, le sue condizioni, la documentazione
+          che lo accompagna. E tutte le domande che vuoi fare prima di decidere.
+        </p>
+        <a class="text-link" href={business.original + "p/chi-siamo"}>
+          Scopri la storia di Orologi Famosi <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+    <section class="factors wrap">
+      <div class="section-heading">
+        <div>
+          <h2>
+            Da cosa dipende
+            <br />
+            il valore?
+          </h2>
+        </div>
+        <p>
+          Il nome sul quadrante non basta. Una proposta sensata tiene insieme
+          caratteristiche, stato dell’orologio e mercato.
+        </p>
+      </div>
+      <div class="factor-grid">
+        {page.factors.map((factor) => (
+          <article>
+            <h3>{factor.title}</h3>
+            <p>{factor.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+    <Valuation brand={page.brand} />
+    <section class="faq wrap" aria-labelledby="faq-title">
+      <div>
+        <h2 id="faq-title">
+          Le domande
+          <br />
+          più utili.
+        </h2>
+        <p>Hai un dubbio sul tuo esemplare?</p>
+        <a
+          class="text-link"
+          href={wa(
+            "Buongiorno Salvatore, avrei una domanda sulla vendita del mio " +
+              (page.brand || "orologio") +
+              ".",
+          )}
+        >
+          Chiedilo a Salvatore <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <div class="faq-items">
+        {page.faqs.map((faq) => (
+          <details>
+            <summary>
+              {faq.q}
+              <span aria-hidden="true">+</span>
+            </summary>
+            <p>{faq.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+    <section class="contact" id="contatti">
+      <div class="wrap contact-inner">
+        <div>
+          <h2>
+            Incontriamoci
+            <br />a Medicina.
+          </h2>
+          <p>
+            Riceviamo solo su appuntamento, in provincia di Bologna. Se arrivi
+            da Bologna, Imola, Castel San Pietro Terme, Budrio o Modena,
+            contattaci prima per concordare giorno e orario.
+          </p>
+          <a
+            class="button light"
+            href={wa(
+              "Buongiorno Salvatore, vorrei concordare un appuntamento a Medicina per il mio " +
+                (page.brand || "orologio") +
+                ".",
+            )}
+          >
+            Concorda un appuntamento <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <address>
+          <strong>Medicina, Bologna</strong>
+          <p>
+            Centro Commerciali Medici
+            <br />
+            {business.street}
+            <br />
+            {business.postcode} Medicina (BO)
+          </p>
+          <a
+            href={
+              "https://www.google.com/maps/search/?api=1&query=" +
+              encodeURIComponent(business.address)
+            }
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Apri le indicazioni <span aria-hidden="true">↗</span>
+          </a>
+          <a href={business.phoneHref}>{business.phone}</a>
+        </address>
+      </div>
+    </section>
+    {page.brand && (
+      <div class="related wrap">
+        <p>Vuoi proporre un altro orologio?</p>
+        <div>
+          <a href="/vendi-orologio/">Tutti i marchi</a>
+          {["Rolex", "Omega", "Cartier"]
+            .filter((b) => b !== page.brand)
+            .map((b) => (
+              <a href={"/vendi-" + b.toLowerCase() + "/"}>Vendi {b}</a>
+            ))}
+        </div>
+      </div>
+    )}
+  </main>
+</Layout>

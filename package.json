@@ -1,0 +1,22 @@
+{
+  "name": "orologi-famosi-acquisto-privati",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 0.0.0.0",
+    "build": "astro check && astro build",
+    "preview": "astro preview --host 0.0.0.0",
+    "check": "astro check",
+    "test": "node --test scripts/*.test.mjs"
+  },
+  "dependencies": {
+    "astro": "^7.4.2",
+    "@fontsource/manrope": "^5.2.8",
+    "@fontsource/cormorant-garamond": "^5.2.8"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.6",
+    "typescript": "^5.9.3"
+  }
+}
