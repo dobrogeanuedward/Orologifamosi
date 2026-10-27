@@ -1,5 +1,6 @@
 ---
 import Arrow from "../components/Arrow.astro";
+import Footer from "../components/Footer.astro";
 import "@fontsource/cormorant-garamond/500.css";
 import "../styles/global.css";
 import { business } from "../data/business";
@@ -110,27 +111,53 @@ const schema = {
         </span>
       </a>
       <nav aria-label="Navigazione principale" id="main-nav">
-        <a href="/vendi-orologio/" aria-current={!brand ? "page" : undefined}>
-          Vendi il tuo orologio
-        </a>
-        <a
-          href="/vendi-rolex/"
-          aria-current={brand === "Rolex" ? "page" : undefined}
-        >
-          Rolex
-        </a>
-        <a
-          href="/vendi-omega/"
-          aria-current={brand === "Omega" ? "page" : undefined}
-        >
-          Omega
-        </a>
-        <a
-          href="/vendi-cartier/"
-          aria-current={brand === "Cartier" ? "page" : undefined}
-        >
-          Cartier
-        </a>
+        <details class="nav-sell">
+          <summary>
+            Vendi il tuo orologio{" "}
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              aria-hidden="true"
+            >
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </summary>
+          <div class="sell-dropdown">
+            <a class="sell-overview" href="/vendi-orologio/">
+              <span>
+                Valutazione e acquisto da privati
+                <strong>Parti dal tuo orologio.</strong>
+              </span>
+              <Arrow />
+            </a>
+            <div class="sell-brands">
+              {["Rolex", "Omega", "Cartier"].map((b) => (
+                <a
+                  href={"/vendi-" + b.toLowerCase() + "/"}
+                  aria-current={brand === b ? "page" : undefined}
+                >
+                  <img
+                    src={"/images/" + b.toLowerCase() + ".webp"}
+                    alt=""
+                    width="60"
+                    height="60"
+                  />
+                  <span>
+                    Vendi {b}
+                    <small>Conosci il percorso</small>
+                  </span>
+                  <Arrow />
+                </a>
+              ))}
+            </div>
+            <p>19 marchi. Un confronto diretto con Salvatore.</p>
+          </div>
+        </details>
+        <a href="#come-funziona">Come funziona</a>
         <a href={business.original + "catalogo"} class="catalog-link">
           Acquista un orologio <Arrow />
         </a>
@@ -153,48 +180,7 @@ const schema = {
       </button>
     </header>
     <slot />
-    <footer>
-      <div class="footer-top wrap">
-        <div>
-          <p class="footer-brand">Orologi Famosi</p>
-          <p>
-            Il servizio acquisto da privati
-            <br />
-            di {business.owner}.
-          </p>
-        </div>
-        <div>
-          <strong>Parliamone direttamente.</strong>
-          <a href={business.phoneHref}>{business.phone}</a>
-          <a href={"mailto:" + business.email}>{business.email}</a>
-        </div>
-        <div>
-          <strong>Il sito principale</strong>
-          <a href={business.original}>
-            Scopri il catalogo Orologi Famosi <Arrow />
-          </a>
-          <p>
-            Gli orologi nelle fotografie sono immagini
-            <br />
-            dell’attività, non offerte di acquisto.
-          </p>
-        </div>
-      </div>
-      <div class="footer-bottom wrap">
-        <span>
-          {business.legalName} · P. IVA {business.vat}
-        </span>
-        <div>
-          <a href={business.privacy} target="_blank" rel="noopener noreferrer">
-            Privacy
-          </a>
-          <a href={business.cookies} target="_blank" rel="noopener noreferrer">
-            Cookie
-          </a>
-          <a href="https://www.dogostudio.it/">DOGO Studio</a>
-        </div>
-      </div>
-    </footer>
+    <Footer />
 
     <script>
       const progress = document.querySelector<HTMLElement>(".scroll-progress");
@@ -217,11 +203,23 @@ const schema = {
       );
       updateProgress();
       const toggle = document.querySelector<HTMLButtonElement>(".menu-toggle");
+      const sellMenu = document.querySelector<HTMLDetailsElement>(".nav-sell");
+      document.addEventListener("click", (event) => {
+        if (sellMenu?.open && !sellMenu.contains(event.target as Node))
+          sellMenu.open = false;
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && sellMenu?.open) {
+          sellMenu.open = false;
+          sellMenu.querySelector("summary")?.focus();
+        }
+      });
       const nav = document.querySelector<HTMLElement>("#main-nav");
       function closeMenu() {
         toggle?.setAttribute("aria-expanded", "false");
         toggle?.setAttribute("aria-label", "Apri menu");
         nav?.classList.remove("is-open");
+        if (sellMenu) sellMenu.open = false;
       }
       toggle?.addEventListener("click", () => {
         const open = toggle.getAttribute("aria-expanded") !== "true";

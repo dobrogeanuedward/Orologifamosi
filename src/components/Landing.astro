@@ -1,6 +1,9 @@
 ---
 import Arrow from "./Arrow.astro";
 import Process from "./Process.astro";
+import Factors from "./Factors.astro";
+import Territory from "./Territory.astro";
+import { coverageFaqs } from "../data/coverage";
 import Layout from "../layouts/Layout.astro";
 import Valuation from "./Valuation.astro";
 import { business, brands, wa } from "../data/business";
@@ -80,7 +83,7 @@ const { page } = Astro.props as { page: Landing };
         </a>
       </div>
     </div>
-    <section class="models wrap" aria-labelledby="models-title">
+    <section id="modelli" class="models wrap" aria-labelledby="models-title">
       <div class="section-heading">
         <div>
           <h2 id="models-title">{page.modelTitle}</h2>
@@ -139,7 +142,11 @@ const { page } = Astro.props as { page: Landing };
         </div>
       )}
       {!page.brand && (
-        <div class="other-brands" aria-labelledby="other-brands-title">
+        <div
+          id="marchi"
+          class="other-brands"
+          aria-labelledby="other-brands-title"
+        >
           <div class="other-brands-heading">
             <h3 id="other-brands-title">Anche il tuo marchio.</h3>
             <p>
@@ -241,31 +248,9 @@ const { page } = Astro.props as { page: Landing };
         </a>
       </div>
     </section>
-    <section class="factors wrap">
-      <div class="section-heading">
-        <div>
-          <h2>
-            Da cosa dipende
-            <br />
-            il valore?
-          </h2>
-        </div>
-        <p>
-          Il nome sul quadrante non basta. Una proposta sensata tiene insieme
-          caratteristiche, stato dell’orologio e mercato.
-        </p>
-      </div>
-      <div class="factor-grid">
-        {page.factors.map((factor) => (
-          <article>
-            <h3>{factor.title}</h3>
-            <p>{factor.text}</p>
-          </article>
-        ))}
-      </div>
-    </section>
+    <Factors page={page} />
     <Valuation brand={page.brand} />
-    <section class="faq wrap" aria-labelledby="faq-title">
+    <section id="domande" class="faq wrap" aria-labelledby="faq-title">
       <div>
         <h2 id="faq-title">
           Le domande
@@ -288,7 +273,7 @@ const { page } = Astro.props as { page: Landing };
         </a>
       </div>
       <div class="faq-items">
-        {page.faqs.map((faq) => (
+        {[...page.faqs, ...coverageFaqs(page.brand)].map((faq) => (
           <details>
             <summary>
               {faq.q}
@@ -299,6 +284,7 @@ const { page } = Astro.props as { page: Landing };
         ))}
       </div>
     </section>
+    <Territory brand={page.brand} />
     <section class="contact" id="contatti">
       <div class="wrap contact-inner">
         <div>

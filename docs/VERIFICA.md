@@ -66,3 +66,14 @@ Top three problems (most visible first), each with the screenshot it shows in an
 - `Process.astro`: percorso fotografico a tre tab con pannelli animati in uscita e ingresso, comandi da tastiera (frecce, Home, End), stati ARIA. Senza script mostra tutti i passaggi e nasconde i comandi inattivi.
 - Modulo con intestazione dedicata, avanzamento a segmenti, controlli rifiniti e focus del nuovo passaggio; FAQ con superfici di apertura; scheda contatti e riquadri marchio specifici.
 - Browser: tutti i pannelli e tastiera verificati, tre viewport e quattro flussi WhatsApp superati; nessun errore JavaScript. Controlli automatici Axe senza violazioni rilevate; prova reduced motion e fallback senza script superata. Esaminate schermate mobile e desktop del percorso e hero mobile.
+
+## Footer, navigazione e copertura del perimetro
+- Footer dedicato con logo originale, chiusura tipografica, contatti, indirizzo e percorsi di acquisto/vendita distinti.
+- Dropdown fotografico del menu: panoramica e tre landing marchio, apertura nativa da tastiera/touch, chiusura esterna ed Escape, layout mobile scrollabile. Select del modulo conserva il controllo nativo accessibile con stile coerente.
+- Scheda valore `Factors.astro`: foto reale e tre approfondimenti apribili, in luogo della lunga lista; nessun importo o certificato di valutazione simulato.
+- Esaminate le pagine 7–17 dell’allegato operativo. Estratte **446 query uniche**, assegnate alle quattro landing e alle sezioni pertinenti in `docs/query-coverage.csv`. `scripts/map-query-coverage.py` permette di rigenerare il riscontro dal testo dell’allegato.
+- La copertura è semantica: una sezione può rispondere a più varianti. Non sono 446 pagine né 446 corrispondenze esatte obbligatorie, non si attestano ranking o citazioni AI. L’esistenza delle 446 destinazioni è stata verificata nell’HTML della build.
+- Completati gli intenti nazionali/online, fotografie, assenza e presenza del corredo, valutazione e contatto locale; esplicitati GMT-Master II e Cartier Panthère tra gli esemplari da sottoporre per un esame, senza impegno all’acquisto.
+- Territorio: 28 comuni del perimetro raggruppati in quattro aree sulle landing. La sede è sempre Medicina; Bologna e gli altri comuni indicano da dove può partire la richiesta, non sedi aggiuntive. Italia e contatto a distanza trattati nelle FAQ.
+- Typecheck e build superati. Browser a 390, 768, 1024 e 1440: nessun overflow, menu e scheda apribili, logo footer caricato. Quattro flussi WhatsApp e controllo automatico Axe superati, reduced motion e fallback senza script conservati. Nessun messaggio inviato.
+- Indicizzazione e fonti di misurazione restano dipendenti dalla configurazione dominio/ambiente e dagli accessi concordati: nessun risultato di ricerca viene inventato.

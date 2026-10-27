@@ -1,0 +1,94 @@
+---
+import type { Landing } from "../data/landings";
+const { page } = Astro.props as { page: Landing };
+const image =
+  page.brand === "Omega"
+    ? "omega.webp"
+    : page.brand === "Cartier"
+      ? "cartier.webp"
+      : "rolex.webp";
+---
+
+<section class="factors wrap inspection" id="valore">
+  <div class="section-heading">
+    <div>
+      <p class="brand-eyebrow">La valutazione del tuo esemplare</p>
+      <h2>
+        Da cosa dipende
+        <br />
+        il valore?
+      </h2>
+    </div>
+    <p>
+      Modello, condizioni e documenti si leggono insieme. Ecco cosa aiuta
+      Salvatore a conoscere il tuo orologio prima di una proposta.
+    </p>
+  </div>
+  <div class="inspection-sheet">
+    <div class="inspection-photo">
+      <img
+        src={"/images/" + image}
+        width="768"
+        height="576"
+        alt={
+          "Dettagli di un " +
+          (page.brand || "Rolex") +
+          " fotografato da Orologi Famosi"
+        }
+        loading="lazy"
+      />
+      <span>Un esame del singolo orologio.</span>
+    </div>
+    <div class="inspection-content">
+      <div class="inspection-caption">
+        <span>Il tuo orologio, nel dettaglio</span>
+        <span aria-hidden="true">OF</span>
+      </div>
+      {page.factors.map((factor, i) => (
+        <details class="inspection-factor" name="value-factors" open={i === 0}>
+          <summary>
+            <span class="inspection-icon" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.4"
+              >
+                {i === 0 ? (
+                  <>
+                    <circle cx="12" cy="12" r="7" />
+                    <path d="M12 8v4l3 2M9 2h6M9 22h6" />
+                  </>
+                ) : i === 1 ? (
+                  <>
+                    <circle cx="10" cy="10" r="6" />
+                    <path d="m15 15 6 6M7 10h6" />
+                  </>
+                ) : (
+                  <>
+                    <rect x="5" y="3" width="14" height="18" rx="2" />
+                    <path d="M9 8h6M9 12h6M9 16h3" />
+                  </>
+                )}
+              </svg>
+            </span>
+            <span>
+              <small>{["Identità", "Conservazione", "Storia"][i]}</small>
+              <strong>{factor.title}</strong>
+            </span>
+            <span class="inspection-plus" aria-hidden="true">
+              +
+            </span>
+          </summary>
+          <p>{factor.text}</p>
+        </details>
+      ))}
+      <p class="inspection-note">
+        Il prezzo di un annuncio non è automaticamente una proposta d’acquisto
+        per il tuo esemplare.
+      </p>
+    </div>
+  </div>
+</section>

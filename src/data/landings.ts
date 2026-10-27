@@ -105,7 +105,7 @@ export const landings: Landing[] = [
       },
       {
         name: "Daytona e altri Rolex",
-        text: "Daytona, GMT-Master, Explorer, Air-King, Day-Date: descrivi il tuo esemplare, oltre al nome della collezione.",
+        text: "Daytona, GMT-Master II, Explorer, Air-King, Day-Date: descrivi il tuo esemplare, oltre al nome della collezione.",
       },
     ],
     factors: [
@@ -229,7 +229,7 @@ export const landings: Landing[] = [
       },
       {
         name: "Altri Cartier",
-        text: "Ballon Bleu, Pasha e altre collezioni possono essere sottoposte per un primo esame, con interesse da verificare sul singolo esemplare.",
+        text: "Panthère, Ballon Bleu, Pasha e altre collezioni possono essere sottoposte per un primo esame, con interesse da verificare sul singolo esemplare.",
       },
     ],
     factors: [

@@ -1,0 +1,87 @@
+---
+import { business, wa } from "../data/business";
+import Arrow from "./Arrow.astro";
+---
+
+<footer class="signature-footer">
+  <div class="wrap">
+    <div class="footer-invitation">
+      <p>
+        Ogni orologio ha una storia.
+        <br />
+        Parliamo della tua.
+      </p>
+      <a
+        href={wa("Buongiorno Salvatore, vorrei parlare del mio orologio.")}
+        class="footer-contact"
+      >
+        Scrivi a Salvatore{" "}
+        <span>
+          <Arrow />
+        </span>
+      </a>
+    </div>
+    <div class="footer-signature-grid">
+      <div class="footer-signature">
+        <a
+          href="/vendi-orologio/"
+          aria-label="Orologi Famosi, servizio acquisto da privati"
+        >
+          <img
+            src="/images/logo.png"
+            alt="Logo Orologi Famosi"
+            width="270"
+            height="146"
+          />
+        </a>
+        <p>
+          Orologi Famosi
+          <br />
+          <span>di Salvatore Agresta</span>
+        </p>
+        <small>
+          Compravendita di orologi di lusso.
+          <br />
+          Qui inizia la vendita del tuo orologio.
+        </small>
+      </div>
+      <nav aria-label="Servizio acquisto, footer">
+        <strong>Vendi il tuo orologio</strong>
+        <a href="/vendi-orologio/">Tutti i marchi</a>
+        <a href="/vendi-rolex/">Rolex</a>
+        <a href="/vendi-omega/">Omega</a>
+        <a href="/vendi-cartier/">Cartier</a>
+      </nav>
+      <div class="footer-visit">
+        <strong>Incontriamoci a Medicina.</strong>
+        <p>
+          Centro Commerciali Medici
+          <br />
+          {business.street}
+          <br />
+          {business.postcode} Medicina (BO)
+        </p>
+        <span class="footer-appointment">Solo su appuntamento</span>
+        <a href={business.phoneHref}>{business.phone}</a>
+        <a href={"mailto:" + business.email}>{business.email}</a>
+        <a class="footer-catalog" href={business.original + "catalogo"}>
+          Vuoi acquistare? Esplora il catalogo <Arrow />
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>
+        {business.legalName} · P. IVA {business.vat}
+      </span>
+      <div>
+        <a href={business.privacy} target="_blank" rel="noopener noreferrer">
+          Privacy
+        </a>
+        <a href={business.cookies} target="_blank" rel="noopener noreferrer">
+          Cookie
+        </a>
+        <a href="https://www.dogostudio.it/">DOGO Studio</a>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,48 @@
+---
+import { areas } from "../data/coverage";
+import { business, wa } from "../data/business";
+import Arrow from "./Arrow.astro";
+const { brand = "" } = Astro.props;
+---
+
+<section class="territory wrap" id="territorio">
+  <div class="territory-intro">
+    <p class="brand-eyebrow">Bologna, Medicina e il tuo primo contatto</p>
+    <h2>
+      Il confronto può iniziare
+      <br />
+      da dove sei.
+    </h2>
+    <p>
+      Vuoi vendere {brand ? "un " + brand : "un orologio usato"} o chiedere una
+      valutazione? Puoi contattare Orologi Famosi da Bologna, dai comuni vicini
+      e dal resto d’Italia. Per l’incontro, la sede è una: Medicina.
+    </p>
+    <a
+      class="text-link"
+      href={wa(
+        "Buongiorno Salvatore, vorrei informazioni per valutare il mio " +
+          (brand || "orologio") +
+          " e concordare un appuntamento a Medicina.",
+      )}
+    >
+      Concorda prima il tuo appuntamento <Arrow />
+    </a>
+  </div>
+  <div class="territory-areas">
+    {areas.map((area) => (
+      <details>
+        <summary>
+          {area.name}
+          <span aria-hidden="true">+</span>
+        </summary>
+        <p>
+          Se abiti a {area.towns.join(", ")}, puoi iniziare inviando
+          informazioni e fotografie. L’eventuale visita si concorda a Medicina,
+          in {business.street}; queste località indicano la provenienza della
+          richiesta, non altre sedi.
+        </p>
+      </details>
+    ))}
+  </div>
+</section>
