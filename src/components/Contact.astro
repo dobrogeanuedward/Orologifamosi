@@ -1,0 +1,149 @@
+---
+import { business, wa } from "../data/business";
+import Arrow from "./Arrow.astro";
+import RequestIcon from "./RequestIcon.astro";
+const { brand = "" } = Astro.props;
+---
+
+<section
+  class="contact contact-concierge"
+  id="contatti"
+  aria-labelledby="contact-title"
+>
+  <div class="wrap concierge-layout">
+    <div class="concierge-intro">
+      <p class="brand-eyebrow">Il tuo contatto con Salvatore</p>
+      <h2 id="contact-title">
+        Come preferisci
+        <br />
+        cominciare?
+      </h2>
+      <p>
+        Una prima valutazione a distanza o un confronto in sede. Scegli il
+        percorso più comodo per te.
+      </p>
+      <a class="concierge-phone" href={business.phoneHref}>
+        <span>
+          <RequestIcon name="phone" />
+        </span>
+        <div>
+          Preferisci una telefonata?<strong>{business.phone}</strong>
+        </div>
+        <Arrow />
+      </a>
+    </div>
+    <div class="concierge-panel">
+      <fieldset class="concierge-choices">
+        <legend class="sr-only">Scegli come iniziare il confronto</legend>
+        <label>
+          <input type="radio" name="contact-choice" value="remote" checked />
+          <span>
+            <RequestIcon name="camera" />A distanza
+          </span>
+        </label>
+        <label>
+          <input type="radio" name="contact-choice" value="visit" />
+          <span>
+            <RequestIcon name="pin" />A Medicina
+          </span>
+        </label>
+      </fieldset>
+      <div class="concierge-route" data-contact-route="remote">
+        <p class="concierge-route-label">Il primo sguardo, dalle tue foto</p>
+        <h3>Prepara la tua richiesta.</h3>
+        <p>
+          Puoi iniziare da Bologna, Modena o dal resto d’Italia. Raccogli dati e
+          foto: il confronto continua direttamente con Salvatore.
+        </p>
+        <a class="button" href="#valutazione">
+          Presenta il tuo {brand || "orologio"}{" "}
+          <span>
+            <Arrow />
+          </span>
+        </a>
+        <span class="concierge-small">
+          Le foto aiutano il primo esame. La verifica dell’orologio si concorda
+          prima di concludere.
+        </span>
+      </div>
+      <div class="concierge-route" data-contact-route="visit">
+        <p class="concierge-route-label">Un incontro, su appuntamento</p>
+        <h3>Ci vediamo a Medicina.</h3>
+        <address>
+          Centro Commerciali Medici
+          <br />
+          {business.street}
+          <br />
+          {business.postcode} Medicina (BO)
+        </address>
+        <p>
+          Concorda giorno e orario con Salvatore prima di partire. Ti aspettiamo
+          in sede, su appuntamento.
+        </p>
+        <a
+          class="button"
+          href={wa(
+            "Buongiorno Salvatore, vorrei concordare un appuntamento a Medicina per il mio " +
+              (brand || "orologio") +
+              ".",
+          )}
+        >
+          Chiedi un appuntamento{" "}
+          <span>
+            <Arrow />
+          </span>
+        </a>
+        <a
+          class="concierge-directions"
+          href={
+            "https://www.google.com/maps/search/?api=1&query=" +
+            encodeURIComponent(business.address)
+          }
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Apri le indicazioni <Arrow />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  const routes = Array.from(
+    document.querySelectorAll<HTMLElement>("[data-contact-route]"),
+  );
+  const choices = document.querySelectorAll<HTMLInputElement>(
+    '[name="contact-choice"]',
+  );
+  if (routes.length) {
+    function showRoute(value: string) {
+      routes.forEach((route) => {
+        route.hidden = route.dataset.contactRoute !== value;
+        if (
+          !route.hidden &&
+          !matchMedia("(prefers-reduced-motion: reduce)").matches
+        )
+          route.animate(
+            [
+              { opacity: 0.3, transform: "translateY(8px)" },
+              { opacity: 1, transform: "translateY(0)" },
+            ],
+            { duration: 300, easing: "ease-out" },
+          );
+      });
+    }
+    showRoute("remote");
+    choices.forEach((choice) =>
+      choice.addEventListener("change", () => {
+        if (choice.checked) showRoute(choice.value);
+      }),
+    );
+  }
+</script>
+<noscript>
+  <style>
+    .concierge-choices {
+      display: none;
+    }
+  </style>
+</noscript>

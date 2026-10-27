@@ -46,6 +46,7 @@ Top three problems (most visible first), each with the screenshot it shows in an
 3. Foto del catalogo di qualità non uniforme: conservate perché reali; un set fotografico dedicato potrebbe migliorare la prossima revisione.
 
 ## Revisione marchi e continuità con il sito principale
+
 - Riletto l’allegato contrattuale: quattro landing, altri 16 marchi nella generale; nessuna nuova pagina marchio o migrazione catalogo.
 - Sostituito il disclosure con 16 riquadri fotografici sempre presenti nell’HTML, senza link né azioni. Quattro colonne desktop, due mobile. Nomi testuali e alt descrittivi, nessuna disponibilità o promessa d’acquisto aggiunta.
 - Fotografie originali selezionate dalle categorie del catalogo: provenienza in `brand-images.json`, visualizzate in un foglio di controllo prima dell’uso.
@@ -55,12 +56,14 @@ Top three problems (most visible first), each with the screenshot it shows in an
 - Build e typecheck senza errori; quattro flussi WhatsApp e tre viewport verificati; griglia con 16 elementi non cliccabili. Axe automatico sulle quattro pagine e controllo reduced motion superati.
 
 ## Revisione icone e movimento
+
 - Sostituite tutte le frecce Unicode con un componente SVG condiviso (`Arrow.astro`), senza caratteri che iOS possa rappresentare come emoji.
 - Transizioni di ingresso, uscita e rientro per fotografie, titoli, testi e passaggi del processo. Contenuti visibili senza JavaScript; preferenza reduced motion gestita anche se cambia durante la visita; focus da tastiera rende visibile il blocco raggiunto.
 - Compattate le distanze della sezione processo su mobile, conservando il corpo leggibile.
 - Browser: verificati SVG, ingresso/uscita/rientro, disattivazione runtime del movimento e leggibilità senza script. Ripassati i quattro flussi WhatsApp, tre larghezze, assenza overflow e controllo automatico Axe. Nessun messaggio inviato nei test.
 
 ## Evoluzione dei componenti e oro animato
+
 - Ripristinato Cormorant Garamond per i titoli; Open Sans originale per lettura, controlli ed eyebrow. Titoli prevalentemente neri sui fondi chiari, bianchi nelle sezioni scure, oro limitato a poche sezioni e azioni.
 - Metallo spazzolato procedurale SVG/CSS, con riflesso animato a trasformazioni sui pulsanti. Texture dei titoli oro con riflesso lento; animazioni disattivate con reduced motion. Nessun asset fotografico alterato o sostituito.
 - `Process.astro`: percorso fotografico a tre tab con pannelli animati in uscita e ingresso, comandi da tastiera (frecce, Home, End), stati ARIA. Senza script mostra tutti i passaggi e nasconde i comandi inattivi.
@@ -68,6 +71,7 @@ Top three problems (most visible first), each with the screenshot it shows in an
 - Browser: tutti i pannelli e tastiera verificati, tre viewport e quattro flussi WhatsApp superati; nessun errore JavaScript. Controlli automatici Axe senza violazioni rilevate; prova reduced motion e fallback senza script superata. Esaminate schermate mobile e desktop del percorso e hero mobile.
 
 ## Footer, navigazione e copertura del perimetro
+
 - Footer dedicato con logo originale, chiusura tipografica, contatti, indirizzo e percorsi di acquisto/vendita distinti.
 - Dropdown fotografico del menu: panoramica e tre landing marchio, apertura nativa da tastiera/touch, chiusura esterna ed Escape, layout mobile scrollabile. Select del modulo conserva il controllo nativo accessibile con stile coerente.
 - Scheda valore `Factors.astro`: foto reale e tre approfondimenti apribili, in luogo della lunga lista; nessun importo o certificato di valutazione simulato.
@@ -77,3 +81,16 @@ Top three problems (most visible first), each with the screenshot it shows in an
 - Territorio: 28 comuni del perimetro raggruppati in quattro aree sulle landing. La sede è sempre Medicina; Bologna e gli altri comuni indicano da dove può partire la richiesta, non sedi aggiuntive. Italia e contatto a distanza trattati nelle FAQ.
 - Typecheck e build superati. Browser a 390, 768, 1024 e 1440: nessun overflow, menu e scheda apribili, logo footer caricato. Quattro flussi WhatsApp e controllo automatico Axe superati, reduced motion e fallback senza script conservati. Nessun messaggio inviato.
 - Indicizzazione e fonti di misurazione restano dipendenti dalla configurazione dominio/ambiente e dagli accessi concordati: nessun risultato di ricerca viene inventato.
+
+## Scheda fotografica e contatto dedicato
+
+- Richiesta trasformata in una scheda dinamica a quattro passaggi: marchio/modello, condizioni e corredo a scelta visiva, fotografie, riepilogo e passaggio all’app. Anteprima della scheda e riferimento locale di bozza, senza simulare una valutazione o un lead ricevuto.
+- Foto locali senza tetto numerico, entro il limite complessivo di peso: preparazione JPEG nel browser, anteprime, rimozione, ingrandimento con dialog e comandi da tastiera, salvataggio esplicito. Supporto fotocamera sui dispositivi touch e selezione/trascinamento. Limiti e feedback per file vuoti, troppo grandi, non supportati o con firma non fotografica.
+- Condivisione file proposta solo quando rilevata dal browser. La Web Share API passa file e testo a un pannello scelto dal dispositivo; WhatsApp e destinatario devono essere scelti dalla persona. Il link alla chat di Salvatore rimane separato e non può allegare automaticamente le immagini. Nessuna conferma fittizia di ricezione.
+- Annullamenti, errori e supporto assente conservano dati e anteprime. Copia di messaggio e numero solo con azione esplicita. Nessun server/storage attivato, nessun costo esterno e nessuna persistenza della bozza dopo ricaricamento.
+- Contatti trasformati in un componente con scelta «A distanza» / «A Medicina», telefonata diretta, percorso di valutazione, richiesta di appuntamento e indicazioni. Nessuna prenotazione automatica inventata.
+- Build e typecheck: zero errori e warning. Sei test unitari passati. Browser Chromium su quattro landing e tre larghezze: campi obbligatori, marchio preselezionato, modifica dei dati, testo codificato e apertura WhatsApp intercettata senza invio di messaggi.
+- Test foto: JPEG preparati, rimozione, selezione di dodici foto oltre la vecchia soglia di sei, PDF respinto, SVG rinominato respinto prima della decodifica; mock di file sharing con testo/file, annullamento, errore e capacità assente. Verificati anche il fallback clipboard negata, la scelta fotocamera su superficie touch e assenza di upload/POST o richieste esterne nella preparazione.
+- Controllo automatico Axe in 18 stati (primo passaggio, dettagli, foto, dialog, riepilogo, appuntamento) alle larghezze 390/768/1440: nessuna violazione rilevata. Movimento ridotto e funzionamento senza script verificati. Ulteriore controllo a 320 px senza overflow. Catture di mobile e desktop esaminate.
+- Le 446 destinazioni della mappa query restano presenti nell’HTML delle quattro landing. Nessuna pagina fuori perimetro aggiunta.
+- Limite del collaudo: browser headless e mock API non verificano il pannello nativo iOS/Android o la ricezione in WhatsApp. Dettagli in `PHOTO-HANDOFF.md`; nessun messaggio reale inviato nei test.

@@ -32,3 +32,5 @@ Il modulo emette `orologi:action` con `{ name: 'whatsapp_open', page: pathname }
 Verificare API o export documentati, campi disponibili, autenticazione, limiti, frequenza e chiave comune per gli esiti. In assenza di canale compatibile, riportare il limite: l’accesso al pannello non garantisce integrazione automatica. Nuove API restano fuori perimetro.
 
 I link diretti emettono anche `phone_click` e `whatsapp_direct_open`, con la sola pagina di provenienza. Non distinguono la ricezione di una chiamata o di un messaggio. Nessun listener invia dati a servizi esterni nella versione corrente.
+
+Il percorso fotografico prepara le immagini solo nel browser. `request_share_handoff` segnala il passaggio alla condivisione nativa; non misura il destinatario, la ricezione o l’esito commerciale. Il riferimento OF della bozza non è un lead conservato. Modalità e limiti in [PHOTO-HANDOFF.md](PHOTO-HANDOFF.md).

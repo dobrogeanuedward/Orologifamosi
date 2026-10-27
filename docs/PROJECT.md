@@ -23,7 +23,7 @@ Il footer originale indica genericamente Bologna 40129 ma la pagina contatti e l
 
 ## Direzione
 
-Logo originale OF, bianco e nero, accento metallo #8a7350. Open Sans originale del sito principale, ospitato localmente; oro #9a7221, nero e bianco, pulsanti arrotondati. Foto del lavoro di Salvatore come prova del confronto personale, non render generici di orologi. Il percorso di richiesta costruisce un messaggio WhatsApp con i dati dell’esemplare, senza inventare un prezzo.
+Logo originale OF, bianco e nero, accento metallo #8a7350. Titoli Cormorant Garamond e Open Sans originale per testo ed eyebrow, ospitati localmente; oro #9a7221, nero e bianco, pulsanti arrotondati. Foto del lavoro di Salvatore come prova del confronto personale, non render generici di orologi. Il percorso di richiesta costruisce un messaggio WhatsApp con i dati dell’esemplare, senza inventare un prezzo.
 
 Skill applicate: Mantra DOGO, DOGO Web Production, Frontend Design, SEO/AEO/GEO, Web Interface Review, Web Quality; Taste upstream letto da Leonxlnx/taste-skill per la revisione della prima implementazione. Nessuna skill è stata installata o modificata.
 

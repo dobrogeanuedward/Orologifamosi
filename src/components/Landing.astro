@@ -3,6 +3,7 @@ import Arrow from "./Arrow.astro";
 import Process from "./Process.astro";
 import Factors from "./Factors.astro";
 import Territory from "./Territory.astro";
+import Contact from "./Contact.astro";
 import { coverageFaqs } from "../data/coverage";
 import Layout from "../layouts/Layout.astro";
 import Valuation from "./Valuation.astro";
@@ -285,58 +286,7 @@ const { page } = Astro.props as { page: Landing };
       </div>
     </section>
     <Territory brand={page.brand} />
-    <section class="contact" id="contatti">
-      <div class="wrap contact-inner">
-        <div>
-          <h2>
-            Incontriamoci
-            <br />a Medicina.
-          </h2>
-          <p>
-            Riceviamo solo su appuntamento, in provincia di Bologna. Se arrivi
-            da Bologna, Imola, Castel San Pietro Terme, Budrio o Modena,
-            contattaci prima per concordare giorno e orario.
-          </p>
-          <a
-            class="button light"
-            href={wa(
-              "Buongiorno Salvatore, vorrei concordare un appuntamento a Medicina per il mio " +
-                (page.brand || "orologio") +
-                ".",
-            )}
-          >
-            Concorda un appuntamento{" "}
-            <span aria-hidden="true">
-              <Arrow />
-            </span>
-          </a>
-        </div>
-        <address>
-          <strong>Medicina, Bologna</strong>
-          <p>
-            Centro Commerciali Medici
-            <br />
-            {business.street}
-            <br />
-            {business.postcode} Medicina (BO)
-          </p>
-          <a
-            href={
-              "https://www.google.com/maps/search/?api=1&query=" +
-              encodeURIComponent(business.address)
-            }
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Apri le indicazioni{" "}
-            <span aria-hidden="true">
-              <Arrow />
-            </span>
-          </a>
-          <a href={business.phoneHref}>{business.phone}</a>
-        </address>
-      </div>
-    </section>
+    <Contact brand={page.brand} />
     {page.brand && (
       <div class="related wrap">
         <p>Vuoi proporre un altro orologio?</p>

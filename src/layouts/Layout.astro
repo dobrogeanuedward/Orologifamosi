@@ -232,7 +232,7 @@ const schema = {
         .forEach((a) => a.addEventListener("click", closeMenu));
       const preference = matchMedia("(prefers-reduced-motion: reduce)");
       const motionSelector =
-        "main section h2, .section-heading>p, .brand-card, .model-list article, .process-steps li, .expert-photo, .expert-copy>p, .brand-detail-photos figure, .factor-grid article, .other-brands-grid li, .valuation-copy, .valuation-panel, .faq-items details, .contact-inner>div, .contact-inner address";
+        "main section h2, .section-heading>p, .brand-card, .model-list article, .process-steps li, .expert-photo, .expert-copy>p, .brand-detail-photos figure, .factor-grid article, .other-brands-grid li, .request-story, .request-workspace, .faq-items details, .contact-inner>div, .contact-inner address";
       const motionTargets = Array.from(
         document.querySelectorAll<HTMLElement>(motionSelector),
       ).filter((el) => !el.parentElement?.closest(motionSelector));
