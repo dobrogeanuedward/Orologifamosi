@@ -1,4 +1,5 @@
 ---
+import Arrow from "./Arrow.astro";
 import { brands, business, wa } from "../data/business";
 const { brand = "" } = Astro.props;
 ---
@@ -34,6 +35,11 @@ const { brand = "" } = Astro.props;
     </a>
   </div>
   <div class="valuation-panel">
+    <div class="request-heading">
+      <span class="request-dot" aria-hidden="true"></span>
+      <span>La tua richiesta di valutazione</span>
+      <span class="request-private">Diretta a Salvatore</span>
+    </div>
     <form novalidate id="valuation-form" data-brand={brand}>
       <div class="form-progress" data-ui aria-label="Avanzamento">
         <span class="active" data-indicator="0">
@@ -69,7 +75,10 @@ const { brand = "" } = Astro.props;
         />
         <p class="field-help">Puoi trovarli sulla garanzia o sui documenti.</p>
         <button class="button next" type="button">
-          Continua <span aria-hidden="true">↗</span>
+          Continua{" "}
+          <span aria-hidden="true">
+            <Arrow />
+          </span>
         </button>
       </fieldset>
       <fieldset data-step="1" hidden>
@@ -107,7 +116,10 @@ const { brand = "" } = Astro.props;
             Indietro
           </button>
           <button class="button next" type="button">
-            Vedi riepilogo <span aria-hidden="true">↗</span>
+            Vedi riepilogo{" "}
+            <span aria-hidden="true">
+              <Arrow />
+            </span>
           </button>
         </div>
       </fieldset>
@@ -131,7 +143,10 @@ const { brand = "" } = Astro.props;
             Modifica
           </button>
           <button class="button whatsapp-submit" type="submit">
-            Apri WhatsApp <span aria-hidden="true">↗</span>
+            Apri WhatsApp{" "}
+            <span aria-hidden="true">
+              <Arrow />
+            </span>
           </button>
         </div>
         <p class="micro">
@@ -201,7 +216,7 @@ const { brand = "" } = Astro.props;
       }
       const legend = steps[n]?.querySelector("legend");
       legend?.setAttribute("tabindex", "-1");
-      legend?.focus({ preventScroll: true });
+      legend?.focus();
     };
     form.querySelectorAll(".next").forEach((b) =>
       b.addEventListener("click", () => {

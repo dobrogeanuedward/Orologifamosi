@@ -1,4 +1,6 @@
 ---
+import Arrow from "./Arrow.astro";
+import Process from "./Process.astro";
 import Layout from "../layouts/Layout.astro";
 import Valuation from "./Valuation.astro";
 import { business, brands, wa } from "../data/business";
@@ -15,6 +17,7 @@ const { page } = Astro.props as { page: Landing };
   <main id="contenuto">
     <section class:list={["hero", { "hero-brand": !!page.brand }]}>
       <div class="hero-copy">
+        <p class="brand-eyebrow">Valutazione e acquisto da privati</p>
         <h1>
           {page.heading.split("\n").map((line) => (
             <span>{line + " "}</span>
@@ -25,10 +28,15 @@ const { page } = Astro.props as { page: Landing };
         <div class="hero-actions">
           <a class="button" href="#valutazione">
             Valuta il tuo {page.brand || "orologio"}{" "}
-            <span aria-hidden="true">↗</span>
+            <span aria-hidden="true">
+              <Arrow />
+            </span>
           </a>
           <a class="understated" href="#come-funziona">
-            Come funziona <span aria-hidden="true">↓</span>
+            Come funziona{" "}
+            <span aria-hidden="true">
+              <Arrow direction="down" />
+            </span>
           </a>
         </div>
         <div class="hero-assurance">
@@ -65,7 +73,10 @@ const { page } = Astro.props as { page: Landing };
         <p>Valutazione del singolo esemplare</p>
         <p>Verifica prima della proposta definitiva</p>
         <a href={business.original}>
-          Conosci Orologi Famosi <span aria-hidden="true">↗</span>
+          Conosci Orologi Famosi{" "}
+          <span aria-hidden="true">
+            <Arrow />
+          </span>
         </a>
       </div>
     </div>
@@ -102,7 +113,9 @@ const { page } = Astro.props as { page: Landing };
               </div>
               <div class="brand-card-title">
                 <h3>{model.name}</h3>
-                <span aria-hidden="true">↗</span>
+                <span aria-hidden="true">
+                  <Arrow />
+                </span>
               </div>
               <p>{model.text}</p>
               <span class="card-link">Vendi il tuo {model.name}</span>
@@ -116,7 +129,10 @@ const { page } = Astro.props as { page: Landing };
               <h3>{model.name}</h3>
               <p>{model.text}</p>
               <a class="text-link" href="#valutazione">
-                Parliamo del tuo esemplare <span aria-hidden="true">↗</span>
+                Parliamo del tuo esemplare{" "}
+                <span aria-hidden="true">
+                  <Arrow />
+                </span>
               </a>
             </article>
           ))}
@@ -190,52 +206,7 @@ const { page } = Astro.props as { page: Landing };
         </div>
       )}
     </section>
-    <section class="process" id="come-funziona">
-      <div class="wrap">
-        <div class="section-heading">
-          <div>
-            <h2>
-              Come vendere,
-              <br />
-              passo dopo passo.
-            </h2>
-          </div>
-          <p>
-            Conosci il percorso prima di cominciare. Ogni passaggio si concorda
-            direttamente con Salvatore.
-          </p>
-        </div>
-        <ol class="process-steps">
-          <li>
-            <h3>Ci presenti l’orologio.</h3>
-            <p>
-              Prepara marca, modello, condizioni e foto nitide. Puoi iniziare
-              anche se non conosci la referenza.
-            </p>
-          </li>
-          <li>
-            <h3>Ne parli con Salvatore.</h3>
-            <p>
-              Le informazioni servono a un primo esame. Se necessario, ti
-              verranno richiesti dettagli o fotografie aggiuntive.
-            </p>
-          </li>
-          <li>
-            <h3>Valuti la proposta.</h3>
-            <p>
-              Verifica dell’orologio, condizioni d’acquisto, pagamento e
-              consegna si definiscono prima di concludere.
-            </p>
-          </li>
-        </ol>
-        <div class="process-foot">
-          <p>La richiesta non ti impegna a vendere.</p>
-          <a href="#valutazione">
-            Inizia la tua richiesta <span aria-hidden="true">↗</span>
-          </a>
-        </div>
-      </div>
-    </section>
+    <Process />
     <section class="expert wrap">
       <div class="expert-photo">
         <img
@@ -263,7 +234,10 @@ const { page } = Astro.props as { page: Landing };
           che lo accompagna. E tutte le domande che vuoi fare prima di decidere.
         </p>
         <a class="text-link" href={business.original + "p/chi-siamo"}>
-          Scopri la storia di Orologi Famosi <span aria-hidden="true">↗</span>
+          Scopri la storia di Orologi Famosi{" "}
+          <span aria-hidden="true">
+            <Arrow />
+          </span>
         </a>
       </div>
     </section>
@@ -307,7 +281,10 @@ const { page } = Astro.props as { page: Landing };
               ".",
           )}
         >
-          Chiedilo a Salvatore <span aria-hidden="true">↗</span>
+          Chiedilo a Salvatore{" "}
+          <span aria-hidden="true">
+            <Arrow />
+          </span>
         </a>
       </div>
       <div class="faq-items">
@@ -342,7 +319,10 @@ const { page } = Astro.props as { page: Landing };
                 ".",
             )}
           >
-            Concorda un appuntamento <span aria-hidden="true">↗</span>
+            Concorda un appuntamento{" "}
+            <span aria-hidden="true">
+              <Arrow />
+            </span>
           </a>
         </div>
         <address>
@@ -362,7 +342,10 @@ const { page } = Astro.props as { page: Landing };
             target="_blank"
             rel="noopener noreferrer"
           >
-            Apri le indicazioni <span aria-hidden="true">↗</span>
+            Apri le indicazioni{" "}
+            <span aria-hidden="true">
+              <Arrow />
+            </span>
           </a>
           <a href={business.phoneHref}>{business.phone}</a>
         </address>

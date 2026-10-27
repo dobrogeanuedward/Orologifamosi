@@ -1,0 +1,174 @@
+---
+import Arrow from "./Arrow.astro";
+const steps = [
+  {
+    short: "Il tuo orologio",
+    title: "Mostraci il tuo orologio.",
+    text: "Marca, modello, condizioni e qualche foto nitida. Puoi iniziare anche se non conosci la referenza.",
+    image: "hero.webp",
+    alt: "Orologio e documenti sul tavolo di Orologi Famosi",
+    detail: "Prepara le foto di quadrante, cassa e corredo.",
+  },
+  {
+    short: "Il confronto",
+    title: "Ne parli con Salvatore.",
+    text: "Un primo esame, le tue domande, i dettagli da approfondire. Se servono altre fotografie, le concordate direttamente.",
+    image: "slide4.webp",
+    alt: "Salvatore esamina un orologio con una lente",
+    detail: "Una persona che guarda il tuo esemplare, nel dettaglio.",
+  },
+  {
+    short: "La proposta",
+    title: "Decidi con tutto chiaro.",
+    text: "Prima di concludere si definiscono verifica dell’orologio, proposta d’acquisto, pagamento e consegna. La scelta resta tua.",
+    image: "slide6.webp",
+    alt: "Confronto su un orologio presso Orologi Famosi",
+    detail: "Nessun obbligo di vendita dopo la richiesta.",
+  },
+];
+---
+
+<section
+  class="process sale-process"
+  id="come-funziona"
+  aria-labelledby="process-heading"
+>
+  <div class="wrap sale-process-layout">
+    <div class="sale-process-intro">
+      <p class="brand-eyebrow">La vendita, con Orologi Famosi</p>
+      <h2 id="process-heading">
+        Dal tuo polso.
+        <br />
+        Alla tua prossima scelta.
+      </h2>
+      <p>
+        Tre passaggi per vendere il tuo orologio, con una persona al tuo fianco.
+      </p>
+      <div
+        class="process-tabs"
+        role="tablist"
+        aria-label="Come vendere il tuo orologio"
+        hidden
+      >
+        {steps.map((step, i) => (
+          <button
+            type="button"
+            role="tab"
+            id={"process-tab-" + i}
+            aria-controls={"process-panel-" + i}
+            aria-selected={i === 0 ? "true" : "false"}
+            tabindex={i === 0 ? 0 : -1}
+            data-process-step={i}
+          >
+            <span class="process-orbit" aria-hidden="true">
+              {i + 1}
+            </span>
+            <span>{step.short}</span>
+            <Arrow />
+          </button>
+        ))}
+      </div>
+      <a class="text-link" href="#valutazione">
+        Inizia la tua richiesta <Arrow />
+      </a>
+      <p class="process-reassurance">Nessun obbligo di vendita.</p>
+    </div>
+    <div class="process-scenes">
+      {steps.map((step, i) => (
+        <article
+          id={"process-panel-" + i}
+          class="process-scene"
+          data-process-panel={i}
+        >
+          <div class="process-scene-image">
+            <img
+              src={"/images/" + step.image}
+              alt={step.alt}
+              width="1600"
+              height="1200"
+              loading="lazy"
+            />
+            <span class="scene-count" aria-hidden="true">
+              0{i + 1} / 03
+            </span>
+          </div>
+          <div class="process-scene-copy">
+            <h3>{step.title}</h3>
+            <p>{step.text}</p>
+            <span class="scene-detail">{step.detail}</span>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+<script>
+  const tabs = Array.from(
+    document.querySelectorAll<HTMLButtonElement>("[data-process-step]"),
+  );
+  const panels = Array.from(
+    document.querySelectorAll<HTMLElement>("[data-process-panel]"),
+  );
+  const tablist = document.querySelector<HTMLElement>(".process-tabs");
+  if (tablist && panels.length) {
+    tablist.hidden = false;
+    panels.forEach((panel, i) => {
+      panel.hidden = i !== 0;
+      panel.setAttribute("role", "tabpanel");
+      panel.setAttribute("aria-labelledby", "process-tab-" + i);
+      panel.tabIndex = 0;
+    });
+    let active = 0,
+      revision = 0;
+    async function select(index: number) {
+      if (index === active) return;
+      const ticket = ++revision;
+      const old = panels[active];
+      old.getAnimations().forEach((a) => a.cancel());
+      const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!reduced)
+        await old
+          .animate(
+            [
+              { opacity: 1, transform: "translateY(0)" },
+              { opacity: 0, transform: "translateY(-8px)" },
+            ],
+            { duration: 140, easing: "ease-in", fill: "forwards" },
+          )
+          .finished.catch(() => {});
+      if (ticket !== revision) return;
+      old.hidden = true;
+      old.getAnimations().forEach((a) => a.cancel());
+      active = index;
+      panels[index].hidden = false;
+      tabs.forEach((tab, i) => {
+        tab.setAttribute("aria-selected", String(i === index));
+        tab.tabIndex = i === index ? 0 : -1;
+      });
+      if (!reduced)
+        panels[index].animate(
+          [
+            { opacity: 0, transform: "translateY(10px)" },
+            { opacity: 1, transform: "translateY(0)" },
+          ],
+          { duration: 360, easing: "cubic-bezier(.22,1,.36,1)" },
+        );
+    }
+    tabs.forEach((tab, i) => {
+      tab.addEventListener("click", () => select(i));
+      tab.addEventListener("keydown", (event) => {
+        let next = i;
+        if (event.key === "ArrowRight" || event.key === "ArrowDown")
+          next = (i + 1) % tabs.length;
+        else if (event.key === "ArrowLeft" || event.key === "ArrowUp")
+          next = (i + tabs.length - 1) % tabs.length;
+        else if (event.key === "Home") next = 0;
+        else if (event.key === "End") next = tabs.length - 1;
+        else return;
+        event.preventDefault();
+        tabs[next].focus();
+        select(next);
+      });
+    });
+  }
+</script>

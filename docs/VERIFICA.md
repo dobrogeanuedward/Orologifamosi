@@ -53,3 +53,16 @@ Top three problems (most visible first), each with the screenshot it shows in an
 - Collegamento «Acquista un orologio» al catalogo principale, mantenendo qui l’intento di valutazione/acquisto da privati.
 - Feedback dei pulsanti, indicatori delle FAQ, avanzamento di lettura e ingressi fotografici; movimento ridotto rispettato.
 - Build e typecheck senza errori; quattro flussi WhatsApp e tre viewport verificati; griglia con 16 elementi non cliccabili. Axe automatico sulle quattro pagine e controllo reduced motion superati.
+
+## Revisione icone e movimento
+- Sostituite tutte le frecce Unicode con un componente SVG condiviso (`Arrow.astro`), senza caratteri che iOS possa rappresentare come emoji.
+- Transizioni di ingresso, uscita e rientro per fotografie, titoli, testi e passaggi del processo. Contenuti visibili senza JavaScript; preferenza reduced motion gestita anche se cambia durante la visita; focus da tastiera rende visibile il blocco raggiunto.
+- Compattate le distanze della sezione processo su mobile, conservando il corpo leggibile.
+- Browser: verificati SVG, ingresso/uscita/rientro, disattivazione runtime del movimento e leggibilità senza script. Ripassati i quattro flussi WhatsApp, tre larghezze, assenza overflow e controllo automatico Axe. Nessun messaggio inviato nei test.
+
+## Evoluzione dei componenti e oro animato
+- Ripristinato Cormorant Garamond per i titoli; Open Sans originale per lettura, controlli ed eyebrow. Titoli prevalentemente neri sui fondi chiari, bianchi nelle sezioni scure, oro limitato a poche sezioni e azioni.
+- Metallo spazzolato procedurale SVG/CSS, con riflesso animato a trasformazioni sui pulsanti. Texture dei titoli oro con riflesso lento; animazioni disattivate con reduced motion. Nessun asset fotografico alterato o sostituito.
+- `Process.astro`: percorso fotografico a tre tab con pannelli animati in uscita e ingresso, comandi da tastiera (frecce, Home, End), stati ARIA. Senza script mostra tutti i passaggi e nasconde i comandi inattivi.
+- Modulo con intestazione dedicata, avanzamento a segmenti, controlli rifiniti e focus del nuovo passaggio; FAQ con superfici di apertura; scheda contatti e riquadri marchio specifici.
+- Browser: tutti i pannelli e tastiera verificati, tre viewport e quattro flussi WhatsApp superati; nessun errore JavaScript. Controlli automatici Axe senza violazioni rilevate; prova reduced motion e fallback senza script superata. Esaminate schermate mobile e desktop del percorso e hero mobile.

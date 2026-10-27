@@ -1,4 +1,6 @@
 ---
+import Arrow from "../components/Arrow.astro";
+import "@fontsource/cormorant-garamond/500.css";
 import "../styles/global.css";
 import { business } from "../data/business";
 interface Props {
@@ -130,12 +132,15 @@ const schema = {
           Cartier
         </a>
         <a href={business.original + "catalogo"} class="catalog-link">
-          Acquista un orologio ↗
+          Acquista un orologio <Arrow />
         </a>
         <a href="#contatti">Contatti</a>
       </nav>
       <a class="button small header-cta" href="#valutazione">
-        Richiedi una valutazione <span aria-hidden="true">↗</span>
+        Richiedi una valutazione{" "}
+        <span aria-hidden="true">
+          <Arrow />
+        </span>
       </a>
       <button
         class="menu-toggle"
@@ -165,7 +170,9 @@ const schema = {
         </div>
         <div>
           <strong>Il sito principale</strong>
-          <a href={business.original}>Scopri il catalogo Orologi Famosi ↗</a>
+          <a href={business.original}>
+            Scopri il catalogo Orologi Famosi <Arrow />
+          </a>
           <p>
             Gli orologi nelle fotografie sono immagini
             <br />
@@ -225,23 +232,51 @@ const schema = {
       nav
         ?.querySelectorAll("a")
         .forEach((a) => a.addEventListener("click", closeMenu));
-      const photos = document.querySelectorAll<HTMLElement>(
-        ".brand-card-img,.expert-photo,.other-brands-grid li",
-      );
-      if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        const observer = new IntersectionObserver(
+      const preference = matchMedia("(prefers-reduced-motion: reduce)");
+      const motionSelector =
+        "main section h2, .section-heading>p, .brand-card, .model-list article, .process-steps li, .expert-photo, .expert-copy>p, .brand-detail-photos figure, .factor-grid article, .other-brands-grid li, .valuation-copy, .valuation-panel, .faq-items details, .contact-inner>div, .contact-inner address";
+      const motionTargets = Array.from(
+        document.querySelectorAll<HTMLElement>(motionSelector),
+      ).filter((el) => !el.parentElement?.closest(motionSelector));
+      let motionObserver: IntersectionObserver | undefined;
+      function configureMotion() {
+        motionObserver?.disconnect();
+        if (preference.matches) {
+          motionTargets.forEach((el) =>
+            el.classList.remove("motion-ready", "is-inview", "is-past"),
+          );
+          return;
+        }
+        motionObserver = new IntersectionObserver(
           (entries) => {
             for (const entry of entries) {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("photo-settled");
-                observer.unobserve(entry.target);
-              }
+              const el = entry.target;
+              el.classList.toggle("is-inview", entry.isIntersecting);
+              el.classList.toggle(
+                "is-past",
+                entry.boundingClientRect.bottom < 0,
+              );
             }
           },
-          { threshold: 0.15 },
+          { threshold: 0, rootMargin: "0px 0px -20px 0px" },
         );
-        photos.forEach((photo) => observer.observe(photo));
+        motionTargets.forEach((el) => {
+          const rect = el.getBoundingClientRect();
+          el.classList.toggle(
+            "is-inview",
+            rect.top < innerHeight - 20 && rect.bottom > 0,
+          );
+          el.classList.toggle("is-past", rect.bottom < 0);
+          el.classList.add("motion-ready");
+          motionObserver?.observe(el);
+        });
       }
+      configureMotion();
+      preference.addEventListener("change", configureMotion);
+      document.addEventListener("focusin", (event) => {
+        const el = (event.target as Element)?.closest(".motion-ready");
+        el?.classList.add("is-inview");
+      });
       document.addEventListener("click", (event) => {
         const link = (event.target as Element)?.closest("a");
         if (!link) return;
