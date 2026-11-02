@@ -9,12 +9,20 @@ interface Props {
   description: string;
   canonicalPath?: string;
   brand?: string;
+  /** Nodi JSON-LD della pagina (vedi src/data/seo.ts). */
+  graph?: object[];
+  /** Immagine di condivisione, percorso sotto /images/. */
+  image?: string;
+  imageAlt?: string;
 }
 const {
   title,
   description,
   canonicalPath = Astro.url.pathname,
   brand = "",
+  graph = [],
+  image = "hero.webp",
+  imageAlt = "Orologi Famosi, acquisto da privati",
 } = Astro.props;
 const indexable = Boolean(
   Astro.site && import.meta.env.PUBLIC_INDEXABLE === "true",
@@ -22,52 +30,10 @@ const indexable = Boolean(
 const canonical = Astro.site
   ? new URL(canonicalPath, Astro.site).href
   : undefined;
-const schema = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": business.original + "#organization",
-      name: business.legalName,
-      url: business.original,
-      telephone: business.phone,
-      email: business.email,
-      taxID: business.vat,
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: business.street,
-        addressLocality: business.locality,
-        addressRegion: business.region,
-        postalCode: business.postcode,
-        addressCountry: "IT",
-      },
-    },
-    {
-      "@type": "Service",
-      name: brand
-        ? `Valutazione e acquisto ${brand} da privati`
-        : "Valutazione e acquisto orologi da privati",
-      serviceType: "Valutazione e acquisto di orologi usati",
-      provider: { "@id": business.original + "#organization" },
-      areaServed: [{ "@type": "Country", name: "Italia" }],
-      ...(canonical ? { url: canonical } : {}),
-      description,
-    },
-    ...(canonical
-      ? [
-          {
-            "@type": "WebPage",
-            "@id": canonical,
-            name: title,
-            description,
-            url: canonical,
-            inLanguage: "it-IT",
-            about: { "@id": business.original + "#organization" },
-          },
-        ]
-      : []),
-  ],
-};
+const ogImage = Astro.site
+  ? new URL("/images/" + image, Astro.site).href
+  : undefined;
+const schema = { "@context": "https://schema.org", "@graph": graph };
 ---
 
 <!doctype html>
@@ -88,6 +54,14 @@ const schema = {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     {canonical && <meta property="og:url" content={canonical} />}
+    <meta property="og:site_name" content="Orologi Famosi · Acquisto da privati" />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    {ogImage && <meta property="og:image:alt" content={imageAlt} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="geo.region" content="IT-BO" />
+    <meta name="geo.placename" content="Medicina" />
+    {canonical && <link rel="alternate" type="text/plain" title="llms.txt" href={new URL("/llms.txt", canonical).href} />}
+    <link rel="preload" href={"/images/" + image} as="image" fetchpriority="high" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <script
       type="application/ld+json"

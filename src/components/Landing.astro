@@ -9,7 +9,10 @@ import Layout from "../layouts/Layout.astro";
 import Valuation from "./Valuation.astro";
 import { business, brands, wa } from "../data/business";
 import type { Landing } from "../data/landings";
+import { pageGraph } from "../data/seo";
 const { page } = Astro.props as { page: Landing };
+const faqs = [...page.faqs, ...coverageFaqs(page.brand)];
+const graph = pageGraph(page, faqs, Astro.site);
 ---
 
 <Layout
@@ -17,6 +20,9 @@ const { page } = Astro.props as { page: Landing };
   description={page.description}
   canonicalPath={"/" + page.slug + "/"}
   brand={page.brand}
+  graph={graph}
+  image={page.image}
+  imageAlt={page.imageAlt}
 >
   <main id="contenuto">
     <section class:list={["hero", { "hero-brand": !!page.brand }]}>
@@ -84,6 +90,12 @@ const { page } = Astro.props as { page: Landing };
         </a>
       </div>
     </div>
+    <section class="answer-first wrap" aria-labelledby="answer-title">
+      <h2 id="answer-title">
+        Come vendere {page.brand ? "un " + page.brand + " usato" : "un orologio usato"} a Orologi Famosi
+      </h2>
+      <p>{page.answer}</p>
+    </section>
     <section id="modelli" class="models wrap" aria-labelledby="models-title">
       <div class="section-heading">
         <div>
@@ -274,7 +286,7 @@ const { page } = Astro.props as { page: Landing };
         </a>
       </div>
       <div class="faq-items">
-        {[...page.faqs, ...coverageFaqs(page.brand)].map((faq) => (
+        {faqs.map((faq) => (
           <details>
             <summary>
               {faq.q}

@@ -5,7 +5,7 @@
   --line: #dfe2de;
   --metal: #8a7350;
   --serif: "Cormorant Garamond", Georgia, serif;
-  --sans: "Manrope", Arial, sans-serif;
+  --sans: "OF Open Sans", Arial, sans-serif;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 * {
@@ -3606,5 +3606,27 @@ h2 {
   .footer-signature img {
     width: 220px;
     margin: 0;
+  }
+}
+
+/* Risposta breve citabile (AEO/GEO) — 2 novembre 2026 */
+.answer-first {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 32px 72px;
+  padding-block: 112px 0;
+}
+.answer-first h2 {
+  font-size: clamp(36px, 3.6vw, 56px);
+}
+.answer-first p {
+  font-size: clamp(18px, 1.5vw, 22px);
+  line-height: 1.55;
+  max-width: 54ch;
+}
+@media (max-width: 900px) {
+  .answer-first {
+    grid-template-columns: 1fr;
+    padding-block: 72px 0;
   }
 }

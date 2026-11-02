@@ -15,6 +15,14 @@ export const business = {
   original: "https://www.venditaorologiusati.it/",
   privacy: "https://www.iubenda.com/privacy-policy/32325462/full-legal",
   cookies: "https://www.iubenda.com/privacy-policy/32325462/cookie-policy",
+  foundingDate: "2018",
+  // Profili pubblici collegati dal sito originale, verificati il 2 novembre 2026.
+  sameAs: [
+    "https://www.venditaorologiusati.it/",
+    "https://www.facebook.com/OROLOGIFAMOSI/",
+    "https://www.instagram.com/orologifamosi/",
+    "https://www.tiktok.com/@of_salvatore",
+  ],
 };
 export const brands = [
   "Rolex",

@@ -8,6 +8,8 @@ export interface Landing {
   image: string;
   imageAlt: string;
   note: string;
+  /** Risposta breve citabile (AEO/GEO): 40-60 parole, solo fatti verificati. */
+  answer: string;
   modelTitle: string;
   modelIntro: string;
   models: { name: string; text: string }[];
@@ -28,6 +30,8 @@ export const landings: Landing[] = [
     imageAlt:
       "Esame di un orologio e del suo corredo al tavolo di Orologi Famosi",
     note: "Una valutazione, prima di ogni decisione.",
+    answer:
+      "Per vendere un orologio di lusso a Orologi Famosi invii a Salvatore Agresta marca, modello o referenza, condizioni e foto, anche su WhatsApp. Dopo un primo esame a distanza, se l’esemplare interessa, fissate un appuntamento a Medicina, in provincia di Bologna, per la verifica e la proposta d’acquisto. Puoi iniziare da tutta Italia, senza obbligo di vendita.",
     modelTitle: "Partiamo dal tuo orologio.",
     modelIntro:
       "Rolex, Omega, Cartier e gli altri marchi del catalogo Orologi Famosi. Ogni richiesta viene esaminata singolarmente: l’interesse all’acquisto dipende dall’esemplare.",
@@ -91,6 +95,8 @@ export const landings: Landing[] = [
     image: "slide6.webp",
     imageAlt: "Un Rolex esaminato durante un confronto presso Orologi Famosi",
     note: "Il tuo esemplare, oltre il nome sul quadrante.",
+    answer:
+      "Per vendere un Rolex usato a Orologi Famosi indica referenza, condizioni e corredo (scatola, garanzia, fatture) e invia foto di quadrante, lunetta, cassa e bracciale. Salvatore Agresta fa un primo esame a distanza; la proposta d’acquisto arriva dopo la verifica dal vivo a Medicina, vicino a Bologna. Puoi proporre il tuo Rolex anche senza scatola o garanzia.",
     modelTitle: "Quale Rolex vuoi vendere?",
     modelIntro:
       "La famiglia è il punto di partenza. Referenza, anno, materiale e configurazione permettono di distinguere il tuo Rolex da un altro dello stesso modello.",
@@ -153,6 +159,8 @@ export const landings: Landing[] = [
     image: "omega.webp",
     imageAlt: "Omega Speedmaster fotografato da Orologi Famosi",
     note: "Dalla collezione all’esemplare. Nessuna stima automatica.",
+    answer:
+      "Per vendere un Omega usato, come uno Speedmaster o un Seamaster, indica referenza, movimento se lo conosci, condizioni e corredo, e invia foto nitide. Salvatore Agresta di Orologi Famosi valuta il singolo esemplare: primo confronto a distanza, poi verifica e proposta d’acquisto su appuntamento a Medicina, in provincia di Bologna.",
     modelTitle: "Il nome è solo l’inizio.",
     modelIntro:
       "Anche nella stessa famiglia Omega cambiano dimensioni, movimenti e generazioni. La referenza aiuta a capire esattamente quale orologio vuoi vendere.",
@@ -215,6 +223,8 @@ export const landings: Landing[] = [
     image: "cartier.webp",
     imageAlt: "Cartier Santos fotografato da Orologi Famosi",
     note: "Forma, misura, dettagli. Il valore è nell’insieme.",
+    answer:
+      "Per vendere un Cartier usato, come un Santos o un Tank, indica versione, misura, materiale e movimento, con foto e corredo disponibile. Orologi Famosi esamina ogni richiesta singolarmente: primo confronto a distanza con Salvatore Agresta, poi verifica e proposta d’acquisto su appuntamento a Medicina (BO). Nessuna stima automatica da una foto.",
     modelTitle: "Quale Cartier possiedi?",
     modelIntro:
       "Una foto e la referenza aiutano a distinguere versione, misura e materiale. Non è necessario conoscere già tutti i dettagli tecnici per iniziare.",

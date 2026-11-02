@@ -104,3 +104,12 @@ Top three problems (most visible first), each with the screenshot it shows in an
 - Prova browser con tre PNG validi estesi a 18 MiB ciascuno: 54 MiB di ingresso accettati e convertiti localmente prima del controllo complessivo. Foto da oltre 20 MiB respinta senza perdere quelle già preparate. File e testo passati a un mock di Web Share, nessun invio reale e nessun upload delle foto.
 - Sette test unitari passati. Build e typecheck senza errori, warning o hint. Browser alle larghezze 320, 390, 768 e 1440 px: nome lungo, cambio marchio, campo obbligatorio, riepilogo e modifica; verificate anche le tre landing marchio con la nuova scelta. Immagini delle nove opzioni caricate e screenshot mobile/desktop esaminati.
 - Axe su otto stati (marchio libero e scelte illustrate alle quattro larghezze): nessuna violazione WCAG A/AA rilevata. Nessun errore JavaScript o risorsa mancante. Il collaudo dell’app WhatsApp nativa rimane distinto dalla verifica della API con mock.
+
+## SEO, AEO, GEO — 2 novembre 2026
+
+- Grafo JSON-LD per landing in `src/data/seo.ts`: `Store` (stessa entità del sito originale, `@id` invariato) con fondatore, anno 2018, `sameAs` verso sito originale, Facebook, Instagram e TikTok verificati; `Person` Salvatore Agresta; `WebSite`; `WebPage` con immagine principale e `speakable`; `Service` con canali (WhatsApp, verifica su appuntamento) e i 28 comuni del perimetro come `areaServed`, mai come sedi; `BreadcrumbList`; `HowTo` dai tre passaggi di `Process`; `FAQPage` con le stesse 8 domande visibili nella pagina.
+- Risposta breve citabile in apertura di ogni landing (`answer` in `landings.ts`, sezione `.answer-first`), 50-60 parole, solo fatti presenti nel perimetro.
+- `og:image`, `og:site_name`, `twitter:card`, `geo.region`, preload dell’immagine principale. `/llms.txt` con sintesi, pagine e fatti.
+- Rimossa la dipendenza Manrope inutilizzata; token `--sans` allineato a Open Sans.
+- Verificato con build di produzione su `example.org`: 8 tipi nel grafo, 8 domande in `FAQPage`, robots `index,follow`. Ripristinata la build di lavoro noindex/disallow. Nessun risultato di ricerca o citazione AI viene attestato.
+- Pannello CMS del sito originale individuato: `/entra/` su venditaorologiusati.it (form utente e password). Nessun accesso tentato; credenziali da ricevere dal cliente o dal gestore.
