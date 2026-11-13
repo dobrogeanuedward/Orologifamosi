@@ -4,7 +4,7 @@ Le 4 landing del contratto (generale, Rolex, Omega, Cartier) più "Chi è Salvat
 
 ## Come funziona
 
-- `../landing-src/project/*.dc.html` sono le tavole esportate dall'artifact (fonte di verità del design), `../landing-src/blobs/` le immagini e i video caricati.
+- `design/project/*.dc.html` sono le tavole esportate dall'artifact (fonte di verità del design), `design/blobs/` le immagini e i video caricati.
 - `scripts/build.mjs` legge le tavole e produce `dist/`: **HTML statico completo** (ottimo per SEO, AEO, GEO) che nel browser si riattiva con la **stessa logica** delle tavole (Preact, `src/dc.js`).
 - La pagina di richiesta invia le schede a **Dogo Desk** (`POST /api/intake/of`), con foto su link firmati e codice OF assegnato dal server (`src/client.js`).
 

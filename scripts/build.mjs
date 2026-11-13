@@ -1,6 +1,6 @@
 /**
  * Build delle landing di Orologi Famosi.
- * Legge le tavole .dc.html esportate dall'artifact di design (../landing-src),
+ * Legge le tavole .dc.html esportate dall'artifact di design (design/),
  * le trasforma in pagine statiche (HTML completo per SEO/AEO/GEO) con idratazione Preact.
  *
  * Variabili:
@@ -20,7 +20,7 @@ import { PAGES, SITE, LINKS, BUSINESS } from '../src/site.js';
 import { jsonLd } from '../src/seo.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const SRC = path.resolve(ROOT, '../landing-src');
+const SRC = path.resolve(ROOT, 'design');
 const DIST = path.join(ROOT, 'dist');
 const ASSETS = '/of-assets';
 const DESK_URL = (process.env.DESK_URL || 'http://localhost:3000').replace(/\/$/, '');
