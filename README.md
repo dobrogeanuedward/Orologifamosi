@@ -43,3 +43,19 @@ Caricare il contenuto di `dist/` nella radice del sito principale (cartelle dedi
 - Link all'informativa privacy nel modulo (oggi `#`).
 - Conferma degli URL con il gestore del sito.
 - Analytics (GA4) con banner dei consensi: previsto con la beta 2 del Desk.
+
+## Immagini e video su R2
+
+Immagini e video non stanno sul sito: si servono dal bucket R2 di DOGO (`dogostudio`) sotto un prefisso versionato,
+`orologi-famosi/landing-2026-11-v1/` (`img/` per le immagini delle tavole, `media/` per video e locandine).
+La build scrive quegli indirizzi; con `ASSETS_CDN=''` li copia invece in `dist/of-assets/` (utile in locale).
+
+Se cambiano le immagini, si carica un nuovo prefisso (es. `landing-2026-12-v2`) e si aggiorna `CDN` in `scripts/build.mjs`.
+Il caricamento si fa con lo script di DOGO, dal repository `dogo-studio` (le chiavi restano lì, mai qui):
+
+```sh
+node --env-file=.env.local scripts/r2-upload.mjs --source "<landing>/design/blobs" --prefix orologi-famosi/<versione>/img --recursive --cache-control "public, max-age=31536000, immutable"
+node --env-file=.env.local scripts/r2-upload.mjs --source "<landing>/design/project/media" --prefix orologi-famosi/<versione>/media --recursive --cache-control "public, max-age=31536000, immutable"
+```
+
+Font, CSS e JS restano sul sito (i font da un altro dominio richiederebbero CORS).

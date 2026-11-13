@@ -23,6 +23,9 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SRC = path.resolve(ROOT, 'design');
 const DIST = path.join(ROOT, 'dist');
 const ASSETS = '/of-assets';
+/** Immagini e video sul bucket R2 di DOGO (prefisso versionato). Con ASSETS_CDN='' restano sul sito. */
+const CDN = (process.env.ASSETS_CDN ?? 'https://pub-b39e5084f7324516a4fe99c212a65c5f.r2.dev/orologi-famosi/landing-2026-11-v1').replace(/\/$/, '');
+const MEDIA = CDN || ASSETS;
 const DESK_URL = (process.env.DESK_URL || 'http://localhost:3000').replace(/\/$/, '');
 const DESK_ORG = process.env.DESK_ORG || 'of';
 
@@ -32,17 +35,20 @@ const out = (p, data) => { const f = path.join(DIST, p); fs.mkdirSync(path.dirna
 const copyDir = (from, to) => { fs.mkdirSync(path.join(DIST, to), { recursive: true }); for (const f of fs.readdirSync(from)) fs.copyFileSync(path.join(from, f), path.join(DIST, to, f)); };
 
 copyDir(path.join(SRC, 'project/fonts'), `${ASSETS}/fonts`);
-copyDir(path.join(SRC, 'project/media'), `${ASSETS}/media`);
-copyDir(path.join(SRC, 'blobs'), `${ASSETS}/img`);
+if (!CDN) {
+  copyDir(path.join(SRC, 'project/media'), `${ASSETS}/media`);
+  copyDir(path.join(SRC, 'blobs'), `${ASSETS}/img`);
+}
 const EXT = Object.fromEntries(fs.readdirSync(path.join(SRC, 'blobs')).map((f) => [f.replace(/\.[^.]+$/, ''), path.extname(f)]));
 globalThis.__OF_IMG_EXT = EXT;
-globalThis.__OF_ASSETS = ASSETS;
+globalThis.__OF_ASSETS = MEDIA;
 
 // ---------- riscritture ----------
 function rewriteLinks(s) {
   return s
     .replace(/\/_blob\/([0-9a-f]{32})/g, (_, id) => imgPath(id))
-    .replace(/(["'(])(media|fonts)\//g, `$1${ASSETS}/$2/`)
+    .replace(/(["'(])media\//g, `$1${MEDIA}/media/`)
+    .replace(/(["'(])fonts\//g, `$1${ASSETS}/fonts/`)
     .replace(/(["'])([A-Za-z]+)\.dc\.html/g, (m, q, name) => (LINKS[name] ? q + LINKS[name] : m));
 }
 
@@ -50,7 +56,7 @@ function rewriteLinks(s) {
 function rewriteAttr(v) {
   let s = rewriteLinks(v);
   s = s.replace(/^([A-Za-z]+)\.dc\.html/, (m, name) => LINKS[name] ?? m);
-  s = s.replace(/^(media|fonts)\//, `${ASSETS}/$1/`);
+  s = s.replace(/^media\//, `${MEDIA}/media/`).replace(/^fonts\//, `${ASSETS}/fonts/`);
   return s;
 }
 
@@ -137,13 +143,15 @@ for (const page of PAGES) {
   fs.writeFileSync(entry, `import { DCLogic, imgPath as __ofImg } from '../src/dc.js';\nimport { mount } from '../src/client.js';\nimport tpl from './${page.id}.tpl.json';\n${code}\n;Component.__tpl = tpl;\nmount(Component, ${JSON.stringify({ page: page.id, route: page.route, pageName: page.name, desk: DESK_URL, org: DESK_ORG, landing: !!page.landing })});\n`);
   await esbuild.build({
     entryPoints: [entry], bundle: true, minify: true, format: 'esm', target: 'es2019', outfile: path.join(DIST, ASSETS, 'js', `${page.id}.js`),
-    define: { 'globalThis.__OF_IMG_EXT': JSON.stringify(EXT) }, loader: { '.json': 'json' }, logLevel: 'warning',
+    define: { 'globalThis.__OF_IMG_EXT': JSON.stringify(EXT), 'globalThis.__OF_ASSETS': JSON.stringify(MEDIA) }, loader: { '.json': 'json' }, logLevel: 'warning',
   });
 
   const title = page.title || board.title;
   const description = page.description || board.description;
   const canonical = SITE + page.route;
-  const ogImage = page.ogImage ? SITE + page.ogImage : SITE + (html.match(new RegExp(`${ASSETS}/img/[0-9a-f]{32}\\.(?:webp|jpg|png)`))?.[0] ?? '');
+  const abs = (u) => (u.startsWith('http') ? u : SITE + u);
+  const firstImg = html.match(/[^"'\s(]*\/img\/[0-9a-f]{32}\.(?:webp|jpg|png)/)?.[0];
+  const ogImage = page.ogImage ? abs(`${MEDIA}/${page.ogImage}`) : firstImg ? abs(firstImg) : '';
   const ld = jsonLd(page, { canonical, title, description, ogImage, faqs });
   const doc = `<!doctype html>
 <html lang="it">
@@ -161,10 +169,10 @@ for (const page of PAGES) {
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${canonical}">
-${ogImage.endsWith('/') ? '' : `<meta property="og:image" content="${ogImage}">\n<meta name="twitter:card" content="summary_large_image">`}
+${!ogImage ? '' : `<meta property="og:image" content="${ogImage}">\n<meta name="twitter:card" content="summary_large_image">`}
 <meta name="geo.region" content="IT-BO">
 <meta name="geo.placename" content="Medicina">
-<link rel="preload" href="${ASSETS}/fonts/general-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+${CDN ? `<link rel="preconnect" href="${new URL(CDN).origin}">\n` : ''}<link rel="preload" href="${ASSETS}/fonts/general-sans-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="${ASSETS}/fonts/gambarino-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="${ASSETS}/css/${page.id}.css">
 ${ld.map((o) => `<script type="application/ld+json">${JSON.stringify(o).replace(/</g, '\\u003c')}</script>`).join('\n')}
