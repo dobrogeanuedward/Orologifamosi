@@ -93,7 +93,8 @@ input::placeholder{color:#7a7c77}
 body{background:#0b0a08}
 .stage{position:fixed;inset:0;z-index:0;background:#0b0a08;overflow:hidden}
 .stage .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity 1200ms ease,transform 2400ms cubic-bezier(.16,1,.3,1);filter:saturate(.9) contrast(1.02)}
-.bg.b0{object-position:50% 20%}
+.bg.b0{background:#171918 url('/_blob/c421fe43aa77aa34ca865c5b039bb34b') 50% 50%/cover no-repeat}
+@media (max-width: 900px){.bg.b0{background-image:url('/_blob/99be1c5f5dedd4669622af675a28708a')}}
 .of[data-bg="0"] .b0,.of[data-bg="1"] .b1,.of[data-bg="2"] .b2,.of[data-bg="3"] .b3{opacity:1;transform:scale(1)}
 .stage .scrim{position:absolute;inset:0;background:radial-gradient(70% 80% at 18% 62%,rgba(11,10,8,.62) 0%,rgba(11,10,8,0) 70%),linear-gradient(90deg,rgba(11,10,8,.9) 0%,rgba(11,10,8,.66) 38%,rgba(11,10,8,.28) 66%,rgba(11,10,8,.12) 100%),linear-gradient(0deg,rgba(11,10,8,.82) 0%,rgba(11,10,8,0) 45%),linear-gradient(180deg,rgba(11,10,8,.6) 0%,rgba(11,10,8,0) 22%)}
 .scene h1,.scene h2,.scene p,.scene li,.scene .eyebrow{text-shadow:0 1px 2px rgba(0,0,0,.35),0 4px 28px rgba(0,0,0,.45)}
@@ -954,7 +955,7 @@ video[data-scrubbg]{display:none !important}
 <div class="of brand-main" data-bg="0" data-tone="dark" data-dock="0">
 
 <div class="stage" aria-hidden="true">
-<video class="bg b0" data-loop="1" autoplay="{{yes}}" muted="{{yes}}" loop="{{yes}}" playsinline="{{yes}}" preload="auto" poster="/_blob/99be1c5f5dedd4669622af675a28708a"><source src="/_blob/ecb848ee78a63c22fed530082da3e462" type="video/mp4"></video>
+<video class="bg b0" data-loop="1" autoplay="{{yes}}" muted="{{yes}}" loop="{{yes}}" playsinline="{{yes}}" preload="auto"><source media="(max-width: 900px)" src="/_blob/ecb848ee78a63c22fed530082da3e462" type="video/mp4"><source src="/_blob/2814f5a5649a1febe4a06a955af39531" type="video/mp4"></video>
 <img class="bg b1 scrub-still" src="/_blob/033249a08884fa660e2a269a0488be9b" alt=""><video class="bg b1" data-scrubbg="1" muted="{{yes}}" playsinline="{{yes}}" preload="auto" poster="/_blob/033249a08884fa660e2a269a0488be9b"><source src="/_blob/d74eb47a4832c09ad720e2529f47a25a" type="video/mp4"></video>
 <img class="bg b2" src="/_blob/4e84dc9b188a773c1fb3ea293ad8f9dc" alt="" loading="lazy">
 <video class="bg b3" data-loop="1" autoplay="{{yes}}" muted="{{yes}}" loop="{{yes}}" playsinline="{{yes}}" preload="auto" poster="/_blob/6cbc143b8c641f5058afa94353f1e0de"><source src="/_blob/b41091e4fa848503b409faa236eece20" type="video/mp4"></video>

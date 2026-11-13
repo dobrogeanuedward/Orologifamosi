@@ -84,9 +84,27 @@ function makeSubmit(cfg) {
   };
 }
 
+/**
+ * Video con una sorgente per telefono (source media) e una per desktop: se il browser ha scelto
+ * quella sbagliata (finestra misurata male al primo caricamento, anteprime in iframe), lo ricarica.
+ */
+function checkVideoSources() {
+  for (const v of document.querySelectorAll('video')) {
+    const sources = [...v.querySelectorAll('source')];
+    if (!sources.some((s) => s.media)) continue;
+    const want = sources.find((s) => !s.media || safe(() => matchMedia(s.media).matches, false));
+    if (want && v.currentSrc && v.currentSrc !== want.src) {
+      v.load();
+      if (v.autoplay) v.play().catch(() => {});
+    }
+  }
+}
+
 export function mount(Component, cfg) {
   if (cfg.landing) rememberSource(cfg);
   if (cfg.page === 'richiesta') window.__ofSubmit = makeSubmit(cfg);
   const root = document.getElementById('dc-root');
   hydrate(h(Component, {}), root);
+  checkVideoSources();
+  addEventListener('load', checkVideoSources, { once: true });
 }

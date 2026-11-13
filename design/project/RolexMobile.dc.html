@@ -93,6 +93,8 @@ input::placeholder{color:#7a7c77}
 body{background:#0b0a08}
 .stage{position:fixed;inset:0;z-index:0;background:#0b0a08;overflow:hidden}
 .stage .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity 1200ms ease,transform 2400ms cubic-bezier(.16,1,.3,1);filter:saturate(.9) contrast(1.02)}
+.bg.b0{background:#171918 url('/_blob/03320d13b22d54bdd090fb25695e017d') 50% 50%/cover no-repeat}
+@media (max-width: 900px){.bg.b0{background-image:url('/_blob/0bda763c2b3b77aa11d065bafb47484a')}}
 .of[data-bg="0"] .b0,.of[data-bg="1"] .b1,.of[data-bg="2"] .b2,.of[data-bg="3"] .b3{opacity:1;transform:scale(1)}
 .stage .scrim{position:absolute;inset:0;background:radial-gradient(70% 80% at 18% 62%,rgba(11,10,8,.62) 0%,rgba(11,10,8,0) 70%),linear-gradient(90deg,rgba(11,10,8,.9) 0%,rgba(11,10,8,.66) 38%,rgba(11,10,8,.28) 66%,rgba(11,10,8,.12) 100%),linear-gradient(0deg,rgba(11,10,8,.82) 0%,rgba(11,10,8,0) 45%),linear-gradient(180deg,rgba(11,10,8,.6) 0%,rgba(11,10,8,0) 22%)}
 .scene h1,.scene h2,.scene p,.scene li,.scene .eyebrow{text-shadow:0 1px 2px rgba(0,0,0,.35),0 4px 28px rgba(0,0,0,.45)}
@@ -953,7 +955,7 @@ video[data-scrubbg]{display:none !important}
 <div class="of brand-ledger" data-bg="0" data-tone="dark" data-dock="0">
 
 <div class="stage" aria-hidden="true">
-<video class="bg b0" data-loop="1" autoplay="{{yes}}" muted="{{yes}}" loop="{{yes}}" playsinline="{{yes}}" preload="auto" poster="/_blob/0bda763c2b3b77aa11d065bafb47484a"><source src="/_blob/24ce6c5f119145ad9c2cecff6bc501d8" type="video/mp4"></video>
+<video class="bg b0" data-loop="1" autoplay="{{yes}}" muted="{{yes}}" loop="{{yes}}" playsinline="{{yes}}" preload="auto"><source media="(max-width: 900px)" src="/_blob/24ce6c5f119145ad9c2cecff6bc501d8" type="video/mp4"><source src="/_blob/b373c68471c34b82b66c14c5d5e231a0" type="video/mp4"></video>
 <video class="bg b1" data-loop="1" autoplay="{{yes}}" muted="{{yes}}" loop="{{yes}}" playsinline="{{yes}}" preload="auto" poster="/_blob/6a02003002760c70c903b9fe06574526"><source src="/_blob/2d03cdb72e6f5d22a166c0449b8b4c55" type="video/mp4"></video>
 <img class="bg b2" src="/_blob/550357dfff2c0f0d689ed74dc5754753" alt="" loading="lazy">
 <video class="bg b3" data-loop="1" autoplay="{{yes}}" muted="{{yes}}" loop="{{yes}}" playsinline="{{yes}}" preload="auto" poster="/_blob/f17316f36a2468978e5ba88d0e2972b9"><source src="/_blob/aa5c6f6a08151a8b561fda463c90159a" type="video/mp4"></video>
