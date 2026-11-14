@@ -243,17 +243,19 @@ main{position:relative;z-index:1}
 .sp .head .nv-link[href="Salvatore.dc.html"]::after{transform:scaleX(1)}
 .sp-hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:#f3ecdf;background:#0f0e0c;overflow:hidden;isolation:isolate}
 .sp-hero-bg{position:absolute;inset:0;z-index:-1}
-.sp-hero-bg img{position:absolute;right:0;top:0;width:min(62vw,980px);height:100%;object-fit:cover;object-position:50% 25%;filter:saturate(.88) brightness(.86);animation:spkb 22s cubic-bezier(.16,1,.3,1) both}
+.sp-hero-bg img{position:absolute;right:0;top:0;width:min(62vw,980px);height:100%;object-fit:cover;object-position:50% 25%;filter:saturate(.88) brightness(.86);-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 34%);mask-image:linear-gradient(90deg,transparent 0,#000 34%);animation:spkb 22s cubic-bezier(.16,1,.3,1) both}
 .sp-hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#0f0e0c 30%,rgba(15,14,12,.75) 48%,rgba(15,14,12,.1) 75%),linear-gradient(0deg,#0f0e0c 0%,rgba(15,14,12,0) 35%)}
 @keyframes spkb{from{transform:scale(1.12)}to{transform:scale(1)}}
-.sp-hero-in{display:flex;flex-direction:column;gap:24px;padding-top:140px;padding-bottom:clamp(64px,8vw,110px)}
-.sp-h1{margin:0;font-size:clamp(52px,7vw,116px) !important;line-height:.94 !important;letter-spacing:-.025em !important;color:#fbf8f2;max-width:11ch}
+.sp-hero-in{width:100%;display:flex;flex-direction:column;gap:24px;padding-top:140px;padding-bottom:clamp(64px,8vw,110px)}
+.sp-h1{margin:0;font-size:clamp(52px,min(7vw,10.5svh),116px) !important;line-height:.94 !important;letter-spacing:-.025em !important;color:#fbf8f2;max-width:11ch}
 .sp-h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
 .sp-h1 .ln>span{display:block;animation:spline 1100ms cubic-bezier(.16,1,.3,1) both}
 .sp-h1 .ln:nth-child(2)>span{animation-delay:90ms}.sp-h1 .ln:nth-child(3)>span{animation-delay:180ms}
 @keyframes spline{from{transform:translateY(105%)}to{transform:none}}
 .sp-lead{margin:0;max-width:46ch;font-size:clamp(18px,1.5vw,21px);color:#e6dccb}
 .sp-cta{display:flex;flex-wrap:wrap;gap:12px}
+.sp-hero .sp-cta .btn:not(.btn-ghost){background:#f3ecdf;color:#141310}
+.sp-hero .sp-cta .btn:not(.btn-ghost):hover{background:#fff;color:#141310}
 .sp-scroll{position:absolute;left:50%;bottom:26px;width:1px;height:56px;background:rgba(243,236,223,.25);overflow:hidden}
 .sp-scroll span{position:absolute;left:0;top:-40%;width:1px;height:40%;background:#e2c68f;animation:spsc 2.4s cubic-bezier(.65,0,.35,1) infinite}
 @keyframes spsc{to{top:110%}}
@@ -311,7 +313,7 @@ main{position:relative;z-index:1}
 .ulink-l{display:inline-flex;align-items:center;gap:10px;color:#f3ecdf;text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding-bottom:4px;background:linear-gradient(#c9a35a,#c9a35a) 0 100%/100% 1px no-repeat}
 @media (max-width:900px){
 .sp-hero{min-height:100svh}
-.sp-hero-bg img{width:100%;height:72%;object-position:50% 20%}
+.sp-hero-bg img{width:100%;height:72%;object-position:50% 20%;-webkit-mask-image:none;mask-image:none}
 .sp-hero-bg::after{background:linear-gradient(180deg,rgba(15,14,12,.3) 0%,rgba(15,14,12,.1) 30%,rgba(15,14,12,.85) 62%,#0f0e0c 78%)}
 .sp-hero-in{padding-top:52svh;gap:18px}
 .sp-cta{flex-direction:column}.sp-cta .btn{width:100%}
@@ -986,7 +988,7 @@ video[data-scrubbg]{display:none !important}
 <div class="wrap">
 <div class="sp-head"><p class="eyebrow on-light"><span>La storia</span><span>dalla gioielleria a Medicina (BO) e Bologna</span></p><h2 id="storia-title" class="serif">Una passione diventata professione</h2></div>
 <div class="chs"><article class="ch sv" data-i="0">
-<figure class="ch-fig"><img src="/_blob/da5515d7be4e48c4af98be2981f2c8a5" alt="Salvatore con un libro di orologeria" loading="lazy"></figure>
+<figure class="ch-fig"><img src="/_blob/7d71adb8addc7258c551c15f2c3babe0" alt="Il movimento di un cronografo d’epoca sotto la lente" loading="lazy" style="object-position: 35% 50%"></figure>
 <div class="ch-txt"><p class="ch-k serif">Prima</p><h3 class="serif">La gioielleria di famiglia</h3><p>Gli orologi sono una tradizione di famiglia. Sua madre, gioielliera, ha fondato la gioielleria Promo: è l’attività di famiglia, da trent’anni. Da lei Salvatore ha ereditato la stessa devozione per il mestiere.</p></div>
 </article><article class="ch sv" data-i="1">
 <figure class="ch-fig"><img src="/_blob/4f2c3f4cebf45e40d1f843402dc03637" alt="Salvatore alla scrivania con un orologio" loading="lazy"></figure>
