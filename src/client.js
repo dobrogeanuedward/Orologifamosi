@@ -59,14 +59,28 @@ function turnstileToken(siteKey) {
     document.head.appendChild(sc);
   });
   return turnstileReady.then(() => new Promise((res, rej) => {
+    // Di solito la verifica è invisibile. Se Cloudflare chiede un gesto (una spunta), la casella
+    // compare al centro con una riga di spiegazione: non deve restare nascosta in un angolo.
+    const veil = document.createElement('div');
+    veil.setAttribute('role', 'dialog');
+    veil.setAttribute('aria-label', 'Verifica di sicurezza');
+    veil.style.cssText = 'position:fixed;inset:0;z-index:2147483000;display:none;place-items:center;background:rgba(20,19,16,.55);padding:20px';
+    const card = document.createElement('div');
+    card.style.cssText = 'background:#fbf8f2;color:#141310;border-radius:16px;padding:24px;max-width:360px;width:100%;box-shadow:0 24px 60px -20px rgba(0,0,0,.5);font:400 16px/1.45 "General Sans",system-ui,sans-serif;display:grid;gap:14px;justify-items:center;text-align:center';
+    const msg = document.createElement('p');
+    msg.style.margin = '0';
+    msg.textContent = 'Un’ultima verifica prima di inviare: spunta la casella qui sotto.';
     const box = document.createElement('div');
-    box.style.cssText = 'position:fixed;right:12px;bottom:12px;z-index:2147483000';
-    document.body.appendChild(box);
-    const done = (fn, v) => { setTimeout(() => box.remove(), 400); fn(v); };
+    card.appendChild(msg); card.appendChild(box); veil.appendChild(card);
+    document.body.appendChild(veil);
+    let over = false;
+    const done = (fn, v) => { if (over) return; over = true; clearTimeout(timer); veil.remove(); fn(v); };
+    const timer = setTimeout(() => done(rej, new Error('La verifica di sicurezza non è stata completata. Riprova.')), 120000);
     window.turnstile.render(box, {
-      sitekey: siteKey, appearance: 'interaction-only',
+      sitekey: siteKey, appearance: 'interaction-only', language: 'it',
       callback: (t) => done(res, t),
-      'error-callback': () => done(rej, new Error('Verifica antispam non riuscita. Riprova.')),
+      'before-interactive-callback': () => { veil.style.display = 'grid'; },
+      'error-callback': () => done(rej, new Error('Verifica di sicurezza non riuscita. Riprova.')),
     });
   }));
 }
