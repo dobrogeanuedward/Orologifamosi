@@ -420,7 +420,7 @@ main.wrap{padding-bottom:140px !important}
 .head-static{position:sticky;background:rgba(251,248,242,.96);color:#171918;box-shadow:0 1px 0 rgba(154,114,33,.16)}
 .head-in{display:flex;align-items:stretch;justify-content:space-between;gap:16px 28px;min-height:76px}
 .brandmark{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;flex:none}
-.brandmark img{width:54px;height:30px;object-fit:contain}
+.brandmark img{width:40px;height:40px;object-fit:contain}
 .brandmark span{font-size:23px;font-weight:600;letter-spacing:-.01em;white-space:nowrap}
 .mainnav{display:flex;align-items:stretch;gap:4px}
 .nv-drop{display:flex;align-items:stretch}
@@ -455,7 +455,8 @@ main.wrap{padding-bottom:140px !important}
 .mnav{position:fixed;inset:0;z-index:-1;background:#0f0e0c;color:#f3ecdf;overflow-y:auto;opacity:0;visibility:hidden;transition:opacity 300ms ease,visibility 0s linear 300ms}
 .head[data-menu="true"] .mnav{opacity:1;visibility:visible;transition:opacity 300ms ease,visibility 0s}
 .head[data-menu="true"]{color:#f3ecdf;background:transparent;box-shadow:none}
-.head[data-menu="true"] .logo{filter:invert(1) sepia(.4) saturate(1.5) hue-rotate(-8deg) brightness(1.05)}
+.head[data-menu="true"] .logo{filter:invert(1) drop-shadow(0 0 .45px #f3ecdf) drop-shadow(0 0 .45px #f3ecdf)}
+[data-tone="light"] .head:not([data-menu="true"]) .logo{filter:drop-shadow(0 0 .45px #141310) drop-shadow(0 0 .45px #141310)}
 .mnav-in{display:flex;flex-direction:column;gap:14px;padding-top:96px;padding-bottom:40px}
 .mnav-in>*{opacity:0;transform:translateY(16px);transition:opacity 400ms ease,transform 600ms var(--ease)}
 .head[data-menu="true"] .mnav-in>*{opacity:1;transform:none}
@@ -515,7 +516,7 @@ main.wrap{padding-bottom:140px !important}
 .mainnav{display:none}
 .burger{display:block}
 .head-in{min-height:64px;gap:10px}
-.brandmark{gap:9px}.brandmark img{width:42px;height:24px}.brandmark span{font-size:20px}
+.brandmark{gap:9px}.brandmark img{width:34px;height:34px}.brandmark span{font-size:20px}
 .head-act{gap:8px}
 .head-cta{min-height:42px;padding:0 18px;font-size:14.5px}
 .foot-top{grid-template-columns:1fr;padding-bottom:48px}.foot-place{grid-template-columns:96px 1fr}.foot-grid{grid-template-columns:1fr 1fr;gap:28px 20px}.foot-brands{grid-column:1 / -1}
@@ -969,7 +970,7 @@ video[data-scrubbg]{display:none !important}
 /* mobile header: one height, glass, no grey discs */
 @media (max-width:900px){
 .head-in{min-height:60px;align-items:center;gap:8px}
-.brandmark{gap:8px}.brandmark img{width:34px;height:20px}.brandmark span{font-size:19px;letter-spacing:-.005em}
+.brandmark{gap:8px}.brandmark img{width:30px;height:30px}.brandmark span{font-size:19px;letter-spacing:-.005em}
 .head-act{gap:6px}
 .head-cta{min-height:38px !important;height:38px;padding:0 16px !important;font-size:11.5px !important;letter-spacing:.12em}
 .btn-line-h{width:38px !important;min-height:38px !important;height:38px;padding:0 !important;box-shadow:inset 0 0 0 1px currentColor !important;opacity:.9}
@@ -1134,7 +1135,7 @@ video[data-scrubbg]{display:none !important}
 <div class="of" data-sent="{{sentAttr}}">
 <header class="head head-static" id="top" data-menu="{{menuAttr}}">
 <div class="wrap head-in">
-<a class="brandmark" href="Main.dc.html"><img class="logo" src="/_blob/8fa7bb2850dda93d4bbfc26fd4c0c7e9" alt=""><span class="serif">Orologi Famosi</span></a>
+<a class="brandmark" href="Main.dc.html"><img class="logo" src="/_blob/54ed4d47b650ffe1a2acbdd50264c742" alt=""><span class="serif">Orologi Famosi</span></a>
 <nav class="mainnav" aria-label="Navigazione principale">
 <div class="nv-drop"><button type="button" class="nv-link nv-btn" aria-haspopup="true">Vendi <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
 <div class="mega"><div class="wrap mega-in">
