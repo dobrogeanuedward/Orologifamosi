@@ -24,7 +24,8 @@
   ],
   "build": {
     "env": {
-      "DESK_URL": "https://dogo-desk.vercel.app"
+      "DESK_URL": "https://dogo-desk.vercel.app",
+      "TURNSTILE_SITE_KEY": "0x4AAAAAAGA0qU7O7kF68l0V"
     }
   }
 }
