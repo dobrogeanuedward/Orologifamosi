@@ -7,6 +7,7 @@
  *   SITE_URL   dominio pubblico (default https://www.venditaorologiusati.it)
  *   DESK_URL   indirizzo di Dogo Desk per l'invio delle schede (default http://localhost:3000)
  *   DESK_ORG   cliente nel Desk (default of)
+ *   TURNSTILE_SITE_KEY   chiave pubblica dell'antispam del modulo (facoltativa)
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -28,6 +29,8 @@ const CDN = (process.env.ASSETS_CDN ?? 'https://pub-b39e5084f7324516a4fe99c212a6
 const MEDIA = CDN || ASSETS;
 const DESK_URL = (process.env.DESK_URL || 'http://localhost:3000').replace(/\/$/, '');
 const DESK_ORG = process.env.DESK_ORG || 'of';
+/** Chiave pubblica di Cloudflare Turnstile per il modulo. Vuota: nessuna verifica lato pagina. */
+const TURNSTILE = process.env.TURNSTILE_SITE_KEY || '';
 
 // ---------- preparazione ----------
 fs.rmSync(DIST, { recursive: true, force: true });
@@ -140,7 +143,7 @@ for (const page of PAGES) {
   const entry = path.join(ROOT, '.build', `${page.id}.js`);
   fs.mkdirSync(path.dirname(entry), { recursive: true });
   fs.writeFileSync(path.join(ROOT, '.build', `${page.id}.tpl.json`), JSON.stringify(board.tpl));
-  fs.writeFileSync(entry, `import { DCLogic, imgPath as __ofImg } from '../src/dc.js';\nimport { mount } from '../src/client.js';\nimport tpl from './${page.id}.tpl.json';\n${code}\n;Component.__tpl = tpl;\nmount(Component, ${JSON.stringify({ page: page.id, route: page.route, pageName: page.name, desk: DESK_URL, org: DESK_ORG, landing: !!page.landing })});\n`);
+  fs.writeFileSync(entry, `import { DCLogic, imgPath as __ofImg } from '../src/dc.js';\nimport { mount } from '../src/client.js';\nimport tpl from './${page.id}.tpl.json';\n${code}\n;Component.__tpl = tpl;\nmount(Component, ${JSON.stringify({ page: page.id, route: page.route, pageName: page.name, desk: DESK_URL, org: DESK_ORG, landing: !!page.landing, turnstile: page.id === 'richiesta' ? TURNSTILE : '' })});\n`);
   await esbuild.build({
     entryPoints: [entry], bundle: true, minify: true, format: 'esm', target: 'es2019', outfile: path.join(DIST, ASSETS, 'js', `${page.id}.js`),
     define: { 'globalThis.__OF_IMG_EXT': JSON.stringify(EXT), 'globalThis.__OF_ASSETS': JSON.stringify(MEDIA) }, loader: { '.json': 'json' }, logLevel: 'warning',

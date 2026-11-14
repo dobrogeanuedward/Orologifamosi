@@ -29,6 +29,48 @@ async function readError(res, fallback) {
   return data.error || fallback;
 }
 
+/**
+ * Ridisegna la foto prima di caricarla: così spariscono i dati nascosti nel file (posizione GPS,
+ * modello del telefono, data e ora) e i file enormi si alleggeriscono. L'immagine resta dritta.
+ * Se il browser non sa leggere il formato (alcuni HEIC), la foto parte com'è.
+ */
+async function cleanPhoto(file) {
+  try {
+    const bmp = await createImageBitmap(file, { imageOrientation: 'from-image' });
+    const max = 2600, k = Math.min(1, max / Math.max(bmp.width, bmp.height));
+    const c = document.createElement('canvas');
+    c.width = Math.round(bmp.width * k); c.height = Math.round(bmp.height * k);
+    c.getContext('2d').drawImage(bmp, 0, 0, c.width, c.height);
+    if (bmp.close) bmp.close();
+    const blob = await new Promise((res) => c.toBlob(res, 'image/jpeg', 0.9));
+    if (!blob) return file;
+    return new File([blob], 'foto.jpg', { type: 'image/jpeg' });
+  } catch { return file; }
+}
+
+/** Verifica antispam (Cloudflare Turnstile), solo se il sito ha una chiave: restituisce il gettone o ''. */
+let turnstileReady = null;
+function turnstileToken(siteKey) {
+  if (!siteKey) return Promise.resolve('');
+  turnstileReady = turnstileReady || new Promise((res, rej) => {
+    const sc = document.createElement('script');
+    sc.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+    sc.async = true; sc.onload = res; sc.onerror = () => rej(new Error('Verifica antispam non disponibile.'));
+    document.head.appendChild(sc);
+  });
+  return turnstileReady.then(() => new Promise((res, rej) => {
+    const box = document.createElement('div');
+    box.style.cssText = 'position:fixed;right:12px;bottom:12px;z-index:2147483000';
+    document.body.appendChild(box);
+    const done = (fn, v) => { setTimeout(() => box.remove(), 400); fn(v); };
+    window.turnstile.render(box, {
+      sitekey: siteKey, appearance: 'interaction-only',
+      callback: (t) => done(res, t),
+      'error-callback': () => done(rej, new Error('Verifica antispam non riuscita. Riprova.')),
+    });
+  }));
+}
+
 /** Invia la scheda: prima le foto (URL firmati), poi i dati. Restituisce { code }. */
 function makeSubmit(cfg) {
   return async function submit(s) {
@@ -37,7 +79,7 @@ function makeSubmit(cfg) {
     if (!rid) { rid = crypto.randomUUID(); safe(() => localStorage.setItem(RID_KEY, rid)); }
 
     // 1. Foto: libere, nell'ordine in cui la persona le ha caricate.
-    const files = (s.photos || []).map((p) => p.file).filter((f) => f && typeOf(f));
+    const files = await Promise.all((s.photos || []).map((p) => p.file).filter((f) => f && typeOf(f)).map(cleanPhoto));
     let photoKeys = [];
     let note = '';
     if (files.length) {
@@ -75,6 +117,8 @@ function makeSubmit(cfg) {
       source: { page: src.page || cfg.route, pageName: src.pageName || cfg.pageName, query: null, utm: src.utm || null, referrer: src.referrer || null },
       website: '',
     };
+    const token = await turnstileToken(cfg.turnstile);
+    if (token) payload.turnstileToken = token;
     const res = await fetch(base, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload) }).catch(() => null);
     if (!res) throw new Error('Connessione assente: la scheda non è partita.');
     if (!res.ok) throw new Error(await readError(res, 'La scheda non è partita.'));
