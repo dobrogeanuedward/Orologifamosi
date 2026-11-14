@@ -100,6 +100,92 @@ function checkVideoSources() {
   }
 }
 
+/**
+ * Anello che accompagna la freccia del mouse. La freccia di sistema resta sempre: l'anello è solo
+ * un segno in più, quindi il suo leggero ritardo non pesa. Un elemento, mosso con le trasformazioni.
+ * Non parte su telefono e tablet, né con «riduci le animazioni». Un elemento può dichiarare
+ * un'etichetta con data-cursor="Testo" (solo dove il clic fa davvero qualcosa).
+ */
+const CUR_LINK = 'a, .btn, button:not([disabled]), summary, label, [role="button"], input[type="checkbox"], input[type="radio"], input[type="file"], input[type="submit"], input[type="button"]';
+const CUR_TEXT = 'input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="submit"]):not([type="button"]):not([type="range"]), textarea, select, [contenteditable=""], [contenteditable="true"]';
+const CUR_CSS = `
+.of-cur{position:fixed;left:0;top:0;width:0;height:0;pointer-events:none;z-index:2147483000;will-change:transform}
+.of-ring{position:absolute;left:0;top:0;width:28px;height:28px;margin:-14px 0 0 -14px;border-radius:50%;border:1.5px solid #c9a35a;box-shadow:0 0 0 1px rgba(20,19,16,.28),inset 0 0 0 1px rgba(20,19,16,.14);background:rgba(201,163,90,0);opacity:0;display:grid;place-items:center;transition:width 240ms cubic-bezier(.23,1,.32,1),height 240ms cubic-bezier(.23,1,.32,1),margin 240ms cubic-bezier(.23,1,.32,1),background-color 200ms ease,border-color 200ms ease,box-shadow 200ms ease,opacity 180ms ease,transform 140ms ease}
+.of-ring.on{opacity:1}
+.of-ring.link{width:56px;height:56px;margin:-28px 0 0 -28px;background:rgba(201,163,90,.16)}
+.of-ring.label{width:92px;height:92px;margin:-46px 0 0 -46px;background:rgba(20,19,16,.88);border-color:transparent;box-shadow:none}
+.of-ring.text{opacity:0}
+.of-ring.down{transform:scale(.86)}
+.of-lab{font:600 13px/1 'General Sans',system-ui,sans-serif;color:#fff;letter-spacing:.01em;opacity:0;transition:opacity 160ms ease;white-space:nowrap}
+.of-ring.label .of-lab{opacity:1}
+@media print{.of-cur{display:none}}
+`;
+
+function initCursor() {
+  if (!window.matchMedia || !window.requestAnimationFrame) return;
+  if (!safe(() => matchMedia('(hover: hover) and (pointer: fine)').matches, false)) return;
+  if (safe(() => matchMedia('(prefers-reduced-motion: reduce)').matches, false)) return;
+
+  const style = document.createElement('style');
+  style.textContent = CUR_CSS;
+  document.head.appendChild(style);
+  const cur = document.createElement('div');
+  cur.className = 'of-cur';
+  cur.setAttribute('aria-hidden', 'true');
+  const ring = document.createElement('div');
+  ring.className = 'of-ring';
+  const lab = document.createElement('span');
+  lab.className = 'of-lab';
+  ring.appendChild(lab);
+  cur.appendChild(ring);
+  document.body.appendChild(cur);
+
+  let tx = 0, ty = 0, x = 0, y = 0, first = true, raf = 0, on = false, kind = '', text = '', down = false, checkQueued = false, lastEl = null;
+  const paint = () => { ring.className = 'of-ring' + (on ? ' on' : '') + (kind ? ' ' + kind : '') + (down ? ' down' : ''); };
+  const place = () => { cur.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0)'; };
+  const loop = () => {
+    x += (tx - x) * 0.2; y += (ty - y) * 0.2;
+    place();
+    raf = Math.abs(tx - x) + Math.abs(ty - y) > 0.1 ? requestAnimationFrame(loop) : 0;
+  };
+  /** Cosa c'è sotto la freccia: campo di testo (l'anello sparisce), etichetta dichiarata, cosa cliccabile, o niente. */
+  const read = (el) => {
+    if (el === lastEl && on) return;                     // stesso elemento di prima: niente da ricalcolare
+    lastEl = el;
+    let k = '', t = '';
+    if (el && el.closest) {
+      const labelled = el.closest('[data-cursor]');
+      if (el.closest(CUR_TEXT)) k = 'text';
+      else if (labelled && labelled.getAttribute('data-cursor')) { k = 'label'; t = labelled.getAttribute('data-cursor'); }
+      else if (el.closest(CUR_LINK) || safe(() => getComputedStyle(el).cursor === 'pointer', false)) k = 'link';
+    }
+    if (k !== kind || t !== text || !on) {
+      kind = k; text = t; on = true;
+      if (t) lab.textContent = t;
+      paint();
+    }
+  };
+  const hide = () => { first = true; lastEl = null; if (on) { on = false; paint(); } };
+
+  addEventListener('pointermove', (e) => {
+    if (e.pointerType && e.pointerType !== 'mouse') { hide(); return; }
+    tx = e.clientX; ty = e.clientY;
+    if (first) { x = tx; y = ty; first = false; place(); }
+    if (!raf) raf = requestAnimationFrame(loop);
+    read(e.target);
+  }, { passive: true });
+  // La pagina scorre sotto la freccia ferma: si rilegge cosa c'è sotto, al massimo una volta per fotogramma.
+  addEventListener('scroll', () => {
+    if (!on || checkQueued) return;
+    checkQueued = true;
+    requestAnimationFrame(() => { checkQueued = false; if (on) read(document.elementFromPoint(tx, ty)); });
+  }, { passive: true, capture: true });
+  addEventListener('pointerdown', (e) => { if (!e.pointerType || e.pointerType === 'mouse') { down = true; paint(); } else hide(); }, { passive: true });
+  addEventListener('pointerup', () => { if (down) { down = false; paint(); } }, { passive: true });
+  document.documentElement.addEventListener('mouseleave', hide);
+  addEventListener('blur', hide);
+}
+
 export function mount(Component, cfg) {
   if (cfg.landing) rememberSource(cfg);
   if (cfg.page === 'richiesta') window.__ofSubmit = makeSubmit(cfg);
@@ -107,4 +193,5 @@ export function mount(Component, cfg) {
   hydrate(h(Component, {}), root);
   checkVideoSources();
   addEventListener('load', checkVideoSources, { once: true });
+  initCursor();
 }
