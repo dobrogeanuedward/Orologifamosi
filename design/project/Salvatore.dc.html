@@ -969,6 +969,20 @@ video[data-scrubbg]{display:none !important}
 .fc-addr{font-size:15px;line-height:1.5;max-width:40ch}
 .fc-place .fc-go{margin-top:4px}
 .foot-grid{grid-template-columns:1fr 1fr 2fr !important}
+
+.fc-num{display:flex;flex-direction:column;gap:18px;padding:26px 0 28px;border-bottom:1px solid rgba(243,236,223,.1)}
+.fc-num .fc-l{margin:0}
+.fc-big{font-family:'Gambarino',Georgia,serif;font-weight:400;font-size:clamp(46px,4.6vw,72px);line-height:1;letter-spacing:-.02em;color:#fbf8f2 !important;text-decoration:none;font-variant-numeric:lining-nums;white-space:nowrap}
+.fc-big:hover{color:#e2c68f !important}
+.fc-acts{display:flex;gap:10px;flex-wrap:wrap}
+.fc-btn{display:inline-flex;align-items:center;gap:12px;min-height:52px;padding:0 22px 0 4px;border-radius:999px;text-decoration:none;color:#fbf8f2 !important;font-weight:600;font-size:15px;box-shadow:inset 0 0 0 1px rgba(226,198,143,.38);transition:background-color 260ms ease}
+.fc-btn .fc-ico{width:44px;height:44px;box-shadow:none}
+.fc-btn:hover{background:rgba(226,198,143,.12)}
+.fc-btn:hover .fc-ico{background:#e2c68f;color:#0b0a08}
+.fc-note{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 24px;margin:22px 0 0}
+.fc-note .fc-all{padding:0;background:none}
+.fc-head{border-bottom:1px solid rgba(226,198,143,.24)}
+@media (max-width:900px){.fc-big{font-size:clamp(44px,12.5vw,56px)}.fc-acts{display:grid;grid-template-columns:1fr 1fr}.fc-btn{justify-content:flex-start}.fc-note{flex-direction:column;align-items:flex-start}}
 @media (prefers-reduced-motion:reduce){.fc-ph img,.fc-go svg,.fc-all svg{transition:none !important}}
 @media (max-width:900px){
 .fc{padding-top:56px;padding-bottom:40px}
@@ -1117,13 +1131,12 @@ video[data-scrubbg]{display:none !important}
 </div>
 </div>
 <div class="wrap fc" role="region" aria-labelledby="fc-title">
-<div class="fc-head"><div><p class="fc-k">Contatti</p><h2 id="fc-title" class="serif fc-t">Parla direttamente con Salvatore</h2></div><a class="fc-all" href="Contatti.dc.html">Tutti i contatti e come arrivare <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
+<div class="fc-head"><div><p class="fc-k">Contatti</p><h2 id="fc-title" class="serif fc-t">Parla direttamente con Salvatore</h2></div></div>
 <div class="fc-grid">
 <div class="fc-lines">
-<a class="fc-line" href="https://wa.me/393791549804?text=Buongiorno%20Salvatore%2C%20vorrei%20una%20valutazione%20del%20mio%20orologio."><span class="fc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a8.2 8.2 0 0 1-12.1 7.2L4 20l1.4-3.8A8.2 8.2 0 1 1 20 11.5z"></path><path d="M9 9.2c.3 1.9 1.9 3.6 3.9 4.1l1-.9 1.6.8"></path></svg></span><span class="fc-l"><small>WhatsApp, anche per le foto</small><b>379 154 9804</b></span><span class="fc-go">Scrivi <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
-<a class="fc-line" href="tel:+393791549804"><span class="fc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3.5h2.9l1.4 3.9-1.9 1.3a11.6 11.6 0 0 0 5.3 5.3l1.3-1.9 3.9 1.4v2.9a2.4 2.4 0 0 1-2.6 2.4A14.3 14.3 0 0 1 4.2 6.1a2.4 2.4 0 0 1 2.4-2.6z"></path></svg></span><span class="fc-l"><small>Telefono, risponde Salvatore</small><b>379 154 9804</b></span><span class="fc-go">Chiama <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
+<div class="fc-num"><p class="fc-l"><small>Telefono e WhatsApp, risponde Salvatore</small><a class="fc-big" href="tel:+393791549804">379 154 9804</a></p><div class="fc-acts"><a class="fc-btn" href="https://wa.me/393791549804?text=Buongiorno%20Salvatore%2C%20vorrei%20una%20valutazione%20del%20mio%20orologio."><span class="fc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a8.2 8.2 0 0 1-12.1 7.2L4 20l1.4-3.8A8.2 8.2 0 1 1 20 11.5z"></path><path d="M9 9.2c.3 1.9 1.9 3.6 3.9 4.1l1-.9 1.6.8"></path></svg></span>WhatsApp</a><a class="fc-btn" href="tel:+393791549804"><span class="fc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3.5h2.9l1.4 3.9-1.9 1.3a11.6 11.6 0 0 0 5.3 5.3l1.3-1.9 3.9 1.4v2.9a2.4 2.4 0 0 1-2.6 2.4A14.3 14.3 0 0 1 4.2 6.1a2.4 2.4 0 0 1 2.4-2.6z"></path></svg></span>Chiama</a></div></div>
 <a class="fc-line" href="mailto:info@venditaorologiusati.it"><span class="fc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3.6 6.6 12 13l8.4-6.4"></path></svg></span><span class="fc-l"><small>Email</small><b class="fc-mail">info@venditaorologiusati.it</b></span><span class="fc-go">Scrivi <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
-<p class="fc-note">Preferisci una scheda guidata, con le foto? <a href="Richiesta.dc.html">Richiedi una valutazione</a></p>
+<p class="fc-note"><a class="fc-all" href="Contatti.dc.html">Tutti i contatti e come arrivare <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a><span>oppure <a href="Richiesta.dc.html">richiedi una valutazione</a></span></p>
 </div>
 <div class="fc-places">
 <a class="fc-place" href="https://maps.google.com/?q=Via+Licurgo+Fava+421+Medicina+BO" target="_blank" rel="noopener"><span class="fc-ph"><img src="/_blob/50b9506a6dba33845dd4eb44b593e14c" alt="Salvatore al tavolo del negozio di Medicina (BO)" loading="lazy"><em>Il negozio</em></span><b class="serif">Medicina (BO)</b><span class="fc-addr">Via Licurgo Fava 421, presso il Centro Commerciale Medici, 40059 Medicina (BO). Negli orari di apertura.</span><span class="fc-go">Indicazioni <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
