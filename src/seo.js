@@ -19,9 +19,11 @@ export function business() {
     founder: { '@id': PERSON_ID },
     address: { '@type': 'PostalAddress', ...B.address },
     hasMap: B.maps,
+    sameAs: B.sameAs,
+    openingHoursSpecification: B.hours.map((h) => ({ '@type': 'OpeningHoursSpecification', dayOfWeek: h.days, opens: h.opens, closes: h.closes })),
     areaServed: B.areaServed.map((c) => ({ '@type': 'City', name: c })),
     knowsAbout: ['valutazione orologi usati', 'acquisto orologi da privati', ...B.brands],
-    description: 'Orologi Famosi valuta e acquista orologi di lusso usati da privati. Primo esame a distanza su foto e dati, verifica e proposta dal vivo a Medicina (BO), su appuntamento.',
+    description: 'Orologi Famosi valuta e acquista orologi di lusso usati da privati. Primo esame a distanza su foto e dati, verifica e proposta dal vivo nel negozio di Medicina (BO) o nella sede riservata di Bologna, su appuntamento.',
     contactPoint: [{ '@type': 'ContactPoint', telephone: B.telephone, contactType: 'valutazione e acquisto orologi', availableLanguage: 'it', areaServed: 'IT' }],
   };
 }

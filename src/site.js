@@ -43,8 +43,16 @@ export const BUSINESS = {
   email: 'info@venditaorologiusati.it',
   whatsapp: 'https://wa.me/393791549804',
   catalog: 'https://www.venditaorologiusati.it/',
-  address: { streetAddress: 'Via Fava 421/14, Centro Commerciale Medici', postalCode: '40059', addressLocality: 'Medicina', addressRegion: 'BO', addressCountry: 'IT' },
-  maps: 'https://www.google.com/maps/search/?api=1&query=Orologi+Famosi+Via+Licurgo+Fava+421+Medicina',
+  address: { streetAddress: 'Via Licurgo Fava 421', postalCode: '40059', addressLocality: 'Medicina', addressRegion: 'BO', addressCountry: 'IT' },
+  maps: 'https://www.google.com/maps?cid=9961046583457619943',
+  /** Orari della scheda Google (novembre 2026). Se cambiano lì, vanno cambiati qui e nelle tavole. */
+  hours: [
+    { days: ['Monday'], opens: '15:00', closes: '19:00' },
+    { days: ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], opens: '09:30', closes: '13:00' },
+    { days: ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], opens: '15:30', closes: '19:00' },
+  ],
+  sameAs: ['https://www.google.com/maps?cid=9961046583457619943'],
+  rating: { value: 4.9, count: 202 },
   brands: ['Rolex', 'Omega', 'Cartier', 'Tudor', 'TAG Heuer', 'Breitling', 'IWC', 'Jaeger-LeCoultre', 'Zenith', 'Longines', 'Bulgari', 'Franck Muller', 'Baume & Mercier', 'Oris', 'Hamilton', 'Seiko', 'Mido', 'Eberhard', 'Maurice Lacroix'],
   // Medicina è la sede reale; Bologna e i comuni limitrofi sono bacini di provenienza (allegato 02).
   areaServed: ['Medicina', 'Bologna', 'Imola', 'Castel San Pietro Terme', 'Castel Guelfo di Bologna', 'Dozza', 'Mordano', 'Ozzano dell\'Emilia', 'San Lazzaro di Savena', 'Budrio', 'Castenaso', 'Granarolo dell\'Emilia', 'Lugo', 'Massa Lombarda', 'Conselice', 'Castel Bolognese', 'Bagnara di Romagna'],
