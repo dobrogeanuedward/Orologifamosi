@@ -951,6 +951,60 @@ video[data-scrubbg]{display:none !important}
 @supports (animation-timeline: scroll()){.head::before{animation:hglass linear both;animation-timeline:scroll(root);animation-range:0 160px}}
 @keyframes hglass{from{opacity:.5}to{opacity:1}}
 @media (prefers-reduced-motion:reduce){.og2 *,.og2 .ct-draw{animation:none !important;opacity:1;stroke-dashoffset:0}.om-trace{opacity:0}}
+
+/* contatti nel piè di pagina */
+.fc{padding-top:clamp(64px,7vw,112px);padding-bottom:clamp(48px,5vw,80px)}
+.fc-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px 48px;padding-bottom:clamp(24px,2.6vw,36px);border-bottom:1px solid rgba(226,198,143,.24)}
+.fc-k{margin:0 0 14px;font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#c9a35a}
+.fc-t{margin:0;font-size:clamp(36px,4vw,64px);line-height:.98;letter-spacing:-.025em;color:#fbf8f2;max-width:18ch}
+.fc-all{display:inline-flex;align-items:center;gap:10px;flex:none;color:#e2c68f !important;text-decoration:none;font-weight:600;font-size:15px;padding:10px 0}
+.fc-all svg,.fc-go svg{transition:transform 320ms var(--ease)}
+.fc-all:hover svg{transform:translateX(4px)}
+.fc-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,88px);padding-top:clamp(8px,1vw,16px)}
+.fc-lines{display:flex;flex-direction:column}
+.fc-line{display:grid;grid-template-columns:48px minmax(0,1fr) auto;align-items:center;gap:20px;padding:22px 0;border-bottom:1px solid rgba(243,236,223,.1);text-decoration:none;color:#fbf8f2 !important}
+.fc-ico{width:48px;height:48px;border-radius:999px;display:grid;place-items:center;color:#e2c68f;box-shadow:inset 0 0 0 1px rgba(226,198,143,.38);transition:background-color 260ms ease,color 260ms ease,box-shadow 260ms ease}
+.fc-l{display:flex;flex-direction:column;gap:2px;min-width:0}
+.fc-l small{font-size:13.5px;color:#a89e8b;letter-spacing:.01em}
+.fc-l b{font-family:'Gambarino',Georgia,serif;font-weight:400;font-size:clamp(26px,2.4vw,36px);line-height:1.08;letter-spacing:-.01em;font-variant-numeric:lining-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fc-l b.fc-mail{font-size:clamp(20px,1.75vw,27px)}
+.fc-go{display:inline-flex;align-items:center;gap:8px;color:#e2c68f;font-weight:600;font-size:14.5px;white-space:nowrap}
+.fc-line:hover .fc-ico{background:#e2c68f;color:#0b0a08;box-shadow:none}
+.fc-line:hover .fc-go svg,.fc-place:hover .fc-go svg{transform:translateX(4px)}
+.fc-note{margin:22px 0 0;font-size:15px;color:#a89e8b}
+.fc-note a{color:#f3ecdf;text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat;padding-bottom:2px}
+.fc-note a:hover{color:#e2c68f}
+.fc-places{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2vw,28px);padding-top:22px}
+.fc-place{display:flex;flex-direction:column;gap:8px;text-decoration:none;color:#cfc5b2 !important}
+.fc-ph{position:relative;display:block;aspect-ratio:4/3;border-radius:4px;overflow:hidden;margin-bottom:10px;background:#1a1814}
+.fc-ph img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.9);transition:transform 1100ms var(--ease)}
+.fc-place:nth-child(2) .fc-ph img{filter:saturate(.8) brightness(.9)}
+.fc-ph em{position:absolute;left:12px;top:12px;font-style:normal;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#0b0a08;background:#f3ecdf;border-radius:999px;padding:6px 12px}
+.fc-place:hover .fc-ph img{transform:scale(1.04)}
+.fc-place b{font-weight:400;font-size:clamp(26px,2.2vw,32px);line-height:1.05;color:#fbf8f2}
+.fc-addr{font-size:15px;line-height:1.5;max-width:40ch}
+.fc-place .fc-go{margin-top:4px}
+.foot-grid{grid-template-columns:1fr 1fr 2fr !important}
+@media (prefers-reduced-motion:reduce){.fc-ph img,.fc-go svg,.fc-all svg{transition:none !important}}
+@media (max-width:900px){
+.fc{padding-top:56px;padding-bottom:40px}
+.fc-head{flex-direction:column;align-items:flex-start;gap:6px}
+.fc-t{font-size:clamp(34px,10vw,44px)}
+.fc-grid{grid-template-columns:1fr;gap:36px}
+.fc-line{grid-template-columns:44px minmax(0,1fr) 20px;gap:16px;padding:18px 0;min-height:64px}
+.fc-ico{width:44px;height:44px}
+.fc-go{font-size:0;gap:0}
+.fc-l b{font-size:25px}
+.fc-l b.fc-mail{font-size:clamp(16px,4.6vw,20px)}
+.fc-places{grid-template-columns:1fr;gap:0;padding-top:0;border-top:1px solid rgba(243,236,223,.1)}
+.fc-place{display:grid;grid-template-columns:104px minmax(0,1fr);column-gap:16px;row-gap:4px;align-items:start;padding:18px 0;border-bottom:1px solid rgba(243,236,223,.1)}
+.fc-ph{grid-row:1 / span 3;aspect-ratio:1;margin:0;border-radius:3px}
+.fc-ph em{display:none}
+.fc-place b{font-size:24px}
+.fc-addr{font-size:14px}
+.fc-place .fc-go{font-size:14px;gap:8px;margin-top:2px}
+.foot-grid{grid-template-columns:1fr 1fr !important}
+}
 </style>
 </helmet>
 <div class="of brand-frame" data-bg="0" data-tone="dark" data-dock="0">
@@ -981,7 +1035,7 @@ video[data-scrubbg]{display:none !important}
 <a class="nv-link" href="Main.dc.html#come-funziona">Come funziona</a>
 <a class="nv-link" href="Salvatore.dc.html">Salvatore</a>
 <a class="nv-link" href="https://www.venditaorologiusati.it/">Acquista</a>
-<a class="nv-link" href="#contatti">Contatti</a>
+<a class="nv-link" href="Contatti.dc.html">Contatti</a>
 </nav>
 <div class="head-act">
 <a class="head-tel" href="tel:+393791549804">379 154 9804</a>
@@ -996,7 +1050,7 @@ video[data-scrubbg]{display:none !important}
 <div class="mn-feat"><a class="mn-card" href="Rolex.dc.html" onClick="{{closeMenu}}"><img src="/_blob/bb54209c7d7b16f4cb095a46dacabef9" alt=""><span><b class="serif">Rolex</b><small>Submariner, Datejust, GMT</small></span></a><a class="mn-card" href="Omega.dc.html" onClick="{{closeMenu}}"><img src="/_blob/bc6247f2327962e464e5dfc406dfa655" alt=""><span><b class="serif">Omega</b><small>Speedmaster, Seamaster</small></span></a><a class="mn-card" href="Cartier.dc.html" onClick="{{closeMenu}}" aria-current="page"><img src="/_blob/13a3784cf9bc315dddbc92a82cb66744" alt=""><span><b class="serif">Cartier</b><small>Santos, Tank, Panthère</small></span></a></div>
 <details class="mn-all"><summary>Tutti i 19 marchi <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></summary><div class="mn-chips"><a class="mn-chip" href="Rolex.dc.html" onClick="{{closeMenu}}"><img src="/_blob/bb54209c7d7b16f4cb095a46dacabef9" alt="">Rolex</a><a class="mn-chip" href="Omega.dc.html" onClick="{{closeMenu}}"><img src="/_blob/bc6247f2327962e464e5dfc406dfa655" alt="">Omega</a><a class="mn-chip" href="Cartier.dc.html" onClick="{{closeMenu}}"><img src="/_blob/13a3784cf9bc315dddbc92a82cb66744" alt="">Cartier</a><a class="mn-chip" href="Main.dc.html#tudor" onClick="{{closeMenu}}"><img src="/_blob/b3633475603240f9f26b9c3f91d30090" alt="">Tudor</a><a class="mn-chip" href="Main.dc.html#tag-heuer" onClick="{{closeMenu}}"><img src="/_blob/1e8998e0a1650432cbff560be514347a" alt="">TAG Heuer</a><a class="mn-chip" href="Main.dc.html#breitling" onClick="{{closeMenu}}"><img src="/_blob/68eecdff370bc4287bfe5737ed48f35b" alt="">Breitling</a><a class="mn-chip" href="Main.dc.html#iwc" onClick="{{closeMenu}}"><img src="/_blob/2f5607e41374796868d392fa110ffb83" alt="">IWC</a><a class="mn-chip" href="Main.dc.html#jaeger-lecoultre" onClick="{{closeMenu}}"><img src="/_blob/349778ddbe502bd559ebe52222c6f965" alt="">Jaeger-LeCoultre</a><a class="mn-chip" href="Main.dc.html#zenith" onClick="{{closeMenu}}"><img src="/_blob/239191ecd32cee9c516919d57a1efd1b" alt="">Zenith</a><a class="mn-chip" href="Main.dc.html#longines" onClick="{{closeMenu}}"><img src="/_blob/3ef04e72a2606aee94eb94c10b2a1eda" alt="">Longines</a><a class="mn-chip" href="Main.dc.html#bulgari" onClick="{{closeMenu}}"><img src="/_blob/94fcc1c390c24e564dcbefb2a4fed074" alt="">Bulgari</a><a class="mn-chip" href="Main.dc.html#franck-muller" onClick="{{closeMenu}}"><img src="/_blob/c93c3aa46d98477a68e29f11e8ad05d6" alt="">Franck Muller</a><a class="mn-chip" href="Main.dc.html#baume-mercier" onClick="{{closeMenu}}"><img src="/_blob/a793115839a398e62cd3596273bfa616" alt="">Baume &amp; Mercier</a><a class="mn-chip" href="Main.dc.html#oris" onClick="{{closeMenu}}"><img src="/_blob/ce396a0db42f9ad19093b066167e61bf" alt="">Oris</a><a class="mn-chip" href="Main.dc.html#hamilton" onClick="{{closeMenu}}"><img src="/_blob/89925a59166f72c5d62bbabf47077dea" alt="">Hamilton</a><a class="mn-chip" href="Main.dc.html#seiko" onClick="{{closeMenu}}"><img src="/_blob/f290a5694e73968875b23ab98558aa4d" alt="">Seiko</a><a class="mn-chip" href="Main.dc.html#mido" onClick="{{closeMenu}}"><img src="/_blob/c2984fd34fa1ab8992849e2369cf4362" alt="">Mido</a><a class="mn-chip" href="Main.dc.html#eberhard" onClick="{{closeMenu}}"><img src="/_blob/b389c289d6dde22d808bbc9cc0d43bd7" alt="">Eberhard</a><a class="mn-chip" href="Main.dc.html#maurice-lacroix" onClick="{{closeMenu}}"><img src="/_blob/59e4c18c0dfbdba870032dbe45285b5c" alt="">Maurice Lacroix</a></div></details>
 <p class="mn-k">Orologi Famosi</p>
-<nav class="mn-links" aria-label="Menu"><a href="Main.dc.html#come-funziona" onClick="{{closeMenu}}">Come funziona</a><a href="Salvatore.dc.html" onClick="{{closeMenu}}">Chi è Salvatore</a><a href="Main.dc.html#domande" onClick="{{closeMenu}}">Domande</a><a href="https://www.venditaorologiusati.it/">Acquista dal catalogo</a></nav>
+<nav class="mn-links" aria-label="Menu"><a href="Main.dc.html#come-funziona" onClick="{{closeMenu}}">Come funziona</a><a href="Salvatore.dc.html" onClick="{{closeMenu}}">Chi è Salvatore</a><a href="Main.dc.html#domande" onClick="{{closeMenu}}">Domande</a><a href="https://www.venditaorologiusati.it/">Acquista dal catalogo</a><a href="Contatti.dc.html" onClick="{{closeMenu}}">Contatti</a></nav>
 <div class="mn-foot"><a class="btn btn-ghost" href="tel:+393791549804">Chiama</a><a class="btn btn-ghost" href="https://wa.me/393791549804">WhatsApp</a><p>Negozio: Via Licurgo Fava 421, Medicina (BO), negli orari di apertura.<br>Sede riservata a Bologna, su appuntamento.</p></div>
 </div>
 </div>
@@ -1119,20 +1173,24 @@ video[data-scrubbg]{display:none !important}
 <div class="foot-cta"><a class="btn btn-ivory" href="Richiesta.dc.html?m=Cartier">Valuta il tuo Cartier <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a><span class="foot-alt">oppure <a href="https://wa.me/393791549804">WhatsApp</a><i aria-hidden="true">·</i><a href="tel:+393791549804">379 154 9804</a></span></div>
 </div>
 </div>
-<div class="wrap foot-top">
-<a class="foot-place" href="https://maps.google.com/?q=Via+Licurgo+Fava+421+Medicina+BO" target="_blank" rel="noopener">
-<span class="foot-place-img"><img src="/_blob/50b9506a6dba33845dd4eb44b593e14c" alt="Il tavolo di Orologi Famosi a Medicina (BO)"><img class="foot-face" src="/_blob/3a227ace35d1239485fa3444a4874fca" alt=""></span>
-<span class="foot-place-txt"><span class="foot-k">Il negozio</span><strong>Medicina (BO)</strong><span>Via Licurgo Fava 421, 40059 Medicina (BO), presso il Centro Commerciale Medici</span><span class="foot-map">Apri in Maps <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></span>
-</a>
-<a class="foot-place foot-place-bo" href="Richiesta.dc.html?via=parla">
-<span class="foot-place-img"><img src="/_blob/79d6020b97a9514ecb506ef5d618d19a" alt="Un orologio sul tavolo di Salvatore"></span>
-<span class="foot-place-txt"><span class="foot-k">La sede riservata</span><strong>Bologna</strong><span>Su appuntamento. L’indirizzo te lo dà Salvatore quando fissate la visita.</span><span class="foot-map">Fissa una visita <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></span>
-</a>
+<div class="wrap fc" role="region" aria-labelledby="fc-title">
+<div class="fc-head"><div><p class="fc-k">Contatti</p><h2 id="fc-title" class="serif fc-t">Parla direttamente con Salvatore</h2></div><a class="fc-all" href="Contatti.dc.html">Tutti i contatti e come arrivare <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
+<div class="fc-grid">
+<div class="fc-lines">
+<a class="fc-line" href="https://wa.me/393791549804?text=Buongiorno%20Salvatore%2C%20vorrei%20una%20valutazione%20del%20mio%20orologio."><span class="fc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a8.2 8.2 0 0 1-12.1 7.2L4 20l1.4-3.8A8.2 8.2 0 1 1 20 11.5z"></path><path d="M9 9.2c.3 1.9 1.9 3.6 3.9 4.1l1-.9 1.6.8"></path></svg></span><span class="fc-l"><small>WhatsApp, anche per le foto</small><b>379 154 9804</b></span><span class="fc-go">Scrivi <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
+<a class="fc-line" href="tel:+393791549804"><span class="fc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3.5h2.9l1.4 3.9-1.9 1.3a11.6 11.6 0 0 0 5.3 5.3l1.3-1.9 3.9 1.4v2.9a2.4 2.4 0 0 1-2.6 2.4A14.3 14.3 0 0 1 4.2 6.1a2.4 2.4 0 0 1 2.4-2.6z"></path></svg></span><span class="fc-l"><small>Telefono, risponde Salvatore</small><b>379 154 9804</b></span><span class="fc-go">Chiama <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
+<a class="fc-line" href="mailto:info@venditaorologiusati.it"><span class="fc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3.6 6.6 12 13l8.4-6.4"></path></svg></span><span class="fc-l"><small>Email</small><b class="fc-mail">info@venditaorologiusati.it</b></span><span class="fc-go">Scrivi <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
+<p class="fc-note">Preferisci una scheda guidata, con le foto? <a href="Richiesta.dc.html">Richiedi una valutazione</a></p>
+</div>
+<div class="fc-places">
+<a class="fc-place" href="https://maps.google.com/?q=Via+Licurgo+Fava+421+Medicina+BO" target="_blank" rel="noopener"><span class="fc-ph"><img src="/_blob/50b9506a6dba33845dd4eb44b593e14c" alt="Salvatore al tavolo del negozio di Medicina (BO)" loading="lazy"><em>Il negozio</em></span><b class="serif">Medicina (BO)</b><span class="fc-addr">Via Licurgo Fava 421, presso il Centro Commerciale Medici, 40059 Medicina (BO). Negli orari di apertura.</span><span class="fc-go">Indicazioni <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
+<a class="fc-place" href="Richiesta.dc.html?via=parla"><span class="fc-ph"><img src="/_blob/79d6020b97a9514ecb506ef5d618d19a" alt="Un orologio sul tavolo di Salvatore" loading="lazy"><em>Su appuntamento</em></span><b class="serif">Bologna</b><span class="fc-addr">La sede riservata, su appuntamento. L’indirizzo te lo dà Salvatore quando fissate la visita.</span><span class="fc-go">Fissa una visita <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
+</div>
+</div>
 </div>
 <div class="wrap foot-grid">
 <div><p class="foot-k">Vendi</p><ul><li><a href="Rolex.dc.html">Rolex</a></li><li><a href="Omega.dc.html">Omega</a></li><li><a href="Cartier.dc.html">Cartier</a></li><li><a href="Main.dc.html#marchi-guida">Tutti gli altri marchi</a></li><li><a href="Richiesta.dc.html?via=foto">Mando solo le foto</a></li></ul></div>
 <div><p class="foot-k">Orologi Famosi</p><ul><li><a href="Main.dc.html#come-funziona">Come funziona</a></li><li><a href="Salvatore.dc.html">Chi è Salvatore</a></li><li><a href="Main.dc.html#domande">Domande</a></li><li><a href="https://www.venditaorologiusati.it/">Acquista dal catalogo</a></li></ul></div>
-<div><p class="foot-k">Contatti</p><ul><li><a href="tel:+393791549804">379 154 9804</a></li><li><a href="https://wa.me/393791549804">WhatsApp</a></li><li><a href="mailto:info@venditaorologiusati.it">info@venditaorologiusati.it</a></li><li><a href="Richiesta.dc.html?via=parla">Passa in negozio a Medicina (BO)</a></li><li><a href="Richiesta.dc.html?via=parla">Visita a Bologna</a></li></ul></div>
 <div class="foot-brands"><p class="foot-k">I 19 marchi che valuta</p><p class="foot-blist"><a href="Rolex.dc.html">Rolex</a><a href="Omega.dc.html">Omega</a><a href="Cartier.dc.html">Cartier</a><a href="Main.dc.html#tudor">Tudor</a><a href="Main.dc.html#tag-heuer">TAG Heuer</a><a href="Main.dc.html#breitling">Breitling</a><a href="Main.dc.html#iwc">IWC</a><a href="Main.dc.html#jaeger-lecoultre">Jaeger-LeCoultre</a><a href="Main.dc.html#zenith">Zenith</a><a href="Main.dc.html#longines">Longines</a><a href="Main.dc.html#bulgari">Bulgari</a><a href="Main.dc.html#franck-muller">Franck Muller</a><a href="Main.dc.html#baume-mercier">Baume &amp; Mercier</a><a href="Main.dc.html#oris">Oris</a><a href="Main.dc.html#hamilton">Hamilton</a><a href="Main.dc.html#seiko">Seiko</a><a href="Main.dc.html#mido">Mido</a><a href="Main.dc.html#eberhard">Eberhard</a><a href="Main.dc.html#maurice-lacroix">Maurice Lacroix</a></p></div>
 </div>
 <div class="foot-mark">

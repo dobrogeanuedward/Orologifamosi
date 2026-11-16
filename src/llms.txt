@@ -19,6 +19,7 @@
 - [Vendi il tuo Omega usato]({{SITE}}/vendi-omega/): Speedmaster e Seamaster.
 - [Vendi il tuo Cartier usato]({{SITE}}/vendi-cartier/): Santos, Tank, Panthère.
 - [Chi è Salvatore Agresta]({{SITE}}/vendi-orologio/salvatore-agresta/): la storia e come lavora.
+- [Contatti]({{SITE}}/vendi-orologio/contatti/): WhatsApp e telefono 379 154 9804, email, negozio di Medicina (BO) e sede riservata di Bologna su appuntamento.
 - [Richiedi una valutazione]({{SITE}}/vendi-orologio/richiesta/): scheda guidata, solo foto, oppure contatto diretto.
 
 ## Come funziona

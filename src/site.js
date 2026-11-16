@@ -17,6 +17,8 @@ export const LINKS = {
   RichiestaMobile: '/vendi-orologio/richiesta/',
   Salvatore: '/vendi-orologio/salvatore-agresta/',
   SalvatoreMobile: '/vendi-orologio/salvatore-agresta/',
+  Contatti: '/vendi-orologio/contatti/',
+  ContattiMobile: '/vendi-orologio/contatti/',
 };
 
 export const PAGES = [
@@ -25,6 +27,7 @@ export const PAGES = [
   { id: 'omega', file: 'Omega.dc.html', route: LINKS.Omega, name: 'Landing Omega', landing: true, kind: 'landing', brand: 'Omega', priority: 0.9, ogImage: 'media/omega-seamaster-poster.jpg' },
   { id: 'cartier', file: 'Cartier.dc.html', route: LINKS.Cartier, name: 'Landing Cartier', landing: true, kind: 'landing', brand: 'Cartier', priority: 0.9, ogImage: 'media/cartier-film-poster.jpg' },
   { id: 'salvatore', file: 'Salvatore.dc.html', route: LINKS.Salvatore, name: 'Chi è Salvatore', kind: 'about', description: 'Salvatore Agresta guida Orologi Famosi a Medicina (BO): una famiglia di gioiellieri, trent’anni di esperienza e ogni orologio valutato di persona.', ogType: 'profile', priority: 0.6 },
+  { id: 'contatti', file: 'Contatti.dc.html', route: LINKS.Contatti, name: 'Contatti', kind: 'contact', title: 'Contatti · Orologi Famosi, Medicina (BO) e Bologna', description: 'Contatti di Orologi Famosi: WhatsApp e telefono 379 154 9804, email info@venditaorologiusati.it, negozio a Medicina (BO) in Via Licurgo Fava 421 e sede riservata a Bologna su appuntamento.', priority: 0.7 },
   // Pagina di servizio: la richiesta non va nei risultati di ricerca, ma i link si seguono.
   { id: 'richiesta', file: 'Richiesta.dc.html', route: LINKS.Richiesta, name: 'Richiesta di valutazione', kind: 'form', description: 'Richiedi la valutazione del tuo orologio a Orologi Famosi: scheda guidata, solo foto o contatto diretto. Risponde Salvatore Agresta, senza impegno.', index: false },
 ];

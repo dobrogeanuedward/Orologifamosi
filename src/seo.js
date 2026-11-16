@@ -68,7 +68,7 @@ function person() {
 
 export function jsonLd(page, { canonical, title, description, ogImage, faqs }) {
   const web = {
-    '@context': 'https://schema.org', '@type': page.kind === 'about' ? 'AboutPage' : 'WebPage',
+    '@context': 'https://schema.org', '@type': page.kind === 'about' ? 'AboutPage' : page.kind === 'contact' ? 'ContactPage' : 'WebPage',
     '@id': canonical, url: canonical, name: title, description, inLanguage: 'it-IT',
     isPartOf: { '@type': 'WebSite', name: B.name, url: SITE + '/' },
     about: page.kind === 'about' ? { '@id': PERSON_ID } : { '@id': ORG_ID },
