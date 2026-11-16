@@ -159,27 +159,35 @@ function checkVideoSources() {
 }
 
 /**
- * Fine pagina: quando il marchio è quasi tutto in vista si «spegne la luce» e le lettere restano
- * accese di lume. Risalendo, la luce torna. Gli ingranaggi girano solo quando il marchio è visibile.
+ * Finale del piè di pagina: una sola variabile, --lp (0 → 1), segue lo scroll da quando il marchio
+ * entra in vista a quando la pagina finisce. Il CSS la usa per oscurare il resto e accendere il nome.
+ * Gli ingranaggi girano solo mentre il marchio è a schermo.
  */
-function setupLume() {
+function setupFinale() {
   const foot = document.querySelector('.site-foot');
   const mark = document.querySelector('.foot-mark');
-  if (!foot || !mark || !('IntersectionObserver' in window)) return;
-  let timer = 0;
-  const io = new IntersectionObserver((entries) => {
-    for (const e of entries) {
-      mark.classList.toggle('fw-live', e.isIntersecting);
-      if (e.intersectionRatio >= 0.72) {
-        clearTimeout(timer);
-        timer = setTimeout(() => foot.classList.add('is-lume'), 700);
-      } else if (e.intersectionRatio < 0.4) {
-        clearTimeout(timer);
-        foot.classList.remove('is-lume');
-      }
-    }
-  }, { threshold: [0, 0.4, 0.72, 1] });
-  io.observe(mark);
+  const stage = mark && mark.querySelector('.fx-stage');
+  if (!foot || !stage) return;
+  let raf = 0, last = -1;
+  const ease = (t) => t * t * (3 - 2 * t);
+  const update = () => {
+    raf = 0;
+    const r = stage.getBoundingClientRect();
+    const vh = innerHeight;
+    const docEnd = document.documentElement.scrollHeight - vh;
+    const start = scrollY + r.top - vh * 1.85;      // comincia quando compaiono i link del piè di pagina
+    const end = Math.max(start + 1, Math.min(docEnd, scrollY + r.bottom - vh * 0.82));
+    const t = Math.min(1, Math.max(0, (scrollY - start) / (end - start)));
+    const lp = Math.round(ease(t) * 1000) / 1000;
+    if (lp !== last) { last = lp; foot.style.setProperty('--lp', lp); }
+  };
+  const ask = () => { if (!raf) raf = requestAnimationFrame(update); };
+  addEventListener('scroll', ask, { passive: true });
+  addEventListener('resize', ask);
+  update();
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver((es) => { for (const e of es) mark.classList.toggle('fx-live', e.isIntersecting); }).observe(mark);
+  } else mark.classList.add('fx-live');
 }
 
 export function mount(Component, cfg) {
@@ -189,5 +197,5 @@ export function mount(Component, cfg) {
   hydrate(h(Component, {}), root);
   checkVideoSources();
   addEventListener('load', checkVideoSources, { once: true });
-  safe(setupLume);
+  safe(setupFinale);
 }
