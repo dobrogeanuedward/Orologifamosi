@@ -158,6 +158,30 @@ function checkVideoSources() {
   }
 }
 
+/**
+ * Fine pagina: quando il marchio è quasi tutto in vista si «spegne la luce» e le lettere restano
+ * accese di lume. Risalendo, la luce torna. Gli ingranaggi girano solo quando il marchio è visibile.
+ */
+function setupLume() {
+  const foot = document.querySelector('.site-foot');
+  const mark = document.querySelector('.foot-mark');
+  if (!foot || !mark || !('IntersectionObserver' in window)) return;
+  let timer = 0;
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      mark.classList.toggle('fw-live', e.isIntersecting);
+      if (e.intersectionRatio >= 0.72) {
+        clearTimeout(timer);
+        timer = setTimeout(() => foot.classList.add('is-lume'), 700);
+      } else if (e.intersectionRatio < 0.4) {
+        clearTimeout(timer);
+        foot.classList.remove('is-lume');
+      }
+    }
+  }, { threshold: [0, 0.4, 0.72, 1] });
+  io.observe(mark);
+}
+
 export function mount(Component, cfg) {
   if (cfg.landing) rememberSource(cfg);
   if (cfg.page === 'richiesta') window.__ofSubmit = makeSubmit(cfg);
@@ -165,4 +189,5 @@ export function mount(Component, cfg) {
   hydrate(h(Component, {}), root);
   checkVideoSources();
   addEventListener('load', checkVideoSources, { once: true });
+  safe(setupLume);
 }
