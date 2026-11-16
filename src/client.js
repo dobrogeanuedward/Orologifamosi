@@ -172,14 +172,22 @@ function setupFinale() {
   const ease = (t) => t * t * (3 - 2 * t);
   const update = () => {
     raf = 0;
-    const r = stage.getBoundingClientRect();
     const vh = innerHeight;
     const docEnd = document.documentElement.scrollHeight - vh;
-    const start = scrollY + r.top - vh * 1.85;      // comincia quando compaiono i link del piè di pagina
-    const end = Math.max(start + 1, Math.min(docEnd, scrollY + r.bottom - vh * 0.82));
-    const t = Math.min(1, Math.max(0, (scrollY - start) / (end - start)));
-    const lp = Math.round(ease(t) * 1000) / 1000;
+    const m = mark.getBoundingClientRect();          // il contenitore non si trasforma: misure stabili
+    // --lp: buio e luce, rampa lunga (da quando compaiono i link del piè di pagina)
+    const s1 = scrollY + m.top - vh * 1.85;
+    const t1 = Math.min(1, Math.max(0, (scrollY - s1) / Math.max(1, docEnd - s1)));
+    // --rp: salita e ingrandimento, solo mentre il marchio è davvero in vista
+    const s2 = scrollY + m.top - vh;
+    const t2 = Math.min(1, Math.max(0, (scrollY - s2) / Math.max(1, docEnd - s2)));
+    const lp = Math.round(ease(t1) * 1000) / 1000;
+    const rp = Math.round(ease(t2) * 1000) / 1000;
     if (lp !== last) { last = lp; foot.style.setProperty('--lp', lp); }
+    foot.style.setProperty('--rp', rp);
+    // il lampo dal centro accende l'oro appena il marchio affiora; risalendo si spegne e si può rivedere
+    if (rp > 0.12 && !foot.classList.contains('fx-on')) foot.classList.add('fx-on');
+    else if (rp < 0.02 && foot.classList.contains('fx-on')) foot.classList.remove('fx-on');
   };
   const ask = () => { if (!raf) raf = requestAnimationFrame(update); };
   addEventListener('scroll', ask, { passive: true });
