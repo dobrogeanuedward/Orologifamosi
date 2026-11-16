@@ -185,8 +185,11 @@ function setupFinale() {
     const rp = Math.round(ease(t2) * 1000) / 1000;
     if (lp !== last) { last = lp; foot.style.setProperty('--lp', lp); }
     foot.style.setProperty('--rp', rp);
+    // all'inizio il marchio sta piccolissimo al centro dello schermo, poi scende al suo posto crescendo
+    const cy = m.top + stage.offsetTop + stage.offsetHeight / 2;
+    foot.style.setProperty('--ty', Math.round((vh / 2 - cy) * (1 - rp)) + 'px');
     // il lampo dal centro accende l'oro appena il marchio affiora; risalendo si spegne e si può rivedere
-    if (rp > 0.12 && !foot.classList.contains('fx-on')) foot.classList.add('fx-on');
+    if (rp > 0.05 && !foot.classList.contains('fx-on')) foot.classList.add('fx-on');
     else if (rp < 0.02 && foot.classList.contains('fx-on')) foot.classList.remove('fx-on');
   };
   const ask = () => { if (!raf) raf = requestAnimationFrame(update); };

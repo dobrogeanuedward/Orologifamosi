@@ -1204,6 +1204,7 @@ video[data-scrubbg]{display:none !important}
 
 
 
+
 /* finale: il nome emerge dal buio, oro retroilluminato e calibro in controluce (guidato da --lp) */
 @property --ig{syntax:'<number>';inherits:true;initial-value:0}
 .site-foot{--lp:0;--rp:0;--ig:0;transition:--ig 1200ms cubic-bezier(.2,.8,.2,1)}
@@ -1214,7 +1215,7 @@ video[data-scrubbg]{display:none !important}
 .site-foot .foot-grid{opacity:calc(1 - var(--lp) * .82)}
 .site-foot .fc{opacity:calc(1 - var(--lp) * .5)}
 .site-foot .foot-base{opacity:calc(1 - var(--lp) * .55)}
-.fx-stage{position:relative;width:100%;margin-bottom:clamp(8px,1.2vw,18px);transform:translate3d(0,calc((1 - var(--rp,1)) * 16vh),0) scale(calc(.68 + var(--rp,1) * .32));transform-origin:50% 100%;will-change:transform}
+.fx-stage{position:relative;width:70%;margin:0 auto clamp(8px,1.2vw,18px);transform:translate3d(0,var(--ty,0px),0) scale(calc(.14 + var(--rp,1) * .86));transform-origin:50% 50%;will-change:transform}
 .fx-stage .foot-word{margin:0 !important;filter:none !important}
 .fx-l{display:block;width:100%;height:auto;overflow:visible}
 .fx-stage>.fx-l:not(.fx-base){position:absolute;inset:0;height:100%;will-change:opacity}
