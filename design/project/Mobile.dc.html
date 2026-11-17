@@ -61,6 +61,11 @@ input::placeholder{color:#7a7c77}
 .line{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
 .line>span{display:block;animation:rise 1200ms var(--ease) both}
 .line:nth-child(2)>span{animation-delay:110ms}.line:nth-child(3)>span{animation-delay:220ms}
+/* hero: «Salvatore» inciso col bulino e incastonato in ossidiana (vedi setupObsidian in client.js) */
+.sv{position:relative;display:inline-block;transition:color .5s ease}
+.sv.sv-on{color:rgba(255,255,255,.2)}
+.sv.sv-done{color:transparent}
+.sv-svg{position:absolute;pointer-events:none;overflow:visible}
 .in{animation:fade 1000ms var(--ease) both;animation-delay:var(--d,0ms)}
 .frame-in{animation:frameIn 1500ms cubic-bezier(.77,0,.175,1) 150ms both}
 .frame-in video,.frame-in img.settle{animation:settle 2400ms var(--ease) 150ms both}
@@ -1142,7 +1147,7 @@ video[data-scrubbg]{display:none !important}
 <div class="wrap scene-in" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 40px 64px;">
 <div style="flex: 1 1 520px; display: flex; flex-direction: column; gap: 22px; max-width: 780px;">
 <p class="eyebrow in"><span>Compriamo orologi usati da privati</span><span>Medicina (BO) e Bologna</span></p>
-<h1 id="hero-title" class="serif" style="margin: 0; font-size: clamp(64px, 8.6vw, 140px); line-height: .94; letter-spacing: -.02em; color: #ffffff;"><span class="line"><span>Vendi il tuo orologio</span></span><span class="line"><span>a Salvatore</span></span></h1>
+<h1 id="hero-title" class="serif" style="margin: 0; font-size: clamp(52px, 6.4vw, 104px); line-height: .94; letter-spacing: -.02em; color: #ffffff;"><span class="line"><span>Vendi il tuo orologio</span></span><span class="line"><span>a <span class="sv">Salvatore</span></span></span></h1>
 <p class="in" style="--d: 380ms; margin: 0; max-width: 42ch; font-size: clamp(18px, 1.5vw, 21px); color: #efe7d8;">Rolex, Omega, Cartier e altri 16 marchi: Salvatore li valuta di persona, nel negozio di Medicina (BO) o nella sede di Bologna. Per cominciare ti bastano qualche foto e due minuti. La valutazione è gratuita e, se vendi, il pagamento è immediato.</p>
 </div>
 <div class="in card" id="valutazione" style="--d: 520ms; flex: 0 1 440px;">

@@ -247,6 +247,125 @@ function setupFinale() {
   io.observe(bu);
 }
 
+// «Salvatore» nel titolo della home: il bulino incide il nome e lo incastona in ossidiana.
+// Il testo vero resta nella pagina (per chi legge e per Google); il disegno è solo decorazione.
+const SV_GLYPHS = {"upm":1000,"g":{"S":["M235 10Q196 10 159 -2Q122 -14 119 -14Q96 -14 84 28H62L46 -224L68 -230Q117 -25 242 -25Q297 -25 332 -59Q367 -93 367 -146Q367 -195 334.5 -234.5Q302 -274 256 -303.5Q210 -333 164 -364Q118 -395 85.5 -442Q53 -489 53 -549Q53 -635 109.5 -692.5Q166 -750 248 -750Q276 -750 305 -742Q334 -734 338 -734Q361 -734 368 -770L390 -772L412 -537L390 -531Q338 -715 235 -715Q193 -715 164 -680Q135 -645 135 -595Q135 -554 158 -520Q181 -486 215.5 -463.5Q250 -441 290.5 -413Q331 -385 365.5 -358Q400 -331 423 -287.5Q446 -244 446 -190Q446 -101 387 -45.5Q328 10 235 10Z"],"a":["M449 0H282V-58Q194 10 130 10Q77 10 50.5 -24Q24 -58 24 -102Q24 -147 56.5 -174.5Q89 -202 171 -229L282 -266V-374Q282 -452 263.5 -487Q245 -522 204 -522Q176 -522 162.5 -508Q149 -494 146 -474Q143 -454 140.5 -433.5Q138 -413 126.5 -399Q115 -385 90 -385Q64 -385 51.5 -398Q39 -411 39 -429Q39 -473 104.5 -511.5Q170 -550 241 -550Q374 -550 374 -401V-132Q374 -54 384.5 -39Q395 -24 449 -19Z","M178 -43Q212 -43 244.5 -65.5Q277 -88 282 -132V-231L207 -207Q158 -191 138 -168Q118 -145 118 -113Q118 -84 133 -63.5Q148 -43 178 -43Z"],"l":["M264 -19V0H4V-19Q28 -21 38.5 -22Q49 -23 61 -28Q73 -33 76.5 -38Q80 -43 84 -58Q88 -73 88 -87.5Q88 -102 88 -132V-647Q88 -693 69 -706Q50 -719 -6 -719V-738Q50 -738 89.5 -754.5Q129 -771 172 -808L180 -803V-132Q180 -91 182 -71Q184 -51 196 -39Q208 -27 220 -24.5Q232 -22 264 -19Z"],"v":["M432 -433 274 15H250L80 -440Q62 -488 49.5 -499Q37 -510 6 -511V-530Q76 -526 117 -526Q157 -526 235 -530V-511Q198 -510 185 -505.5Q172 -501 172 -485Q172 -473 187 -426L290 -115L379 -388Q402 -457 402 -480Q402 -499 388.5 -504.5Q375 -510 338 -511V-530Q398 -526 425 -526Q457 -526 505 -530V-511Q472 -510 461.5 -498.5Q451 -487 432 -433Z"],"t":["M296 -67 307 -49Q257 10 187 10Q138 10 108 -19Q78 -48 78 -99V-499L17 -509V-530Q73 -530 109 -562.5Q145 -595 151 -650H170V-544L292 -530V-509L170 -497V-113Q170 -34 225 -34Q263 -34 296 -67Z"],"o":["M273 -550Q378 -550 435.5 -479.5Q493 -409 493 -284Q493 -151 429 -70.5Q365 10 260 10Q153 10 96.5 -60Q40 -130 40 -255Q40 -389 103.5 -469.5Q167 -550 273 -550Z","M277 -16Q328 -16 359.5 -70.5Q391 -125 391 -235Q391 -313 377.5 -376Q364 -439 332 -481.5Q300 -524 253 -524Q145 -524 145 -307Q145 -182 178 -99Q211 -16 277 -16Z"],"r":["M300 -19V0H19V-19Q43 -21 53.5 -22Q64 -23 76 -28Q88 -33 91.5 -38Q95 -43 99 -58Q103 -73 103 -87.5Q103 -102 103 -132V-389Q103 -435 84 -448Q65 -461 9 -461V-480Q66 -480 104.5 -496.5Q143 -513 177 -550L195 -545V-459Q264 -550 333 -550Q366 -550 387 -535Q408 -520 408 -495Q408 -474 394.5 -458Q381 -442 359 -442Q337 -442 318.5 -468Q300 -494 282 -494Q246 -494 220.5 -443Q195 -392 195 -298V-132Q195 -54 209 -39Q223 -24 300 -19Z"],"e":["M245 10Q158 10 99 -60Q40 -130 40 -257Q40 -384 99 -467Q158 -550 257 -550Q328 -550 378.5 -501.5Q429 -453 429 -344L138 -314Q139 -203 179.5 -125Q220 -47 289 -47Q359 -47 431 -122L443 -106Q347 10 245 10Z","M244 -521Q200 -521 173 -477.5Q146 -434 140 -361H334Q327 -521 244 -521Z"]}};
+function setupObsidian() {
+  const sv = document.querySelector('#hero-title .sv');
+  if (!sv || sv.dataset.sv) return;
+  sv.dataset.sv = '1';
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const clamp = (v) => (v < 0 ? 0 : v > 1 ? 1 : v);
+  const io3 = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+  const out3 = (t) => 1 - Math.pow(1 - t, 3);
+  const U = SV_GLYPHS.upm, A = 1150, D = 420, P = 160;
+
+  const build = () => {
+    const text = sv.firstChild;
+    if (!text || text.nodeType !== 3) return null;
+    const k = parseFloat(getComputedStyle(sv).fontSize) / U;
+    const r0 = sv.getBoundingClientRect();
+    if (!r0.width) return null;
+    const probe = document.createElement('i');
+    probe.style.cssText = 'display:inline-block;width:0;height:0;vertical-align:baseline';
+    sv.appendChild(probe);
+    const base = (probe.getBoundingClientRect().top - r0.top) / k;
+    probe.remove();
+    const rg = document.createRange();
+    const placed = [];
+    for (let i = 0; i < text.data.length; i++) {
+      const subs = SV_GLYPHS.g[text.data[i]];
+      if (!subs) continue;
+      rg.setStart(text, i); rg.setEnd(text, i + 1);
+      placed.push({ x: (rg.getBoundingClientRect().left - r0.left) / k, subs });
+    }
+    const W = r0.width / k, VW = (W + 2 * P).toFixed(1);
+    const at = (x) => `transform="translate(${x.toFixed(1)} 0)"`;
+    const whole = placed.map((p) => `<path ${at(p.x)} d="${p.subs.join('')}"/>`).join('');
+    const cuts = placed.map((p) => p.subs.map((d) => `<path class="sv-l" pathLength="1" ${at(p.x)} d="${d}"/>`).join('')).join('');
+    const svg = `<svg class="sv-svg" aria-hidden="true" viewBox="${-P} ${-A} ${VW} ${A + D}" style="left:${(-P / U).toFixed(4)}em;top:${((base - A) / U).toFixed(4)}em;width:${(VW / U).toFixed(4)}em;height:${((A + D) / U).toFixed(4)}em">
+<defs>
+<clipPath id="sv-c">${whole}</clipPath>
+<linearGradient id="sv-ob" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#343a4a"/><stop offset=".3" stop-color="#11141c"/><stop offset=".56" stop-color="#030305"/><stop offset=".82" stop-color="#090b11"/><stop offset="1" stop-color="#20263a"/></linearGradient>
+<linearGradient id="sv-gl" x1="0" y1="0" x2="0" y2="1"><stop offset=".3" stop-color="#fff" stop-opacity="0"/><stop offset=".355" stop-color="#fff" stop-opacity=".52"/><stop offset=".38" stop-color="#fff" stop-opacity=".06"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<linearGradient id="sv-ir" gradientUnits="userSpaceOnUse" x1="-520" y1="0" x2="0" y2="-260" gradientTransform="translate(-900 0)"><stop offset=".15" stop-color="#6d55ff" stop-opacity="0"/><stop offset=".33" stop-color="#7a5cff" stop-opacity=".55"/><stop offset=".5" stop-color="#ffd38a" stop-opacity=".78"/><stop offset=".67" stop-color="#4fdccc" stop-opacity=".5"/><stop offset=".85" stop-color="#4fdccc" stop-opacity="0"/></linearGradient>
+<radialGradient id="sv-sp"><stop offset="0" stop-color="#fff"/><stop offset=".22" stop-color="#fff4da" stop-opacity=".95"/><stop offset=".5" stop-color="#ffc861" stop-opacity=".38"/><stop offset="1" stop-color="#ffc861" stop-opacity="0"/></radialGradient>
+</defs>
+<g class="sv-fill" clip-path="url(#sv-c)" opacity="0">
+<rect x="${-P}" y="-760" width="${VW}" height="1010" fill="url(#sv-ob)"/>
+<rect x="${-P}" y="-760" width="${VW}" height="1010" fill="url(#sv-gl)"/>
+<rect class="sv-irr" x="${-P}" y="${-A}" width="${VW}" height="${A + D}" fill="url(#sv-ir)"/>
+<g fill="none" stroke="#fff" stroke-opacity=".72" stroke-width="22" transform="translate(-10 -14)">${whole}</g>
+<g fill="none" stroke="#000" stroke-opacity=".7" stroke-width="18" transform="translate(9 13)">${whole}</g>
+</g>
+<g class="sv-cut" fill="none" stroke="#eef2fa" stroke-linejoin="round" stroke-dasharray="1" stroke-dashoffset="1">${cuts}</g>
+<g class="sv-spark" opacity="0" transform="translate(-999 -999)"><ellipse rx="340" ry="9" fill="url(#sv-sp)"/><ellipse rx="9" ry="120" fill="url(#sv-sp)" opacity=".7"/><circle r="120" fill="url(#sv-sp)"/><circle r="14" fill="#fff"/></g>
+</svg>`;
+    sv.insertAdjacentHTML('beforeend', svg);
+    const el = sv.lastElementChild;
+    const cut = el.querySelector('.sv-cut');
+    const setW = () => cut.setAttribute('stroke-width', ((innerWidth < 700 ? 1.4 : 2.3) * U / parseFloat(getComputedStyle(sv).fontSize)).toFixed(1));
+    setW(); addEventListener('resize', setW, { passive: true });
+    return { el, xs: placed.flatMap((p) => p.subs.map(() => p.x)) };
+  };
+
+  const run = () => {
+    const b = build();
+    if (!b) return;
+    const { el, xs } = b;
+    const lines = [...el.querySelectorAll('.sv-l')];
+    const fill = el.querySelector('.sv-fill'), spark = el.querySelector('.sv-spark');
+    const ir = el.querySelector('#sv-ir'), irr = el.querySelector('.sv-irr');
+    const vbW = el.viewBox.baseVal.width;
+    const setIr = (x) => ir.setAttribute('gradientTransform', `translate(${x.toFixed(0)} 0)`);
+    const done = () => {
+      lines.forEach((l) => { l.style.strokeDashoffset = '0'; });
+      fill.setAttribute('opacity', '1'); spark.setAttribute('opacity', '0');
+      sv.classList.add('sv-on', 'sv-done');
+      // a riposo resta una velatura iridescente, come l'ossidiana arcobaleno
+      const park = vbW * 0.62;
+      irr.setAttribute('opacity', '.5'); setIr(park);
+      if (still || !fine) return;
+      // a lavoro finito, il lampo iridescente segue il puntatore sul titolo
+      const h1 = document.getElementById('hero-title');
+      let rx = park, tx = park, loop = 0;
+      const tick = () => { loop = 0; rx += (tx - rx) * 0.12; setIr(rx); if (Math.abs(tx - rx) > 1) loop = requestAnimationFrame(tick); };
+      const go = () => { if (!loop) loop = requestAnimationFrame(tick); };
+      h1.addEventListener('pointermove', (e) => { const r = el.getBoundingClientRect(); tx = ((e.clientX - r.left) / r.width) * vbW + 120; go(); }, { passive: true });
+      h1.addEventListener('pointerleave', () => { tx = park; go(); }, { passive: true });
+    };
+    if (still) { done(); return; }
+    const line = sv.closest('.line');
+    if (line) line.style.overflow = 'visible';
+    sv.classList.add('sv-on');
+    const lens = lines.map((l) => l.getTotalLength());
+    const total = lens.reduce((a, c) => a + c, 0) || 1;
+    const cum = []; lens.reduce((a, c, i) => (cum[i] = a) + c, 0);
+    const T = 1800, F0 = 1500, TF = 1000;
+    let t0 = 0;
+    const frame = (now) => {
+      if (!t0) t0 = now;
+      const t = now - t0, c = io3(clamp(t / T)) * total;
+      let tip = -1, tl = 0;
+      for (let i = 0; i < lines.length; i++) {
+        const kk = clamp((c - cum[i]) / lens[i]), v = (1 - kk).toFixed(4);
+        if (lines[i].__v !== v) { lines[i].__v = v; lines[i].style.strokeDashoffset = v; }
+        if (kk > 0 && kk < 1) { tip = i; tl = kk * lens[i]; }
+      }
+      if (tip >= 0) { const pt = lines[tip].getPointAtLength(tl); spark.setAttribute('transform', `translate(${(pt.x + xs[tip]).toFixed(1)} ${pt.y.toFixed(1)})`); }
+      spark.setAttribute('opacity', (t < T ? clamp(t / 160) : clamp(1 - (t - T) / 320)).toFixed(3));
+      const f = clamp((t - F0) / TF);
+      fill.setAttribute('opacity', out3(f).toFixed(3));
+      setIr(-900 + io3(f) * (vbW + 1700));
+      if (t < Math.max(T + 340, F0 + TF)) requestAnimationFrame(frame); else done();
+    };
+    requestAnimationFrame(frame);
+  };
+  const ready = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+  ready.then(() => setTimeout(run, still ? 0 : 1250));
+}
+
 export function mount(Component, cfg) {
   if (cfg.landing) rememberSource(cfg);
   if (cfg.page === 'richiesta') window.__ofSubmit = makeSubmit(cfg);
@@ -255,4 +374,5 @@ export function mount(Component, cfg) {
   checkVideoSources();
   addEventListener('load', checkVideoSources, { once: true });
   safe(setupFinale);
+  safe(setupObsidian);
 }
