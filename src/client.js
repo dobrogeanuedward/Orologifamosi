@@ -159,46 +159,63 @@ function checkVideoSources() {
 }
 
 /**
- * Finale del piè di pagina: una sola variabile, --lp (0 → 1), segue lo scroll da quando il marchio
- * entra in vista a quando la pagina finisce. Il CSS la usa per oscurare il resto e accendere il nome.
- * Gli ingranaggi girano solo mentre il marchio è a schermo.
+ * Finale del piè di pagina, versione leggera: lo scroll muove pochi valori scritti direttamente
+ * (trasformazione del marchio, opacità di tre blocchi, --lp/--ig sul solo contenitore del marchio).
+ * Il riflesso oro-azzurro segue il puntatore (desktop) o lo scroll (telefono), smorzato.
  */
 function setupFinale() {
   const foot = document.querySelector('.site-foot');
   const mark = document.querySelector('.foot-mark');
   const stage = mark && mark.querySelector('.fx-stage');
   if (!foot || !stage) return;
-  let raf = 0, last = -1;
+  const grid = foot.querySelector('.foot-grid'), fc = foot.querySelector('.fc'), base = foot.querySelector('.foot-base');
+  const refl = stage.querySelector('#fz-refl');
+  const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const ease = (t) => t * t * (3 - 2 * t);
+  let raf = 0, on = false, live = false, rp = 1, px = 0.5, rx = 0.5, loop = 0;
+
   const update = () => {
     raf = 0;
     const vh = innerHeight;
     const docEnd = document.documentElement.scrollHeight - vh;
-    const m = mark.getBoundingClientRect();          // il contenitore non si trasforma: misure stabili
-    // --lp: buio e luce, rampa lunga (da quando compaiono i link del piè di pagina)
+    const m = mark.getBoundingClientRect();
     const s1 = scrollY + m.top - vh * 1.85;
-    const t1 = Math.min(1, Math.max(0, (scrollY - s1) / Math.max(1, docEnd - s1)));
-    // --rp: salita e ingrandimento, solo mentre il marchio è davvero in vista
     const s2 = scrollY + m.top - vh;
-    const t2 = Math.min(1, Math.max(0, (scrollY - s2) / Math.max(1, docEnd - s2)));
-    const lp = Math.round(ease(t1) * 1000) / 1000;
-    const rp = Math.round(ease(t2) * 1000) / 1000;
-    if (lp !== last) { last = lp; foot.style.setProperty('--lp', lp); }
-    foot.style.setProperty('--rp', rp);
-    // all'inizio il marchio sta piccolissimo al centro dello schermo, poi scende al suo posto crescendo
-    const cy = m.top + stage.offsetTop + stage.offsetHeight / 2;
-    foot.style.setProperty('--ty', Math.round((vh / 2 - cy) * (1 - rp)) + 'px');
-    // il lampo dal centro accende l'oro appena il marchio affiora; risalendo si spegne e si può rivedere
-    if (rp > 0.05 && !foot.classList.contains('fx-on')) foot.classList.add('fx-on');
-    else if (rp < 0.02 && foot.classList.contains('fx-on')) foot.classList.remove('fx-on');
+    const lp = ease(Math.min(1, Math.max(0, (scrollY - s1) / Math.max(1, docEnd - s1))));
+    rp = ease(Math.min(1, Math.max(0, (scrollY - s2) / Math.max(1, docEnd - s2))));
+    mark.style.setProperty('--lp', lp.toFixed(3));
+    if (grid) grid.style.opacity = (1 - lp * 0.82).toFixed(3);
+    if (fc) fc.style.opacity = (1 - lp * 0.5).toFixed(3);
+    if (base) base.style.opacity = (1 - lp * 0.55).toFixed(3);
+    if (!still) {
+      const cy = m.top + stage.offsetTop + stage.offsetHeight / 2;
+      const ty = (vh / 2 - cy) * (1 - rp);
+      stage.style.transform = `translate3d(0,${ty.toFixed(1)}px,0) scale(${(0.14 + rp * 0.86).toFixed(4)})`;
+    }
+    if (rp > 0.05 && !on) { on = true; mark.style.setProperty('--ig', 1); stage.classList.add('fx-on'); }
+    else if (rp < 0.02 && on) { on = false; mark.style.setProperty('--ig', 0); stage.classList.remove('fx-on'); }
   };
   const ask = () => { if (!raf) raf = requestAnimationFrame(update); };
   addEventListener('scroll', ask, { passive: true });
   addEventListener('resize', ask);
   update();
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver((es) => { for (const e of es) mark.classList.toggle('fx-live', e.isIntersecting); }).observe(mark);
-  } else mark.classList.add('fx-live');
+
+  // riflesso: si muove solo quando serve (puntatore o scroll) e si ferma appena arriva
+  const tick = () => {
+    loop = 0;
+    if (!live || !refl) return;
+    const target = fine ? px : 0.1 + rp * 0.8;
+    rx += (target - rx) * 0.12;
+    refl.setAttribute('gradientTransform', `translate(${(rx * 1400 - 200).toFixed(1)} 0)`);
+    if (Math.abs(target - rx) > 0.002) loop = requestAnimationFrame(tick);
+  };
+  const nudge = () => { if (live && !loop && !still) loop = requestAnimationFrame(tick); };
+  if (fine) stage.addEventListener('pointermove', (e) => { const r = stage.getBoundingClientRect(); px = (e.clientX - r.left) / r.width; nudge(); }, { passive: true });
+  addEventListener('scroll', nudge, { passive: true });
+  const watch = (vis) => { live = vis; mark.classList.toggle('fx-live', vis); nudge(); };
+  if ('IntersectionObserver' in window) new IntersectionObserver((es) => es.forEach((e) => watch(e.isIntersecting))).observe(mark);
+  else watch(true);
 }
 
 export function mount(Component, cfg) {
