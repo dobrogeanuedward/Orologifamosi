@@ -164,58 +164,87 @@ function checkVideoSources() {
  * Il riflesso oro-azzurro segue il puntatore (desktop) o lo scroll (telefono), smorzato.
  */
 function setupFinale() {
-  const foot = document.querySelector('.site-foot');
-  const mark = document.querySelector('.foot-mark');
-  const stage = mark && mark.querySelector('.fx-stage');
-  if (!foot || !stage) return;
-  const grid = foot.querySelector('.foot-grid'), fc = foot.querySelector('.fc'), base = foot.querySelector('.foot-base');
-  const refl = stage.querySelector('#fz-refl');
-  const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  // «Il bulino»: il nome si incide davanti a chi guarda, una volta, quando è visibile per metà.
+  // Niente spostamenti né ingrandimenti: il finale resta al suo posto e non copre nulla.
+  const bu = document.querySelector('.foot-mark .bu');
+  if (!bu) return;
+  const lines = [...bu.querySelectorAll('.bu-l')];
+  const fill = bu.querySelector('.bu-fill');
+  const spark = bu.querySelector('.bu-spark');
+  const sweep = bu.querySelector('#bu-sweep');
   const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const ease = (t) => t * t * (3 - 2 * t);
-  let raf = 0, on = false, live = false, rp = 1, px = 0.5, rx = 0.5, loop = 0;
-
-  const update = () => {
-    raf = 0;
-    const vh = innerHeight;
-    const docEnd = document.documentElement.scrollHeight - vh;
-    const m = mark.getBoundingClientRect();
-    const s1 = scrollY + m.top - vh * 1.85;
-    const s2 = scrollY + m.top - vh;
-    const lp = ease(Math.min(1, Math.max(0, (scrollY - s1) / Math.max(1, docEnd - s1))));
-    rp = ease(Math.min(1, Math.max(0, (scrollY - s2) / Math.max(1, docEnd - s2))));
-    mark.style.setProperty('--lp', lp.toFixed(3));
-    if (grid) grid.style.opacity = (1 - lp * 0.82).toFixed(3);
-    if (fc) fc.style.opacity = (1 - lp * 0.5).toFixed(3);
-    if (base) base.style.opacity = (1 - lp * 0.55).toFixed(3);
-    if (!still) {
-      const cy = m.top + stage.offsetTop + stage.offsetHeight / 2;
-      const ty = (vh / 2 - cy) * (1 - rp);
-      stage.style.transform = `translate3d(0,${ty.toFixed(1)}px,0) scale(${(0.14 + rp * 0.86).toFixed(4)})`;
-    }
-    if (rp > 0.05 && !on) { on = true; mark.style.setProperty('--ig', 1); stage.classList.add('fx-on'); }
-    else if (rp < 0.02 && on) { on = false; mark.style.setProperty('--ig', 0); stage.classList.remove('fx-on'); }
+  const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const clamp = (v) => (v < 0 ? 0 : v > 1 ? 1 : v);
+  const io3 = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+  const out3 = (t) => 1 - Math.pow(1 - t, 3);
+  const setSweep = (x) => sweep && sweep.setAttribute('gradientTransform', `translate(${x.toFixed(1)} 0)`);
+  const finish = () => {
+    lines.forEach((l) => { l.style.strokeDashoffset = '0'; });
+    fill.style.opacity = '1';
+    spark.style.opacity = '0';
+    bu.classList.add('is-done');
+    setSweep(-600);
+    follow();
   };
-  const ask = () => { if (!raf) raf = requestAnimationFrame(update); };
-  addEventListener('scroll', ask, { passive: true });
-  addEventListener('resize', ask);
-  update();
 
-  // riflesso: si muove solo quando serve (puntatore o scroll) e si ferma appena arriva
+  // dopo l'incisione il riflesso segue il puntatore (computer) o lo scroll (telefono), solo quando serve
+  let rx = 0, tx = 0, loop = 0;
   const tick = () => {
     loop = 0;
-    if (!live || !refl) return;
-    const target = fine ? px : 0.1 + rp * 0.8;
-    rx += (target - rx) * 0.12;
-    refl.setAttribute('gradientTransform', `translate(${(rx * 1400 - 200).toFixed(1)} 0)`);
-    if (Math.abs(target - rx) > 0.002) loop = requestAnimationFrame(tick);
+    rx += (tx - rx) * 0.1;
+    setSweep(rx * 1500 - 300);
+    if (Math.abs(tx - rx) > 0.001) loop = requestAnimationFrame(tick);
   };
-  const nudge = () => { if (live && !loop && !still) loop = requestAnimationFrame(tick); };
-  if (fine) stage.addEventListener('pointermove', (e) => { const r = stage.getBoundingClientRect(); px = (e.clientX - r.left) / r.width; nudge(); }, { passive: true });
-  addEventListener('scroll', nudge, { passive: true });
-  const watch = (vis) => { live = vis; mark.classList.toggle('fx-live', vis); nudge(); };
-  if ('IntersectionObserver' in window) new IntersectionObserver((es) => es.forEach((e) => watch(e.isIntersecting))).observe(mark);
-  else watch(true);
+  const nudge = () => { if (!loop) loop = requestAnimationFrame(tick); };
+  function follow() {
+    if (still) return;
+    rx = tx = 0.5;
+    if (fine) {
+      bu.addEventListener('pointermove', (e) => { const r = bu.getBoundingClientRect(); tx = (e.clientX - r.left) / r.width; nudge(); }, { passive: true });
+      bu.addEventListener('pointerleave', () => { tx = -0.3; nudge(); }, { passive: true });
+      tx = -0.3; nudge();
+    } else {
+      addEventListener('scroll', () => {
+        const r = bu.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > innerHeight) return;
+        tx = 1.15 - (r.top + r.height / 2) / innerHeight; nudge();
+      }, { passive: true });
+    }
+  }
+
+  if (still || !('IntersectionObserver' in window)) { finish(); return; }
+
+  const lens = lines.map((l) => l.getTotalLength());
+  const total = lens.reduce((a, b) => a + b, 0) || 1;
+  const cum = []; lens.reduce((a, b, i) => (cum[i] = a) + b, 0);
+  const T_CUT = 2700, F0 = 2250, TF = 1150;
+  let t0 = 0;
+  const frame = (now) => {
+    if (!t0) t0 = now;
+    const t = now - t0;
+    const c = io3(clamp(t / T_CUT)) * total;
+    let tip = -1, tipLen = 0;
+    for (let i = 0; i < lines.length; i++) {
+      const k = clamp((c - cum[i]) / lens[i]);
+      const v = (1 - k).toFixed(4);
+      if (lines[i].__v !== v) { lines[i].__v = v; lines[i].style.strokeDashoffset = v; }
+      if (k > 0 && k < 1) { tip = i; tipLen = k * lens[i]; }
+    }
+    if (tip >= 0) {
+      const pt = lines[tip].getPointAtLength(tipLen);
+      spark.setAttribute('transform', `translate(${pt.x.toFixed(1)} ${pt.y.toFixed(1)})`);
+    }
+    spark.style.opacity = (t < T_CUT ? clamp(t / 180) : clamp(1 - (t - T_CUT) / 380)).toFixed(3);
+    const f = clamp((t - F0) / TF);
+    fill.style.opacity = out3(f).toFixed(3);
+    setSweep(-400 + io3(f) * 1800);
+    if (t < Math.max(T_CUT + 400, F0 + TF)) requestAnimationFrame(frame);
+    else finish();
+  };
+  const io = new IntersectionObserver((es) => {
+    if (es.some((e) => e.isIntersecting)) { io.disconnect(); requestAnimationFrame(frame); }
+  }, { threshold: 0.55 });
+  io.observe(bu);
 }
 
 export function mount(Component, cfg) {
