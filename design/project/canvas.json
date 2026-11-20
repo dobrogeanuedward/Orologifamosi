@@ -1,1 +1,190 @@
-{"v": 3, "attachments": {}, "boards": {"Artboard-mem0.dc.html": {"h": 600, "page": "page-zhk2ny", "title": "Artboard 1", "w": 800, "x": 0, "y": 0}, "Cartier.dc.html": {"expand": "fill", "h": 9000, "is_interactive": true, "title": "Landing Cartier · la forma", "w": 1440, "x": 6080, "y": 0}, "Main.dc.html": {"expand": "fill", "h": 9300, "is_interactive": true, "title": "Landing generale · /vendi-orologio/ · desktop", "w": 1440, "x": 0, "y": 0}, "Mobile.dc.html": {"h": 8600, "is_interactive": true, "title": "Landing generale · mobile 390", "w": 390, "x": 7600, "y": 0}, "Omega.dc.html": {"expand": "fill", "h": 9000, "is_interactive": true, "title": "Landing Omega · il quadrante", "w": 1440, "x": 4560, "y": 0}, "Richiesta.dc.html": {"expand": "fill", "h": 1800, "is_interactive": true, "title": "Richiesta · tre ingressi, scheda aperta, banco fotografico", "w": 1440, "x": 1520, "y": 0}, "RichiestaMobile.dc.html": {"h": 2400, "is_interactive": true, "title": "Richiesta · mobile 390", "w": 390, "x": 8540, "y": 0}, "Rolex.dc.html": {"expand": "fill", "h": 9000, "is_interactive": true, "title": "Landing Rolex · il registro delle referenze", "w": 1440, "x": 3040, "y": 0}, "RolexMobile.dc.html": {"h": 8000, "is_interactive": true, "title": "Landing Rolex · mobile 390", "w": 390, "x": 8070, "y": 0}, "Salvatore.dc.html": {"expand": "fill", "h": 6200, "is_interactive": true, "title": "Chi è Salvatore · desktop", "w": 1440, "x": 9010, "y": 0}, "SalvatoreMobile.dc.html": {"h": 7400, "is_interactive": true, "title": "Chi è Salvatore · mobile 390", "w": 390, "x": 10530, "y": 0}, "StudioVideo.dc.html": {"expand": "fill", "h": 9600, "is_interactive": true, "page": "studio-video", "title": "Studio video · clip da Instagram, posto per posto", "w": 1440, "x": 0, "y": 0}, "Cursore.dc.html": {"x": 0, "y": 0, "w": 1280, "h": 820, "page": "prove", "title": "Prova · cursore che accompagna la freccia", "is_interactive": true}, "Contatti.dc.html": {"expand": "fill", "h": 4200, "is_interactive": true, "title": "Contatti · desktop", "w": 1440, "x": 11000, "y": 0}, "ContattiMobile.dc.html": {"h": 5200, "is_interactive": true, "title": "Contatti · mobile 390", "w": 390, "x": 12520, "y": 0}}, "createdOnFiles": {"at": "2026-11-02T20:05:00Z", "v": 1}, "designSystems": [], "launch": {"view": "canvas"}, "notes": {"t1": {"kind": "title1", "maxW": 8000, "text": "Orologi Famosi · servizio acquisto da privati — il cinema sullo sfondo, la vendita davanti", "w": 240, "x": 0, "y": -320}}, "order": ["Main.dc.html", "Richiesta.dc.html", "Rolex.dc.html", "Omega.dc.html", "Cartier.dc.html", "Mobile.dc.html", "RolexMobile.dc.html", "RichiestaMobile.dc.html", "Salvatore.dc.html", "SalvatoreMobile.dc.html", "Contatti.dc.html", "ContattiMobile.dc.html", "Artboard-mem0.dc.html", "StudioVideo.dc.html", "Cursore.dc.html"], "pages": [{"id": "page-1", "name": "Page 1"}, {"id": "page-zhk2ny", "name": "Page 2"}, {"id": "studio-video", "name": "Studio video"}, {"id": "prove", "name": "Prove"}], "title": "Orologi Famosi — Acquisto da privati"}
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "Artboard-mem0.dc.html": {
+      "h": 600,
+      "page": "page-zhk2ny",
+      "title": "Artboard 1",
+      "w": 800,
+      "x": 0,
+      "y": 0
+    },
+    "Cartier.dc.html": {
+      "expand": "fill",
+      "h": 8000,
+      "is_interactive": true,
+      "title": "Landing Cartier · la forma",
+      "w": 1440,
+      "x": 6080,
+      "y": 0
+    },
+    "Contatti.dc.html": {
+      "expand": "fill",
+      "h": 4200,
+      "is_interactive": true,
+      "title": "Contatti · desktop",
+      "w": 1440,
+      "x": 11000,
+      "y": 0
+    },
+    "ContattiMobile.dc.html": {
+      "h": 5200,
+      "is_interactive": true,
+      "title": "Contatti · mobile 390",
+      "w": 390,
+      "x": 12520,
+      "y": 0
+    },
+    "Cursore.dc.html": {
+      "h": 820,
+      "is_interactive": true,
+      "page": "prove",
+      "title": "Prova · cursore che accompagna la freccia",
+      "w": 1280,
+      "x": 0,
+      "y": 0
+    },
+    "Main.dc.html": {
+      "expand": "fill",
+      "h": 8000,
+      "is_interactive": true,
+      "title": "Landing generale · /vendi-orologio/ · desktop",
+      "w": 1440,
+      "x": 0,
+      "y": 0
+    },
+    "Mobile.dc.html": {
+      "h": 8000,
+      "is_interactive": true,
+      "title": "Landing generale · mobile 390",
+      "w": 390,
+      "x": 7600,
+      "y": 0
+    },
+    "Omega.dc.html": {
+      "expand": "fill",
+      "h": 8000,
+      "is_interactive": true,
+      "title": "Landing Omega · il quadrante",
+      "w": 1440,
+      "x": 4560,
+      "y": 0
+    },
+    "Richiesta.dc.html": {
+      "expand": "fill",
+      "h": 1800,
+      "is_interactive": true,
+      "title": "Richiesta · tre ingressi, scheda aperta, banco fotografico",
+      "w": 1440,
+      "x": 1520,
+      "y": 0
+    },
+    "RichiestaMobile.dc.html": {
+      "h": 2400,
+      "is_interactive": true,
+      "title": "Richiesta · mobile 390",
+      "w": 390,
+      "x": 8540,
+      "y": 0
+    },
+    "Rolex.dc.html": {
+      "expand": "fill",
+      "h": 8000,
+      "is_interactive": true,
+      "title": "Landing Rolex · il registro delle referenze",
+      "w": 1440,
+      "x": 3040,
+      "y": 0
+    },
+    "RolexMobile.dc.html": {
+      "h": 8000,
+      "is_interactive": true,
+      "title": "Landing Rolex · mobile 390",
+      "w": 390,
+      "x": 8070,
+      "y": 0
+    },
+    "Salvatore.dc.html": {
+      "expand": "fill",
+      "h": 6200,
+      "is_interactive": true,
+      "title": "Chi è Salvatore · desktop",
+      "w": 1440,
+      "x": 9010,
+      "y": 0
+    },
+    "SalvatoreMobile.dc.html": {
+      "h": 7400,
+      "is_interactive": true,
+      "title": "Chi è Salvatore · mobile 390",
+      "w": 390,
+      "x": 10530,
+      "y": 0
+    },
+    "StudioVideo.dc.html": {
+      "expand": "fill",
+      "h": 8000,
+      "is_interactive": true,
+      "page": "studio-video",
+      "title": "Studio video · clip da Instagram, posto per posto",
+      "w": 1440,
+      "x": 0,
+      "y": 0
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-11-02T20:05:00Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "launch": {
+    "view": "canvas"
+  },
+  "notes": {
+    "t1": {
+      "kind": "title1",
+      "maxW": 8000,
+      "text": "Orologi Famosi · servizio acquisto da privati — il cinema sullo sfondo, la vendita davanti",
+      "w": 240,
+      "x": 0,
+      "y": -320
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "Richiesta.dc.html",
+    "Rolex.dc.html",
+    "Omega.dc.html",
+    "Cartier.dc.html",
+    "Mobile.dc.html",
+    "RolexMobile.dc.html",
+    "RichiestaMobile.dc.html",
+    "Salvatore.dc.html",
+    "SalvatoreMobile.dc.html",
+    "Contatti.dc.html",
+    "ContattiMobile.dc.html",
+    "Artboard-mem0.dc.html",
+    "StudioVideo.dc.html",
+    "Cursore.dc.html"
+  ],
+  "pages": [
+    {
+      "id": "page-1",
+      "name": "Page 1"
+    },
+    {
+      "id": "page-zhk2ny",
+      "name": "Page 2"
+    },
+    {
+      "id": "studio-video",
+      "name": "Studio video"
+    },
+    {
+      "id": "prove",
+      "name": "Prove"
+    }
+  ],
+  "title": "Orologi Famosi — Acquisto da privati"
+}
