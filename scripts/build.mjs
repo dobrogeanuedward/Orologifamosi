@@ -45,6 +45,14 @@ if (!CDN) {
 const EXT = Object.fromEntries(fs.readdirSync(path.join(SRC, 'blobs')).map((f) => [f.replace(/\.[^.]+$/, ''), path.extname(f)]));
 globalThis.__OF_IMG_EXT = EXT;
 globalThis.__OF_ASSETS = MEDIA;
+// Immagini aggiunte dopo l'ultimo caricamento su R2: le serve il sito stesso finché non vengono caricate sul bucket.
+const LOCAL_IMG = fs.existsSync(path.join(SRC, 'blobs-local.json')) ? JSON.parse(fs.readFileSync(path.join(SRC, 'blobs-local.json'), 'utf8')) : [];
+globalThis.__OF_IMG_LOCAL = new Set(LOCAL_IMG);
+globalThis.__OF_ASSETS_LOCAL = ASSETS;
+if (CDN && LOCAL_IMG.length) {
+  fs.mkdirSync(path.join(DIST, `${ASSETS}/img`), { recursive: true });
+  for (const id of LOCAL_IMG) fs.copyFileSync(path.join(SRC, 'blobs', id + (EXT[id] || '.webp')), path.join(DIST, `${ASSETS}/img`, id + (EXT[id] || '.webp')));
+}
 
 // ---------- riscritture ----------
 function rewriteLinks(s) {
