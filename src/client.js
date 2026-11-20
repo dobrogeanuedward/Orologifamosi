@@ -10,11 +10,63 @@ function rememberSource(cfg) {
   if (safe(() => sessionStorage.getItem(SRC_KEY))) return;
   const q = new URLSearchParams(location.search);
   const utm = {};
-  for (const k of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid']) { const v = q.get(k); if (v) utm[k] = v.slice(0, 120); }
+  for (const k of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'fbclid']) { const v = q.get(k); if (v) utm[k] = v.slice(0, 120); }
   let referrer = null;
   safe(() => { const r = document.referrer && new URL(document.referrer); if (r && r.host !== location.host) referrer = r.host; });
   const src = { page: cfg.route, pageName: cfg.pageName, utm: Object.keys(utm).length ? utm : null, referrer };
   safe(() => sessionStorage.setItem(SRC_KEY, JSON.stringify(src)));
+}
+
+/**
+ * Statistiche anonime per Dogo Desk: visite, ingressi, clic su WhatsApp/telefono/email/catalogo e modulo.
+ * Nessun cookie e nessun identificativo: solo pagina, evento, provenienza della visita e tipo di schermo.
+ */
+let trackCfg = null;
+function track(event) {
+  const cfg = trackCfg;
+  if (!cfg || !cfg.desk) return;
+  safe(() => {
+    const src = safe(() => JSON.parse(sessionStorage.getItem(SRC_KEY) || 'null'), null) || {};
+    const utm = src.utm || {};
+    const body = { p: location.pathname.slice(0, 200), e: event, d: matchMedia('(max-width: 760px)').matches ? 'mobile' : 'desktop' };
+    if (utm.utm_source) body.s = utm.utm_source;
+    if (utm.utm_medium) body.m = utm.utm_medium;
+    if (utm.utm_campaign) body.c = utm.utm_campaign;
+    if (utm.gclid) body.g = 1;
+    if (utm.fbclid) body.f = 1;
+    if (src.referrer) body.r = src.referrer;
+    const url = `${cfg.desk}/api/site/${cfg.org}/track`;
+    const blob = new Blob([JSON.stringify(body)], { type: 'text/plain' });
+    if (!(navigator.sendBeacon && navigator.sendBeacon(url, blob))) fetch(url, { method: 'POST', body: blob, keepalive: true, mode: 'no-cors' }).catch(() => {});
+  });
+}
+
+function setupTracking(cfg) {
+  trackCfg = cfg;
+  window.__ofTrack = track;
+  // ingresso: la visita arriva da fuori (o senza provenienza), non da un'altra pagina del sito
+  const fromOutside = safe(() => !document.referrer || new URL(document.referrer).host !== location.host, true);
+  if (fromOutside) {
+    // la provenienza va ricordata anche se si entra dalla pagina del modulo
+    if (!cfg.landing) rememberSource(cfg);
+    track('ingresso');
+  }
+  track('visita');
+  document.addEventListener('click', (e) => {
+    const a = e.target && e.target.closest && e.target.closest('a[href]');
+    if (!a) return;
+    const href = a.getAttribute('href') || '';
+    if (/^https?:\/\/(wa\.me|api\.whatsapp\.com|web\.whatsapp\.com)\//.test(href)) track('whatsapp');
+    else if (href.startsWith('tel:')) track('telefono');
+    else if (href.startsWith('mailto:')) track('email');
+    else if (/venditaorologiusati\.it/.test(href)) track('catalogo');
+  }, { capture: true, passive: true });
+  if (cfg.page === 'richiesta') {
+    let started = false;
+    const start = () => { if (!started) { started = true; track('modulo_inizio'); } };
+    document.addEventListener('input', start, { capture: true, passive: true });
+    document.addEventListener('change', start, { capture: true, passive: true });
+  }
 }
 
 const KIT = { box: 'Scatola', papers: 'Garanzia', service: 'Revisioni', links: 'Maglie extra', none: 'Solo l’orologio' };
@@ -138,6 +190,7 @@ function makeSubmit(cfg) {
     if (!res.ok) throw new Error(await readError(res, 'La scheda non è partita.'));
     const data = await res.json();
     safe(() => localStorage.removeItem(RID_KEY));
+    track('modulo_invio');
     return data;
   };
 }
@@ -368,6 +421,7 @@ function setupObsidian() {
 
 export function mount(Component, cfg) {
   if (cfg.landing) rememberSource(cfg);
+  safe(() => setupTracking(cfg));
   if (cfg.page === 'richiesta') window.__ofSubmit = makeSubmit(cfg);
   const root = document.getElementById('dc-root');
   hydrate(h(Component, {}), root);
