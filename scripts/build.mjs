@@ -4,7 +4,7 @@
  * le trasforma in pagine statiche (HTML completo per SEO/AEO/GEO) con idratazione Preact.
  *
  * Variabili:
- *   SITE_URL   dominio pubblico (default https://www.venditaorologiusati.it)
+ *   SITE_URL   dominio pubblico (default https://www.orologifamosi.com)
  *   DESK_URL   indirizzo di Dogo Desk per l'invio delle schede (default http://localhost:3000)
  *   DESK_ORG   cliente nel Desk (default of)
  *   TURNSTILE_SITE_KEY   chiave pubblica dell'antispam del modulo (facoltativa)
@@ -202,7 +202,9 @@ ${ld.map((o) => `<script type="application/ld+json">${JSON.stringify(o).replace(
 // ---------- file per motori di ricerca e AI ----------
 const today = new Date().toISOString().slice(0, 10);
 out('sitemap-vendi-orologio.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemap.map((u) => `  <url><loc>${u.loc}</loc><lastmod>${today}</lastmod><priority>${u.priority}</priority></url>`).join('\n')}\n</urlset>\n`);
-out('robots-snippet.txt', `# Da aggiungere al robots.txt del sito principale\nSitemap: ${SITE}/sitemap-vendi-orologio.xml\n`);
+// Dominio proprio: sitemap e robots completi (il vecchio nome della sitemap resta per chi l'ha già registrato).
+out('sitemap.xml', fs.readFileSync(path.join(DIST, 'sitemap-vendi-orologio.xml')));
+out('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
 out('llms.txt', fs.readFileSync(path.join(ROOT, 'src/llms.txt'), 'utf8').replaceAll('{{SITE}}', SITE));
 console.log(`✓ sitemap, llms.txt · Desk: ${DESK_URL}/api/intake/${DESK_ORG}`);
 void clientRuntime;

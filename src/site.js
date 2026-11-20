@@ -1,6 +1,6 @@
 /** Configurazione del sito: indirizzi, pagine, dati dell'attività (fonte: tavole di design). */
 
-export const SITE = (process.env.SITE_URL || 'https://www.venditaorologiusati.it').replace(/\/$/, '');
+export const SITE = (process.env.SITE_URL || 'https://www.orologifamosi.com').replace(/\/$/, '');
 
 /**
  * URL proposti nel contratto (allegato 02), da confermare con il gestore del sito.
@@ -51,7 +51,7 @@ export const BUSINESS = {
     { days: ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], opens: '09:30', closes: '13:00' },
     { days: ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], opens: '15:30', closes: '19:00' },
   ],
-  sameAs: ['https://www.google.com/maps?cid=9961046583457619943'],
+  sameAs: ['https://www.google.com/maps?cid=9961046583457619943', 'https://www.venditaorologiusati.it/'],
   rating: { value: 4.9, count: 202 },
   brands: ['Rolex', 'Omega', 'Cartier', 'Tudor', 'TAG Heuer', 'Breitling', 'IWC', 'Jaeger-LeCoultre', 'Zenith', 'Longines', 'Bulgari', 'Franck Muller', 'Baume & Mercier', 'Oris', 'Hamilton', 'Seiko', 'Mido', 'Eberhard', 'Maurice Lacroix'],
   // Medicina è la sede reale; Bologna e i comuni limitrofi sono bacini di provenienza (allegato 02).
