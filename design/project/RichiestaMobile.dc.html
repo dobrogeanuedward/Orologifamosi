@@ -1380,7 +1380,7 @@ video[data-scrubbg]{display:none !important}
 <sc-if value="{{showFreeTile}}" hint-placeholder-val="{{true}}"><button type="button" role="radio" aria-checked="{{freeTileAttr}}" class="tile tile-free pick" onClick="{{openFreeBrand}}"><span class="tile-free-in"><span class="more-plus-l" aria-hidden="true">+</span><span class="serif" style="font-size: 28px; line-height: 1;">Non è fra questi</span><span style="font-size: 14px; font-weight: 400;">Scrivi tu il marchio</span></span></button></sc-if>
 <sc-if value="{{showUseQ}}" hint-placeholder-val="{{false}}"><button type="button" role="radio" aria-checked="{{useQChecked}}" class="tile tile-free pick" onClick="{{useQ}}"><span class="tile-free-in"><span class="serif" style="font-size: 30px; line-height: 1;">{{qTrim}}</span><span style="font-size: 14px; font-weight: 400; color: #4a4c48;">Usa questo marchio</span></span></button></sc-if>
 </div>
-<sc-if value="{{freeBrandOpen}}" hint-placeholder-val="{{false}}"><label class="field swap-in" style="max-width: 560px;"><span>Quale marchio?</span><input type="text" value="{{other}}" onChange="{{setOther}}" placeholder="Es. Panerai, Patek Philippe, Hublot"></label></sc-if>
+<sc-if value="{{freeBrandOpen}}" hint-placeholder-val="{{false}}"><label class="field swap-in" style="max-width: 560px;"><span>Quale marchio?</span><input type="text" maxlength="60" value="{{other}}" onChange="{{setOther}}" placeholder="Es. Panerai, Patek Philippe, Hublot"></label></sc-if>
 <sc-if value="{{noMatch}}" hint-placeholder-val="{{false}}"><p style="margin: -8px 0 0; font-size: 15px; color: #4a4c48;">Non è tra quelli che vediamo più spesso: va benissimo, guardiamo anche altri marchi.</p></sc-if>
 </sc-if>
 
@@ -1399,8 +1399,8 @@ video[data-scrubbg]{display:none !important}
 </div>
 </sc-if>
 <div class="fields">
-<sc-if value="{{showModelOther}}" hint-placeholder-val="{{true}}"><label class="field swap-in" style="flex: 2 1 300px;"><span>{{modelOtherLabel}}</span><input type="text" value="{{modelOther}}" onChange="{{setModelOther}}" placeholder="Es. Seamaster Aqua Terra"></label></sc-if>
-<label class="field fields-ref" style="flex: 2 1 260px;"><span>Referenza <em>facoltativa</em></span><input type="text" value="{{refNo}}" onChange="{{setRef}}" placeholder="{{refPlaceholder}}"></label>
+<sc-if value="{{showModelOther}}" hint-placeholder-val="{{true}}"><label class="field swap-in" style="flex: 2 1 300px;"><span>{{modelOtherLabel}}</span><input type="text" maxlength="80" value="{{modelOther}}" onChange="{{setModelOther}}" placeholder="Es. Seamaster Aqua Terra"></label></sc-if>
+<label class="field fields-ref" style="flex: 2 1 260px;"><span>Referenza <em>facoltativa</em></span><input type="text" maxlength="40" value="{{refNo}}" onChange="{{setRef}}" placeholder="{{refPlaceholder}}"></label>
 <label class="field" style="flex: 1 1 140px;"><span>Anno <em>anche circa</em></span><input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="off" value="{{year}}" onChange="{{setYear}}" onBlur="{{blurYear}}" placeholder="Es. 2016" data-bad="{{yearBad}}"><sc-if value="{{yearBad}}" hint-placeholder-val="{{false}}"><small class="err">{{yearErr}}</small></sc-if></label>
 </div>
 <button type="button" class="disclose" aria-expanded="{{refOpenAttr}}" onClick="{{toggleRef}}"><span>Dove trovo la referenza?</span><svg class="plus" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9a7221" stroke-width="1.8" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button>
@@ -1443,7 +1443,7 @@ video[data-scrubbg]{display:none !important}
 <div role="group" aria-label="Interventi" style="display: flex; flex-wrap: wrap; gap: 8px;">
 <sc-for list="{{flags}}" as="f" hint-placeholder-count="6"><button type="button" class="pill ipill" aria-pressed="{{f.pressed}}" onClick="{{f.pick}}"><span class="ic ic-sm" data-ic="{{f.ic}}" aria-hidden="true"></span>{{f.label}}</button></sc-for>
 </div>
-<label class="field"><span class="sr">Altro da segnalare</span><textarea rows="2" value="{{notes}}" onChange="{{setNotes}}" placeholder="Altro da dire? Una revisione recente, una storia, un difetto"></textarea></label>
+<label class="field"><span class="sr">Altro da segnalare</span><textarea rows="2" maxlength="1800" value="{{notes}}" onChange="{{setNotes}}" placeholder="Altro da dire? Una revisione recente, una storia, un difetto"></textarea></label>
 </div>
 </section>
 </sc-if>
@@ -1517,16 +1517,16 @@ video[data-scrubbg]{display:none !important}
 <sc-if value="{{wantsBologna}}" hint-placeholder-val="{{false}}"><p class="swap-in" style="margin: 0; font-size: 15px; color: #4a4c48;">A Bologna riceviamo in una sede riservata, su appuntamento: l’indirizzo te lo diamo noi, insieme a giorno e ora.</p></sc-if>
 
 <div class="fields">
-<label class="field" style="flex: 1 1 240px;"><span>Come ti chiami</span><input type="text" autocomplete="name" value="{{name}}" onChange="{{setName}}" placeholder="Nome e cognome" data-bad="{{nameBad}}"><sc-if value="{{nameBad}}" hint-placeholder-val="{{false}}"><small class="err">Scrivi il tuo nome, così sappiamo come chiamarti.</small></sc-if></label>
-<sc-if value="{{needPhone}}" hint-placeholder-val="{{true}}"><label class="field" style="flex: 1 1 240px;"><span>Cellulare</span><input type="tel" autocomplete="tel" value="{{phone}}" onChange="{{setPhone}}" placeholder="+39 333 123 4567" data-bad="{{phoneBad}}"><sc-if value="{{phoneBad}}" hint-placeholder-val="{{false}}"><small class="err">{{phoneErr}}</small></sc-if></label></sc-if>
-<sc-if value="{{needEmail}}" hint-placeholder-val="{{false}}"><label class="field" style="flex: 1 1 240px;"><span>Email</span><input type="email" autocomplete="email" value="{{email}}" onChange="{{setEmail}}" placeholder="nome@esempio.it" data-bad="{{emailBad}}"><sc-if value="{{emailBad}}" hint-placeholder-val="{{false}}"><small class="err">{{emailErr}}</small></sc-if></label></sc-if>
+<label class="field" style="flex: 1 1 240px;"><span>Come ti chiami</span><input type="text" autocomplete="name" maxlength="120" value="{{name}}" onChange="{{setName}}" placeholder="Nome e cognome" data-bad="{{nameBad}}"><sc-if value="{{nameBad}}" hint-placeholder-val="{{false}}"><small class="err">Scrivi il tuo nome, così sappiamo come chiamarti.</small></sc-if></label>
+<sc-if value="{{needPhone}}" hint-placeholder-val="{{true}}"><label class="field" style="flex: 1 1 240px;"><span>Cellulare</span><input type="tel" autocomplete="tel" maxlength="30" value="{{phone}}" onChange="{{setPhone}}" placeholder="+39 333 123 4567" data-bad="{{phoneBad}}"><sc-if value="{{phoneBad}}" hint-placeholder-val="{{false}}"><small class="err">{{phoneErr}}</small></sc-if></label></sc-if>
+<sc-if value="{{needEmail}}" hint-placeholder-val="{{false}}"><label class="field" style="flex: 1 1 240px;"><span>Email</span><input type="email" autocomplete="email" maxlength="160" value="{{email}}" onChange="{{setEmail}}" placeholder="nome@esempio.it" data-bad="{{emailBad}}"><sc-if value="{{emailBad}}" hint-placeholder-val="{{false}}"><small class="err">{{emailErr}}</small></sc-if></label></sc-if>
 </div>
 
 <div style="display: flex; flex-direction: column; gap: 12px;">
 <p class="lab">Ci contatti perché <span>· facoltativo</span></p>
 <div role="radiogroup" aria-label="Intenzione" style="display: flex; flex-wrap: wrap; gap: 8px;"><sc-for list="{{intents}}" as="it" hint-placeholder-count="3"><button type="button" role="radio" class="pill" aria-checked="{{it.pressed}}" aria-pressed="{{it.pressed}}" onClick="{{it.pick}}">{{it.label}}</button></sc-for></div>
 <div class="fields">
-<label class="field" style="flex: 1 1 240px;"><span>Una cifra in mente <em>facoltativa</em></span><input type="text" inputmode="numeric" value="{{price}}" onChange="{{setPrice}}" placeholder="Es. 7.500 €"></label>
+<label class="field" style="flex: 1 1 240px;"><span>Una cifra in mente <em>facoltativa</em></span><input type="text" inputmode="numeric" maxlength="40" value="{{price}}" onChange="{{setPrice}}" placeholder="Es. 7.500 €"></label>
 <label class="consent" style="flex: 1 1 260px; align-self: flex-end; padding-bottom: 14px;"><input type="checkbox" checked="{{alsoBuy}}" onChange="{{toggleBuy}}"><span><strong style="color: #171918;">Mi interessa anche il catalogo</strong><br>per un acquisto o uno scambio</span></label>
 </div>
 </div>

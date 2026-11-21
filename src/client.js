@@ -163,21 +163,24 @@ function makeSubmit(cfg) {
     const src = safe(() => JSON.parse(sessionStorage.getItem(SRC_KEY) || 'null'), null) || { page: cfg.route, pageName: cfg.pageName, utm: null, referrer: null };
     const brand = s.brand === '__other' ? (s.other || '').trim() : s.brand || '';
     const model = (s.modelOther || '').trim() || s.model || '';
+    // email: parte solo se è scritta bene; se non serve al canale scelto, una sbagliata non blocca la scheda
+    const emailRaw = (s.email || '').trim();
+    const emailOut = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(emailRaw) && emailRaw.length <= 160 ? emailRaw : (s.ch && s.ch.Email ? emailRaw : '');
     const payload = {
       requestId: rid,
       entry: s.entry || 'Scheda guidata',
-      brand, model, ref: (s.refNo || '').trim(), year: /^(19|20)\d\d$/.test((s.year || '').trim()) && +s.year <= new Date().getFullYear() ? s.year.trim() : '',
+      brand: brand.slice(0, 60), model: model.slice(0, 80), ref: (s.refNo || '').trim().slice(0, 40), year: /^(19|20)\d\d$/.test((s.year || '').trim()) && +s.year <= new Date().getFullYear() ? s.year.trim() : '',
       cond: s.cond || '',
       kit: Object.keys(s.kit || {}).filter((k) => s.kit[k]).map((k) => KIT[k]).filter(Boolean),
       flags: Object.keys(s.flags || {}).filter((k) => s.flags[k]),
       extra: ((s.notes || '').trim() + note).slice(0, 2000),
       photoKeys,
-      person: { name: (s.name || '').trim(), phone: (s.phone || '').trim(), email: (s.email || '').trim(), city: '' },
+      person: { name: (s.name || '').trim().slice(0, 120), phone: (s.phone || '').trim().slice(0, 30), email: emailOut, city: '' },
       channels: Object.keys(s.ch || {}).filter((k) => s.ch[k]).map((k) => CH[k]).filter(Boolean),
       days: Object.keys(s.days || {}).filter((k) => s.days[k]),
       times: Object.keys(s.times || {}).filter((k) => s.times[k]),
       intent: s.intent || '',
-      price: (s.price || '').trim(),
+      price: (s.price || '').trim().slice(0, 40),
       alsoBuy: !!s.alsoBuy,
       consent: !!s.consent,
       source: { page: src.page || cfg.route, pageName: src.pageName || cfg.pageName, query: null, utm: src.utm || null, referrer: src.referrer || null },
