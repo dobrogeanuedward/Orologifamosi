@@ -98,6 +98,7 @@ export class DCLogic extends Component {
 export function imgPath(id) {
   if (!id) return '';
   const ext = (globalThis.__OF_IMG_EXT && globalThis.__OF_IMG_EXT[id]) || '.webp';
-  const local = globalThis.__OF_IMG_LOCAL && globalThis.__OF_IMG_LOCAL.has(id);
+  const L = globalThis.__OF_IMG_LOCAL;   // Set durante la build, elenco nel bundle del browser
+  const local = !!L && (L.has ? L.has(id) : L.indexOf(id) > -1);
   return (local ? globalThis.__OF_ASSETS_LOCAL : globalThis.__OF_ASSETS || '/of-assets') + '/img/' + id + ext;
 }

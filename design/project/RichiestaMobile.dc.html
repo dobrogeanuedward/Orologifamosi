@@ -56,7 +56,7 @@ input::placeholder{color:#7a7c77}
 @keyframes settle{from{transform:scale(1.15)}to{transform:scale(1)}}
 @keyframes lift{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
 @keyframes kb{from{transform:scale(1.14)}to{transform:scale(1.02)}}
-@keyframes swapIn{from{opacity:0;transform:scale(1.03);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+@keyframes swapIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 .line{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
 .line>span{display:block;animation:rise 1200ms var(--ease) both}
 .line:nth-child(2)>span{animation-delay:110ms}.line:nth-child(3)>span{animation-delay:220ms}
@@ -64,7 +64,7 @@ input::placeholder{color:#7a7c77}
 .frame-in{animation:frameIn 1500ms cubic-bezier(.77,0,.175,1) 150ms both}
 .frame-in video,.frame-in img.settle{animation:settle 2400ms var(--ease) 150ms both}
 .kb{animation:kb 2600ms var(--ease) both}
-.swap-in{animation:swapIn 700ms var(--ease) both}
+.swap-in{animation:swapIn 340ms var(--ease) both}
 .lift{animation:lift 1100ms var(--ease) both;animation-delay:var(--d,600ms)}
 .marquee{display:flex;width:max-content;animation:marquee 70s linear infinite}
 @supports (animation-timeline:view()){
@@ -153,7 +153,7 @@ label.btn{cursor:pointer}
 .field input,.field textarea{font:inherit;font-weight:400;font-size:17px;padding:14px 18px;background:#fff;color:#171918;border:0;box-shadow:inset 0 0 0 1px #d9cfba;border-radius:12px;min-height:54px;box-sizing:border-box;transition:box-shadow 200ms ease;width:100%}
 .field textarea{resize:vertical;min-height:84px}
 .field input:focus,.field textarea:focus{outline:none;box-shadow:inset 0 0 0 2px #9a7221}
-.field input[data-bad="true"]{box-shadow:inset 0 0 0 2px #b4472f}
+.field input[data-bad="true"]{box-shadow:inset 0 0 0 2px #b4472f} .consent-main{border-radius:12px;padding:12px 14px;margin:-12px -14px;transition:box-shadow 200ms ease,background-color 200ms ease} .consent-main[data-bad="true"]{box-shadow:inset 0 0 0 2px #b4472f;background:#fff6f2} .consent input[type=checkbox]{width:22px;height:22px;flex:none;margin:1px 0 0;accent-color:#171918}
 .err{font-weight:400;font-size:13.5px;color:#9b3a24}
 .disclose{align-self:flex-start;display:inline-flex;align-items:center;gap:10px;background:transparent;border:0;padding:8px 0;min-height:44px;font:inherit;font-weight:600;color:#171918;cursor:pointer}
 .disclose[aria-expanded="true"] .plus{transform:rotate(45deg)}
@@ -1401,7 +1401,7 @@ video[data-scrubbg]{display:none !important}
 <div class="fields">
 <sc-if value="{{showModelOther}}" hint-placeholder-val="{{true}}"><label class="field swap-in" style="flex: 2 1 300px;"><span>{{modelOtherLabel}}</span><input type="text" value="{{modelOther}}" onChange="{{setModelOther}}" placeholder="Es. Seamaster Aqua Terra"></label></sc-if>
 <label class="field" style="flex: 2 1 260px;"><span>Referenza <em>facoltativa</em></span><input type="text" value="{{refNo}}" onChange="{{setRef}}" placeholder="{{refPlaceholder}}"></label>
-<label class="field" style="flex: 1 1 140px;"><span>Anno <em>anche circa</em></span><input type="text" inputmode="numeric" value="{{year}}" onChange="{{setYear}}" placeholder="Es. 2016"></label>
+<label class="field" style="flex: 1 1 140px;"><span>Anno <em>anche circa</em></span><input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="off" value="{{year}}" onChange="{{setYear}}" onBlur="{{blurYear}}" placeholder="Es. 2016" data-bad="{{yearBad}}"><sc-if value="{{yearBad}}" hint-placeholder-val="{{false}}"><small class="err">{{yearErr}}</small></sc-if></label>
 </div>
 <button type="button" class="disclose" aria-expanded="{{refOpenAttr}}" onClick="{{toggleRef}}"><span>Dove trovo la referenza?</span><svg class="plus" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9a7221" stroke-width="1.8" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button>
 <sc-if value="{{refOpen}}" hint-placeholder-val="{{false}}">
@@ -1517,9 +1517,9 @@ video[data-scrubbg]{display:none !important}
 <sc-if value="{{wantsBologna}}" hint-placeholder-val="{{false}}"><p class="swap-in" style="margin: 0; font-size: 15px; color: #4a4c48;">A Bologna riceviamo in una sede riservata, su appuntamento: l’indirizzo te lo diamo noi, insieme a giorno e ora.</p></sc-if>
 
 <div class="fields">
-<label class="field" style="flex: 1 1 240px;"><span>Come ti chiami</span><input type="text" autocomplete="name" value="{{name}}" onChange="{{setName}}" placeholder="Nome e cognome"></label>
-<sc-if value="{{needPhone}}" hint-placeholder-val="{{true}}"><label class="field" style="flex: 1 1 240px;"><span>Cellulare</span><input type="tel" autocomplete="tel" value="{{phone}}" onChange="{{setPhone}}" placeholder="+39 333 123 4567" data-bad="{{phoneBad}}"><sc-if value="{{phoneBad}}" hint-placeholder-val="{{false}}"><small class="err">Controlla il numero: sembrano mancare delle cifre.</small></sc-if></label></sc-if>
-<sc-if value="{{needEmail}}" hint-placeholder-val="{{false}}"><label class="field" style="flex: 1 1 240px;"><span>Email</span><input type="email" autocomplete="email" value="{{email}}" onChange="{{setEmail}}" placeholder="nome@esempio.it" data-bad="{{emailBad}}"><sc-if value="{{emailBad}}" hint-placeholder-val="{{false}}"><small class="err">Manca qualcosa nell’indirizzo email.</small></sc-if></label></sc-if>
+<label class="field" style="flex: 1 1 240px;"><span>Come ti chiami</span><input type="text" autocomplete="name" value="{{name}}" onChange="{{setName}}" placeholder="Nome e cognome" data-bad="{{nameBad}}"><sc-if value="{{nameBad}}" hint-placeholder-val="{{false}}"><small class="err">Scrivi il tuo nome, così sappiamo come chiamarti.</small></sc-if></label>
+<sc-if value="{{needPhone}}" hint-placeholder-val="{{true}}"><label class="field" style="flex: 1 1 240px;"><span>Cellulare</span><input type="tel" autocomplete="tel" value="{{phone}}" onChange="{{setPhone}}" placeholder="+39 333 123 4567" data-bad="{{phoneBad}}"><sc-if value="{{phoneBad}}" hint-placeholder-val="{{false}}"><small class="err">{{phoneErr}}</small></sc-if></label></sc-if>
+<sc-if value="{{needEmail}}" hint-placeholder-val="{{false}}"><label class="field" style="flex: 1 1 240px;"><span>Email</span><input type="email" autocomplete="email" value="{{email}}" onChange="{{setEmail}}" placeholder="nome@esempio.it" data-bad="{{emailBad}}"><sc-if value="{{emailBad}}" hint-placeholder-val="{{false}}"><small class="err">{{emailErr}}</small></sc-if></label></sc-if>
 </div>
 
 <div style="display: flex; flex-direction: column; gap: 12px;">
@@ -1531,13 +1531,13 @@ video[data-scrubbg]{display:none !important}
 </div>
 </div>
 
-<label class="consent"><input type="checkbox" checked="{{consent}}" onChange="{{toggleConsent}}"><span>Ho letto l’<a class="ulink" href="https://www.iubenda.com/privacy-policy/32325462/full-legal" target="_blank" rel="noopener">informativa privacy</a> e acconsento all’uso di dati e foto per la valutazione del mio orologio.</span></label>
+<label class="consent consent-main" data-bad="{{consentBad}}"><input type="checkbox" checked="{{consent}}" onChange="{{toggleConsent}}"><span>Ho letto l’<a class="ulink" href="https://www.iubenda.com/privacy-policy/32325462/full-legal" target="_blank" rel="noopener">informativa privacy</a> e acconsento all’uso di dati e foto per la valutazione del mio orologio.</span></label>
 </section>
 </sc-if>
 
 <div class="flow-foot">
 <sc-if value="{{canBack}}" hint-placeholder-val="{{false}}"><button type="button" class="back" onClick="{{back}}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>{{backLabel}}</button></sc-if>
-<sc-if value="{{hasNext}}" hint-placeholder-val="{{true}}"><button type="button" class="btn btn-ink" onClick="{{next}}" disabled="{{nextDisabled}}" style="{{nextStyle}}">{{nextLabel}}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button></sc-if>
+<sc-if value="{{hasNext}}" hint-placeholder-val="{{true}}"><button type="button" class="btn btn-ink" onClick="{{next}}" disabled="{{nextDisabled}}" style="{{nextStyle}}" data-ready="{{sendReady}}">{{nextLabel}}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button></sc-if>
 <span style="font-size: 14px; color: #4a4c48;">{{footHint}}</span>
 </div>
 
@@ -1555,7 +1555,7 @@ video[data-scrubbg]{display:none !important}
 <div><dt>Ti ricontatta</dt><dd>{{cardContact}}</dd></div>
 </dl>
 <div class="dos-meter"><div aria-hidden="true"><i style="{{fillStyle}}"></i></div><span>{{pct}}%</span></div>
-<button type="button" class="btn" onClick="{{send}}" disabled="{{sendDisabled}}" style="{{sendStyle}}">Inviaci la scheda</button>
+<button type="button" class="btn" onClick="{{send}}" disabled="{{sendDisabled}}" data-ready="{{sendReady}}" style="{{sendStyle}}">Inviaci la scheda</button>
 <p class="dos-why">{{sendWhy}}</p>
 <div style="display: flex; align-items: center; gap: 12px; border-top: 1px solid #efe6d2; padding-top: 14px;"><img src="/_blob/3a227ace35d1239485fa3444a4874fca" alt="" style="width: 44px; height: 44px; border-radius: 999px; object-fit: cover; object-position: 50% 18%;"><p style="margin: 0; font-size: 14px; color: #4a4c48;">La legge Salvatore Agresta, di persona. Nessuna stima automatica, nessun obbligo.</p></div>
 </div>
@@ -1683,6 +1683,21 @@ class Component extends DCLogic {
         if (dr && dr.t && Date.now() - dr.t < 14 * 864e5 && dr.s && dr.s.mode === 'form') { dr.s.restored = true; this.setState(dr.s); } }
     } catch (e) {}
   }
+  componentDidUpdate(pp, ps) {
+    var s = this.state;
+    if (this._focusMissing) { var f = this._focusMissing; this._focusMissing = null; setTimeout(f, 60); return; }
+    if (ps.sec !== s.sec || ps.mode !== s.mode || ps.sent !== s.sent) this._toTop();
+  }
+  _toTop() {
+    // prima chiude la tastiera (su iPhone il cambio di altezza interrompe lo scroll), poi sale quando il passo nuovo è disegnato
+    var a = document.activeElement; if (a && a.blur && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)) a.blur();
+    var rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    setTimeout(function () {
+      if (window.scrollY < 4) return;
+      window.scrollTo({ top: 0, behavior: rm ? 'auto' : 'smooth' });
+      setTimeout(function () { if (window.scrollY > 30) window.scrollTo(0, 0); }, 650);
+    }, 30);
+  }
   componentWillUnmount() { clearInterval(this._draft); window.removeEventListener('keydown', this._key); window.removeEventListener('dragover', this._stop); window.removeEventListener('drop', this._stop); }
   renderVals() {
     var s = this.state, self = this;
@@ -1695,7 +1710,7 @@ class Component extends DCLogic {
       ['Mido', 'c2984fd34fa1ab8992849e2369cf4362'], ['Eberhard', 'b389c289d6dde22d808bbc9cc0d43bd7'], ['Maurice Lacroix', '59e4c18c0dfbdba870032dbe45285b5c']
     ];
     var MODELS = {
-      Rolex: [['Submariner', 'd3ae404fef04166b74432eda3cc3fdfd', 'Date o No Date'], ['Datejust', '2efda8bd9062292f075f0309eb00db1d', '36, 41, Jubilee'], ['GMT-Master II', 'bb54209c7d7b16f4cb095a46dacabef9', 'Batman, Pepsi'], ['Daytona', '', 'acciaio o oro'], ['Explorer e Air-King', 'c40d42e35559ba6200d1c8331cff73bf', ''], ['Oyster Perpetual', '402c88e7c1257db30d6fc241830b261a', ''], ['Yacht-Master', '160451d9d6d32a931a2c3c06c30df097', ''], ['Day-Date', '', 'oro o platino'], ['Sea-Dweller e Deepsea', '', ''], ['Rolex vintage', '0d67ebf0ae4ea497583d64141b0179d4', 'prima del 1990']],
+      Rolex: [['Submariner', 'd3ae404fef04166b74432eda3cc3fdfd', 'Date o No Date'], ['Datejust', '2efda8bd9062292f075f0309eb00db1d', '36, 41, Jubilee'], ['GMT-Master II', 'bb54209c7d7b16f4cb095a46dacabef9', 'Batman, Pepsi'], ['Daytona', '07babc0b9f678b9e49b05069484cd3f2', 'acciaio o oro'], ['Explorer e Air-King', 'c40d42e35559ba6200d1c8331cff73bf', ''], ['Oyster Perpetual', '402c88e7c1257db30d6fc241830b261a', ''], ['Yacht-Master', '160451d9d6d32a931a2c3c06c30df097', ''], ['Day-Date', '', 'oro o platino'], ['Sea-Dweller e Deepsea', '', ''], ['Rolex vintage', '0d67ebf0ae4ea497583d64141b0179d4', 'prima del 1990']],
       Omega: [['Speedmaster Moonwatch', 'bc6247f2327962e464e5dfc406dfa655', 'carica manuale'], ['Speedmaster Reduced', '7e40b3cc26f65bb1fcd255c3e2809ec6', 'automatico'], ['Altri Speedmaster', '', '’57, Dark Side, Racing'], ['Seamaster Diver 300M', '51d4ca1b4df130268b2f664465cc4c0f', ''], ['Altri Seamaster', '45ca1d7b1065541296cb60ffa1f2257e', 'Aqua Terra, Planet Ocean'], ['Seamaster cronografi', '', ''], ['Constellation', 'a9dca3d82038151e7eb2be8b8b42870f', ''], ['De Ville', '', 'Prestige, Trésor'], ['Omega vintage', '129eda1bac103cddb812e03327767913', '']],
       Cartier: [['Santos', '13a3784cf9bc315dddbc92a82cb66744', 'Galbée, 100, Dumont'], ['Tank', '4d5fcec5d5291d1a28608280af6e3278', 'Must, Française, Louis'], ['Panthère', 'a27cc8928a451753b725a0de20a9b211', ''], ['Santos 100', '58c3b70eef63ac08c439ef8d969bacd0', ''], ['Ballon Bleu', '', ''], ['Pasha, Roadster e altri', '', 'Calibre, Ronde']],
       Tudor: [['Black Bay', 'b3633475603240f9f26b9c3f91d30090', '54, 58, 41'], ['Black Bay GMT', '0300f219b8a73522a2f3cd9d5590ff8a', ''], ['Black Bay 58', '55ea1f0d57675a2691a66bf32485a694', ''], ['Pelagos', 'c2c268f2b925bc74de75f4caac759d93', ''], ['Royal', 'b3cd342f8694a5bb2fb93034a96a4da0', ''], ['1926', 'b4e13f56ac2c98c5bed5342f957519dc', ''], ['Cronografi', '765e318d993a375db630eb94aac5347e', '']],
@@ -1717,6 +1732,10 @@ class Component extends DCLogic {
     var missingEss = ESS.filter(function (k) { return !has(k); });
     var essDone = Math.min(4, s.photos.length);
 
+    var CY = new Date().getFullYear(), yN = parseInt(s.year, 10);
+    var yearOk = /^\d{4}$/.test(s.year || '') && yN >= 1900 && yN <= CY;
+    var yearBad = !!s.year && !yearOk && (s.year.length === 4 || !!s.yearBlur);
+    var yearErr = (s.year || '').length < 4 ? 'Scrivi l’anno con quattro cifre, es. 2016.' : 'Controlla l’anno: tra 1900 e ' + CY + '.';
     var brandName = s.brand === '__other' ? s.other : s.brand;
     var hasBrand = !!brandName;
     var bInfo = BR.filter(function (b) { return b[0] === s.brand; })[0];
@@ -1779,24 +1798,36 @@ class Component extends DCLogic {
     var needEmail = !!s.ch.Email, needPhone = !!(s.ch.WhatsApp || s.ch.Telefonata || s.ch['Visita a Medicina (BO)'] || s.ch['Visita a Bologna']) || !chosen.length;
     var digits = s.phone.replace(/\D/g, '').length;
     var phoneOk = digits >= 8, emailOk = /\S+@\S+\.\S+/.test(s.email);
-    var phoneBad = !!s.phone && !phoneOk, emailBad = !!s.email && !emailOk;
+    var phoneBad = (!!s.phone && !phoneOk) || (!!s.tried && !s.phone), emailBad = (!!s.email && !emailOk) || (!!s.tried && !s.email);
     var wantsTime = !!(s.ch.Telefonata || s.ch['Visita a Medicina (BO)']);
     var dayDefs = ['Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab'], timeDefs = [['Mattina', '9–12'], ['Pomeriggio', '14–18'], ['Sera', 'dopo le 18']];
     var whenTxt = (dayDefs.filter(function (d) { return s.days[d]; }).join(', ') + ' ' + timeDefs.filter(function (t) { return s.times[t[0]]; }).map(function (t) { return t[0].toLowerCase(); }).join(', ')).trim();
 
     var why = !hasBrand && !s.photos.length ? 'Indica almeno il marchio o carica una foto.' : (!chosen.length ? 'Scegli come vuoi essere ricontattato.' : (!s.name.trim() ? 'Manca il tuo nome, nella sezione Contatto.' : (needPhone && !phoneOk ? 'Manca il cellulare, nella sezione Contatto.' : (needEmail && !emailOk ? 'Manca l’email, nella sezione Contatto.' : (!s.consent ? 'Manca il consenso privacy, in fondo a Contatto.' : 'Pronta. Puoi inviarla anche così, il resto si aggiunge dopo.')))));
     var sendOk = why.indexOf('Pronta') === 0;
+    var missKey = !hasBrand && !s.photos.length ? 'brand' : (!chosen.length ? 'ch' : (!s.name.trim() ? 'name' : (needPhone && !phoneOk ? 'phone' : (needEmail && !emailOk ? 'email' : (!s.consent ? 'consent' : '')))));
+    var showMissing = function () {
+      if (missKey === 'brand') { self.setState({ sec: 0, mode: 'form', tried: true }); return; }
+      self._focusMissing = function () {
+        var el = document.querySelector({ ch: '.ch-grid', name: 'input[autocomplete="name"]', phone: 'input[type="tel"]', email: 'input[type="email"]', consent: '.consent-main' }[missKey]);
+        if (!el) return;
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        var f = el.matches('input') ? el : el.querySelector('input, button');
+        if (f && f.focus) { try { f.focus({ preventScroll: true }); } catch (e) { f.focus(); } }
+      };
+      self.setState({ sec: 3, mode: 'form', tried: true, nudge: (s.nudge || 0) + 1 });
+    };
 
     var pct = (hasBrand ? 20 : 0) + (modelName || s.refNo ? 10 : 0) + (s.cond ? 10 : 0) + (kitNames.length ? 5 : 0) + essDone * 10 + (s.photos.length > essDone ? 5 : 0) + (sendOk ? 10 : 0);
     pct = Math.min(100, pct);
     var code = s.code;
-    var msg = 'Buongiorno Salvatore, vorrei una valutazione del mio ' + (watchName || 'orologio') + (s.refNo ? ' (ref. ' + s.refNo + ')' : '') + (s.year ? ', anno ' + s.year : '') + (s.cond ? '. Condizioni: ' + s.cond.toLowerCase() : '') + (kitNames.length ? '. Corredo: ' + kitNames.join(', ') : '') + (flagNames.length ? '. Da sapere: ' + flagNames.join(', ').toLowerCase() : '') + (s.price ? '. Cifra in mente: ' + s.price : '') + '. Scheda ' + code + '. Ti mando le foto qui.';
+    var msg = 'Buongiorno Salvatore, vorrei una valutazione del mio ' + (watchName || 'orologio') + (s.refNo ? ' (ref. ' + s.refNo + ')' : '') + (yearOk ? ', anno ' + s.year : '') + (s.cond ? '. Condizioni: ' + s.cond.toLowerCase() : '') + (kitNames.length ? '. Corredo: ' + kitNames.join(', ') : '') + (flagNames.length ? '. Da sapere: ' + flagNames.join(', ').toLowerCase() : '') + (s.price ? '. Cifra in mente: ' + s.price : '') + '. Scheda ' + code + '. Ti mando le foto qui.';
     var preview = s.photos.filter(function (p) { return !p.noPrev; });
     var dial = preview.filter(function (p) { return p.kind === 'dial'; })[0];
     var mInfo = models.filter(function (m) { return m[0] === s.model && m[1]; })[0];
     var cardImg = (dial && dial.url) || (preview[0] && preview[0].url) || (mInfo ? I(mInfo[1]) : '') || (bInfo ? I(bInfo[1]) : '') || I('1066336dcb7da535a943c4cd3be136d1');
     var n = s.photos.length;
-    var go = function (i) { return function () { self.setState({ sec: i, mode: 'form' }); if (window.scrollY > 200) window.scrollTo({ top: 0, behavior: 'smooth' }); }; };
+    var go = function (i) { return function () { self.setState({ sec: i, mode: 'form', tried: false }); }; };
     var SEC = ['Orologio', 'Condizioni', 'Foto', 'Contatto'];
     var sums = [watchName || 'marchio e modello', s.cond || (kitNames.length ? kitNames.join(', ') : 'stato e accessori'), n ? n + ' foto' : 'le foto', chosen.length ? chosen.join(', ') : 'come ricontattarti'];
     var done = [hasBrand, !!(s.cond || kitNames.length), n > 0, sendOk];
@@ -1837,7 +1868,7 @@ class Component extends DCLogic {
       modelOther: s.modelOther, setModelOther: function (e) { self.setState({ modelOther: e.target.value }); },
       refNo: s.refNo, setRef: function (e) { self.setState({ refNo: e.target.value }); },
       refPlaceholder: s.brand === 'Rolex' ? 'Es. 126610LN' : (s.brand === 'Omega' ? 'Es. 310.30.42.50.01.001' : 'Es. dalla garanzia'),
-      year: s.year, setYear: function (e) { self.setState({ year: e.target.value }); },
+      year: s.year, setYear: function (e) { var v = String(e.target.value || '').replace(/\D/g, '').slice(0, 4); if (e.target.value !== v) e.target.value = v; self.setState({ year: v, yearBlur: false }); }, blurYear: function () { self.setState({ yearBlur: true }); }, yearBad: yearBad, yearErr: yearErr,
       refOpen: s.refOpen, refOpenAttr: s.refOpen ? 'true' : 'false', toggleRef: function () { self.setState({ refOpen: !s.refOpen }); },
       conds: condDefs.map(function (c, ci) { return { label: c[0], hint: c[2], ic: ['new', 'care', 'marks', 'service'][ci], checked: s.cond === c[0] ? 'true' : 'false', pick: function () { self.setState({ cond: s.cond === c[0] ? '' : c[0] }); } }; }),
       kits: kitDefs.map(function (k) { var on = !!s.kit[k[0]]; return { label: k[1], ic: { box: 'box', papers: 'papers', service: 'receipt', links: 'links', none: 'watch' }[k[0]], pressed: on ? 'true' : 'false', pick: function () { var kit = Object.assign({}, s.kit); if (k[0] === 'none') kit = on ? {} : { none: true }; else { delete kit.none; if (on) delete kit[k[0]]; else kit[k[0]] = true; } self.setState({ kit: kit }); } }; }),
@@ -1871,8 +1902,8 @@ class Component extends DCLogic {
       alsoBuy: s.alsoBuy, alsoBuyAttr: s.alsoBuy ? 'true' : 'false', toggleBuy: function () { self.setState({ alsoBuy: !s.alsoBuy }); },
       consent: s.consent, toggleConsent: function () { self.setState({ consent: !s.consent }); },
       canBack: true, backLabel: s.sec === 0 ? 'Cambia modo di iniziare' : 'Indietro', back: function () { if (s.sec === 0) self.setState({ mode: 'start' }); else go(s.sec - 1)(); },
-      hasNext: true, nextDisabled: s.sec === 3 && !sendOk, nextStyle: '', nextLabel: nextLabels[s.sec], next: function () { if (s.sec < 3) go(s.sec + 1)(); else send(); }, footHint: hints[s.sec],
-      send: send, sendDisabled: !sendOk, sendStyle: 'width: 100%;', sendStyleM: '', sendWhy: why,
+      hasNext: true, nextDisabled: !!s.sending, nextStyle: '', nextLabel: nextLabels[s.sec], next: function () { if (s.sec < 3) go(s.sec + 1)(); else if (sendOk) send(); else showMissing(); }, footHint: hints[s.sec],
+      send: function () { if (sendOk) send(); else showMissing(); }, sendDisabled: !!s.sending, sendReady: sendOk ? 'true' : 'false', nameBad: !!s.tried && !s.name.trim(), consentBad: !!s.tried && !s.consent ? 'true' : 'false', chBad: !!s.tried && !chosen.length, phoneErr: s.phone ? 'Controlla il numero: sembrano mancare delle cifre.' : 'Ci serve il cellulare per ricontattarti.', emailErr: s.email ? 'Manca qualcosa nell’indirizzo email.' : 'Ci serve l’email per risponderti.', sendStyle: 'width: 100%;', sendStyleM: '', sendWhy: why,
       refCode: code, restored: !!s.restored && !s.sent, dismissDraft: function () { self.setState({ restored: false }); }, cardImg: cardImg, photoCount: n ? n + (n === 1 ? ' foto' : ' foto') : 'Nessuna foto', hasThumbs: preview.length > 1,
       thumbs: preview.slice(0, 8).map(function (p) { return { url: p.url }; }),
       cardWatch: watchName || 'Da scegliere', cardCond: s.cond || (flagNames.length ? flagNames[0] : 'Da indicare'), cardKit: kitNames.length ? kitNames.join(', ') : 'Da indicare',

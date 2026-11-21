@@ -166,7 +166,7 @@ function makeSubmit(cfg) {
     const payload = {
       requestId: rid,
       entry: s.entry || 'Scheda guidata',
-      brand, model, ref: (s.refNo || '').trim(), year: (s.year || '').trim(),
+      brand, model, ref: (s.refNo || '').trim(), year: /^(19|20)\d\d$/.test((s.year || '').trim()) && +s.year <= new Date().getFullYear() ? s.year.trim() : '',
       cond: s.cond || '',
       kit: Object.keys(s.kit || {}).filter((k) => s.kit[k]).map((k) => KIT[k]).filter(Boolean),
       flags: Object.keys(s.flags || {}).filter((k) => s.flags[k]),

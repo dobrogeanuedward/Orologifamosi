@@ -154,7 +154,7 @@ for (const page of PAGES) {
   fs.writeFileSync(entry, `import { DCLogic, imgPath as __ofImg } from '../src/dc.js';\nimport { mount } from '../src/client.js';\nimport tpl from './${page.id}.tpl.json';\n${code}\n;Component.__tpl = tpl;\nmount(Component, ${JSON.stringify({ page: page.id, route: page.route, pageName: page.name, desk: DESK_URL, org: DESK_ORG, landing: !!page.landing, turnstile: page.id === 'richiesta' ? TURNSTILE : '' })});\n`);
   await esbuild.build({
     entryPoints: [entry], bundle: true, minify: true, format: 'esm', target: 'es2019', outfile: path.join(DIST, ASSETS, 'js', `${page.id}.js`),
-    define: { 'globalThis.__OF_IMG_EXT': JSON.stringify(EXT), 'globalThis.__OF_ASSETS': JSON.stringify(MEDIA) }, loader: { '.json': 'json' }, logLevel: 'warning',
+    define: { 'globalThis.__OF_IMG_EXT': JSON.stringify(EXT), 'globalThis.__OF_ASSETS': JSON.stringify(MEDIA), 'globalThis.__OF_IMG_LOCAL': JSON.stringify(LOCAL_IMG), 'globalThis.__OF_ASSETS_LOCAL': JSON.stringify(ASSETS) }, loader: { '.json': 'json' }, logLevel: 'warning',
   });
 
   const title = page.title || board.title;
