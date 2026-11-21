@@ -92,10 +92,12 @@ function patchRequest(s) {
   must("if (go === 'parla') { patch.mode = 'form'; patch.sec = 3;", "if (go === 'parla') { patch.mode = 'form'; patch.sec = 3; patch.entry = 'Preferisco parlarne';");
   // Il file originale serve per il caricamento.
   must('var ph = { id: seq, url: URL.createObjectURL(f),', 'var ph = { id: seq, file: f, url: URL.createObjectURL(f),');
+  // Le foto partono verso il Desk appena aggiunte, in sottofondo.
+  must("self.setState({ photos: list, seq: seq, drag: 0, target: '' });", "self.setState({ photos: list, seq: seq, drag: 0, target: '' }); if (window.__ofPreload) window.__ofPreload(arr);");
   // Invio reale a Dogo Desk.
   must("var send = function () { if (sendOk) { try { localStorage.removeItem('of-draft'); } catch (e) {} self.setState({ sent: true, view: 0, restored: false }); window.scrollTo({ top: 0, behavior: 'smooth' }); } };",
     "var send = function () { if (!sendOk || self.state.sending) return; self.setState({ sending: true, sendError: '' }); window.__ofSubmit(self.state).then(function (r) { try { localStorage.removeItem('of-draft'); } catch (e) {} self.setState({ sent: true, sending: false, code: r.code || self.state.code, view: 0, restored: false }); window.scrollTo({ top: 0, behavior: 'smooth' }); }, function (err) { self.setState({ sending: false, sendError: (err && err.message) || 'Invio non riuscito.' }); }); };");
-  must('sendWhy: why,', "sendWhy: s.sending ? 'Invio in corso…' : (s.sendError ? s.sendError + ' Riprova, oppure scrivi a Salvatore su WhatsApp.' : why),");
+  must('sendWhy: why,', "sendWhy: s.sending ? (s.photos.length ? 'Stiamo inviando la scheda e le foto…' : 'Stiamo inviando la scheda…') : (s.sendError ? s.sendError + ' Riprova, oppure scrivi a Salvatore su WhatsApp.' : why),");
   return s;
 }
 

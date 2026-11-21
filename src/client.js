@@ -102,14 +102,19 @@ async function cleanPhoto(file) {
 
 /** Verifica antispam (Cloudflare Turnstile), solo se il sito ha una chiave: restituisce il gettone o ''. */
 let turnstileReady = null;
-function turnstileToken(siteKey) {
-  if (!siteKey) return Promise.resolve('');
+/** Scarica in anticipo lo script della verifica antispam, così all'invio non si aspetta. */
+function loadTurnstile() {
   turnstileReady = turnstileReady || new Promise((res, rej) => {
     const sc = document.createElement('script');
     sc.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
-    sc.async = true; sc.onload = res; sc.onerror = () => rej(new Error('Verifica antispam non disponibile.'));
+    sc.async = true; sc.onload = res; sc.onerror = () => { turnstileReady = null; rej(new Error('Verifica antispam non disponibile.')); };
     document.head.appendChild(sc);
   });
+  return turnstileReady;
+}
+function turnstileToken(siteKey) {
+  if (!siteKey) return Promise.resolve('');
+  loadTurnstile();
   return turnstileReady.then(() => new Promise((res, rej) => {
     // Di solito la verifica è invisibile. Se Cloudflare chiede un gesto (una spunta), la casella
     // compare al centro con una riga di spiegazione: non deve restare nascosta in un angolo.
@@ -137,27 +142,54 @@ function turnstileToken(siteKey) {
   }));
 }
 
-/** Invia la scheda: prima le foto (URL firmati), poi i dati. Restituisce { code }. */
+/**
+ * Foto caricate in anticipo, mentre la persona compila: all'invio sono già sul server.
+ * Ogni gruppo aggiunto parte subito (pulizia dei dati nascosti, URL firmati, caricamento).
+ */
+const pre = { rid: null, next: 0, keys: new Map() };   // File originale → Promise<chiave | null>
+function requestId() {
+  let rid = safe(() => localStorage.getItem(RID_KEY));
+  if (!rid) { rid = crypto.randomUUID(); safe(() => localStorage.setItem(RID_KEY, rid)); }
+  if (pre.rid !== rid) { pre.rid = rid; pre.next = 0; pre.keys = new Map(); }
+  return rid;
+}
+function uploadBatch(cfg, originals) {
+  if (!originals.length) return;
+  const rid = requestId(), start = pre.next, base = `${cfg.desk}/api/intake/${cfg.org}`;
+  pre.next += originals.length;
+  const job = (async () => {
+    const files = await Promise.all(originals.map(cleanPhoto));
+    const res = await fetch(`${base}/upload`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ requestId: rid, start, files: files.map((f) => ({ type: typeOf(f), size: f.size })) }) }).catch(() => null);
+    if (res && res.status === 501) return null;   // caricamento non attivo: la scheda parte con una nota
+    if (!res || !res.ok) throw new Error(res ? await readError(res, 'Le foto non sono state caricate.') : 'Connessione assente: le foto non sono partite.');
+    const { uploads } = await res.json();
+    await Promise.all(uploads.map((u, i) => fetch(u.url, { method: 'PUT', headers: { 'content-type': typeOf(files[i]) }, body: files[i] }).then((r) => { if (!r.ok) throw new Error('Una foto non è stata caricata.'); })));
+    return uploads.map((u) => u.key);
+  })();
+  originals.forEach((f, i) => { const one = job.then((keys) => (keys ? keys[i] : null)); one.catch(() => {}); pre.keys.set(f, one); });
+}
+
+/** Invia la scheda: le foto (già caricate in anticipo, o caricate adesso), poi i dati. Restituisce { code }. */
 function makeSubmit(cfg) {
   return async function submit(s) {
     const base = `${cfg.desk}/api/intake/${cfg.org}`;
-    let rid = safe(() => localStorage.getItem(RID_KEY));
-    if (!rid) { rid = crypto.randomUUID(); safe(() => localStorage.setItem(RID_KEY, rid)); }
+    const rid = requestId();
 
-    // 1. Foto: libere, nell'ordine in cui la persona le ha caricate.
-    const files = await Promise.all((s.photos || []).map((p) => p.file).filter((f) => f && typeOf(f)).map(cleanPhoto));
-    let photoKeys = [];
-    let note = '';
-    if (files.length) {
-      const res = await fetch(`${base}/upload`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ requestId: rid, files: files.map((f) => ({ type: typeOf(f), size: f.size })) }) }).catch(() => null);
-      if (res && res.status === 501) note = `\n[${files.length} foto scelte: il caricamento non è ancora attivo, vanno chieste alla persona]`;
-      else if (!res || !res.ok) throw new Error(res ? await readError(res, 'Le foto non sono state caricate.') : 'Connessione assente: le foto non sono partite.');
-      else {
-        const { uploads } = await res.json();
-        await Promise.all(uploads.map((u, i) => fetch(u.url, { method: 'PUT', headers: { 'content-type': typeOf(files[i]) }, body: files[i] }).then((r) => { if (!r.ok) throw new Error('Una foto non è stata caricata.'); })));
-        photoKeys = uploads.map((u) => u.key);
-      }
+    // 1. Foto: libere, nell'ordine in cui la persona le ha caricate. Quelle non ancora partite partono ora; quelle fallite si riprovano una volta.
+    const originals = (s.photos || []).map((p) => p.file).filter((f) => f && typeOf(f));
+    uploadBatch(cfg, originals.filter((f) => !pre.keys.has(f)));
+    const first = await Promise.allSettled(originals.map((f) => pre.keys.get(f)));
+    const failed = originals.filter((_, i) => first[i].status === 'rejected');
+    if (failed.length) {
+      failed.forEach((f) => pre.keys.delete(f));
+      uploadBatch(cfg, failed);
+      try { await Promise.all(failed.map((f) => pre.keys.get(f))); }
+      catch (e) { failed.forEach((f) => pre.keys.delete(f)); throw e; }
     }
+    const keys = await Promise.all(originals.map((f) => pre.keys.get(f)));
+    const photoKeys = keys.filter(Boolean);
+    const note = keys.some((k) => k === null) ? `
+[${originals.length} foto scelte: il caricamento non è ancora attivo, vanno chieste alla persona]` : '';
 
     // 2. Scheda, con i campi del modulo (contratto in dogo-desk/BETA.md).
     const src = safe(() => JSON.parse(sessionStorage.getItem(SRC_KEY) || 'null'), null) || { page: cfg.route, pageName: cfg.pageName, utm: null, referrer: null };
@@ -425,7 +457,11 @@ function setupObsidian() {
 export function mount(Component, cfg) {
   if (cfg.landing) rememberSource(cfg);
   safe(() => setupTracking(cfg));
-  if (cfg.page === 'richiesta') window.__ofSubmit = makeSubmit(cfg);
+  if (cfg.page === 'richiesta') {
+    window.__ofSubmit = makeSubmit(cfg);
+    window.__ofPreload = (files) => safe(() => uploadBatch(cfg, Array.prototype.filter.call(files || [], (f) => f && typeOf(f))));
+    if (cfg.turnstile) setTimeout(() => { loadTurnstile().catch(() => {}); }, 2500);
+  }
   const root = document.getElementById('dc-root');
   hydrate(h(Component, {}), root);
   checkVideoSources();
