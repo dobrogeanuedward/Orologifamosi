@@ -1682,7 +1682,7 @@ class Component extends DCLogic {
       if (go === 'parla') { patch.mode = 'form'; patch.sec = 3; patch.ch = { Telefonata: true }; }
       if (Object.keys(patch).length) this.setState(patch);
       else { var dr = null; try { dr = JSON.parse(localStorage.getItem('of-draft') || 'null'); } catch (e) {}
-        if (dr && dr.t && Date.now() - dr.t < 14 * 864e5 && dr.s && dr.s.mode === 'form') { dr.s.restored = true; this.setState(dr.s); } }
+        if (dr && dr.t && Date.now() - dr.t < 14 * 864e5 && dr.s && dr.s.mode === 'form') { dr.s.restored = true; dr.s.sec = 0; this.setState(dr.s);   // la bozza riparte dal primo passo, con i dati già scritti: le foto non si conservano } }
     } catch (e) {}
   }
   componentDidUpdate(pp, ps) {
