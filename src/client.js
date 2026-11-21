@@ -127,12 +127,12 @@ function turnstileToken(siteKey) {
     document.body.appendChild(veil);
     let over = false;
     const done = (fn, v) => { if (over) return; over = true; clearTimeout(timer); veil.remove(); fn(v); };
-    const timer = setTimeout(() => done(rej, new Error('La verifica di sicurezza non è stata completata. Riprova.')), 120000);
+    const timer = setTimeout(() => done(rej, new Error('La verifica di sicurezza non è stata completata.')), 120000);
     window.turnstile.render(box, {
       sitekey: siteKey, appearance: 'interaction-only', language: 'it',
       callback: (t) => done(res, t),
       'before-interactive-callback': () => { veil.style.display = 'grid'; },
-      'error-callback': () => done(rej, new Error('Verifica di sicurezza non riuscita. Riprova.')),
+      'error-callback': () => done(rej, new Error('Verifica di sicurezza non riuscita.')),
     });
   }));
 }
