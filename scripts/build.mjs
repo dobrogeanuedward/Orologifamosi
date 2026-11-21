@@ -38,6 +38,8 @@ const out = (p, data) => { const f = path.join(DIST, p); fs.mkdirSync(path.dirna
 const copyDir = (from, to) => { fs.mkdirSync(path.join(DIST, to), { recursive: true }); for (const f of fs.readdirSync(from)) fs.copyFileSync(path.join(from, f), path.join(DIST, to, f)); };
 
 copyDir(path.join(SRC, 'project/fonts'), `${ASSETS}/fonts`);
+// immagini delle email (testate, icone, foto): servite da www.orologifamosi.com/of-assets/email/
+copyDir(path.join(SRC, 'email'), `${ASSETS}/email`);
 if (!CDN) {
   copyDir(path.join(SRC, 'project/media'), `${ASSETS}/media`);
   copyDir(path.join(SRC, 'blobs'), `${ASSETS}/img`);
