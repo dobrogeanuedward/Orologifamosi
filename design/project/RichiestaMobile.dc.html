@@ -1806,7 +1806,7 @@ class Component extends DCLogic {
     var flagNames = flagDefs.filter(function (f) { return s.flags[f]; });
     var CH = [['WhatsApp', 'risposta in chat, anche con altre foto', '65e35bbc827d92ccf9cacb4c165ab237'], ['Telefonata', 'ti chiamiamo noi', '50b9506a6dba33845dd4eb44b593e14c'], ['Email', 'per scritto, con calma', '79d6020b97a9514ecb506ef5d618d19a'], ['Visita a Medicina (BO)', 'porti l’orologio in negozio', '115e565cc3a3589dcbbc1d345630853d'], ['Visita a Bologna', 'vi vedete a Bologna, su appuntamento', '115e565cc3a3589dcbbc1d345630853d']];
     var chosen = CH.filter(function (c) { return s.ch[c[0]]; }).map(function (c) { return c[0]; });
-    var needEmail = !!s.ch.Email, needPhone = !!(s.ch.WhatsApp || s.ch.Telefonata || s.ch['Visita a Medicina (BO)'] || s.ch['Visita a Bologna']) || !chosen.length;
+    var needEmail = true, needPhone = true;   // nome, cellulare ed email servono sempre: così si può sempre ricontattare e confermare per scritto
     var digits = s.phone.replace(/\D/g, '').length;
     var phoneOk = digits >= 8, emailOk = /\S+@\S+\.\S+/.test(s.email);
     var phoneBad = (!!s.phone && !phoneOk) || (!!s.tried && !s.phone), emailBad = (!!s.email && !emailOk) || (!!s.tried && !s.email);
@@ -1920,7 +1920,7 @@ class Component extends DCLogic {
       consent: s.consent, toggleConsent: function () { self.setState({ consent: !s.consent }); },
       canBack: true, backLabel: s.sec === 0 ? 'Cambia modo di iniziare' : 'Indietro', back: function () { if (s.sec === 0) self.setState({ mode: 'start' }); else go(s.sec - 1)(); },
       hasNext: true, nextDisabled: !!s.sending, nextStyle: '', nextLabel: nextLabels[s.sec], next: function () { if (s.sec < 3) go(s.sec + 1)(); else if (sendOk) send(); else showMissing(); }, footHint: hints[s.sec],
-      send: function () { if (sendOk) send(); else showMissing(); }, sendNote: !!(s.sending || s.sendError), sendErrAttr: s.sendError ? 'true' : 'false', sendDisabled: !!s.sending, sendReady: sendOk ? 'true' : 'false', nameBad: !!s.tried && !s.name.trim(), consentBad: !!s.tried && !s.consent ? 'true' : 'false', chBad: !!s.tried && !chosen.length, phoneErr: s.phone ? 'Controlla il numero: sembrano mancare delle cifre.' : 'Ci serve il cellulare per ricontattarti.', emailErr: s.email ? 'Manca qualcosa nell’indirizzo email.' : 'Ci serve l’email per risponderti.', sendStyle: 'width: 100%;', sendStyleM: '', sendWhy: why,
+      send: function () { if (sendOk) send(); else showMissing(); }, sendNote: !!(s.sending || s.sendError), sendErrAttr: s.sendError ? 'true' : 'false', sendDisabled: !!s.sending, sendReady: sendOk ? 'true' : 'false', nameBad: !!s.tried && !s.name.trim(), consentBad: !!s.tried && !s.consent ? 'true' : 'false', chBad: !!s.tried && !chosen.length, phoneErr: s.phone ? 'Controlla il numero: sembrano mancare delle cifre.' : 'Ci serve il cellulare per ricontattarti.', emailErr: s.email ? 'Manca qualcosa nell’indirizzo email.' : 'Ci serve l’email: ti mandiamo lì la conferma della scheda.', sendStyle: 'width: 100%;', sendStyleM: '', sendWhy: why,
       refCode: code, restored: !!s.restored && !s.sent, dismissDraft: function () { self.setState({ restored: false }); }, cardImg: cardImg, photoCount: n ? n + (n === 1 ? ' foto' : ' foto') : 'Nessuna foto', hasThumbs: preview.length > 1,
       thumbs: preview.slice(0, 8).map(function (p) { return { url: p.url }; }),
       cardWatch: watchName || 'Da scegliere', cardCond: s.cond || (flagNames.length ? flagNames[0] : 'Da indicare'), cardKit: kitNames.length ? kitNames.join(', ') : 'Da indicare',
