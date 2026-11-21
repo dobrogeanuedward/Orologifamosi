@@ -209,6 +209,14 @@ out('sitemap-vendi-orologio.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urls
 // Dominio proprio: sitemap e robots completi (il vecchio nome della sitemap resta per chi l'ha già registrato).
 out('sitemap.xml', fs.readFileSync(path.join(DIST, 'sitemap-vendi-orologio.xml')));
 out('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
+// Pagina «non trovata» con il marchio (Vercel la serve per ogni indirizzo inesistente).
+out('404.html', `<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Pagina non trovata · Orologi Famosi</title>
+<style>@font-face{font-family:Gambarino;src:url('${ASSETS}/fonts/gambarino-400.woff2') format('woff2');font-display:swap}@font-face{font-family:'General Sans';src:url('${ASSETS}/fonts/general-sans-500.woff2') format('woff2');font-weight:500;font-display:swap}
+html,body{height:100%;margin:0}body{display:grid;place-items:center;background:radial-gradient(70% 90% at 50% 0%,#2a241a,#141310 55%,#0b0a08);color:#f3ecdf;font:500 17px/1.5 'General Sans',system-ui,sans-serif;text-align:center;padding:24px;box-sizing:border-box}
+main{max-width:520px}p.k{margin:0 0 18px;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:#c9a464}h1{margin:0 0 16px;font:400 clamp(40px,8vw,64px)/1 Gambarino,Georgia,serif;letter-spacing:-.02em;color:#fbf8f2}p{margin:0 0 30px;color:#cfc5b2}
+a.b{display:inline-block;padding:16px 30px;border-radius:999px;background:#f3ecdf;color:#141310;text-decoration:none;font-size:14px;font-weight:600;letter-spacing:.12em;text-transform:uppercase}a.l{display:block;margin-top:18px;color:#e2c68f;font-size:15px}</style></head>
+<body><main><p class="k">Orologi Famosi · Medicina · Bologna</p><h1>Questa pagina non c’è</h1><p>L’indirizzo è sbagliato oppure la pagina è stata spostata. Da qui ritrovi tutto.</p><a class="b" href="/vendi-orologio/">Vendi il tuo orologio</a><a class="l" href="/vendi-orologio/richiesta/">Chiedi una valutazione gratuita</a></main></body></html>
+`);
 out('llms.txt', fs.readFileSync(path.join(ROOT, 'src/llms.txt'), 'utf8').replaceAll('{{SITE}}', SITE));
 console.log(`✓ sitemap, llms.txt · Desk: ${DESK_URL}/api/intake/${DESK_ORG}`);
 void clientRuntime;
