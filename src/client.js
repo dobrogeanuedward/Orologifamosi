@@ -23,6 +23,7 @@ function rememberSource(cfg) {
  */
 let trackCfg = null;
 function track(event) {
+  adsEvent(event);
   const cfg = trackCfg;
   if (!cfg || !cfg.desk) return;
   safe(() => {
@@ -454,6 +455,67 @@ function setupObsidian() {
   ready.then(() => setTimeout(run, still ? 0 : 1250));
 }
 
+/**
+ * Campagne (Meta e Google Ads): spente finché nel progetto Vercel non ci sono META_PIXEL_ID e/o GOOGLE_ADS_ID.
+ * Con gli ID compare il banner di consenso; i pixel si caricano solo dopo «Accetto» e la scelta si può cambiare
+ * dal link «Preferenze cookie» in fondo alla pagina. Senza consenso restano solo le statistiche anonime del Desk.
+ * Eventi: pagina vista, Contatto (clic su WhatsApp, telefono, email), Lead (scheda inviata).
+ */
+const CONSENT_KEY = 'of-consent';
+let adsCfg = null, adsOn = false;
+function loadAds() {
+  if (adsOn || !adsCfg) return;
+  adsOn = true;
+  if (adsCfg.meta) {
+    /* eslint-disable */
+    !function (f, b, e, v, n, t, s) { if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); }; if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0; t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s); }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+    /* eslint-enable */
+    window.fbq('init', adsCfg.meta); window.fbq('track', 'PageView');
+  }
+  if (adsCfg.gads) {
+    const sc = document.createElement('script'); sc.async = true; sc.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(adsCfg.gads)}`; document.head.appendChild(sc);
+    window.dataLayer = window.dataLayer || []; window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date()); window.gtag('config', adsCfg.gads);
+  }
+}
+function adsEvent(event) {
+  if (!adsOn) return;
+  safe(() => {
+    if (event === 'modulo_invio') {
+      if (window.fbq) window.fbq('track', 'Lead');
+      if (window.gtag && adsCfg.gadsLead) window.gtag('event', 'conversion', { send_to: `${adsCfg.gads}/${adsCfg.gadsLead}` });
+    } else if (event === 'whatsapp' || event === 'telefono' || event === 'email') {
+      if (window.fbq) window.fbq('track', 'Contact');
+      if (window.gtag && adsCfg.gadsContact) window.gtag('event', 'conversion', { send_to: `${adsCfg.gads}/${adsCfg.gadsContact}` });
+    }
+  });
+}
+function consentBanner(force) {
+  if (document.getElementById('of-consent')) return;
+  const saved = safe(() => JSON.parse(localStorage.getItem(CONSENT_KEY) || 'null'), null);
+  if (saved && !force) { if (saved.ok) loadAds(); return; }
+  const box = document.createElement('div');
+  box.id = 'of-consent'; box.setAttribute('role', 'dialog'); box.setAttribute('aria-label', 'Preferenze cookie');
+  box.style.cssText = 'position:fixed;left:12px;right:12px;bottom:12px;z-index:2147482000;max-width:560px;margin:0 auto;background:#141310;color:#f3ecdf;border:1px solid rgba(226,198,143,.35);border-radius:16px;padding:18px 20px;box-shadow:0 24px 60px -20px rgba(0,0,0,.7);font:400 15px/1.5 "General Sans",system-ui,sans-serif';
+  const p = document.createElement('p'); p.style.cssText = 'margin:0 0 14px';
+  p.append('Usiamo cookie di misurazione per capire quali annunci portano le richieste. Si attivano solo se accetti. ');
+  const a = document.createElement('a'); a.href = 'https://www.iubenda.com/privacy-policy/32325462/cookie-policy'; a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'Cookie policy'; a.style.cssText = 'color:#e2c68f'; p.append(a);
+  const row = document.createElement('div'); row.style.cssText = 'display:flex;gap:10px;flex-wrap:wrap';
+  const mk = (label, primary, ok) => { const b = document.createElement('button'); b.type = 'button'; b.textContent = label; b.style.cssText = `flex:1 1 140px;min-height:46px;border-radius:999px;font:600 14px/1 "General Sans",system-ui,sans-serif;letter-spacing:.06em;cursor:pointer;${primary ? 'background:#f3ecdf;color:#141310;border:0' : 'background:transparent;color:#f3ecdf;border:1px solid rgba(243,236,223,.45)'}`;
+    b.addEventListener('click', () => { safe(() => localStorage.setItem(CONSENT_KEY, JSON.stringify({ ok, t: Date.now() }))); box.remove(); if (ok) loadAds(); else if (adsOn) location.reload(); }); return b; };
+  // stessa evidenza per le due scelte: rifiutare è facile quanto accettare
+  row.append(mk('Rifiuto', false, false), mk('Accetto', true, true));
+  box.append(p, row); document.body.appendChild(box);
+}
+function setupAds(cfg) {
+  const a = cfg.ads || {};
+  if (!a.meta && !a.gads) return;
+  adsCfg = a;
+  consentBanner(false);
+  // link per cambiare idea, accanto alle voci legali del fondo pagina
+  safe(() => { const legal = document.querySelector('.foot-legal'); if (!legal) return; const l = document.createElement('a'); l.href = '#'; l.textContent = 'Preferenze cookie'; l.addEventListener('click', (e) => { e.preventDefault(); consentBanner(true); }); legal.append(' · ', l); });
+}
+
 export function mount(Component, cfg) {
   if (cfg.landing) rememberSource(cfg);
   safe(() => setupTracking(cfg));
@@ -468,4 +530,5 @@ export function mount(Component, cfg) {
   addEventListener('load', checkVideoSources, { once: true });
   safe(setupFinale);
   safe(setupObsidian);
+  safe(() => setupAds(cfg));
 }

@@ -48,6 +48,8 @@ const EXT = Object.fromEntries(fs.readdirSync(path.join(SRC, 'blobs')).map((f) =
 globalThis.__OF_IMG_EXT = EXT;
 globalThis.__OF_ASSETS = MEDIA;
 // Immagini aggiunte dopo l'ultimo caricamento su R2: le serve il sito stesso finché non vengono caricate sul bucket.
+// Campagne: ID di Meta e Google Ads dalle variabili di Vercel. Vuoti = niente pixel e niente banner.
+const ADS = { meta: process.env.META_PIXEL_ID || '', gads: process.env.GOOGLE_ADS_ID || '', gadsLead: process.env.GOOGLE_ADS_LEAD_LABEL || '', gadsContact: process.env.GOOGLE_ADS_CONTACT_LABEL || '' };
 const LOCAL_IMG = fs.existsSync(path.join(SRC, 'blobs-local.json')) ? JSON.parse(fs.readFileSync(path.join(SRC, 'blobs-local.json'), 'utf8')) : [];
 globalThis.__OF_IMG_LOCAL = new Set(LOCAL_IMG);
 globalThis.__OF_ASSETS_LOCAL = ASSETS;
@@ -155,7 +157,7 @@ for (const page of PAGES) {
   const entry = path.join(ROOT, '.build', `${page.id}.js`);
   fs.mkdirSync(path.dirname(entry), { recursive: true });
   fs.writeFileSync(path.join(ROOT, '.build', `${page.id}.tpl.json`), JSON.stringify(board.tpl));
-  fs.writeFileSync(entry, `import { DCLogic, imgPath as __ofImg } from '../src/dc.js';\nimport { mount } from '../src/client.js';\nimport tpl from './${page.id}.tpl.json';\n${code}\n;Component.__tpl = tpl;\nmount(Component, ${JSON.stringify({ page: page.id, route: page.route, pageName: page.name, desk: DESK_URL, org: DESK_ORG, landing: !!page.landing, turnstile: page.id === 'richiesta' ? TURNSTILE : '' })});\n`);
+  fs.writeFileSync(entry, `import { DCLogic, imgPath as __ofImg } from '../src/dc.js';\nimport { mount } from '../src/client.js';\nimport tpl from './${page.id}.tpl.json';\n${code}\n;Component.__tpl = tpl;\nmount(Component, ${JSON.stringify({ page: page.id, route: page.route, pageName: page.name, desk: DESK_URL, org: DESK_ORG, landing: !!page.landing, turnstile: page.id === 'richiesta' ? TURNSTILE : '', ads: ADS })});\n`);
   await esbuild.build({
     entryPoints: [entry], bundle: true, minify: true, format: 'esm', target: 'es2019', outfile: path.join(DIST, ASSETS, 'js', `${page.id}.js`),
     define: { 'globalThis.__OF_IMG_EXT': JSON.stringify(EXT), 'globalThis.__OF_ASSETS': JSON.stringify(MEDIA), 'globalThis.__OF_IMG_LOCAL': JSON.stringify(LOCAL_IMG), 'globalThis.__OF_ASSETS_LOCAL': JSON.stringify(ASSETS) }, loader: { '.json': 'json' }, logLevel: 'warning',
