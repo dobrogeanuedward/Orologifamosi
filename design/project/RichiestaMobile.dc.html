@@ -153,7 +153,7 @@ label.btn{cursor:pointer}
 .field input,.field textarea{font:inherit;font-weight:400;font-size:17px;padding:14px 18px;background:#fff;color:#171918;border:0;box-shadow:inset 0 0 0 1px #d9cfba;border-radius:12px;min-height:54px;box-sizing:border-box;transition:box-shadow 200ms ease;width:100%}
 .field textarea{resize:vertical;min-height:84px}
 .field input:focus,.field textarea:focus{outline:none;box-shadow:inset 0 0 0 2px #9a7221}
-.field input[data-bad="true"]{box-shadow:inset 0 0 0 2px #b4472f} .consent-main{border-radius:12px;padding:12px 14px;margin:-12px -14px;transition:box-shadow 200ms ease,background-color 200ms ease} .consent-main[data-bad="true"]{box-shadow:inset 0 0 0 2px #b4472f;background:#fff6f2} .consent input[type=checkbox]{width:22px;height:22px;flex:none;margin:1px 0 0;accent-color:#171918}
+.field input[data-bad="true"]{box-shadow:inset 0 0 0 2px #b4472f} .recap{display:flex;flex-direction:column;gap:10px;padding:18px 20px 8px;background:#fff;border-radius:14px;box-shadow:inset 0 0 0 1px #e6dcc6} .recap-list{list-style:none;margin:0;padding:0} .recap-list li{display:grid;grid-template-columns:110px minmax(0,1fr) auto;gap:12px;align-items:baseline;padding:12px 0;border-top:1px solid #efe6d2} .recap-list li:first-child{border-top:0} .recap .rk{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#7a705f} .recap .rv{font-size:16px;color:#171918} .recap .rv[data-empty="true"]{color:#8a8172} .recap .rlink{background:none;border:0;padding:6px 0;min-height:36px;font:inherit;font-size:14px;font-weight:600;color:#9a7221;cursor:pointer;text-decoration:underline;text-underline-offset:3px} @media (max-width:560px){.recap-list li{grid-template-columns:minmax(0,1fr) auto;row-gap:2px}.recap .rk{grid-column:1 / -1}} .consent-main{border-radius:12px;padding:12px 14px;margin:-12px -14px;transition:box-shadow 200ms ease,background-color 200ms ease} .consent-main[data-bad="true"]{box-shadow:inset 0 0 0 2px #b4472f;background:#fff6f2} .consent input[type=checkbox]{width:22px;height:22px;flex:none;margin:1px 0 0;accent-color:#171918}
 .err{font-weight:400;font-size:13.5px;color:#9b3a24}
 .disclose{align-self:flex-start;display:inline-flex;align-items:center;gap:10px;background:transparent;border:0;padding:8px 0;min-height:44px;font:inherit;font-weight:600;color:#171918;cursor:pointer}
 .disclose[aria-expanded="true"] .plus{transform:rotate(45deg)}
@@ -1400,7 +1400,7 @@ video[data-scrubbg]{display:none !important}
 </sc-if>
 <div class="fields">
 <sc-if value="{{showModelOther}}" hint-placeholder-val="{{true}}"><label class="field swap-in" style="flex: 2 1 300px;"><span>{{modelOtherLabel}}</span><input type="text" value="{{modelOther}}" onChange="{{setModelOther}}" placeholder="Es. Seamaster Aqua Terra"></label></sc-if>
-<label class="field" style="flex: 2 1 260px;"><span>Referenza <em>facoltativa</em></span><input type="text" value="{{refNo}}" onChange="{{setRef}}" placeholder="{{refPlaceholder}}"></label>
+<label class="field fields-ref" style="flex: 2 1 260px;"><span>Referenza <em>facoltativa</em></span><input type="text" value="{{refNo}}" onChange="{{setRef}}" placeholder="{{refPlaceholder}}"></label>
 <label class="field" style="flex: 1 1 140px;"><span>Anno <em>anche circa</em></span><input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="off" value="{{year}}" onChange="{{setYear}}" onBlur="{{blurYear}}" placeholder="Es. 2016" data-bad="{{yearBad}}"><sc-if value="{{yearBad}}" hint-placeholder-val="{{false}}"><small class="err">{{yearErr}}</small></sc-if></label>
 </div>
 <button type="button" class="disclose" aria-expanded="{{refOpenAttr}}" onClick="{{toggleRef}}"><span>Dove trovo la referenza?</span><svg class="plus" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9a7221" stroke-width="1.8" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button>
@@ -1532,6 +1532,8 @@ video[data-scrubbg]{display:none !important}
 </div>
 
 <label class="consent consent-main" data-bad="{{consentBad}}"><input type="checkbox" checked="{{consent}}" onChange="{{toggleConsent}}"><span>Ho letto l’<a class="ulink" href="https://www.iubenda.com/privacy-policy/32325462/full-legal" target="_blank" rel="noopener">informativa privacy</a> e acconsento all’uso di dati e foto per la valutazione del mio orologio.</span></label>
+<div class="recap"><p class="lab">La tua scheda <span>· controlla prima di inviare</span></p>
+<ul class="recap-list"><sc-for list="{{recapRows}}" as="rr" hint-placeholder-count="3"><li><span class="rk">{{rr.label}}</span><span class="rv" data-empty="{{rr.empty}}">{{rr.sum}}</span><button type="button" class="rlink" onClick="{{rr.go}}">Modifica</button></li></sc-for></ul></div>
 </section>
 </sc-if>
 
@@ -1685,6 +1687,15 @@ class Component extends DCLogic {
   }
   componentDidUpdate(pp, ps) {
     var s = this.state;
+    if (this._toDetails) {
+      this._toDetails = false;
+      setTimeout(function () {
+        var ref = document.querySelector('.fields-ref') || document.querySelector('input[maxlength="4"]');
+        if (!ref) return;
+        var r = ref.getBoundingClientRect(), bar = document.querySelector('.mbar') ? 90 : 0;
+        if (r.top > window.innerHeight - bar - 140 || r.top < 70) window.scrollBy({ top: r.top - window.innerHeight * 0.35, behavior: 'smooth' });
+      }, 80);
+    }
     if (this._focusMissing) { var f = this._focusMissing; this._focusMissing = null; setTimeout(f, 60); return; }
     if (ps.sec !== s.sec || ps.mode !== s.mode || ps.sent !== s.sent) this._toTop();
   }
@@ -1849,6 +1860,11 @@ class Component extends DCLogic {
         ['Solo foto', 'Mando subito le foto', 'Carica quello che hai: il modello lo riconosciamo noi dalle immagini.', '483758e92ebe8713bc8cb3a0c55d0fab', 2, null],
         ['Di persona', 'Preferisco parlarne', 'Una telefonata, WhatsApp o una visita: nel negozio di Medicina (BO) o nella sede riservata di Bologna.', '50b9506a6dba33845dd4eb44b593e14c', 3, { Telefonata: true }]
       ].map(function (x, i) { return { kicker: x[0], title: x[1], text: x[2], img: I(x[3]), delay: '--d: ' + (250 + i * 110) + 'ms;', go: function () { var p = { mode: 'form', sec: x[4] }; if (x[5]) p.ch = x[5]; self.setState(p); } }; }),
+      recapRows: [
+        ['Orologio', watchName + (s.refNo ? ' · ref. ' + s.refNo : '') + (yearOk ? ' · ' + s.year : ''), !watchName],
+        ['Condizioni', [s.cond, kitNames.join(', ')].filter(Boolean).join(' · '), !(s.cond || kitNames.length)],
+        ['Foto', n ? n + ' foto' : '', !n]
+      ].map(function (x, i) { return { label: x[0], sum: x[1] || (i === 2 ? 'Nessuna: puoi mandarle anche dopo' : 'Non indicato'), empty: x[2] ? 'true' : 'false', go: go(i) }; }),
       secs: SEC.map(function (l, i) { return { label: l, sum: sums[i], cur: s.sec === i ? 'step' : 'false', done: done[i] ? '1' : '0', go: go(i) }; }),
       is0: s.sec === 0, is1: s.sec === 1, is2: s.sec === 2, is3: s.sec === 3,
       q: s.q, setQ: function (e) { self.setState({ q: e.target.value }); }, qTrim: qT,
@@ -1864,7 +1880,7 @@ class Component extends DCLogic {
       showUseQ: !!qT && !exact, useQChecked: s.brand === '__other' && s.other === qT ? 'true' : 'false', useQ: function () { self.setState({ brand: '__other', other: qT, model: '', modelOther: '' }); },
       noMatch: !!qT && !shownBrands.length,
       hasBrand: hasBrand, brandLabel: brandName, hasModels: models.length > 0, showModelOther: !models.length || !s.model || s.model === 'Non lo so' || !!s.modelOther, modelOtherLabel: models.length ? 'Il tuo modello non è tra questi? Scrivilo' : 'Modello, se lo sai',
-      modelTiles: models.concat([['Non lo so', '', 'lo riconosciamo noi']]).map(function (m) { return { name: m[0], hint: m[2], img: I(m[1]), hasImg: !!m[1], noImg: !m[1], initial: m[0] === 'Non lo so' ? '?' : m[0].charAt(0), checked: s.model === m[0] ? 'true' : 'false', pick: function () { self.setState({ model: m[0], modelOther: '' }); } }; }),
+      modelTiles: models.concat([['Non lo so', '', 'lo riconosciamo noi']]).map(function (m) { return { name: m[0], hint: m[2], img: I(m[1]), hasImg: !!m[1], noImg: !m[1], initial: m[0] === 'Non lo so' ? '?' : m[0].charAt(0), checked: s.model === m[0] ? 'true' : 'false', pick: function () { self._toDetails = true; self.setState({ model: m[0], modelOther: '' }); } }; }),
       modelOther: s.modelOther, setModelOther: function (e) { self.setState({ modelOther: e.target.value }); },
       refNo: s.refNo, setRef: function (e) { self.setState({ refNo: e.target.value }); },
       refPlaceholder: s.brand === 'Rolex' ? 'Es. 126610LN' : (s.brand === 'Omega' ? 'Es. 310.30.42.50.01.001' : 'Es. dalla garanzia'),
