@@ -1388,7 +1388,7 @@ video[data-scrubbg]{display:none !important}
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":8400}}'>
 class Component extends DCLogic {
-  constructor(props) { super(props); this.state = { model: "Submariner", sec: 0, more: false, freeOpen: false, free: '', menu: false }; }
+  constructor(props) { super(props); this.state = { model: "", sec: 0, more: false, freeOpen: false, free: '', menu: false }; }
   componentDidMount() {
     try { if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) Array.prototype.forEach.call(document.querySelectorAll('svg.foot-word'), function (el) { if (el.pauseAnimations) el.pauseAnimations(); }); } catch (e) {}
     var self = this;
@@ -1461,11 +1461,11 @@ class Component extends DCLogic {
     });
     var inMore = !free && M.some(function (m) { return m[0] === s.model; });
     var moreList = M.map(function (m) { var on = !free && s.model === m[0]; return { label: m[0], img: m[1] ? '/_blob/' + m[1] : '', hasImg: !!m[1], pressed: on ? 'true' : 'false', pick: function () { self.setState({ model: m[0], freeOpen: false }); } }; });
-    var name = "Rolex " + sel;
+    var name = sel ? "Rolex " + sel : "Rolex";
     var msg = 'Buongiorno Salvatore, vorrei una valutazione del mio ' + name + '. Vi scrivo modello, condizioni e corredo e allego le foto.';
     var lines = ["Due minuti, nessun obbligo", "Basta la referenza o una foto", "Anche con i segni del tempo", "Anche vintage", "Anche senza scatola", "Risponde Salvatore", "Risponde Salvatore"];
-    var rq = false ? 'Richiesta.dc.html?m=' + encodeURIComponent(sel) : 'Richiesta.dc.html?m=' + encodeURIComponent("Rolex") + (free ? '&mo=' : '&model=') + encodeURIComponent(sel);
-    var saveSel = function () { var d = JSON.stringify({ q: rq.split('?')[1], t: Date.now() }); try { sessionStorage.setItem('of-sel', d); } catch (e) {} try { localStorage.setItem('of-sel', d); } catch (e) {} };
+    var rq = !sel ? 'Richiesta.dc.html?m=' + encodeURIComponent("Rolex") : false ? 'Richiesta.dc.html?m=' + encodeURIComponent(sel) : 'Richiesta.dc.html?m=' + encodeURIComponent("Rolex") + (free ? '&mo=' : '&model=') + encodeURIComponent(sel);
+    var saveSel = function () { if (rq.indexOf('?') < 0) { try { sessionStorage.removeItem('of-sel'); } catch (e) {} try { localStorage.removeItem('of-sel'); } catch (e) {} return; } var d = JSON.stringify({ q: rq.split('?')[1], t: Date.now() }); try { sessionStorage.setItem('of-sel', d); } catch (e) {} try { localStorage.setItem('of-sel', d); } catch (e) {} };
     return { yes: true, reqHref: rq, saveSel: saveSel, models: models, moreList: moreList, more: s.more, moreAttr: s.more ? 'true' : 'false',
       toggleMore: function () { self.setState({ more: !self.state.more }); },
       moreLabel: free ? free : (inMore ? s.model : "Altri modelli"), moreStyle: chipSt(inMore || !!free, false) + ' padding-right: 14px;',
