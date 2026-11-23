@@ -31,7 +31,8 @@ export function business() {
 
 function breadcrumb(page, title) {
   const items = [{ name: 'Vendi il tuo orologio', url: SITE + LINKS.Main }];
-  if (page.route !== LINKS.Main) items.push({ name: title.split(' · ')[0], url: SITE + page.route });
+  const crumb = page.brand ? `Vendi il tuo ${page.brand} usato` : page.kind === 'about' ? 'Chi è Salvatore Agresta' : page.kind === 'contact' ? 'Contatti' : title.split(/ [·|:] /)[0];
+  if (page.route !== LINKS.Main) items.push({ name: crumb, url: SITE + page.route });
   return {
     '@context': 'https://schema.org', '@type': 'BreadcrumbList',
     itemListElement: items.map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it.name, item: it.url })),
@@ -50,6 +51,20 @@ function service(page, description, canonical) {
     description,
     ...(brand ? { brand: { '@type': 'Brand', name: brand } } : { brand: B.brands.map((b) => ({ '@type': 'Brand', name: b })) }),
     potentialAction: { '@type': 'AskAction', name: 'Richiedi una valutazione', target: SITE + LINKS.Richiesta },
+  };
+}
+
+/** I 19 marchi della pagina generale: pagina dedicata per Rolex, Omega e Cartier, scheda in pagina per gli altri. */
+const slug = (b) => b.toLowerCase().replace(/&/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const OWN = { Rolex: LINKS.Rolex, Omega: LINKS.Omega, Cartier: LINKS.Cartier };
+function brandList() {
+  return {
+    '@context': 'https://schema.org', '@type': 'ItemList',
+    name: 'Marchi di orologi usati che Orologi Famosi valuta e acquista',
+    itemListElement: B.brands.map((b, i) => ({
+      '@type': 'ListItem', position: i + 1,
+      item: { '@type': 'Service', name: `Valutazione e acquisto ${b} usati`, brand: { '@type': 'Brand', name: b }, provider: { '@id': ORG_ID }, url: SITE + (OWN[b] || `${LINKS.Main}#${slug(b)}`) },
+    })),
   };
 }
 
@@ -79,6 +94,7 @@ export function jsonLd(page, { canonical, title, description, ogImage, faqs }) {
   };
   const list = [web, business(), breadcrumb(page, title)];
   if (page.kind === 'landing') list.push(service(page, description, canonical));
+  if (page.kind === 'landing' && !page.brand) list.push(brandList());
   if (page.kind === 'about') list.push(person());
   if (faqs?.length) list.push(faqPage(faqs));
   return list;
