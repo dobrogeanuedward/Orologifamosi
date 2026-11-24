@@ -18,7 +18,7 @@ import { h } from 'preact';
 import { renderToString } from 'preact-render-to-string';
 import { DCLogic, imgPath } from '../src/dc.js';
 import { PAGES as BASE_PAGES, SITE, LINKS, BUSINESS } from '../src/site.js';
-import { CONTENT_PAGES } from '../src/content.js';
+import { CONTENT_PAGES, HERO_ALT, llmsFull } from '../src/content.js';
 
 // Pagine delle tavole + pagine di contenuto (guide, marchi, territorio) costruite sulla tavola Guida.
 const PAGES = [...BASE_PAGES, ...CONTENT_PAGES];
@@ -36,6 +36,8 @@ const DESK_URL = (process.env.DESK_URL || 'http://localhost:3000').replace(/\/$/
 const DESK_ORG = process.env.DESK_ORG || 'of';
 /** Chiave pubblica di Cloudflare Turnstile per il modulo. Vuota: nessuna verifica lato pagina. */
 const TURNSTILE = process.env.TURNSTILE_SITE_KEY || '';
+/** Chiave pubblica di IndexNow (Bing e altri motori): non è un segreto, va pubblicata alla radice del sito. */
+const INDEXNOW_KEY = 'b7e3c9a14f2d4e6a8c0f1d2e3a4b5c6d';
 
 // ---------- preparazione ----------
 fs.rmSync(DIST, { recursive: true, force: true });
@@ -147,8 +149,8 @@ const sitemap = [];
 
 for (const page of PAGES) {
   const board = readBoard(page.file);
-  const code = (page.data ? `var GUIDA = ${JSON.stringify(page.data)};
-` : '') + rewriteScript(board.code, page);
+  if (page.data && page.data.hero && !page.data.heroAlt) page.data.heroAlt = HERO_ALT[page.data.hero] || '';
+  const code = (page.data ? `var GUIDA = ${JSON.stringify(page.data)};\n` : '') + rewriteScript(board.code, page);
   const cssId = page.file === 'Guida.dc.html' ? 'guida' : page.id;
   // Server: stessa classe della tavola, eseguita su Preact.
   const Comp = new Function('DCLogic', '__ofImg', `${code}\n;return Component;`)(DCLogic, imgPath);
@@ -210,13 +212,15 @@ ${ld.map((o) => `<script type="application/ld+json">${JSON.stringify(o).replace(
 </html>
 `;
   out(`${page.route}index.html`, doc);
-  if (page.index !== false) sitemap.push({ loc: canonical, priority: page.priority ?? 0.8 });
+  // Immagini della pagina per la sitemap (Google Immagini): foto di contenuto, niente icone.
+  const images = [...new Set([...html.matchAll(/<img[^>]*?src="([^"]+)"/g)].map((m) => m[1]).filter((u) => /\/(img|catalogo)\/[^"]+\.(webp|jpe?g)$/.test(u)).map(abs))].slice(0, 200);
+  if (page.index !== false) sitemap.push({ loc: canonical, priority: page.priority ?? 0.8, images });
   console.log(`✓ ${page.route}  ${(doc.length / 1024).toFixed(0)} KB html · ${(css.length / 1024).toFixed(0)} KB css`);
 }
 
 // ---------- file per motori di ricerca e AI ----------
 const today = new Date().toISOString().slice(0, 10);
-out('sitemap-vendi-orologio.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemap.map((u) => `  <url><loc>${u.loc}</loc><lastmod>${today}</lastmod><priority>${u.priority}</priority></url>`).join('\n')}\n</urlset>\n`);
+out('sitemap-vendi-orologio.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${sitemap.map((u) => `  <url><loc>${u.loc}</loc><lastmod>${today}</lastmod><priority>${u.priority}</priority>${(u.images || []).map((i) => `<image:image><image:loc>${esc(i)}</image:loc></image:image>`).join('')}</url>`).join('\n')}\n</urlset>\n`);
 // Dominio proprio: sitemap e robots completi (il vecchio nome della sitemap resta per chi l'ha già registrato).
 out('sitemap.xml', fs.readFileSync(path.join(DIST, 'sitemap-vendi-orologio.xml')));
 out('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
@@ -229,6 +233,9 @@ a.b{display:inline-block;padding:16px 30px;border-radius:999px;background:#f3ecd
 <body><main><p class="k">Orologi Famosi · Medicina · Bologna</p><h1>Questa pagina non c’è</h1><p>L’indirizzo è sbagliato oppure la pagina è stata spostata. Da qui ritrovi tutto.</p><a class="b" href="/vendi-orologio/">Vendi il tuo orologio</a><a class="l" href="/vendi-orologio/richiesta/">Chiedi una valutazione gratuita</a></main></body></html>
 `);
 out('llms.txt', fs.readFileSync(path.join(ROOT, 'src/llms.txt'), 'utf8').replaceAll('{{SITE}}', SITE));
+// Testo completo di guide, marchi e territorio per gli assistenti AI.
+out('llms-full.txt', `${fs.readFileSync(path.join(ROOT, 'src/llms.txt'), 'utf8').replaceAll('{{SITE}}', SITE)}\n\n${llmsFull(SITE)}`);
+out(`${INDEXNOW_KEY}.txt`, INDEXNOW_KEY);
 console.log(`✓ sitemap, llms.txt · Desk: ${DESK_URL}/api/intake/${DESK_ORG}`);
 void clientRuntime;
 

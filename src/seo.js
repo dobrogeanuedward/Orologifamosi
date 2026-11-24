@@ -1,5 +1,8 @@
 /** Dati strutturati schema.org per pagina. Solo fatti presenti nelle tavole: niente recensioni, prezzi o orari inventati. */
 import { BUSINESS as B, SITE, LINKS } from './site.js';
+import { imgPath } from './dc.js';
+
+const abs = (u) => (u.startsWith('http') ? u : SITE + u);
 
 const ORG_ID = `${SITE}/#orologi-famosi`;
 const PERSON_ID = `${SITE}${LINKS.Salvatore}#salvatore-agresta`;
@@ -20,6 +23,10 @@ export function business() {
     founder: { '@id': PERSON_ID },
     address: { '@type': 'PostalAddress', ...B.address },
     hasMap: B.maps,
+    // Stesso punto della scheda Google (Centro Commerciale Medicì, Via Licurgo Fava 421): lega il sito alla scheda Maps.
+    geo: { '@type': 'GeoCoordinates', latitude: B.geo.lat, longitude: B.geo.lng },
+    logo: abs(imgPath(B.logo)),
+    image: B.photos.map((id) => abs(imgPath(id))),
     sameAs: B.sameAs,
     openingHoursSpecification: B.hours.map((h) => ({ '@type': 'OpeningHoursSpecification', dayOfWeek: h.days, opens: h.opens, closes: h.closes })),
     areaServed: B.areaServed.map((c) => ({ '@type': 'City', name: c })),

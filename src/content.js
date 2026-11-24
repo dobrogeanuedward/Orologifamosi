@@ -50,6 +50,17 @@ const IMG = {
   libro: '79d6020b97a9514ecb506ef5d618d19a',     // al polso, sul libro
 };
 
+/** Descrizioni delle foto (per chi non le vede e per Google Immagini). */
+const ALT = {
+  [IMG.banco]: 'Salvatore Agresta controlla la marcia di un orologio nel negozio di Orologi Famosi a Medicina (BO)',
+  [IMG.tavolo]: 'Salvatore Agresta valuta gli orologi di un cliente al tavolo di Orologi Famosi',
+  [IMG.scrivania]: 'Salvatore Agresta esamina un orologio alla sua scrivania, con la scatola originale',
+  [IMG.tudor]: 'Salvatore Agresta apre la scatola originale di un Tudor',
+  [IMG.movimento]: 'Il movimento di un cronografo d’epoca sotto la lente',
+  [IMG.mano]: 'Un orologio subacqueo in acciaio tra le mani durante la valutazione',
+  [IMG.velluto]: 'Due orologi GMT su un vassoio di velluto da Orologi Famosi',
+  [IMG.libro]: 'Un cronografo in oro al polso, sopra un libro di orologeria',
+};
 const G = '/vendi-orologio/guida/';
 const R = {
   guide: G,
@@ -786,3 +797,27 @@ export const CONTENT_PAGES = [
   hub, ...guide.map(guidePage), regione, marchiHub, ...brands.map(brandPage),
 ];
 export const CONTENT_ROUTES = R;
+
+export const HERO_ALT = ALT;
+
+/** Testo semplice di tutte le pagine di contenuto, per llms-full.txt. */
+export function llmsFull(site) {
+  const out = ['# Orologi Famosi · testo completo delle guide e delle pagine marchio', ''];
+  for (const p of CONTENT_PAGES) {
+    const d = p.data;
+    out.push(`## ${d.h1}`, `${site}${p.route}`, '', d.lead, '', d.brief, '');
+    for (const pt of d.points || []) out.push(`- ${pt}`);
+    for (const sec of d.sections || []) {
+      out.push('', `### ${sec.h}`);
+      for (const para of sec.p || []) out.push(para);
+      for (const li of sec.list || []) out.push(`- ${li.b}: ${li.t}`);
+      for (const b of sec.bullets || []) out.push(`- ${b}`);
+      for (const r of sec.table?.rows || []) out.push(`- ${r.k}: ${r.v.join(' · ')}`);
+      if (sec.note) out.push(sec.note);
+    }
+    if (d.shelf?.items?.length) { out.push('', `### ${d.shelf.h}`); for (const w of d.shelf.items) out.push(`- ${w.t}${w.sold ? ' (venduto)' : ''}: ${w.href}`); }
+    if (d.faqs?.length) { out.push('', '### Domande frequenti'); for (const f of d.faqs) out.push(`- ${f.q} ${f.a}`); }
+    out.push('', '');
+  }
+  return out.join('\n');
+}

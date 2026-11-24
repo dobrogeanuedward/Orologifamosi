@@ -1138,6 +1138,8 @@ video[data-scrubbg]{display:none !important}
 .g-watch-l{font-size:13.5px;color:#7a5a18}
 .g-shelf-all{color:#7a5a18;font-weight:600}
 @media (max-width:640px){.g-shelf-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.g-watch-t{font-size:14px}}
+.g-rev{margin:clamp(56px,6vw,88px) 0 0;padding:0}
+.g-rev .rev-grid{grid-template-columns:1fr}
 .g-faq{margin:clamp(56px,6vw,88px) 0 0;border-top:1px solid #d9ccb0}
 .g-faq h2{margin:clamp(40px,4vw,56px) 0 12px;font-size:clamp(32px,3.4vw,48px);color:#141310}
 .g-faq details{border-bottom:1px solid #e3d8c1;padding:14px 0}
@@ -1212,7 +1214,7 @@ video[data-scrubbg]{display:none !important}
 <main id="top">
 
 <section class="sp-hero g-hero" data-tone="dark" aria-labelledby="sp-title">
-<div class="sp-hero-bg" aria-hidden="true"><img src="{{heroImg}}" alt=""></div>
+<div class="sp-hero-bg" aria-hidden="true"><img src="{{heroImg}}" alt="{{heroAlt}}"></div>
 <div class="wrap sp-hero-in">
 <ol class="g-crumb in" aria-label="Percorso"><li><a href="Main.dc.html">Vendi il tuo orologio</a></li><sc-if value="{{parentName}}"><li><a href="{{parentHref}}">{{parentName}}</a></li></sc-if><li aria-current="page">{{crumb}}</li></ol>
 <p class="eyebrow in"><span>{{kicker}}</span><span>{{kickerSub}}</span></p>
@@ -1236,6 +1238,7 @@ video[data-scrubbg]{display:none !important}
 <sc-if value="{{s.note}}"><p class="g-note">{{s.note}}</p></sc-if>
 </section></sc-for>
 <sc-if value="{{hasShelf}}"><section class="g-shelf" id="passati"><h2 class="serif">{{shelf.h}}</h2><p>{{shelf.p}}</p><div class="g-shelf-grid"><sc-for list="{{shelf.items}}" as="w"><a class="g-watch" href="{{w.href}}" target="_blank" rel="noopener"><span class="g-watch-img"><img src="{{w.img}}" alt="{{w.t}}" loading="lazy" width="571" height="768"><sc-if value="{{w.sold}}"><span class="g-sold">Venduto</span></sc-if></span><span class="g-watch-t">{{w.t}}</span><span class="g-watch-l">Vedi la scheda originale</span></a></sc-for></div><p class="g-note"><a class="g-shelf-all" href="{{shelf.all}}" target="_blank" rel="noopener">{{shelf.allLabel}}</a></p></section></sc-if>
+<div class="pblock rev g-rev" id="recensioni"><div class="rev-head"><p class="eyebrow on-light"><span>Recensioni</span><span>dal profilo Google</span></p><h2 id="rev-title" class="serif">Chi ha già venduto a Salvatore</h2><a class="rev-score" href="https://www.google.com/maps/search/?api=1&amp;query=Orologi+Famosi+Via+Licurgo+Fava+421+Medicina" target="_blank" rel="noopener"><span class="rev-big serif">4,9</span><span class="rev-meta"><b>su 5 su Google</b><small>202 recensioni · leggile tutte <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></small></span></a></div><div class="rev-grid"><figure class="rev-q"><span class="rev-mark serif" aria-hidden="true">“</span><blockquote class="serif">Ho venduto 2 orologi e tutto è andato liscio in un clima amichevole e di estrema correttezza. Salvatore è molto competente.</blockquote><figcaption>Matteo M., recensione Google</figcaption></figure><figure class="rev-q"><span class="rev-mark serif" aria-hidden="true">“</span><blockquote class="serif">È venuto incontro alla mia esigenza di vendere alcuni orologi di pregio il prima possibile e ci è riuscito.</blockquote><figcaption>Tania Z., recensione Google</figcaption></figure><figure class="rev-q"><span class="rev-mark serif" aria-hidden="true">“</span><blockquote class="serif">Ho incontrato Salvatore per una valutazione e conseguente vendita del mio orologio. Ho riscontrato grande professionalità e gentilezza.</blockquote><figcaption>Stefano D., recensione Google</figcaption></figure></div></div>
 <sc-if value="{{hasFaq}}"><section class="g-faq" id="domande"><h2 class="serif">Domande frequenti</h2><sc-for list="{{faqs}}" as="f"><details><summary>{{f.q}}<svg class="plus" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9a7221" stroke-width="1.8" aria-hidden="true" style="flex: none;"><path d="M12 5v14M5 12h14"></path></svg></summary><p class="ans">{{f.a}}</p></details></sc-for></section></sc-if>
 <div class="g-cta"><h2 class="serif">{{ctaH}}</h2><p>{{ctaP}}</p><div class="sp-cta"><a class="btn btn-ivory" href="{{rq}}">Chiedi una valutazione gratuita</a><a class="btn btn-ghost" href="{{wa}}">WhatsApp 379 154 9804</a></div></div>
 <sc-if value="{{hasRelated}}"><nav class="g-rel" aria-label="Approfondisci"><p>Approfondisci</p><div class="g-cards"><sc-for list="{{related}}" as="r"><a class="g-card" href="{{r.href}}"><b>{{r.t}}</b><span>{{r.d}}</span></a></sc-for></div></nav></sc-if>
@@ -1332,7 +1335,7 @@ class Component extends DCLogic {
       menuAttr: s.menu ? 'true' : 'false', menuLabel: s.menu ? 'Chiudi il menu' : 'Apri il menu',
       toggleMenu: function () { var o = !self.state.menu; document.documentElement.style.overflow = o ? 'hidden' : ''; self.setState({ menu: o }); },
       closeMenu: function () { document.documentElement.style.overflow = ''; self.setState({ menu: false }); },
-      heroImg: '/_blob/' + heroId, signImg: '/_blob/' + signId,
+      heroImg: '/_blob/' + heroId, heroAlt: d.heroAlt || '', signImg: '/_blob/' + signId,
       rq: d.brand ? 'Richiesta.dc.html?m=' + encodeURIComponent(d.brand) : 'Richiesta.dc.html',
       wa: 'https://wa.me/393791549804?text=' + encodeURIComponent(msg),
       kicker: d.kicker, kickerSub: d.kickerSub, crumb: d.crumb, parentName: d.parentName || '', parentHref: d.parentHref || '',

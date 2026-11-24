@@ -53,6 +53,11 @@ export const BUSINESS = {
   ],
   sameAs: ['https://www.google.com/maps?cid=9961046583457619943', 'https://www.orologifamosi.com/vendi-orologio/', 'https://www.facebook.com/OROLOGIFAMOSI/', 'https://www.instagram.com/orologifamosi/'],
   rating: { value: 4.9, count: 202 },
+  /** Coordinate del Centro Commerciale Medicì (OpenStreetMap), dove c'è il negozio della scheda Google. */
+  geo: { lat: 44.47945, lng: 11.63667 },
+  /** Immagini caricate nelle tavole: logotipo e foto del negozio con Salvatore. */
+  logo: '54ed4d47b650ffe1a2acbdd50264c742',
+  photos: ['50b9506a6dba33845dd4eb44b593e14c', '4f2c3f4cebf45e40d1f843402dc03637', '3462b80a02bb0c690611f865bcf09190'],
   brands: ['Rolex', 'Omega', 'Cartier', 'Tudor', 'TAG Heuer', 'Breitling', 'IWC', 'Jaeger-LeCoultre', 'Zenith', 'Longines', 'Bulgari', 'Franck Muller', 'Baume & Mercier', 'Oris', 'Hamilton', 'Seiko', 'Mido', 'Eberhard', 'Maurice Lacroix', 'Patek Philippe', 'Audemars Piguet', 'Vacheron Constantin', 'Panerai', 'Hublot'],
   // Medicina è la sede reale; Bologna e i comuni limitrofi sono bacini di provenienza (allegato 02).
   areaServed: ['Medicina', 'Bologna', 'Imola', 'Castel San Pietro Terme', 'Castel Guelfo di Bologna', 'Dozza', 'Mordano', 'Ozzano dell\'Emilia', 'San Lazzaro di Savena', 'Budrio', 'Castenaso', 'Granarolo dell\'Emilia', 'Lugo', 'Massa Lombarda', 'Conselice', 'Castel Bolognese', 'Bagnara di Romagna'],
