@@ -220,6 +220,11 @@ ${ld.map((o) => `<script type="application/ld+json">${JSON.stringify(o).replace(
 
 // ---------- file per motori di ricerca e AI ----------
 const today = new Date().toISOString().slice(0, 10);
+// Ogni foto una volta sola: quelle di menu e piè di pagina (presenti ovunque) restano solo sulla prima pagina che le mostra.
+{
+  const seen = new Set();
+  for (const u of sitemap) u.images = (u.images || []).filter((i) => !seen.has(i) && seen.add(i));
+}
 out('sitemap-vendi-orologio.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${sitemap.map((u) => `  <url><loc>${u.loc}</loc><lastmod>${today}</lastmod><priority>${u.priority}</priority>${(u.images || []).map((i) => `<image:image><image:loc>${esc(i)}</image:loc></image:image>`).join('')}</url>`).join('\n')}\n</urlset>\n`);
 // Dominio proprio: sitemap e robots completi (il vecchio nome della sitemap resta per chi l'ha già registrato).
 out('sitemap.xml', fs.readFileSync(path.join(DIST, 'sitemap-vendi-orologio.xml')));
