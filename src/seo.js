@@ -12,7 +12,8 @@ export function business() {
     name: B.name,
     legalName: B.legalName,
     vatID: B.vatID,
-    url: SITE + '/',
+    // Sito ufficiale dell'azienda: venditaorologiusati.it (catalogo). orologifamosi.com è il suo canale per chi vende.
+    url: B.catalog,
     telephone: B.telephone,
     email: B.email,
     foundingDate: B.foundingDate,
@@ -50,6 +51,10 @@ function service(page, description, canonical) {
     areaServed: [{ '@type': 'City', name: 'Medicina' }, { '@type': 'City', name: 'Bologna' }, { '@type': 'Country', name: 'Italia' }],
     description,
     ...(brand ? { brand: { '@type': 'Brand', name: brand } } : { brand: B.brands.map((b) => ({ '@type': 'Brand', name: b })) }),
+    availableChannel: [
+      { '@type': 'ServiceChannel', name: 'Richiesta di valutazione online', serviceUrl: SITE + LINKS.Richiesta, availableLanguage: 'it' },
+      { '@type': 'ServiceChannel', name: 'In negozio a Medicina (BO), su appuntamento', serviceLocation: { '@id': ORG_ID }, servicePhone: B.telephone },
+    ],
     potentialAction: { '@type': 'AskAction', name: 'Richiedi una valutazione', target: SITE + LINKS.Richiesta },
   };
 }
@@ -88,7 +93,11 @@ export function jsonLd(page, { canonical, title, description, ogImage, faqs }) {
   const web = {
     '@context': 'https://schema.org', '@type': page.kind === 'about' ? 'AboutPage' : page.kind === 'contact' ? 'ContactPage' : 'WebPage',
     '@id': canonical, url: canonical, name: title, description, inLanguage: 'it-IT',
-    isPartOf: { '@type': 'WebSite', name: B.name, url: SITE + '/' },
+    isPartOf: {
+      '@type': 'WebSite', '@id': `${SITE}/#sito`, name: `${B.name} · Vendi il tuo orologio`, url: SITE + '/', inLanguage: 'it-IT',
+      description: 'Il canale di Orologi Famosi (venditaorologiusati.it) per chi vuole vendere un orologio usato: richiesta di valutazione online, collegata al gestionale del negozio.',
+      publisher: { '@id': ORG_ID }, copyrightHolder: { '@id': ORG_ID },
+    },
     about: page.kind === 'about' ? { '@id': PERSON_ID } : { '@id': ORG_ID },
     ...(ogImage && !ogImage.endsWith('/') ? { primaryImageOfPage: ogImage } : {}),
   };

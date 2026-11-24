@@ -51,7 +51,7 @@ export const BUSINESS = {
     { days: ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], opens: '09:30', closes: '13:00' },
     { days: ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], opens: '15:30', closes: '19:00' },
   ],
-  sameAs: ['https://www.google.com/maps?cid=9961046583457619943', 'https://www.venditaorologiusati.it/'],
+  sameAs: ['https://www.google.com/maps?cid=9961046583457619943', 'https://www.orologifamosi.com/vendi-orologio/', 'https://www.facebook.com/OROLOGIFAMOSI/', 'https://www.instagram.com/orologifamosi/'],
   rating: { value: 4.9, count: 202 },
   brands: ['Rolex', 'Omega', 'Cartier', 'Tudor', 'TAG Heuer', 'Breitling', 'IWC', 'Jaeger-LeCoultre', 'Zenith', 'Longines', 'Bulgari', 'Franck Muller', 'Baume & Mercier', 'Oris', 'Hamilton', 'Seiko', 'Mido', 'Eberhard', 'Maurice Lacroix'],
   // Medicina è la sede reale; Bologna e i comuni limitrofi sono bacini di provenienza (allegato 02).
