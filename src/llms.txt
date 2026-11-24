@@ -19,13 +19,26 @@
 
 ## Pagine
 
-- [Vendi il tuo orologio usato]({{SITE}}/vendi-orologio/): come funziona, i 19 marchi, domande frequenti.
+- [Vendi il tuo orologio usato]({{SITE}}/vendi-orologio/): come funziona, i marchi, domande frequenti.
 - [Vendi il tuo Rolex usato]({{SITE}}/vendi-rolex/): Submariner, Datejust, GMT-Master II, Daytona e altre referenze.
 - [Vendi il tuo Omega usato]({{SITE}}/vendi-omega/): Speedmaster e Seamaster.
 - [Vendi il tuo Cartier usato]({{SITE}}/vendi-cartier/): Santos, Tank, Panthère.
 - [Chi è Salvatore Agresta]({{SITE}}/vendi-orologio/salvatore-agresta/): la storia e come lavora.
 - [Contatti]({{SITE}}/vendi-orologio/contatti/): WhatsApp e telefono 379 154 9804, email, negozio di Medicina (BO) e sede riservata di Bologna su appuntamento.
 - [Richiedi una valutazione]({{SITE}}/vendi-orologio/richiesta/): scheda guidata, solo foto, oppure contatto diretto.
+- [Tutti i marchi]({{SITE}}/vendi-orologio/marchi/): Rolex, Patek Philippe, Audemars Piguet, Vacheron Constantin, Omega, Cartier, Tudor, Panerai, IWC, Jaeger-LeCoultre, Breitling, TAG Heuer, Hublot e altri.
+- Pagine marchio: [Tudor]({{SITE}}/vendi-tudor/), [Patek Philippe]({{SITE}}/vendi-patek-philippe/), [Audemars Piguet]({{SITE}}/vendi-audemars-piguet/), [Vacheron Constantin]({{SITE}}/vendi-vacheron-constantin/), [Panerai]({{SITE}}/vendi-panerai/), [IWC]({{SITE}}/vendi-iwc/), [Jaeger-LeCoultre]({{SITE}}/vendi-jaeger-lecoultre/), [Breitling]({{SITE}}/vendi-breitling/), [TAG Heuer]({{SITE}}/vendi-tag-heuer/), [Hublot]({{SITE}}/vendi-hublot/).
+- [Vendere un orologio in Emilia-Romagna]({{SITE}}/vendi-orologio/emilia-romagna/): da Piacenza a Rimini, provincia per provincia.
+
+## Guide
+
+- [Dove vendere un orologio di lusso usato]({{SITE}}/vendi-orologio/guida/dove-vendere-orologio-usato/): piattaforme come Chrono24, annunci tra privati, compro oro, boutique e negozio specializzato a confronto.
+- [Quanto vale il mio orologio usato]({{SITE}}/vendi-orologio/guida/quanto-vale-orologio-usato/): cosa decide il prezzo e perché le quotazioni online non bastano.
+- [Vendere senza scatola o garanzia]({{SITE}}/vendi-orologio/guida/vendere-orologio-senza-scatola-garanzia/)
+- [Vendere un orologio ereditato]({{SITE}}/vendi-orologio/guida/vendere-orologio-ereditato/)
+- [Vendere un orologio senza rischi]({{SITE}}/vendi-orologio/guida/vendere-orologio-in-sicurezza/): truffe comuni e pagamenti sicuri.
+- [Le foto per una valutazione a distanza]({{SITE}}/vendi-orologio/guida/foto-orologio-per-valutazione/)
+- [Vendere un orologio fermo o da revisionare]({{SITE}}/vendi-orologio/guida/vendere-orologio-fermo-o-rotto/)
 
 ## Come funziona
 
@@ -63,3 +76,9 @@
 - La valutazione si paga? No, è gratuita e senza impegno.
 - Come si viene pagati? Subito, al momento della vendita, con bonifico.
 - Si può vendere da fuori Bologna? Sì, da tutta Italia: se non puoi venire, il ritiro con corriere specializzato in valori è gratuito.
+- Conviene vendere su Chrono24 o a un negozio? Su una piattaforma si può chiedere di più, ma ci sono commissioni, spedizione e attesa di un compratore. Un negozio specializzato come Orologi Famosi valuta l'orologio di persona e paga subito con bonifico, senza commissioni: la proposta tiene conto della rivendita. Molti fanno valutare l'orologio da noi prima di decidere, perché la valutazione è gratuita.
+- I compro oro pagano bene gli orologi? Per un orologio di marca di solito no: molti guardano il metallo, mentre un Rolex, un Patek Philippe o un Cartier valgono per modello, condizioni e richiesta.
+- Le boutique comprano orologi usati? Di norma le boutique ufficiali non comprano usato dai privati; alcuni rivenditori accettano una permuta sull'acquisto di un nuovo.
+- Comprate Patek Philippe, Audemars Piguet, Vacheron Constantin? Sì, si possono proporre: li valutiamo di persona, con riservatezza, nella sede di Bologna o nel negozio di Medicina (BO).
+- Si vende anche un orologio ereditato, fermo o senza documenti? Sì: si valuta com'è. Meglio non lucidarlo, aprirlo o ripararlo prima.
+- Da Modena, Parma, Reggio Emilia, Ferrara, Ravenna, Forlì-Cesena, Rimini o Piacenza? Primo esame a distanza, poi verifica a Medicina (BO) o a Bologna, oppure ritiro gratuito con corriere specializzato nel trasporto di valori.

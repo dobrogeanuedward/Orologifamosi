@@ -17,7 +17,12 @@ import * as esbuild from 'esbuild';
 import { h } from 'preact';
 import { renderToString } from 'preact-render-to-string';
 import { DCLogic, imgPath } from '../src/dc.js';
-import { PAGES, SITE, LINKS, BUSINESS } from '../src/site.js';
+import { PAGES as BASE_PAGES, SITE, LINKS, BUSINESS } from '../src/site.js';
+import { CONTENT_PAGES } from '../src/content.js';
+
+// Pagine delle tavole + pagine di contenuto (guide, marchi, territorio) costruite sulla tavola Guida.
+const PAGES = [...BASE_PAGES, ...CONTENT_PAGES];
+for (const p of CONTENT_PAGES) LINKS[p.link] = p.route;
 import { jsonLd } from '../src/seo.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -140,7 +145,9 @@ const sitemap = [];
 
 for (const page of PAGES) {
   const board = readBoard(page.file);
-  const code = rewriteScript(board.code, page);
+  const code = (page.data ? `var GUIDA = ${JSON.stringify(page.data)};
+` : '') + rewriteScript(board.code, page);
+  const cssId = page.file === 'Guida.dc.html' ? 'guida' : page.id;
   // Server: stessa classe della tavola, eseguita su Preact.
   const Comp = new Function('DCLogic', '__ofImg', `${code}\n;return Component;`)(DCLogic, imgPath);
   Comp.__tpl = board.tpl;
@@ -151,7 +158,7 @@ for (const page of PAGES) {
 
   // CSS della tavola, con percorsi riscritti e minificato.
   const css = (await esbuild.transform(rewriteLinks(board.css), { loader: 'css', minify: true })).code;
-  out(`${ASSETS}/css/${page.id}.css`, css);
+  out(`${ASSETS}/css/${cssId}.css`, css);
 
   // JS del browser: runtime + classe originale + template.
   const entry = path.join(ROOT, '.build', `${page.id}.js`);
@@ -191,7 +198,7 @@ ${!ogImage ? '' : `<meta property="og:image" content="${ogImage}">\n<meta name="
 <meta name="geo.placename" content="Medicina">
 ${CDN ? `<link rel="preconnect" href="${new URL(CDN).origin}">\n` : ''}<link rel="preload" href="${ASSETS}/fonts/general-sans-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="${ASSETS}/fonts/gambarino-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="${ASSETS}/css/${page.id}.css">
+<link rel="stylesheet" href="${ASSETS}/css/${cssId}.css">
 ${ld.map((o) => `<script type="application/ld+json">${JSON.stringify(o).replace(/</g, '\\u003c')}</script>`).join('\n')}
 </head>
 <body>

@@ -1,0 +1,4595 @@
+{
+  "meta": {
+    "progetto": "Orologi Famosi · mappa delle conversazioni di vendita in Emilia-Romagna",
+    "data": "2026-11-24",
+    "fonti_fatti": [
+      "src/llms.txt",
+      "design/project/Main.dc.html (faqs)",
+      "design/project/Rolex.dc.html (faqs)",
+      "design/project/Cartier.dc.html (faqs)"
+    ],
+    "regole": "Solo fatti presenti nelle fonti; voce in prima persona plurale; Salvatore solo come nome e volto. Volumi stimati a ragionamento, non da strumenti di keyword research."
+  },
+  "personas": [
+    {
+      "id": "p001",
+      "nome": "Giulia, figlia erede",
+      "eta": 46,
+      "provincia": "BO",
+      "comune": "Bologna (Santo Stefano)",
+      "marchio": "Rolex",
+      "modello": "Datejust 16013 acciaio e oro",
+      "motivo": "eredità",
+      "situazione": "Ha ereditato il Datejust del padre insieme alla sorella e devono dividersi il ricavato.",
+      "paure": [
+        "Che la sorella pensi che abbia svenduto",
+        "Non sapere se è originale",
+        "Dover trattare con sconosciuti"
+      ],
+      "canali": [
+        "Google",
+        "ChatGPT",
+        "passaparola"
+      ],
+      "domande": [
+        "quanto vale un datejust 16013",
+        "dove vendere rolex ereditato bologna",
+        "Ho ereditato il Rolex di mio padre e devo dividere i soldi con mia sorella, come faccio a venderlo senza farmi fregare?"
+      ],
+      "alternativa_ai": "Confrontare annunci su Chrono24 e vendere su Chrono24 o a un negozio, chiedendo più preventivi.",
+      "messaggio": "Ci mandate le foto e facciamo un primo esame gratuito; la proposta arriva dopo averlo visto dal vivo, anche con tua sorella presente, e il pagamento è con bonifico tracciabile sul conto che scegliete.",
+      "pagina": "/vendi-orologio/orologio-ereditato/",
+      "cluster": "C05"
+    },
+    {
+      "id": "p002",
+      "nome": "Marco, manager",
+      "eta": 41,
+      "provincia": "BO",
+      "comune": "Casalecchio di Reno",
+      "marchio": "Rolex",
+      "modello": "Submariner 116610LN",
+      "motivo": "upgrade",
+      "situazione": "Vuole vendere il Submariner per comprare un Daytona e non ha voglia di perdere settimane su Subito.",
+      "paure": [
+        "Commissioni di Chrono24",
+        "Perdere tempo con perditempo",
+        "Prendere troppo poco da un negozio"
+      ],
+      "canali": [
+        "Google",
+        "Perplexity",
+        "forum"
+      ],
+      "domande": [
+        "vendere submariner 116610 bologna",
+        "chrono24 commissioni venditore privato",
+        "Conviene vendere il mio Submariner su Chrono24 o a un commerciante a Bologna? Lo voglio vendere in fretta"
+      ],
+      "alternativa_ai": "Chrono24 come privato per il prezzo più alto, oppure un rivenditore se conta la velocità.",
+      "messaggio": "Niente annuncio, niente commissioni, niente sconosciuti: primo esame su foto, appuntamento nella sede riservata di Bologna e, se accetti, bonifico subito.",
+      "pagina": "/vendi-orologio/dove-vendere/",
+      "cluster": "C03"
+    },
+    {
+      "id": "p003",
+      "nome": "Anna, vedova",
+      "eta": 74,
+      "provincia": "BO",
+      "comune": "San Lazzaro di Savena",
+      "marchio": "Omega",
+      "modello": "Constellation anni '70 in oro",
+      "motivo": "eredità",
+      "situazione": "Il marito è mancato da un anno e in un cassetto ci sono tre orologi; non usa internet.",
+      "paure": [
+        "Non capire niente di orologi",
+        "Essere imbrogliata",
+        "Usare il computer"
+      ],
+      "canali": [
+        "passaparola",
+        "telefono al figlio",
+        "Google dal nipote"
+      ],
+      "domande": [
+        "compro orologi usati vicino a me",
+        "a chi vendere gli orologi di mio marito",
+        "Mia nonna vuole vendere tre orologi del nonno, un Omega d'oro e altri due, a chi può rivolgersi senza rischi vicino a Bologna?"
+      ],
+      "alternativa_ai": "Un compro oro o una gioielleria di fiducia, oppure farsi aiutare a mettere un annuncio.",
+      "messaggio": "Può telefonarci o passare in negozio a Medicina negli orari di apertura: guardiamo gli orologi con calma, la valutazione è gratuita e non c'è nessun obbligo a vendere.",
+      "pagina": "/vendi-orologio/emilia-romagna/#bologna",
+      "cluster": "C17"
+    },
+    {
+      "id": "p004",
+      "nome": "Luca, collezionista",
+      "eta": 55,
+      "provincia": "BO",
+      "comune": "Bologna (Murri)",
+      "marchio": "Patek Philippe",
+      "modello": "Calatrava 5196",
+      "motivo": "riassetto collezione",
+      "situazione": "Colleziona da vent'anni e vuole liberare spazio per un pezzo nuovo.",
+      "paure": [
+        "Mettere in giro foto e numeri di serie",
+        "Valutazioni fatte da chi non conosce l'alta orologeria"
+      ],
+      "canali": [
+        "forum",
+        "passaparola",
+        "Google"
+      ],
+      "domande": [
+        "vendere patek philippe calatrava usato",
+        "chi compra patek philippe in emilia romagna",
+        "Dove posso vendere un Patek Calatrava in Emilia-Romagna in modo riservato, senza aste?"
+      ],
+      "alternativa_ai": "Casa d'aste o dealer specializzato a Milano; Chrono24 con escrow.",
+      "messaggio": "Puoi proporci anche marchi fuori dai 19 principali: lo indichi nella richiesta, lo esaminiamo dalle foto e lo vediamo nella sede riservata di Bologna su appuntamento.",
+      "pagina": "/vendi-patek-philippe/",
+      "cluster": "C11"
+    },
+    {
+      "id": "p005",
+      "nome": "Sara, separazione",
+      "eta": 39,
+      "provincia": "BO",
+      "comune": "Imola",
+      "marchio": "Cartier",
+      "modello": "Ballon Bleu 36",
+      "motivo": "divorzio",
+      "situazione": "Sta chiudendo una separazione e non vuole più tenere l'orologio regalato dall'ex.",
+      "paure": [
+        "Che lo sappiano in giro",
+        "Fare tutto in fretta e svendere"
+      ],
+      "canali": [
+        "Google",
+        "ChatGPT"
+      ],
+      "domande": [
+        "vendere cartier ballon bleu usato",
+        "vendere orologio regalo ex",
+        "Voglio vendere il Cartier che mi ha regalato il mio ex, non ho voglia di annunci, cosa mi consigli in zona Imola?"
+      ],
+      "alternativa_ai": "Un annuncio su Vinted/Subito o un negozio di usato di lusso.",
+      "messaggio": "Ci mandi le foto su WhatsApp, ti rispondiamo noi e, se vuoi, ci vediamo nel negozio di Medicina, a pochi chilometri da Imola, o nella sede riservata di Bologna su appuntamento.",
+      "pagina": "/vendi-cartier/",
+      "cluster": "C16"
+    },
+    {
+      "id": "p006",
+      "nome": "Davide, studente",
+      "eta": 24,
+      "provincia": "BO",
+      "comune": "Bologna (Zona Universitaria)",
+      "marchio": "Tudor",
+      "modello": "Black Bay 58 blu",
+      "motivo": "liquidità",
+      "situazione": "Gli servono soldi per il trasferimento all'estero e il Tudor è l'unica cosa di valore.",
+      "paure": [
+        "Truffe su Subito",
+        "Bonifici falsi",
+        "Incontri in strada"
+      ],
+      "canali": [
+        "Reddit",
+        "Google",
+        "ChatGPT"
+      ],
+      "domande": [
+        "vendere tudor black bay 58 subito truffa",
+        "quanto prendo per un bb58 usato",
+        "Devo vendere il mio Tudor in fretta, meglio Subito o un negozio a Bologna? Ho paura delle truffe col bonifico"
+      ],
+      "alternativa_ai": "Subito.it con pagamento a mano in banca, oppure Chrono24.",
+      "messaggio": "Con noi il pagamento è un bonifico che ricevi al momento della vendita, sul conto che scegli, e l'incontro si fa in negozio, non in un parcheggio.",
+      "pagina": "/vendi-orologio/pagamento-e-sicurezza/",
+      "cluster": "C04"
+    },
+    {
+      "id": "p007",
+      "nome": "Paolo, pensionato ex bancario",
+      "eta": 68,
+      "provincia": "BO",
+      "comune": "Budrio",
+      "marchio": "Rolex",
+      "modello": "Oyster Perpetual Date 1500",
+      "motivo": "liquidità",
+      "situazione": "Vuole aiutare il figlio con l'anticipo della casa vendendo il Rolex comprato negli anni '70.",
+      "paure": [
+        "Che un vintage senza scatola valga poco",
+        "Che glielo cambino"
+      ],
+      "canali": [
+        "Google",
+        "passaparola"
+      ],
+      "domande": [
+        "rolex 1500 valore",
+        "vendere rolex vintage senza scatola",
+        "Ho un Rolex Oyster Date del 1974 senza scatola né garanzia, si può vendere e a chi?"
+      ],
+      "alternativa_ai": "Un negozio specializzato in vintage o un'asta.",
+      "messaggio": "Si valuta anche senza scatola: fotografa quadrante, cassa e fondello, guardiamo noi la referenza e poi lo verifichiamo dal vivo a Medicina, vicino a Budrio.",
+      "pagina": "/vendi-orologio/orologi-vintage/",
+      "cluster": "C08"
+    },
+    {
+      "id": "p008",
+      "nome": "Chiara, avvocata",
+      "eta": 44,
+      "provincia": "BO",
+      "comune": "Bologna (Saragozza)",
+      "marchio": "Jaeger-LeCoultre",
+      "modello": "Reverso Duetto",
+      "motivo": "non lo usa più",
+      "situazione": "Ha un Reverso in un cassetto da anni e preferisce trasformarlo in liquidità.",
+      "paure": [
+        "Fare foto sbagliate",
+        "Che le chiedano di spedirlo"
+      ],
+      "canali": [
+        "Google",
+        "Gemini"
+      ],
+      "domande": [
+        "vendere jaeger lecoultre reverso usato",
+        "valutazione reverso duetto",
+        "Come si vende un Reverso usato a Bologna? Serve la garanzia?"
+      ],
+      "alternativa_ai": "Rivenditore di usato o Chrono24.",
+      "messaggio": "Basta qualche foto dalla scheda online; la garanzia aiuta ma non è obbligatoria. Lo vediamo poi nella sede riservata di Bologna, su appuntamento.",
+      "pagina": "/vendi-jaeger-lecoultre/",
+      "cluster": "C13"
+    },
+    {
+      "id": "p009",
+      "nome": "Stefano, imprenditore",
+      "eta": 58,
+      "provincia": "BO",
+      "comune": "Bologna (Colli)",
+      "marchio": "Audemars Piguet",
+      "modello": "Royal Oak 15400",
+      "motivo": "liquidità aziendale",
+      "situazione": "Ha bisogno di liquidità per l'azienda e vuole un pagamento tracciabile e veloce.",
+      "paure": [
+        "Contanti e tracciabilità",
+        "Esporsi su un marketplace pubblico"
+      ],
+      "canali": [
+        "Perplexity",
+        "passaparola"
+      ],
+      "domande": [
+        "vendere royal oak 15400",
+        "chi compra audemars piguet bologna",
+        "Ho un Royal Oak 15400 completo, voglio venderlo in Emilia-Romagna con pagamento tracciabile e senza pubblicarlo online"
+      ],
+      "alternativa_ai": "Dealer specializzato o Chrono24.",
+      "messaggio": "Lo indichi nella richiesta: primo esame su foto, incontro nella sede riservata di Bologna su appuntamento e pagamento con bonifico tracciabile al momento della vendita.",
+      "pagina": "/vendi-audemars-piguet/",
+      "cluster": "C11"
+    },
+    {
+      "id": "p010",
+      "nome": "Francesca, infermiera",
+      "eta": 36,
+      "provincia": "BO",
+      "comune": "Castel San Pietro Terme",
+      "marchio": "Longines",
+      "modello": "Conquest",
+      "motivo": "spese impreviste",
+      "situazione": "Ha una spesa medica e pensa di vendere il Longines regalato per la laurea.",
+      "paure": [
+        "Che non valga abbastanza per disturbare un negozio"
+      ],
+      "canali": [
+        "Google",
+        "ChatGPT"
+      ],
+      "domande": [
+        "vendere longines conquest usato quanto",
+        "chi compra longines usati",
+        "Ha senso vendere un Longines usato o mi danno pochissimo?"
+      ],
+      "alternativa_ai": "Subito.it o eBay.",
+      "messaggio": "Longines è tra i marchi che valutiamo; il primo esame su foto è gratuito e così sai prima di muoverti se ha senso venire a Medicina.",
+      "pagina": "/vendi-longines/",
+      "cluster": "C13"
+    },
+    {
+      "id": "p011",
+      "nome": "Riccardo, appassionato",
+      "eta": 33,
+      "provincia": "BO",
+      "comune": "Bologna (Bolognina)",
+      "marchio": "Omega",
+      "modello": "Speedmaster Professional 3570.50",
+      "motivo": "upgrade",
+      "situazione": "Vuole passare a uno Speedmaster con calibro nuovo.",
+      "paure": [
+        "Prezzo da commerciante troppo basso",
+        "Fatica a vendere da privato"
+      ],
+      "canali": [
+        "forum",
+        "Reddit",
+        "Google"
+      ],
+      "domande": [
+        "vendere speedmaster 3570.50",
+        "speedmaster usato valore 2026",
+        "Meglio vendere il mio Speedy a un negozio o tenerlo e venderlo su Chrono24?"
+      ],
+      "alternativa_ai": "Chrono24 o mercatino del forum.",
+      "messaggio": "Con noi niente annuncio e niente trattative con sconosciuti: ci mandi foto e referenza, poi lo vediamo dal vivo e se accetti ti paghiamo subito con bonifico.",
+      "pagina": "/vendi-omega/",
+      "cluster": "C15"
+    },
+    {
+      "id": "p012",
+      "nome": "Lorenzo, nipote",
+      "eta": 29,
+      "provincia": "BO",
+      "comune": "Pianoro",
+      "marchio": "Universal Genève",
+      "modello": "cronografo anni '50",
+      "motivo": "eredità",
+      "situazione": "Ha trovato il cronografo del nonno e non sa nemmeno se valga qualcosa.",
+      "paure": [
+        "Fare la figura dell'ingenuo",
+        "Buttare via un pezzo di valore"
+      ],
+      "canali": [
+        "Reddit",
+        "ChatGPT"
+      ],
+      "domande": [
+        "come capire se un orologio vecchio vale",
+        "universal geneve cronografo valore",
+        "Ho trovato un cronografo vecchio di mio nonno, Universal Geneve, come scopro se vale qualcosa?"
+      ],
+      "alternativa_ai": "Chiedere su r/Watches o a un orologiaio.",
+      "messaggio": "Puoi proporre anche marchi che non sono nel nostro elenco: mandaci foto di quadrante, cassa e fondello, ti diciamo cosa vediamo, senza impegno.",
+      "pagina": "/vendi-orologio/orologi-vintage/",
+      "cluster": "C08"
+    },
+    {
+      "id": "p013",
+      "nome": "Elena, commercialista",
+      "eta": 51,
+      "provincia": "BO",
+      "comune": "Bologna (Mazzini)",
+      "marchio": "Rolex",
+      "modello": "Lady-Datejust 69173",
+      "motivo": "non lo usa più",
+      "situazione": "Ha due Rolex da donna e ne vuole vendere uno.",
+      "paure": [
+        "Doversi spiegare in un negozio di soli uomini",
+        "Domande sul fisco"
+      ],
+      "canali": [
+        "Google",
+        "Gemini"
+      ],
+      "domande": [
+        "vendere rolex donna usato bologna",
+        "lady datejust 69173 valore",
+        "Se vendo un Rolex usato devo dichiarare qualcosa? Come vengo pagata?"
+      ],
+      "alternativa_ai": "Rivenditore; per il fisco consultare un commercialista.",
+      "messaggio": "Ti paghiamo con bonifico al momento della vendita, sul conto che scegli: un pagamento tracciabile. Per le domande fiscali personali il riferimento resta il tuo commercialista.",
+      "pagina": "/vendi-orologio/pagamento-e-sicurezza/",
+      "cluster": "C09"
+    },
+    {
+      "id": "p014",
+      "nome": "Giorgio, medico",
+      "eta": 62,
+      "provincia": "BO",
+      "comune": "Bologna (Costa Saragozza)",
+      "marchio": "Vacheron Constantin",
+      "modello": "Overseas 4500V",
+      "motivo": "riassetto collezione",
+      "situazione": "Vuole vendere senza passare da Milano o Ginevra.",
+      "paure": [
+        "Valutazioni superficiali",
+        "Viaggi"
+      ],
+      "canali": [
+        "passaparola",
+        "Google"
+      ],
+      "domande": [
+        "vendere vacheron constantin overseas",
+        "chi compra vacheron usati in italia",
+        "Ci sono negozi seri in Emilia che comprano Vacheron Constantin o devo andare a Milano?"
+      ],
+      "alternativa_ai": "Dealer a Milano, casa d'aste.",
+      "messaggio": "Lo puoi proporre anche se Vacheron non è nel nostro elenco principale: primo esame su foto, poi lo vediamo nella sede riservata di Bologna, su appuntamento.",
+      "pagina": "/vendi-vacheron-constantin/",
+      "cluster": "C11"
+    },
+    {
+      "id": "p015",
+      "nome": "Matteo, rider",
+      "eta": 27,
+      "provincia": "BO",
+      "comune": "San Giovanni in Persiceto",
+      "marchio": "Seiko",
+      "modello": "Prospex SPB143",
+      "motivo": "liquidità",
+      "situazione": "Ha bisogno di qualche soldo e vuole capire se un Seiko interessa a un negozio.",
+      "paure": [
+        "Che un Seiko sia troppo poco"
+      ],
+      "canali": [
+        "Reddit",
+        "Google"
+      ],
+      "domande": [
+        "vendere seiko prospex usato",
+        "chi compra seiko usati",
+        "Un negozio compra un Seiko Prospex usato o è meglio Subito?"
+      ],
+      "alternativa_ai": "Subito.it.",
+      "messaggio": "Seiko è tra i 19 marchi che valutiamo: con le foto ti diciamo se ci interessa prima che tu ti muova da casa.",
+      "pagina": "/vendi-orologio/",
+      "cluster": "C02"
+    },
+    {
+      "id": "p016",
+      "nome": "Valentina, wedding planner",
+      "eta": 38,
+      "provincia": "BO",
+      "comune": "Bologna (Navile)",
+      "marchio": "Bulgari",
+      "modello": "Serpenti Tubogas",
+      "motivo": "liquidità",
+      "situazione": "Vuole vendere un Serpenti in oro che non indossa più.",
+      "paure": [
+        "Che lo valutino a peso d'oro",
+        "Compro oro"
+      ],
+      "canali": [
+        "Google",
+        "ChatGPT"
+      ],
+      "domande": [
+        "vendere bulgari serpenti usato",
+        "bulgari serpenti compro oro",
+        "Se porto il mio Bulgari Serpenti in oro a un compro oro me lo pagano solo a peso?"
+      ],
+      "alternativa_ai": "Compro oro o gioielleria.",
+      "messaggio": "Un orologio di marca non è oro a peso: lo valutiamo come orologio, con marchio, modello, condizioni e corredo, e la proposta arriva dopo averlo visto.",
+      "pagina": "/vendi-orologio/orologi-oro-e-gioiello/",
+      "cluster": "C18"
+    },
+    {
+      "id": "p017",
+      "nome": "Alberto, ingegnere",
+      "eta": 47,
+      "provincia": "BO",
+      "comune": "Zola Predosa",
+      "marchio": "IWC",
+      "modello": "Portugieser Chrono IW371446",
+      "motivo": "upgrade",
+      "situazione": "Vuole cambiare orologio e cerca qualcuno che lo valuti senza perderci giorni.",
+      "paure": [
+        "Dover spedire",
+        "Proposte al ribasso via mail"
+      ],
+      "canali": [
+        "Google",
+        "Perplexity"
+      ],
+      "domande": [
+        "vendere iwc portoghese bologna",
+        "iwc portugieser chrono valore usato",
+        "Quanto vale un IWC Portoghese cronografo del 2015 con scatola e garanzia?"
+      ],
+      "alternativa_ai": "Chrono24, rivenditore.",
+      "messaggio": "Il valore dipende da referenza, condizioni e corredo: facciamo un primo esame dalle foto e la proposta arriva dopo averlo visto a Bologna o a Medicina.",
+      "pagina": "/vendi-iwc/",
+      "cluster": "C13"
+    },
+    {
+      "id": "p018",
+      "nome": "Nadia, badante per la madre",
+      "eta": 57,
+      "provincia": "BO",
+      "comune": "Molinella",
+      "marchio": "Tissot e Omega",
+      "modello": "Omega De Ville al quarzo",
+      "motivo": "liquidità per cure",
+      "situazione": "Deve pagare l'assistenza della madre e vuole vendere gli orologi di famiglia.",
+      "paure": [
+        "Non sapere quali hanno valore",
+        "Andare lontano"
+      ],
+      "canali": [
+        "passaparola",
+        "Google"
+      ],
+      "domande": [
+        "dove vendere orologi molinella",
+        "omega de ville quarzo valore",
+        "Vicino a Molinella c'è qualcuno che compra orologi usati e li valuta gratis?"
+      ],
+      "alternativa_ai": "Compro oro locale.",
+      "messaggio": "Il negozio è a Medicina, vicino a Molinella: la valutazione è gratuita e puoi portare tutti gli orologi per capire quali hanno mercato.",
+      "pagina": "/vendi-orologio/emilia-romagna/#bologna",
+      "cluster": "C01"
+    },
+    {
+      "id": "p019",
+      "nome": "Roberto, artigiano",
+      "eta": 59,
+      "provincia": "MO",
+      "comune": "Sassuolo",
+      "marchio": "Rolex",
+      "modello": "GMT-Master II 16710",
+      "motivo": "liquidità",
+      "situazione": "Ha il laboratorio in difficoltà e vuole vendere il GMT comprato vent'anni fa.",
+      "paure": [
+        "Vendere sotto prezzo per fretta",
+        "Commercianti che fanno i furbi"
+      ],
+      "canali": [
+        "Google",
+        "passaparola"
+      ],
+      "domande": [
+        "vendere rolex gmt 16710 modena",
+        "quanto vale gmt master 16710 senza scatola",
+        "Dove vendo un Rolex GMT in provincia di Modena senza farmi fregare?"
+      ],
+      "alternativa_ai": "Rivenditori a Modena o Chrono24.",
+      "messaggio": "Ci mandi foto e referenza, ti rispondiamo noi; se il GMT ci interessa lo vediamo dal vivo e, se accetti, ti paghiamo subito con bonifico.",
+      "pagina": "/vendi-orologio/emilia-romagna/#modena",
+      "cluster": "C01"
+    },
+    {
+      "id": "p020",
+      "nome": "Federica, dentista",
+      "eta": 45,
+      "provincia": "MO",
+      "comune": "Modena centro",
+      "marchio": "Cartier",
+      "modello": "Panthère anni '90",
+      "motivo": "non lo usa più",
+      "situazione": "Vuole vendere una Panthère vintage a cui mancano due maglie.",
+      "paure": [
+        "Che le maglie mancanti la rendano invendibile"
+      ],
+      "canali": [
+        "Google",
+        "ChatGPT"
+      ],
+      "domande": [
+        "vendere cartier panthere vintage",
+        "panthere senza maglie valore",
+        "Si può vendere un Cartier Panthère se mancano maglie del bracciale?"
+      ],
+      "alternativa_ai": "Rivenditore di usato o Vestiaire Collective.",
+      "messaggio": "Sì, indica quante maglie hai e cosa manca: entra nella valutazione ma non la impedisce. Primo esame su foto, poi la vediamo dal vivo.",
+      "pagina": "/vendi-cartier/",
+      "cluster": "C18"
+    },
+    {
+      "id": "p021",
+      "nome": "Gianni, ex pilota amatoriale",
+      "eta": 66,
+      "provincia": "MO",
+      "comune": "Maranello",
+      "marchio": "TAG Heuer",
+      "modello": "Heuer Autavia anni '70",
+      "motivo": "vintage",
+      "situazione": "Ha un Heuer degli anni '70 e ha sentito che i vintage valgono.",
+      "paure": [
+        "Che il quadrante rifatto lo rovini",
+        "Non conoscere il calibro"
+      ],
+      "canali": [
+        "forum",
+        "Google"
+      ],
+      "domande": [
+        "heuer autavia valore",
+        "vendere heuer vintage",
+        "Ho un Heuer Autavia degli anni 70 un po' consumato, chi lo valuta seriamente in Emilia?"
+      ],
+      "alternativa_ai": "Asta o dealer vintage.",
+      "messaggio": "Anche gli Heuer vintage si valutano: fotografalo così com'è, senza lucidarlo, e indica gli interventi che conosci. Originalità di quadrante e lancette la verifichiamo dal vivo.",
+      "pagina": "/vendi-tag-heuer/",
+      "cluster": "C08"
+    },
+    {
+      "id": "p022",
+      "nome": "Ilaria, insegnante",
+      "eta": 52,
+      "provincia": "MO",
+      "comune": "Carpi",
+      "marchio": "Omega",
+      "modello": "Seamaster Aqua Terra",
+      "motivo": "regalo non gradito",
+      "situazione": "Il marito le ha regalato un Aqua Terra troppo grande e vuole venderlo.",
+      "paure": [
+        "Non avere lo scontrino a portata",
+        "Svenderlo"
+      ],
+      "canali": [
+        "Google",
+        "Gemini"
+      ],
+      "domande": [
+        "vendere omega aqua terra quasi nuovo",
+        "vendere orologio regalato",
+        "Ho un Omega Aqua Terra quasi nuovo con garanzia, dove lo vendo vicino a Carpi?"
+      ],
+      "alternativa_ai": "Chrono24 come privato.",
+      "messaggio": "Se hai garanzia e scatola fotografale insieme all'orologio. Primo esame a distanza, poi appuntamento a Bologna o a Medicina; se non puoi venire, ritiro con corriere valori gratuito.",
+      "pagina": "/vendi-omega/",
+      "cluster": "C13"
+    },
+    {
+      "id": "p023",
+      "nome": "Tommaso, agente di commercio",
+      "eta": 43,
+      "provincia": "MO",
+      "comune": "Mirandola",
+      "marchio": "Panerai",
+      "modello": "Luminor Marina PAM 111",
+      "motivo": "upgrade",
+      "situazione": "Vuole vendere il Panerai per prendere un Tudor e chiede ovunque cosa conviene.",
+      "paure": [
+        "Che Panerai non interessi a nessuno",
+        "Commissioni"
+      ],
+      "canali": [
+        "forum",
+        "Reddit",
+        "ChatGPT"
+      ],
+      "domande": [
+        "vendere panerai pam 111",
+        "panerai usato chi lo compra",
+        "Il Panerai PAM 111 usato si svende? Dove lo vendo in Emilia senza commissioni?"
+      ],
+      "alternativa_ai": "Chrono24 o forum.",
+      "messaggio": "Puoi proporci il Panerai anche se non è tra i 19 marchi principali: lo indichi nella richiesta e ti diciamo dopo il primo esame se possiamo fare una proposta.",
+      "pagina": "/vendi-panerai/",
+      "cluster": "C14"
+    },
+    {
+      "id": "p024",
+      "nome": "Luisa, pensionata",
+      "eta": 77,
+      "provincia": "MO",
+      "comune": "Vignola",
+      "marchio": "Zenith",
+      "modello": "vintage anni '60 in oro",
+      "motivo": "eredità",
+      "situazione": "Vuole vendere l'orologio del marito ma ha paura di internet.",
+      "paure": [
+        "Truffe al telefono",
+        "Dover spedire l'orologio"
+      ],
+      "canali": [
+        "passaparola",
+        "telefono al figlio"
+      ],
+      "domande": [
+        "vendere orologio d'oro vignola",
+        "zenith vecchio d'oro valore",
+        "Mia madre vuole vendere uno Zenith d'oro vecchio, è meglio un compro oro o un negozio di orologi?"
+      ],
+      "alternativa_ai": "Compro oro.",
+      "messaggio": "Uno Zenith si valuta come orologio, non a peso. Si può telefonare o venire in negozio: niente da spedire, niente obbligo a vendere.",
+      "pagina": "/vendi-orologio/orologi-oro-e-gioiello/",
+      "cluster": "C18"
+    },
+    {
+      "id": "p025",
+      "nome": "Simone, private banker",
+      "eta": 49,
+      "provincia": "MO",
+      "comune": "Formigine",
+      "marchio": "Patek Philippe",
+      "modello": "Aquanaut 5167A",
+      "motivo": "liquidità",
+      "situazione": "Vuole vendere un Aquanaut completo ma teme di esporsi.",
+      "paure": [
+        "Privacy",
+        "Sicurezza nel trasporto"
+      ],
+      "canali": [
+        "passaparola",
+        "Perplexity"
+      ],
+      "domande": [
+        "vendere aquanaut 5167",
+        "patek aquanaut valore usato",
+        "Chi compra Patek Philippe Aquanaut in Emilia-Romagna con pagamento immediato?"
+      ],
+      "alternativa_ai": "Dealer specializzati, aste.",
+      "messaggio": "Primo esame su foto, appuntamento nella sede riservata di Bologna e pagamento con bonifico al momento della vendita. Patek si indica nella richiesta come marchio fuori elenco.",
+      "pagina": "/vendi-patek-philippe/",
+      "cluster": "C11"
+    },
+    {
+      "id": "p026",
+      "nome": "Andrea, operaio",
+      "eta": 35,
+      "provincia": "MO",
+      "comune": "Castelfranco Emilia",
+      "marchio": "Rolex",
+      "modello": "Oyster Perpetual 114300",
+      "motivo": "orologio fermo",
+      "situazione": "L'orologio si è fermato e non sa se ripararlo prima di venderlo.",
+      "paure": [
+        "Spendere in assistenza Rolex e poi non recuperare"
+      ],
+      "canali": [
+        "Google",
+        "ChatGPT"
+      ],
+      "domande": [
+        "rolex fermo conviene ripararlo prima di venderlo",
+        "costo revisione rolex",
+        "Il mio Oyster Perpetual si è fermato, lo faccio revisionare o lo vendo così?"
+      ],
+      "alternativa_ai": "Farlo revisionare e poi venderlo.",
+      "messaggio": "Prima di spendere, mandaci le foto e dicci che è fermo: lo consideriamo nell'esame e ti diciamo se è il caso di intervenire.",
+      "pagina": "/vendi-orologio/orologio-fermo-o-da-revisionare/",
+      "cluster": "C07"
+    },
+    {
+      "id": "p027",
+      "nome": "Martina, architetta",
+      "eta": 37,
+      "provincia": "MO",
+      "comune": "Modena (Crocetta)",
+      "marchio": "Hublot",
+      "modello": "Classic Fusion",
+      "motivo": "non le piace più",
+      "situazione": "Ha comprato un Hublot d'impulso e vuole venderlo.",
+      "paure": [
+        "Svalutazione forte",
+        "Chi lo compra"
+      ],
+      "canali": [
+        "Google",
+        "ChatGPT"
+      ],
+      "domande": [
+        "vendere hublot classic fusion usato",
+        "hublot svaluta",
+        "Quanto si perde vendendo un Hublot Classic Fusion dopo due anni?"
+      ],
+      "alternativa_ai": "Chrono24.",
+      "messaggio": "Non diamo stime automatiche: il primo esame su foto è gratuito e ti fa capire da dove partire. Hublot lo indichi nella richiesta come marchio fuori elenco.",
+      "pagina": "/vendi-hublot/",
+      "cluster": "C14"
+    },
+    {
+      "id": "p028",
+      "nome": "Ermanno, collezionista Omega",
+      "eta": 63,
+      "provincia": "MO",
+      "comune": "Pavullo nel Frignano",
+      "marchio": "Omega",
+      "modello": "Seamaster 300 vintage",
+      "motivo": "riassetto collezione",
+      "situazione": "Collezionista che vuole vendere un pezzo vintage senza aste.",
+      "paure": [
+        "Pezzi sostituiti contestati",
+        "Perdere tempo con dealer"
+      ],
+      "canali": [
+        "forum",
+        "passaparola"
+      ],
+      "domande": [
+        "vendere omega seamaster 300 vintage",
+        "omega 165.024 valore",
+        "Omega Seamaster 300 165.024 con lancette di servizio, chi lo compra senza farla lunga?"
+      ],
+      "alternativa_ai": "Forum di settore o asta.",
+      "messaggio": "Dicci quali parti sono di servizio e quali interventi conosci: lo valutiamo per quello che è, dal vivo.",
+      "pagina": "/vendi-omega/",
+      "cluster": "C08"
+    },
+    {
+      "id": "p029",
+      "nome": "Valerio, giovane papà",
+      "eta": 34,
+      "provincia": "MO",
+      "comune": "Spilamberto",
+      "marchio": "Breitling",
+      "modello": "Superocean 42",
+      "motivo": "liquidità",
+      "situazione": "Serve spazio nel bilancio familiare dopo la nascita del figlio.",
+      "paure": [
+        "Truffe tra privati",
+        "Tempo"
+      ],
+      "canali": [
+        "Google",
+        "Gemini"
+      ],
+      "domande": [
+        "vendere breitling superocean usato",
+        "vendere orologio senza subito",
+        "Voglio vendere il Breitling ma su Subito ho ricevuto solo messaggi strani, alternative sicure a Modena?"
+      ],
+      "alternativa_ai": "Subito o Chrono24.",
+      "messaggio": "Con noi niente messaggi strani: ti rispondiamo noi, lo vediamo dal vivo e il pagamento è un bonifico al momento della vendita.",
+      "pagina": "/vendi-breitling/",
+      "cluster": "C04"
+    },
+    {
+      "id": "p030",
+      "nome": "Cristina, farmacista",
+      "eta": 48,
+      "provincia": "MO",
+      "comune": "Fiorano Modenese",
+      "marchio": "Chopard",
+      "modello": "Happy Sport",
+      "motivo": "non lo usa più",
+      "situazione": "Vuole vendere un Happy Sport con diamanti mobili.",
+      "paure": [
+        "Diamanti valutati a niente",
+        "Doverlo smontare"
+      ],
+      "canali": [
+        "Google",
+        "ChatGPT"
+      ],
+      "domande": [
+        "vendere chopard happy sport usato",
+        "chopard happy diamonds valore",
+        "Chi compra un Chopard Happy Sport con diamanti in zona Modena?"
+      ],
+      "alternativa_ai": "Gioielleria o rivenditore.",
+      "messaggio": "Indica nella richiesta modello, misura e materiali: Chopard non è nei 19 marchi principali ma puoi proporlo, e ti diciamo dopo il primo esame se possiamo procedere.",
+      "pagina": "/vendi-chopard/",
+      "cluster": "C18"
+    },
+    {
+      "id": "p031",
+      "nome": "Fabio, casaro",
+      "eta": 56,
+      "provincia": "RE",
+      "comune": "Scandiano",
+      "marchio": "Rolex",
+      "modello": "Day-Date 18238",
+      "motivo": "liquidità",
+      "situazione": "Vuole investire nel caseificio e vendere il Day-Date in oro.",
+      "paure": [
+        "Compro oro",
+        "Pagamento in contanti non tracciabile"
+      ],
+      "canali": [
+        "passaparola",
+        "Google"
+      ],
+      "domande": [
+        "vendere rolex day date oro",
+        "day date 18238 quanto vale",
+        "Ho un Rolex Day-Date d'oro, conviene il compro oro o un negozio di orologi? Sono vicino a Reggio"
+      ],
+      "alternativa_ai": "Compro oro o negozio Rolex usato.",
+      "messaggio": "Il Day-Date si valuta come Rolex, non a peso: referenza, condizioni e corredo. Pagamento con bonifico tracciabile al momento della vendita.",
+      "pagina": "/vendi-rolex/",
+      "cluster": "C12"
+    },
+    {
+      "id": "p032",
+      "nome": "Elisa, ricercatrice",
+      "eta": 32,
+      "provincia": "RE",
+      "comune": "Reggio Emilia",
+      "marchio": "Tudor",
+      "modello": "Black Bay Fifty-Eight bronzo",
+      "motivo": "liquidità",
+      "situazione": "Si trasferisce all'estero e vende quello che non porta con sé.",
+      "paure": [
+        "Tempi stretti"
+      ],
+      "canali": [
+        "Reddit",
+        "Perplexity"
+      ],
+      "domande": [
+        "vendere tudor black bay bronzo",
+        "tudor bronze usato valore",
+        "Devo vendere un Tudor BB58 Bronze entro un mese, qual è il canale più veloce in Emilia?"
+      ],
+      "alternativa_ai": "Chrono24 o dealer.",
+      "messaggio": "Primo esame su foto, appuntamento a Bologna o a Medicina, pagamento subito con bonifico se accetti: non devi aspettare un acquirente.",
+      "pagina": "/vendi-tudor/",
+      "cluster": "C13"
+    },
+    {
+      "id": "p033",
+      "nome": "Mauro, camionista",
+      "eta": 50,
+      "provincia": "RE",
+      "comune": "Correggio",
+      "marchio": "Breitling",
+      "modello": "Emergency",
+      "motivo": "orologio fermo",
+      "situazione": "Ha un Breitling Emergency fermo da anni.",
+      "paure": [
+        "Che sia invendibile",
+        "Costi assistenza"
+      ],
+      "canali": [
+        "Google",
+        "forum"
+      ],
+      "domande": [
+        "breitling emergency fermo vendere",
+        "breitling emergency valore",
+        "Si può vendere un Breitling Emergency che non funziona?"
+      ],
+      "alternativa_ai": "Riparare prima e poi vendere.",
+      "messaggio": "Dicci che è fermo e mandaci le foto: lo consideriamo nell'esame, senza impegno, prima che tu spenda in assistenza.",
+      "pagina": "/vendi-orologio/orologio-fermo-o-da-revisionare/",
+      "cluster": "C07"
+    },
+    {
+      "id": "p034",
+      "nome": "Silvia, avvocata di famiglia",
+      "eta": 54,
+      "provincia": "RE",
+      "comune": "Reggio Emilia",
+      "marchio": "Rolex e Cartier",
+      "modello": "Datejust e Tank",
+      "motivo": "divorzio",
+      "situazione": "Gestisce per una cliente la vendita di due orologi in una separazione.",
+      "paure": [
+        "Documentare il valore",
+        "Pagamento tracciabile"
+      ],
+      "canali": [
+        "Google",
+        "ChatGPT"
+      ],
+      "domande": [
+        "vendita orologi separazione pagamento tracciabile",
+        "valutazione orologi per separazione",
+        "In una separazione bisogna vendere due orologi di lusso, come ottengo un pagamento tracciabile e una proposta scritta?"
+      ],
+      "alternativa_ai": "Perizia di un gemmologo/perito o vendita all'asta.",
+      "messaggio": "Facciamo la proposta dopo aver visto gli orologi e paghiamo con bonifico sul conto indicato: un pagamento tracciabile. La valutazione è gratuita e senza impegno.",
+      "pagina": "/vendi-orologio/pagamento-e-sicurezza/",
+      "cluster": "C16"
+    },
+    {
+      "id": "p035",
+      "nome": "Daniele, appassionato GS",
+      "eta": 40,
+      "provincia": "RE",
+      "comune": "Guastalla",
+      "marchio": "Grand Seiko",
+      "modello": "SBGA211 Snowflake",
+      "motivo": "upgrade",
+      "situazione": "Vuole vendere lo Snowflake per un pezzo diverso.",
+      "paure": [
+        "Pochi negozi conoscono Grand Seiko"
+      ],
+      "canali": [
+        "Reddit",
+        "forum"
+      ],
+      "domande": [
+        "vendere grand seiko snowflake",
+        "chi compra grand seiko usati italia",
+        "Esistono negozi in Emilia che comprano Grand Seiko o devo venderlo su Chrono24?"
+      ],
+      "alternativa_ai": "Chrono24, forum.",
+      "messaggio": "Seiko è nei nostri 19 marchi; per un Grand Seiko indicalo nella richiesta con referenza e corredo e ti rispondiamo dopo il primo esame.",
+      "pagina": "/vendi-grand-seiko/",
+      "cluster": "C14"
+    },
+    {
+      "id": "p036",
+      "nome": "Laura, figlia unica",
+      "eta": 60,
+      "provincia": "RE",
+      "comune": "Castelnovo ne' Monti",
+      "marchio": "Longines",
+      "modello": "vintage d'oro anni '50",
+      "motivo": "eredità",
+      "situazione": "Ha ereditato un Longines d'oro e vive in Appennino, lontano dalla città.",
+      "paure": [
+        "Spostarsi",
+        "Non sapere il modello"
+      ],
+      "canali": [
+        "Google",
+        "telefono"
+      ],
+      "domande": [
+        "longines vecchio oro valore",
+        "vendere orologio senza muovermi da casa",
+        "Abito in montagna, posso vendere un orologio senza andare in città?"
+      ],
+      "alternativa_ai": "Spedire a un compratore online.",
+      "messaggio": "Il primo esame si fa da casa, con le foto; se non puoi venire a Medicina o a Bologna, organizziamo noi il ritiro con un corriere specializzato in valori, gratis per te.",
+      "pagina": "/vendi-orologio/da-lontano/",
+      "cluster": "C10"
+    },
+    {
+      "id": "p037",
+      "nome": "Pietro, ventenne",
+      "eta": 21,
+      "provincia": "RE",
+      "comune": "Rubiera",
+      "marchio": "TAG Heuer",
+      "modello": "Carrera Calibre 16",
+      "motivo": "regalo per i 18 anni",
+      "situazione": "Vuole vendere il regalo dei 18 anni per comprarsi la moto.",
+      "paure": [
+        "Prendere pochissimo",
+        "Genitori"
+      ],
+      "canali": [
+        "TikTok",
+        "Google",
+        "ChatGPT"
+      ],
+      "domande": [
+        "quanto vale un tag heuer carrera usato",
+        "vendere tag heuer",
+        "Mi danno qualcosa per un TAG Carrera di 3 anni o lo vendo su Subito?"
+      ],
+      "alternativa_ai": "Subito o Vinted.",
+      "messaggio": "TAG Heuer è nei marchi che valutiamo: mandaci foto e dati, ti diciamo se ci interessa senza farti muovere.",
+      "pagina": "/vendi-tag-heuer/",
+      "cluster": "C13"
+    },
+    {
+      "id": "p038",
+      "nome": "Giuseppe, notaio in pensione",
+      "eta": 72,
+      "provincia": "RE",
+      "comune": "Reggio Emilia",
+      "marchio": "A. Lange & Söhne",
+      "modello": "Saxonia",
+      "motivo": "riassetto collezione",
+      "situazione": "Vuole vendere un Lange e cerca riservatezza.",
+      "paure": [
+        "Esposizione pubblica",
+        "Incompetenza"
+      ],
+      "canali": [
+        "passaparola",
+        "Google"
+      ],
+      "domande": [
+        "vendere lange sohne saxonia",
+        "chi compra a lange sohne",
+        "A chi posso vendere un A. Lange & Söhne in Emilia-Romagna?"
+      ],
+      "alternativa_ai": "Dealer o casa d'aste.",
+      "messaggio": "Puoi proporlo anche se il marchio non è nel nostro elenco: primo esame su foto e incontro nella sede riservata di Bologna, su appuntamento.",
+      "pagina": "/vendi-orologio/alta-orologeria/",
+      "cluster": "C11"
+    },
+    {
+      "id": "p039",
+      "nome": "Roberta, estetista",
+      "eta": 42,
+      "provincia": "RE",
+      "comune": "Montecchio Emilia",
+      "marchio": "Bulgari",
+      "modello": "Bulgari Bulgari acciaio",
+      "motivo": "liquidità",
+      "situazione": "Vuole aprire un secondo centro estetico.",
+      "paure": [
+        "Gioiellerie che pagano poco"
+      ],
+      "canali": [
+        "Google",
+        "Gemini"
+      ],
+      "domande": [
+        "vendere bulgari bulgari orologio",
+        "bulgari usato valore",
+        "Un Bulgari Bulgari in acciaio usato si vende bene? A chi?"
+      ],
+      "alternativa_ai": "Gioielleria o Vestiaire.",
+      "messaggio": "Bulgari è nei marchi che valutiamo: primo esame su foto e proposta dopo averlo visto.",
+      "pagina": "/vendi-bulgari/",
+      "cluster": "C13"
+    },
+    {
+      "id": "p040",
+      "nome": "Carlo, dirigente alimentare",
+      "eta": 53,
+      "provincia": "PR",
+      "comune": "Parma",
+      "marchio": "Rolex",
+      "modello": "Daytona 116500LN",
+      "motivo": "upgrade",
+      "situazione": "Vuole capire se vendere il Daytona a un negozio o tenerlo.",
+      "paure": [
+        "Prezzi troppo bassi",
+        "Furti dopo annunci"
+      ],
+      "canali": [
+        "Perplexity",
+        "forum"
+      ],
+      "domande": [
+        "vendere daytona 116500",
+        "rolex daytona usato chi compra parma",
+        "Vendere un Daytona da privato è rischioso? Che alternative ho in Emilia?"
+      ],
+      "alternativa_ai": "Chrono24 con escrow, dealer.",
+      "messaggio": "Con noi non pubblichi nulla: primo esame su foto, verifica dal vivo a Bologna e bonifico al momento della vendita se accetti.",
+      "pagina": "/vendi-rolex/",
+      "cluster": "C12"
+    },
+    {
+      "id": "p041",
+      "nome": "Beatrice, figlia",
+      "eta": 41,
+      "provincia": "PR",
+      "comune": "Fidenza",
+      "marchio": "Omega",
+      "modello": "Speedmaster Reduced",
+      "motivo": "eredità",
+      "situazione": "Ha ritrovato l'Omega del padre senza scatola.",
+      "paure": [
+        "Che senza documenti non valga niente"
+      ],
+      "canali": [
+        "Google",
+        "ChatGPT"
+      ],
+      "domande": [
+        "vendere omega senza documenti",
+        "speedmaster reduced valore",
+        "Ho uno Speedmaster senza garanzia né scatola, posso venderlo lo stesso?"
+      ],
+      "alternativa_ai": "Rivenditore o Subito.",
+      "messaggio": "Sì, si valuta anche solo l'orologio: l'assenza del corredo entra nella valutazione ma non la impedisce.",
+      "pagina": "/vendi-orologio/senza-scatola-e-documenti/",
+      "cluster": "C06"
+    },
+    {
+      "id": "p042",
+      "nome": "Alessandro, musicista",
+      "eta": 45,
+      "provincia": "PR",
+      "comune": "Salsomaggiore Terme",
+      "marchio": "IWC",
+      "modello": "Big Pilot",
+      "motivo": "liquidità",
+      "situazione": "Fa un lavoro con entrate irregolari e vende l'orologio comprato in un anno buono.",
+      "paure": [
+        "Tempi lunghi"
+      ],
+      "canali": [
+        "Google",
+        "Perplexity"
+      ],
+      "domande": [
+        "vendere iwc big pilot",
+        "vendere orologio velocemente",
+        "Qual è il modo più veloce per vendere un IWC Big Pilot senza svenderlo?"
+      ],
+      "alternativa_ai": "Rivenditore o Chrono24.",
+      "messaggio": "Il percorso è breve: foto, primo esame, appuntamento e, se accetti la proposta, pagamento subito con bonifico.",
+      "pagina": "/vendi-iwc/",
+      "cluster": "C13"
+    },
+    {
+      "id": "p043",
+      "nome": "Monica, gioielliera",
+      "eta": 58,
+      "provincia": "PR",
+      "comune": "Parma",
+      "marchio": "vari",
+      "modello": "orologi ritirati da clienti",
+      "motivo": "lavoro",
+      "situazione": "Riceve clienti che vogliono vendere orologi e non sa a chi indirizzarli.",
+      "paure": [
+        "Mandare clienti da chi lavora male"
+      ],
+      "canali": [
+        "passaparola",
+        "Google"
+      ],
+      "domande": [
+        "chi compra orologi di lusso usati emilia romagna",
+        "negozio acquisto orologi recensioni",
+        "Quali negozi seri comprano orologi di lusso usati in Emilia-Romagna?"
+      ],
+      "alternativa_ai": "Elenco di dealer generici.",
+      "messaggio": "Siamo un'attività di famiglia con trent'anni di esperienza, 4,9 su Google con 202 recensioni; si comincia con le foto e si decide dopo la proposta dal vivo.",
+      "pagina": "/vendi-orologio/emilia-romagna/#parma",
+      "cluster": "C01"
+    },
+    {
+      "id": "p044",
+      "nome": "Nicola, ex sommelier",
+      "eta": 64,
+      "provincia": "PR",
+      "comune": "Langhirano",
+      "marchio": "Jaeger-LeCoultre",
+      "modello": "Memovox vintage",
+      "motivo": "vintage",
+      "situazione": "Ha un Memovox degli anni '60 con la sveglia che non suona più.",
+      "paure": [
+        "Riparazione costosa"
+      ],
+      "canali": [
+        "forum",
+        "Google"
+      ],
+      "domande": [
+        "jaeger lecoultre memovox valore",
+        "vendere memovox",
+        "Il mio Memovox non suona più, vale la pena venderlo così?"
+      ],
+      "alternativa_ai": "Orologiaio e poi asta.",
+      "messaggio": "Mandaci foto e dicci cosa non funziona: lo consideriamo nell'esame e lo vediamo dal vivo prima di qualsiasi proposta.",
+      "pagina": "/vendi-jaeger-lecoultre/",
+      "cluster": "C08"
+    },
+    {
+      "id": "p045",
+      "nome": "Irene, neolaureata",
+      "eta": 26,
+      "provincia": "PR",
+      "comune": "Collecchio",
+      "marchio": "Cartier",
+      "modello": "Tank Must quarzo",
+      "motivo": "liquidità",
+      "situazione": "Vuole pagarsi un master.",
+      "paure": [
+        "Che un Cartier al quarzo valga poco"
+      ],
+      "canali": [
+        "TikTok",
+        "ChatGPT"
+      ],
+      "domande": [
+        "cartier tank must quarzo valore",
+        "vendere cartier tank",
+        "Conviene vendere un Cartier Tank Must al quarzo o lo tengo?"
+      ],
+      "alternativa_ai": "Vinted o Vestiaire.",
+      "messaggio": "I Tank al quarzo sono molto diffusi e si valutano: indica versione, misura e metallo e ti rispondiamo dopo il primo esame.",
+      "pagina": "/vendi-cartier/",
+      "cluster": "C13"
+    },
+    {
+      "id": "p046",
+      "nome": "Enrico, rappresentante",
+      "eta": 51,
+      "provincia": "PR",
+      "comune": "Fornovo di Taro",
+      "marchio": "Rolex",
+      "modello": "Explorer II 16570",
+      "motivo": "upgrade",
+      "situazione": "Vuole confrontare le offerte prima di cambiare.",
+      "paure": [
+        "Offerte via telefono senza vedere"
+      ],
+      "canali": [
+        "Google",
+        "forum"
+      ],
+      "domande": [
+        "vendere explorer ii 16570",
+        "valutazione rolex online gratis",
+        "Esiste una valutazione online affidabile per un Rolex Explorer II?"
+      ],
+      "alternativa_ai": "Calcolatori online di valore.",
+      "messaggio": "Non facciamo stime automatiche: il primo esame su foto è gratuito, la proposta definitiva arriva dopo aver visto l'orologio.",
+      "pagina": "/vendi-orologio/quanto-vale/",
+      "cluster": "C02"
+    },
+    {
+      "id": "p047",
+      "nome": "Rita, casalinga",
+      "eta": 70,
+      "provincia": "PR",
+      "comune": "Busseto",
+      "marchio": "Eberhard",
+      "modello": "Extra-Fort anni '50",
+      "motivo": "eredità",
+      "situazione": "Ha trovato un cronografo del suocero.",
+      "paure": [
+        "Non conoscere il marchio"
+      ],
+      "canali": [
+        "passaparola",
+        "telefono al nipote"
+      ],
+      "domande": [
+        "eberhard extra fort valore",
+        "chi compra orologi vecchi parma",
+        "Un cronografo Eberhard vecchio si vende? Dove a Parma?"
+      ],
+      "alternativa_ai": "Compro oro.",
+      "messaggio": "Eberhard è tra i marchi che valutiamo: bastano foto di quadrante e fondello per un primo esame gratuito.",
+      "pagina": "/vendi-orologio/orologi-vintage/",
+      "cluster": "C08"
+    },
+    {
+      "id": "p048",
+      "nome": "Gabriele, broker",
+      "eta": 39,
+      "provincia": "PR",
+      "comune": "Parma",
+      "marchio": "Richard Mille",
+      "modello": "RM 011",
+      "motivo": "liquidità",
+      "situazione": "Vuole vendere senza intermediari esteri.",
+      "paure": [
+        "Truffe sofisticate",
+        "Trasporto"
+      ],
+      "canali": [
+        "passaparola",
+        "Perplexity"
+      ],
+      "domande": [
+        "vendere richard mille italia",
+        "chi compra richard mille usati",
+        "C'è qualcuno in Emilia che compra Richard Mille con pagamento tracciabile?"
+      ],
+      "alternativa_ai": "Dealer internazionali.",
+      "messaggio": "Puoi proporci anche un Richard Mille indicandolo nella richiesta: primo esame su foto, verifica nella sede riservata di Bologna e bonifico tracciabile.",
+      "pagina": "/vendi-orologio/alta-orologeria/",
+      "cluster": "C11"
+    },
+    {
+      "id": "p049",
+      "nome": "Ugo, agricoltore",
+      "eta": 61,
+      "provincia": "PC",
+      "comune": "Castel San Giovanni",
+      "marchio": "Rolex",
+      "modello": "Submariner 16610",
+      "motivo": "liquidità",
+      "situazione": "Deve comprare un trattore e pensa al Submariner.",
+      "paure": [
+        "Distanza da Bologna"
+      ],
+      "canali": [
+        "Google",
+        "passaparola"
+      ],
+      "domande": [
+        "vendere rolex piacenza",
+        "chi compra rolex usati piacenza",
+        "Sono vicino a Piacenza, devo andare a Milano per vendere un Rolex?"
+      ],
+      "alternativa_ai": "Negozi di Milano.",
+      "messaggio": "Il primo esame lo facciamo a distanza, poi lo vediamo a Bologna su appuntamento; se non puoi venire, il ritiro con corriere valori è gratuito.",
+      "pagina": "/vendi-orologio/emilia-romagna/#piacenza",
+      "cluster": "C01"
+    },
+    {
+      "id": "p050",
+      "nome": "Serena, impiegata",
+      "eta": 44,
+      "provincia": "PC",
+      "comune": "Piacenza",
+      "marchio": "Longines",
+      "modello": "DolceVita",
+      "motivo": "regalo",
+      "situazione": "Vuole vendere un DolceVita ricevuto in regalo.",
+      "paure": [
+        "Valutazioni offensive"
+      ],
+      "canali": [
+        "Google",
+        "Gemini"
+      ],
+      "domande": [
+        "longines dolcevita usato valore",
+        "vendere orologio donna usato",
+        "Quanto mi danno per un Longines DolceVita da donna?"
+      ],
+      "alternativa_ai": "Vinted o Subito.",
+      "messaggio": "Facciamo un primo esame dalle foto, gratuito, e la proposta dopo averlo visto: decidi tu.",
+      "pagina": "/vendi-longines/",
+      "cluster": "C13"
+    },
+    {
+      "id": "p051",
+      "nome": "Franco, ex militare",
+      "eta": 75,
+      "provincia": "PC",
+      "comune": "Bobbio",
+      "marchio": "Breitling",
+      "modello": "Navitimer anni '80",
+      "motivo": "vintage",
+      "situazione": "Ha un Navitimer comprato in servizio.",
+      "paure": [
+        "Internet",
+        "Spedire"
+      ],
+      "canali": [
+        "telefono",
+        "passaparola"
+      ],
+      "domande": [
+        "breitling navitimer vecchio valore",
+        "vendere orologio anziano senza internet",
+        "Mio padre ha 75 anni, un Navitimer vecchio e niente internet, come lo vende?"
+      ],
+      "alternativa_ai": "Negozio locale.",
+      "messaggio": "Può telefonarci: ci spieghiamo a voce e, se non può muoversi, organizziamo noi il ritiro con un corriere specializzato in valori, gratis.",
+      "pagina": "/vendi-orologio/da-lontano/",
+      "cluster": "C17"
+    },
+    {
+      "id": "p052",
+      "nome": "Michela, imprenditrice",
+      "eta": 47,
+      "provincia": "PC",
+      "comune": "Fiorenzuola d'Arda",
+      "marchio": "Audemars Piguet",
+      "modello": "Royal Oak Offshore",
+      "motivo": "non lo usa più",
+      "situazione": "Vuole vendere un Offshore troppo grande.",
+      "paure": [
+        "Svendere",
+        "Esporsi online"
+      ],
+      "canali": [
+        "Google",
+        "ChatGPT"
+      ],
+      "domande": [
+        "vendere royal oak offshore",
+        "audemars piguet usato chi compra",
+        "Chi compra un Audemars Piguet Offshore senza metterlo su Chrono24?"
+      ],
+      "alternativa_ai": "Chrono24, dealer milanese.",
+      "messaggio": "Lo indichi nella richiesta, ti rispondiamo dopo il primo esame e lo vediamo a Bologna su appuntamento.",
+      "pagina": "/vendi-audemars-piguet/",
+      "cluster": "C11"
+    },
+    {
+      "id": "p053",
+      "nome": "Paolo, fotografo",
+      "eta": 38,
+      "provincia": "PC",
+      "comune": "Piacenza",
+      "marchio": "Omega",
+      "modello": "Seamaster 300M",
+      "motivo": "upgrade",
+      "situazione": "Cambia per uno Speedmaster.",
+      "paure": [
+        "Permuta svantaggiosa"
+      ],
+      "canali": [
+        "forum",
+        "Reddit"
+      ],
+      "domande": [
+        "vendere seamaster 300m",
+        "permuta omega conviene",
+        "Meglio permutare il Seamaster dal concessionario o venderlo a parte?"
+      ],
+      "alternativa_ai": "Permuta o Chrono24.",
+      "messaggio": "Valutiamo e acquistiamo il Seamaster con pagamento subito: poi sei libero di comprare dove vuoi, anche dal nostro catalogo su venditaorologiusati.it.",
+      "pagina": "/vendi-orologio/dove-vendere/",
+      "cluster": "C15"
+    },
+    {
+      "id": "p054",
+      "nome": "Lucia, nipote",
+      "eta": 30,
+      "provincia": "PC",
+      "comune": "Rivergaro",
+      "marchio": "Tudor",
+      "modello": "Oyster Prince vintage",
+      "motivo": "eredità",
+      "situazione": "Ha il Tudor del nonno con il logo rosa.",
+      "paure": [
+        "Che sia un falso"
+      ],
+      "canali": [
+        "Reddit",
+        "Google"
+      ],
+      "domande": [
+        "tudor rosa vintage valore",
+        "tudor oyster prince vecchio",
+        "Ho un Tudor vecchio con la rosa sul quadrante, come capisco se è vero e quanto vale?"
+      ],
+      "alternativa_ai": "Chiedere su forum.",
+      "messaggio": "Mandaci foto di quadrante, cassa e fondello: guardiamo noi e, se ci interessa, verifichiamo l'originalità dal vivo.",
+      "pagina": "/vendi-tudor/",
+      "cluster": "C08"
+    },
+    {
+      "id": "p055",
+      "nome": "Dario, consulente IT",
+      "eta": 42,
+      "provincia": "PC",
+      "comune": "Piacenza",
+      "marchio": "Zenith",
+      "modello": "Chronomaster El Primero",
+      "motivo": "upgrade",
+      "situazione": "Vuole vendere per comprare un Grand Seiko.",
+      "paure": [
+        "Nessuno conosce Zenith"
+      ],
+      "canali": [
+        "Reddit",
+        "Perplexity"
+      ],
+      "domande": [
+        "vendere zenith el primero",
+        "zenith chronomaster usato valore",
+        "Chi compra uno Zenith El Primero usato in Emilia?"
+      ],
+      "alternativa_ai": "Chrono24.",
+      "messaggio": "Zenith è tra i 19 marchi che valutiamo: primo esame su foto e proposta dopo averlo visto.",
+      "pagina": "/vendi-zenith/",
+      "cluster": "C13"
+    },
+    {
+      "id": "p056",
+      "nome": "Mirella, vedova",
+      "eta": 79,
+      "provincia": "FE",
+      "comune": "Ferrara",
+      "marchio": "Rolex",
+      "modello": "Datejust 1601",
+      "motivo": "eredità",
+      "situazione": "Il figlio vive all'estero e lei vuole vendere il Rolex del marito.",
+      "paure": [
+        "Truffatori porta a porta",
+        "Non saper usare WhatsApp"
+      ],
+      "canali": [
+        "telefono",
+        "passaparola"
+      ],
+      "domande": [
+        "vendere rolex ferrara",
+        "rolex 1601 valore",
+        "Mia madre a Ferrara vuole vendere il Rolex di mio padre, è sicuro farlo da sola?"
+      ],
+      "alternativa_ai": "Gioielleria di fiducia.",
+      "messaggio": "Può telefonarci o venire con una persona di fiducia nel negozio di Medicina: si parla di persona, in un negozio vero, e la valutazione è gratuita e non obbliga a vendere.",
+      "pagina": "/vendi-orologio/emilia-romagna/#ferrara",
+      "cluster": "C17"
+    },
+    {
+      "id": "p057",
+      "nome": "Igor, operaio",
+      "eta": 37,
+      "provincia": "FE",
+      "comune": "Cento",
+      "marchio": "Rolex",
+      "modello": "Submariner falso?",
+      "motivo": "dubbio autenticità",
+      "situazione": "Ha comprato un Submariner da un privato e teme sia falso.",
+      "paure": [
+        "Vergogna",
+        "Problemi legali"
+      ],
+      "canali": [
+        "Reddit",
+        "ChatGPT"
+      ],
+      "domande": [
+        "come capire se un rolex è falso",
+        "verificare rolex autentico bologna",
+        "Ho comprato un Rolex usato da un privato e ho dubbi che sia vero, chi lo può controllare?"
+      ],
+      "alternativa_ai": "Rolex Service Center o orologiaio.",
+      "messaggio": "Dalle foto possiamo dare un primo sguardo; originalità e condizioni si verificano solo dal vivo, a Medicina o a Bologna, e la valutazione è gratuita.",
+      "pagina": "/vendi-rolex/",
+      "cluster": "C04"
+    },
+    {
+      "id": "p058",
+      "nome": "Sofia, studentessa",
+      "eta": 23,
+      "provincia": "FE",
+      "comune": "Ferrara",
+      "marchio": "Cartier",
+      "modello": "Santos 100",
+      "motivo": "liquidità",
+      "situazione": "Vuole vendere un regalo di laurea.",
+      "paure": [
+        "Commenti sui social"
+      ],
+      "canali": [
+        "TikTok",
+        "ChatGPT"
+      ],
+      "domande": [
+        "vendere cartier santos usato",
+        "santos 100 valore",
+        "Vale la pena vendere un Santos 100 a un negozio o è meglio Vestiaire?"
+      ],
+      "alternativa_ai": "Vestiaire Collective.",
+      "messaggio": "Niente piattaforme e niente commissioni: primo esame su foto e proposta dal vivo, con pagamento subito se accetti.",
+      "pagina": "/vendi-cartier/",
+      "cluster": "C03"
+    },
+    {
+      "id": "p059",
+      "nome": "Valter, pescatore in pensione",
+      "eta": 69,
+      "provincia": "FE",
+      "comune": "Comacchio",
+      "marchio": "Seiko",
+      "modello": "diver anni '70",
+      "motivo": "vintage",
+      "situazione": "Ha un Seiko 6105 usato al mare per anni.",
+      "paure": [
+        "Che sia rovinato"
+      ],
+      "canali": [
+        "passaparola",
+        "Facebook"
+      ],
+      "domande": [
+        "seiko 6105 valore",
+        "vendere seiko vecchio",
+        "Un Seiko subacqueo vecchio tutto graffiato vale qualcosa?"
+      ],
+      "alternativa_ai": "Gruppi Facebook.",
+      "messaggio": "Graffi e segni d'uso non impediscono la valutazione: fotografalo com'è, senza lucidarlo.",
+      "pagina": "/vendi-orologio/orologi-vintage/",
+      "cluster": "C08"
+    },
+    {
+      "id": "p060",
+      "nome": "Annalisa, funzionaria",
+      "eta": 50,
+      "provincia": "FE",
+      "comune": "Argenta",
+      "marchio": "Omega",
+      "modello": "Constellation donna",
+      "motivo": "divorzio",
+      "situazione": "Vuole chiudere i conti con il passato.",
+      "paure": [
+        "Tempi lunghi",
+        "Doverne parlare"
+      ],
+      "canali": [
+        "Google",
+        "ChatGPT"
+      ],
+      "domande": [
+        "vendere omega constellation donna",
+        "vendere orologio in modo discreto",
+        "Voglio vendere un orologio in modo discreto, senza annunci, vicino a Ferrara"
+      ],
+      "alternativa_ai": "Negozio dell'usato.",
+      "messaggio": "Ci scrivi su WhatsApp, ti rispondiamo noi; l'incontro si fa in negozio a Medicina o nella sede riservata di Bologna su appuntamento.",
+      "pagina": "/vendi-orologio/emilia-romagna/#ferrara",
+      "cluster": "C16"
+    },
+    {
+      "id": "p061",
+      "nome": "Tiziano, imprenditore agricolo",
+      "eta": 57,
+      "provincia": "FE",
+      "comune": "Codigoro",
+      "marchio": "Patek Philippe",
+      "modello": "Nautilus 5711",
+      "motivo": "liquidità",
+      "situazione": "Ha un Nautilus e riceve offerte strane online.",
+      "paure": [
+        "Truffe",
+        "Furti"
+      ],
+      "canali": [
+        "passaparola",
+        "Perplexity"
+      ],
+      "domande": [
+        "vendere patek nautilus 5711",
+        "offerte nautilus whatsapp truffa",
+        "Mi scrivono da numeri esteri per comprare il mio Nautilus, come lo vendo in sicurezza in Italia?"
+      ],
+      "alternativa_ai": "Dealer o asta.",
+      "messaggio": "Si vende di persona, in un negozio vero, con bonifico al momento della vendita. Patek lo indichi nella richiesta come marchio fuori elenco.",
+      "pagina": "/vendi-patek-philippe/",
+      "cluster": "C04"
+    },
+    {
+      "id": "p062",
+      "nome": "Greta, impiegata comunale",
+      "eta": 34,
+      "provincia": "FE",
+      "comune": "Bondeno",
+      "marchio": "TAG Heuer",
+      "modello": "Aquaracer",
+      "motivo": "liquidità",
+      "situazione": "Ha bisogno di liquidità per il trasloco.",
+      "paure": [
+        "Valore basso"
+      ],
+      "canali": [
+        "Google"
+      ],
+      "domande": [
+        "tag heuer aquaracer usato valore",
+        "chi compra tag heuer ferrara",
+        "Dove vendere un TAG Heuer a Ferrara?"
+      ],
+      "alternativa_ai": "Subito.",
+      "messaggio": "Primo esame gratuito su foto; poi, se ci interessa, lo porti a Medicina.",
+      "pagina": "/vendi-tag-heuer/",
+      "cluster": "C13"
+    },
+    {
+      "id": "p063",
+      "nome": "Ottavio, dottore",
+      "eta": 66,
+      "provincia": "FE",
+      "comune": "Ferrara",
+      "marchio": "Vacheron Constantin",
+      "modello": "Patrimony",
+      "motivo": "riassetto collezione",
+      "situazione": "Vuole vendere un Patrimony in oro.",
+      "paure": [
+        "Compro oro",
+        "Valutazione a peso"
+      ],
+      "canali": [
+        "passaparola"
+      ],
+      "domande": [
+        "vendere vacheron patrimony",
+        "orologio oro valutato a peso",
+        "Un orologio d'oro di alta orologeria va venduto a peso?"
+      ],
+      "alternativa_ai": "Compro oro.",
+      "messaggio": "No: si valuta come orologio, con marca, referenza e condizioni. Lo indichi nella richiesta e lo vediamo dal vivo.",
+      "pagina": "/vendi-orologio/orologi-oro-e-gioiello/",
+      "cluster": "C18"
+    },
+    {
+      "id": "p064",
+      "nome": "Massimo, armatore",
+      "eta": 60,
+      "provincia": "RA",
+      "comune": "Ravenna",
+      "marchio": "Rolex",
+      "modello": "Sea-Dweller 126600",
+      "motivo": "upgrade",
+      "situazione": "Vuole passare a un Deepsea.",
+      "paure": [
+        "Tempi",
+        "Commissioni"
+      ],
+      "canali": [
+        "Google",
+        "Perplexity"
+      ],
+      "domande": [
+        "vendere sea dweller",
+        "rolex sea dweller usato chi compra ravenna",
+        "Chi compra Rolex usati a Ravenna o vicino?"
+      ],
+      "alternativa_ai": "Rivenditori a Ravenna, Chrono24.",
+      "messaggio": "Da Ravenna non serve partire alla cieca: prima ci mandi le foto e facciamo il primo esame a distanza, poi lo vediamo nel negozio di Medicina, in provincia di Bologna verso la Romagna.",
+      "pagina": "/vendi-orologio/emilia-romagna/#ravenna",
+      "cluster": "C01"
+    },
+    {
+      "id": "p065",
+      "nome": "Chiara, fisioterapista",
+      "eta": 35,
+      "provincia": "RA",
+      "comune": "Faenza",
+      "marchio": "Tudor",
+      "modello": "Black Bay 41",
+      "motivo": "liquidità",
+      "situazione": "Apre lo studio e vende il Tudor.",
+      "paure": [
+        "Svendere"
+      ],
+      "canali": [
+        "Google",
+        "ChatGPT"
+      ],
+      "domande": [
+        "vendere tudor faenza",
+        "tudor black bay usato quanto",
+        "Quanto vale oggi un Tudor Black Bay del 2018?"
+      ],
+      "alternativa_ai": "Chrono24.",
+      "messaggio": "Non c'è una cifra valida per tutti: dipende da referenza, condizioni e corredo. Primo esame su foto, proposta dal vivo.",
+      "pagina": "/vendi-tudor/",
+      "cluster": "C02"
+    },
+    {
+      "id": "p066",
+      "nome": "Ivo, ex orafo",
+      "eta": 73,
+      "provincia": "RA",
+      "comune": "Lugo",
+      "marchio": "Universal, Longines, Omega",
+      "modello": "lotto di vintage",
+      "motivo": "chiusura bottega",
+      "situazione": "Ha chiuso la bottega e ha una scatola di orologi.",
+      "paure": [
+        "Valutazione a lotto al ribasso"
+      ],
+      "canali": [
+        "passaparola"
+      ],
+      "domande": [
+        "vendere lotto orologi vintage",
+        "chi compra orologi vecchi in blocco",
+        "Ho una scatola di orologi vecchi, chi li valuta uno per uno?"
+      ],
+      "alternativa_ai": "Asta a lotto, compro oro.",
+      "messaggio": "Ogni orologio si valuta singolarmente: puoi portarli in negozio a Medicina o mandarci prima le foto.",
+      "pagina": "/vendi-orologio/orologi-vintage/",
+      "cluster": "C08"
+    },
+    {
+      "id": "p067",
+      "nome": "Federico, poliziotto",
+      "eta": 45,
+      "provincia": "RA",
+      "comune": "Cervia",
+      "marchio": "Breitling",
+      "modello": "Chronomat Frecce Tricolori",
+      "motivo": "vintage",
+      "situazione": "Ha il Chronomat Frecce Tricolori del padre.",
+      "paure": [
+        "Che non interessi a nessuno"
+      ],
+      "canali": [
+        "forum",
+        "Facebook"
+      ],
+      "domande": [
+        "breitling chronomat frecce tricolori valore",
+        "vendere breitling vintage",
+        "Il Chronomat Frecce Tricolori anni 80 si vende ancora?"
+      ],
+      "alternativa_ai": "Forum.",
+      "messaggio": "Breitling è tra i nostri marchi: foto chiare di quadrante e fondello, primo esame gratuito.",
+      "pagina": "/vendi-breitling/",
+      "cluster": "C08"
+    },
+    {
+      "id": "p068",
+      "nome": "Eleonora, stilista",
+      "eta": 40,
+      "provincia": "RA",
+      "comune": "Ravenna",
+      "marchio": "Chanel",
+      "modello": "J12",
+      "motivo": "non lo usa più",
+      "situazione": "Vuole vendere un J12 in ceramica.",
+      "paure": [
+        "Marchio fuori elenco"
+      ],
+      "canali": [
+        "Google",
+        "ChatGPT"
+      ],
+      "domande": [
+        "vendere chanel j12 usato",
+        "chi compra chanel j12",
+        "Chi compra un Chanel J12 usato?"
+      ],
+      "alternativa_ai": "Vestiaire.",
+      "messaggio": "Puoi indicare qualsiasi marca nella richiesta: ti diciamo dopo il primo esame se possiamo fare una proposta.",
+      "pagina": "/vendi-orologio/",
+      "cluster": "C14"
+    },
+    {
+      "id": "p069",
+      "nome": "Luciano, autotrasportatore",
+      "eta": 54,
+      "provincia": "RA",
+      "comune": "Alfonsine",
+      "marchio": "Rolex",
+      "modello": "Datejust 16220",
+      "motivo": "orologio graffiato",
+      "situazione": "Ha portato il Datejust per vent'anni al lavoro.",
+      "paure": [
+        "Graffi profondi",
+        "Lucidarlo prima?"
+      ],
+      "canali": [
+        "Google",
+        "ChatGPT"
+      ],
+      "domande": [
+        "conviene lucidare rolex prima di venderlo",
+        "rolex graffiato valore",
+        "Devo far lucidare il Rolex prima di venderlo?"
+      ],
+      "alternativa_ai": "Lucidatura dall'orologiaio.",
+      "messaggio": "Non farlo lucidare: a volte una lucidatura toglie più di quanto aggiunga. Fotografalo così com'è.",
+      "pagina": "/vendi-orologio/orologio-fermo-o-da-revisionare/",
+      "cluster": "C07"
+    },
+    {
+      "id": "p070",
+      "nome": "Alessia, mamma",
+      "eta": 43,
+      "provincia": "RA",
+      "comune": "Bagnacavallo",
+      "marchio": "Omega",
+      "modello": "Speedmaster del marito",
+      "motivo": "liquidità",
+      "situazione": "Fa i conti per la retta universitaria della figlia.",
+      "paure": [
+        "Prendere poco"
+      ],
+      "canali": [
+        "Gemini",
+        "Google"
+      ],
+      "domande": [
+        "omega speedmaster usato quanto vale",
+        "vendere omega ravenna",
+        "Vendere uno Speedmaster usato a Ravenna o a Bologna, dove conviene?"
+      ],
+      "alternativa_ai": "Rivenditore locale.",
+      "messaggio": "Facciamo un primo esame dalle foto, gratuito; poi la proposta dal vivo a Medicina o a Bologna, senza obbligo.",
+      "pagina": "/vendi-omega/",
+      "cluster": "C02"
+    },
+    {
+      "id": "p071",
+      "nome": "Renzo, pensionato",
+      "eta": 80,
+      "provincia": "RA",
+      "comune": "Russi",
+      "marchio": "Zenith",
+      "modello": "vintage acciaio",
+      "motivo": "eredità da sistemare",
+      "situazione": "Vuole sistemare le cose prima di lasciarle ai nipoti.",
+      "paure": [
+        "Truffe al telefono"
+      ],
+      "canali": [
+        "passaparola"
+      ],
+      "domande": [
+        "vendere orologio zenith vecchio",
+        "negozio orologi usati vicino ravenna",
+        "Mio nonno vuole vendere un orologio, come trovo un negozio serio con buone recensioni?"
+      ],
+      "alternativa_ai": "Gioielleria locale.",
+      "messaggio": "Siamo un'attività di famiglia con trent'anni di esperienza e 4,9 su Google: lo può portare in negozio a Medicina con chi vuole.",
+      "pagina": "/vendi-orologio/emilia-romagna/#ravenna",
+      "cluster": "C17"
+    },
+    {
+      "id": "p072",
+      "nome": "Marta, manager",
+      "eta": 46,
+      "provincia": "RA",
+      "comune": "Ravenna",
+      "marchio": "Jaeger-LeCoultre",
+      "modello": "Rendez-Vous",
+      "motivo": "non lo usa più",
+      "situazione": "Ha un Rendez-Vous e vuole sapere se interessa.",
+      "paure": [
+        "Non sapere la referenza"
+      ],
+      "canali": [
+        "Google"
+      ],
+      "domande": [
+        "vendere jaeger lecoultre rendez vous",
+        "dove trovo referenza jaeger lecoultre",
+        "Non so la referenza del mio Jaeger-LeCoultre, posso venderlo lo stesso?"
+      ],
+      "alternativa_ai": "Rivenditore.",
+      "messaggio": "Sì, scegli «Non lo so» nella scheda: la riconosciamo noi dalle foto di quadrante e fondello.",
+      "pagina": "/vendi-jaeger-lecoultre/",
+      "cluster": "C13"
+    },
+    {
+      "id": "p073",
+      "nome": "Mattia, commerciante",
+      "eta": 49,
+      "provincia": "FC",
+      "comune": "Forlì",
+      "marchio": "Rolex",
+      "modello": "Datejust 41 126300",
+      "motivo": "liquidità",
+      "situazione": "Ha il negozio in difficoltà.",
+      "paure": [
+        "Che il negozio lo sappia"
+      ],
+      "canali": [
+        "Google",
+        "ChatGPT"
+      ],
+      "domande": [
+        "vendere rolex forlì",
+        "datejust 41 usato valore",
+        "Dove vendo un Rolex in Romagna con pagamento subito?"
+      ],
+      "alternativa_ai": "Rivenditori in Romagna.",
+      "messaggio": "Bonifico al momento della vendita, sul conto che scegli. Il negozio è a Medicina, in provincia di Bologna, dal lato della Romagna.",
+      "pagina": "/vendi-orologio/emilia-romagna/#forli-cesena",
+      "cluster": "C01"
+    },
+    {
+      "id": "p074",
+      "nome": "Giada, influencer",
+      "eta": 28,
+      "provincia": "FC",
+      "comune": "Cesena",
+      "marchio": "Cartier",
+      "modello": "Santos de Cartier medium",
+      "motivo": "upgrade",
+      "situazione": "Vende per prendere un altro Cartier.",
+      "paure": [
+        "Prezzo"
+      ],
+      "canali": [
+        "TikTok",
+        "ChatGPT"
+      ],
+      "domande": [
+        "vendere cartier santos 2020",
+        "cartier usato quanto si perde",
+        "Se vendo il mio Santos di due anni quanto perdo?"
+      ],
+      "alternativa_ai": "Vestiaire, Chrono24.",
+      "messaggio": "Non diamo cifre al buio: primo esame su foto, proposta dopo averlo visto.",
+      "pagina": "/vendi-cartier/",
+      "cluster": "C15"
+    },
+    {
+      "id": "p075",
+      "nome": "Aldo, ex ferroviere",
+      "eta": 71,
+      "provincia": "FC",
+      "comune": "Cesenatico",
+      "marchio": "Omega",
+      "modello": "Seamaster cosmic",
+      "motivo": "eredità",
+      "situazione": "Ha due Omega degli anni '60 del fratello.",
+      "paure": [
+        "Internet"
+      ],
+      "canali": [
+        "passaparola",
+        "telefono"
+      ],
+      "domande": [
+        "omega vecchio valore",
+        "vendere omega anni 60",
+        "Due Omega vecchi del fratello, chi li valuta senza farmi girare?"
+      ],
+      "alternativa_ai": "Compro oro.",
+      "messaggio": "Basta una telefonata: le foto le può mandare un familiare su WhatsApp, oppure viene direttamente in negozio a Medicina.",
+      "pagina": "/vendi-orologio/orologi-vintage/",
+      "cluster": "C17"
+    },
+    {
+      "id": "p076",
+      "nome": "Sabrina, commercialista",
+      "eta": 52,
+      "provincia": "FC",
+      "comune": "Forlì",
+      "marchio": "Patek Philippe",
+      "modello": "Twenty~4",
+      "motivo": "divorzio",
+      "situazione": "Vuole vendere un Twenty~4 regalato dall'ex marito.",
+      "paure": [
+        "Privacy"
+      ],
+      "canali": [
+        "Google",
+        "Gemini"
+      ],
+      "domande": [
+        "vendere patek twenty 4",
+        "patek donna usato",
+        "A chi si vende un Patek Philippe da donna in Romagna?"
+      ],
+      "alternativa_ai": "Dealer milanesi.",
+      "messaggio": "Lo indichi nella richiesta e lo vediamo nella sede riservata di Bologna, su appuntamento: niente vetrine, niente annunci.",
+      "pagina": "/vendi-patek-philippe/",
+      "cluster": "C16"
+    },
+    {
+      "id": "p077",
+      "nome": "Thomas, barista",
+      "eta": 31,
+      "provincia": "FC",
+      "comune": "Savignano sul Rubicone",
+      "marchio": "Hamilton",
+      "modello": "Khaki Field",
+      "motivo": "liquidità",
+      "situazione": "Ha un Hamilton e vuole capire se ha senso venderlo a un negozio.",
+      "paure": [
+        "Valore basso"
+      ],
+      "canali": [
+        "Reddit",
+        "Google"
+      ],
+      "domande": [
+        "vendere hamilton khaki usato",
+        "hamilton usato chi compra",
+        "Un negozio compra un Hamilton Khaki?"
+      ],
+      "alternativa_ai": "Subito.",
+      "messaggio": "Hamilton è nei 19 marchi che valutiamo: con le foto ti diciamo subito se ci interessa.",
+      "pagina": "/vendi-orologio/",
+      "cluster": "C02"
+    },
+    {
+      "id": "p078",
+      "nome": "Lorenza, ostetrica",
+      "eta": 44,
+      "provincia": "FC",
+      "comune": "Forlimpopoli",
+      "marchio": "Rolex",
+      "modello": "Lady-Datejust senza documenti",
+      "motivo": "eredità",
+      "situazione": "Ha il Rolex della madre senza alcun documento.",
+      "paure": [
+        "Sospetti di furto",
+        "Che non lo comprino"
+      ],
+      "canali": [
+        "Google",
+        "ChatGPT"
+      ],
+      "domande": [
+        "vendere rolex senza garanzia",
+        "rolex senza documenti chi lo compra",
+        "Posso vendere un Rolex senza garanzia ereditato da mia madre? Mi chiederanno da dove viene?"
+      ],
+      "alternativa_ai": "Rivenditore.",
+      "messaggio": "Sì, si valuta anche senza garanzia: dillo nella richiesta e fotografa eventuali ricevute. Entra nella valutazione ma non la impedisce.",
+      "pagina": "/vendi-orologio/senza-scatola-e-documenti/",
+      "cluster": "C06"
+    },
+    {
+      "id": "p079",
+      "nome": "Guido, cacciatore",
+      "eta": 63,
+      "provincia": "FC",
+      "comune": "Bagno di Romagna",
+      "marchio": "Breitling",
+      "modello": "Colt",
+      "motivo": "liquidità",
+      "situazione": "Vive in Alto Savio e non ha voglia di viaggiare.",
+      "paure": [
+        "Distanza"
+      ],
+      "canali": [
+        "telefono",
+        "Google"
+      ],
+      "domande": [
+        "vendere orologio senza spostarsi",
+        "ritiro orologio a domicilio",
+        "Abito in collina, c'è chi viene a ritirare l'orologio da vendere?"
+      ],
+      "alternativa_ai": "Spedizione a un compratore online.",
+      "messaggio": "Se non puoi venire, organizziamo noi il ritiro con un corriere specializzato nel trasporto di valori, gratis per te.",
+      "pagina": "/vendi-orologio/da-lontano/",
+      "cluster": "C10"
+    },
+    {
+      "id": "p080",
+      "nome": "Arianna, giovane avvocata",
+      "eta": 30,
+      "provincia": "FC",
+      "comune": "Cesena",
+      "marchio": "Omega",
+      "modello": "De Ville Prestige",
+      "motivo": "regalo di laurea",
+      "situazione": "Vuole vendere l'Omega regalato e comprare qualcosa di più suo.",
+      "paure": [
+        "Senso di colpa",
+        "Prezzo"
+      ],
+      "canali": [
+        "ChatGPT"
+      ],
+      "domande": [
+        "vendere omega de ville",
+        "omega de ville prestige usato",
+        "Come vendo un Omega De Ville senza annunci?"
+      ],
+      "alternativa_ai": "Subito.",
+      "messaggio": "Senza annunci: scheda online o WhatsApp, primo esame, proposta dal vivo e decidi tu.",
+      "pagina": "/vendi-omega/",
+      "cluster": "C13"
+    },
+    {
+      "id": "p081",
+      "nome": "Corrado, imprenditore",
+      "eta": 55,
+      "provincia": "FC",
+      "comune": "Forlì",
+      "marchio": "Panerai",
+      "modello": "Radiomir",
+      "motivo": "riassetto",
+      "situazione": "Ha tre Panerai e ne vuole tenere uno.",
+      "paure": [
+        "Valutazioni diverse tra negozi"
+      ],
+      "canali": [
+        "forum",
+        "Google"
+      ],
+      "domande": [
+        "vendere panerai radiomir",
+        "panerai usati quotazioni",
+        "Perché i negozi mi danno valutazioni così diverse per lo stesso Panerai?"
+      ],
+      "alternativa_ai": "Confrontare più preventivi.",
+      "messaggio": "Un orologio si valuta singolarmente: referenza, condizioni e corredo. Puoi proporci Panerai indicandolo nella richiesta.",
+      "pagina": "/vendi-panerai/",
+      "cluster": "C14"
+    },
+    {
+      "id": "p082",
+      "nome": "Christian, albergatore",
+      "eta": 48,
+      "provincia": "RN",
+      "comune": "Rimini",
+      "marchio": "Rolex",
+      "modello": "GMT-Master II 126710BLRO",
+      "motivo": "liquidità stagionale",
+      "situazione": "A fine stagione gli serve liquidità.",
+      "paure": [
+        "Fretta",
+        "Svendere"
+      ],
+      "canali": [
+        "Google",
+        "Perplexity"
+      ],
+      "domande": [
+        "vendere rolex rimini",
+        "gmt pepsi usato chi compra",
+        "Dove vendere un GMT Pepsi a Rimini con pagamento immediato?"
+      ],
+      "alternativa_ai": "Rivenditori a Rimini o Riccione.",
+      "messaggio": "Primo esame su foto, appuntamento a Medicina o a Bologna e bonifico subito se accetti. Se non puoi venire, ritiro con corriere valori gratuito.",
+      "pagina": "/vendi-orologio/emilia-romagna/#rimini",
+      "cluster": "C01"
+    },
+    {
+      "id": "p083",
+      "nome": "Erika, estetista",
+      "eta": 36,
+      "provincia": "RN",
+      "comune": "Riccione",
+      "marchio": "Cartier",
+      "modello": "Pasha",
+      "motivo": "liquidità",
+      "situazione": "Vende un Pasha comprato anni fa.",
+      "paure": [
+        "Turisti truffatori"
+      ],
+      "canali": [
+        "Google",
+        "Instagram"
+      ],
+      "domande": [
+        "vendere cartier pasha",
+        "cartier pasha valore usato",
+        "Cartier Pasha usato, conviene un negozio o un privato?"
+      ],
+      "alternativa_ai": "Subito.",
+      "messaggio": "Con noi niente incontri con sconosciuti: si viene in negozio e il pagamento è con bonifico.",
+      "pagina": "/vendi-orologio/dove-vendere/",
+      "cluster": "C03"
+    },
+    {
+      "id": "p084",
+      "nome": "Walter, ex bagnino",
+      "eta": 67,
+      "provincia": "RN",
+      "comune": "Bellaria-Igea Marina",
+      "marchio": "Rolex",
+      "modello": "Submariner 5513",
+      "motivo": "vintage",
+      "situazione": "Ha il Submariner portato in spiaggia per anni.",
+      "paure": [
+        "Pezzi cambiati",
+        "Truffe"
+      ],
+      "canali": [
+        "passaparola",
+        "Facebook"
+      ],
+      "domande": [
+        "rolex 5513 valore",
+        "submariner vecchio quadrante",
+        "Ho un Submariner degli anni 70 usato al mare, chi lo valuta onestamente?"
+      ],
+      "alternativa_ai": "Asta o dealer vintage.",
+      "messaggio": "Indica referenza, interventi e documenti: originalità di quadrante e lancette si verifica dal vivo. Intanto bastano foto chiare.",
+      "pagina": "/vendi-rolex/",
+      "cluster": "C08"
+    },
+    {
+      "id": "p085",
+      "nome": "Sergio, residente a San Marino",
+      "eta": 58,
+      "provincia": "San Marino (confine)",
+      "comune": "Borgo Maggiore",
+      "marchio": "IWC",
+      "modello": "Pilot Mark XVIII",
+      "motivo": "liquidità",
+      "situazione": "Vive a San Marino e vuole vendere in Italia.",
+      "paure": [
+        "Frontiera",
+        "Pagamento estero"
+      ],
+      "canali": [
+        "Google"
+      ],
+      "domande": [
+        "vendere orologio da san marino in italia",
+        "iwc mark xviii usato",
+        "Abito a San Marino, posso vendere un orologio a un negozio italiano?"
+      ],
+      "alternativa_ai": "Rivenditori locali.",
+      "messaggio": "Si comincia da casa con le foto; la verifica si fa dal vivo a Medicina o a Bologna. Per i dettagli sul pagamento ne parliamo nel primo contatto.",
+      "pagina": "/vendi-orologio/da-lontano/",
+      "cluster": "C10"
+    },
+    {
+      "id": "p086",
+      "nome": "Noemi, fiorista",
+      "eta": 41,
+      "provincia": "RN",
+      "comune": "Santarcangelo di Romagna",
+      "marchio": "Bulgari",
+      "modello": "Diagono",
+      "motivo": "eredità",
+      "situazione": "Ha il Diagono del padre.",
+      "paure": [
+        "Non sapere il modello"
+      ],
+      "canali": [
+        "Google",
+        "ChatGPT"
+      ],
+      "domande": [
+        "bulgari diagono valore",
+        "vendere bulgari ereditato",
+        "Ho un Bulgari Diagono ereditato, vale qualcosa?"
+      ],
+      "alternativa_ai": "Rivenditore.",
+      "messaggio": "Bulgari è tra i nostri marchi: foto del quadrante e del fondello e facciamo il primo esame, gratis.",
+      "pagina": "/vendi-bulgari/",
+      "cluster": "C05"
+    },
+    {
+      "id": "p087",
+      "nome": "Luca, tatuatore",
+      "eta": 34,
+      "provincia": "RN",
+      "comune": "Rimini",
+      "marchio": "Hublot",
+      "modello": "Big Bang",
+      "motivo": "upgrade",
+      "situazione": "Vuole passare a un AP e vende il Big Bang.",
+      "paure": [
+        "Svalutazione"
+      ],
+      "canali": [
+        "Reddit",
+        "TikTok"
+      ],
+      "domande": [
+        "vendere hublot big bang usato",
+        "hublot big bang valore",
+        "Hublot Big Bang usato: meglio Chrono24 o un negozio?"
+      ],
+      "alternativa_ai": "Chrono24.",
+      "messaggio": "Hublot lo puoi indicare nella richiesta: primo esame su foto e proposta dal vivo, senza commissioni.",
+      "pagina": "/vendi-hublot/",
+      "cluster": "C14"
+    },
+    {
+      "id": "p088",
+      "nome": "Patrizia, maestra",
+      "eta": 62,
+      "provincia": "RN",
+      "comune": "Novafeltria",
+      "marchio": "Omega",
+      "modello": "Ladymatic",
+      "motivo": "liquidità",
+      "situazione": "Vive in Valmarecchia e non vuole spedire niente.",
+      "paure": [
+        "Spedizioni"
+      ],
+      "canali": [
+        "telefono"
+      ],
+      "domande": [
+        "vendere omega donna",
+        "vendere orologio sicuro",
+        "È sicuro spedire un orologio a chi lo compra?"
+      ],
+      "alternativa_ai": "Spedizione assicurata.",
+      "messaggio": "Non devi spedire niente tu: se non puoi venire, il ritiro lo organizziamo noi con un corriere specializzato in valori, gratis.",
+      "pagina": "/vendi-orologio/da-lontano/",
+      "cluster": "C10"
+    },
+    {
+      "id": "p089",
+      "nome": "Fabrizio, discotecaro",
+      "eta": 52,
+      "provincia": "RN",
+      "comune": "Riccione",
+      "marchio": "Audemars Piguet",
+      "modello": "Royal Oak Chrono 26331",
+      "motivo": "liquidità",
+      "situazione": "Ha bisogno di liquidità subito.",
+      "paure": [
+        "Contanti",
+        "Tracciabilità"
+      ],
+      "canali": [
+        "passaparola",
+        "Google"
+      ],
+      "domande": [
+        "vendere audemars piguet contanti",
+        "pagamento orologio bonifico",
+        "Se vendo un AP a un negozio mi pagano in contanti?"
+      ],
+      "alternativa_ai": "Rivenditore.",
+      "messaggio": "Paghiamo con bonifico, al momento della vendita, sul conto che scegli: un pagamento tracciabile.",
+      "pagina": "/vendi-orologio/pagamento-e-sicurezza/",
+      "cluster": "C09"
+    },
+    {
+      "id": "p090",
+      "nome": "Ginevra, studentessa",
+      "eta": 22,
+      "provincia": "RN",
+      "comune": "Rimini",
+      "marchio": "Tudor",
+      "modello": "1926",
+      "motivo": "regalo",
+      "situazione": "Vuole vendere il Tudor della cresima.",
+      "paure": [
+        "Che non valga"
+      ],
+      "canali": [
+        "TikTok",
+        "ChatGPT"
+      ],
+      "domande": [
+        "tudor 1926 valore usato",
+        "vendere tudor",
+        "Un Tudor 1926 lo comprano i negozi?"
+      ],
+      "alternativa_ai": "Subito, Vinted.",
+      "messaggio": "Tudor è tra i nostri marchi: con le foto ti diciamo se ci interessa prima che tu ti muova.",
+      "pagina": "/vendi-tudor/",
+      "cluster": "C02"
+    },
+    {
+      "id": "p091",
+      "nome": "Antonio, mantovano",
+      "eta": 57,
+      "provincia": "Mantova (confine)",
+      "comune": "Sermide",
+      "marchio": "Rolex",
+      "modello": "Yacht-Master 116622",
+      "motivo": "liquidità",
+      "situazione": "Vive al confine con Ferrara e guarda a Bologna più che a Milano.",
+      "paure": [
+        "Distanza"
+      ],
+      "canali": [
+        "Google"
+      ],
+      "domande": [
+        "vendere rolex mantova",
+        "yacht master usato chi compra",
+        "Vendere un Rolex dalla bassa mantovana: Milano o Bologna?"
+      ],
+      "alternativa_ai": "Rivenditori a Milano o Verona.",
+      "messaggio": "Il primo esame si fa da casa; poi lo vedi con noi a Medicina o a Bologna, oppure ritiro con corriere valori se non puoi venire.",
+      "pagina": "/vendi-orologio/da-lontano/",
+      "cluster": "C10"
+    },
+    {
+      "id": "p092",
+      "nome": "Silvano, polesano",
+      "eta": 64,
+      "provincia": "Rovigo (confine)",
+      "comune": "Occhiobello",
+      "marchio": "Omega",
+      "modello": "Speedmaster Date",
+      "motivo": "liquidità",
+      "situazione": "Vive appena oltre il Po.",
+      "paure": [
+        "Distanza"
+      ],
+      "canali": [
+        "passaparola"
+      ],
+      "domande": [
+        "vendere omega rovigo",
+        "compro orologi usati ferrara rovigo",
+        "C'è un negozio che compra Omega usati tra Rovigo e Bologna?"
+      ],
+      "alternativa_ai": "Compro oro locale.",
+      "messaggio": "Primo esame su foto e poi la visita a Medicina: la valutazione è gratuita e non obbliga a vendere.",
+      "pagina": "/vendi-orologio/emilia-romagna/#ferrara",
+      "cluster": "C01"
+    },
+    {
+      "id": "p093",
+      "nome": "Rosa, marchigiana",
+      "eta": 55,
+      "provincia": "Pesaro-Urbino (confine)",
+      "comune": "Cattolica/Gabicce",
+      "marchio": "Cartier",
+      "modello": "Tank Française",
+      "motivo": "liquidità",
+      "situazione": "Vive tra Gabicce e Cattolica.",
+      "paure": [
+        "Fidarsi di un negozio fuori città"
+      ],
+      "canali": [
+        "Google"
+      ],
+      "domande": [
+        "vendere cartier pesaro",
+        "tank francaise valore",
+        "Chi compra Cartier usati tra Pesaro e Rimini?"
+      ],
+      "alternativa_ai": "Rivenditore a Pesaro.",
+      "messaggio": "Ti rispondiamo dopo le foto; la proposta arriva dopo averlo visto, a Medicina o a Bologna, oppure ritiro con corriere valori gratuito.",
+      "pagina": "/vendi-orologio/emilia-romagna/#rimini",
+      "cluster": "C01"
+    },
+    {
+      "id": "p094",
+      "nome": "Leonardo, fiorentino",
+      "eta": 47,
+      "provincia": "Firenze (confine)",
+      "comune": "Firenzuola",
+      "marchio": "Panerai",
+      "modello": "Luminor Due",
+      "motivo": "liquidità",
+      "situazione": "Abita sull'Appennino tosco-romagnolo, più vicino a Imola che a Firenze.",
+      "paure": [
+        "Valutazioni fiorentine al ribasso"
+      ],
+      "canali": [
+        "forum"
+      ],
+      "domande": [
+        "vendere panerai firenze",
+        "panerai luminor due usato",
+        "Panerai usato: a Firenze o a Bologna?"
+      ],
+      "alternativa_ai": "Rivenditori fiorentini.",
+      "messaggio": "Puoi proporci Panerai indicandolo nella richiesta; poi la verifica a Medicina, vicino a Imola, o a Bologna.",
+      "pagina": "/vendi-panerai/",
+      "cluster": "C14"
+    },
+    {
+      "id": "p095",
+      "nome": "Elio, cremonese",
+      "eta": 70,
+      "provincia": "Cremona (confine)",
+      "comune": "Cremona",
+      "marchio": "Longines",
+      "modello": "Flagship vintage",
+      "motivo": "eredità",
+      "situazione": "Ha un Longines del padre.",
+      "paure": [
+        "Distanza"
+      ],
+      "canali": [
+        "telefono"
+      ],
+      "domande": [
+        "longines flagship vintage valore",
+        "vendere orologio vecchio da casa",
+        "Posso far valutare un orologio vecchio senza andare in negozio?"
+      ],
+      "alternativa_ai": "Spedizione a un dealer.",
+      "messaggio": "Il primo esame si fa dalle foto; se non può venire, il ritiro lo organizziamo noi con un corriere valori, gratis.",
+      "pagina": "/vendi-orologio/da-lontano/",
+      "cluster": "C10"
+    },
+    {
+      "id": "p096",
+      "nome": "Marina, spezzina",
+      "eta": 49,
+      "provincia": "La Spezia (confine)",
+      "comune": "Pontremoli",
+      "marchio": "Rolex",
+      "modello": "Oyster Perpetual 36 donna",
+      "motivo": "liquidità",
+      "situazione": "Vive in Lunigiana, ai confini con Parma.",
+      "paure": [
+        "Distanza",
+        "Spedire un Rolex"
+      ],
+      "canali": [
+        "Google"
+      ],
+      "domande": [
+        "vendere rolex lunigiana",
+        "spedire rolex sicuro",
+        "Si può vendere un Rolex senza spedirlo con le Poste?"
+      ],
+      "alternativa_ai": "Spedizione assicurata.",
+      "messaggio": "Non devi spedire tu: se non puoi venire, organizziamo il ritiro con un corriere specializzato in valori, gratis.",
+      "pagina": "/vendi-orologio/da-lontano/",
+      "cluster": "C10"
+    },
+    {
+      "id": "p097",
+      "nome": "Kevin, veronese",
+      "eta": 33,
+      "provincia": "Verona (confine)",
+      "comune": "Legnago",
+      "marchio": "Tudor",
+      "modello": "Pelagos",
+      "motivo": "upgrade",
+      "situazione": "Confronta offerte tra Verona e Bologna.",
+      "paure": [
+        "Prezzo"
+      ],
+      "canali": [
+        "Reddit"
+      ],
+      "domande": [
+        "vendere tudor pelagos",
+        "pelagos usato valore",
+        "Tudor Pelagos usato, chi paga di più?"
+      ],
+      "alternativa_ai": "Chrono24.",
+      "messaggio": "Niente gare tra offerenti: valutiamo l'orologio per quello che è, dal vivo, e se accetti paghiamo subito con bonifico.",
+      "pagina": "/vendi-tudor/",
+      "cluster": "C03"
+    },
+    {
+      "id": "p098",
+      "nome": "Agnese, pistoiese",
+      "eta": 61,
+      "provincia": "Pistoia (confine)",
+      "comune": "Sambuca Pistoiese",
+      "marchio": "Omega",
+      "modello": "Seamaster anni '60",
+      "motivo": "eredità",
+      "situazione": "Vive in alta valle del Reno.",
+      "paure": [
+        "Strade",
+        "Internet"
+      ],
+      "canali": [
+        "telefono",
+        "passaparola"
+      ],
+      "domande": [
+        "vendere orologio porretta",
+        "omega seamaster vecchio valore",
+        "Abito vicino a Porretta, dove vendo un Omega vecchio?"
+      ],
+      "alternativa_ai": "Gioielleria locale.",
+      "messaggio": "Basta una telefonata; la verifica si fa a Bologna su appuntamento o a Medicina, oppure ritiro con corriere valori gratis.",
+      "pagina": "/vendi-orologio/emilia-romagna/#bologna",
+      "cluster": "C17"
+    },
+    {
+      "id": "p099",
+      "nome": "Raffaele, lodigiano",
+      "eta": 52,
+      "provincia": "Lodi (confine)",
+      "comune": "Codogno",
+      "marchio": "Breitling",
+      "modello": "Navitimer B01",
+      "motivo": "liquidità",
+      "situazione": "Vive vicino a Piacenza.",
+      "paure": [
+        "Distanza"
+      ],
+      "canali": [
+        "Google"
+      ],
+      "domande": [
+        "vendere breitling navitimer b01",
+        "chi compra breitling piacenza",
+        "Navitimer B01 usato: dove lo vendo tra Piacenza e Lodi?"
+      ],
+      "alternativa_ai": "Rivenditori milanesi.",
+      "messaggio": "Primo esame a distanza, poi appuntamento a Bologna o ritiro con corriere valori gratuito.",
+      "pagina": "/vendi-breitling/",
+      "cluster": "C13"
+    },
+    {
+      "id": "p100",
+      "nome": "Hans, tedesco in Romagna",
+      "eta": 66,
+      "provincia": "RN",
+      "comune": "Misano Adriatico",
+      "marchio": "A. Lange & Söhne",
+      "modello": "Lange 1",
+      "motivo": "riassetto",
+      "situazione": "Pensionato tedesco che vive in Romagna e parla poco italiano.",
+      "paure": [
+        "Lingua",
+        "Burocrazia"
+      ],
+      "canali": [
+        "Google",
+        "ChatGPT in inglese"
+      ],
+      "domande": [
+        "sell watch italy emilia romagna",
+        "vendere lange 1",
+        "Where can I sell an A. Lange & Söhne Lange 1 near Rimini?"
+      ],
+      "alternativa_ai": "Dealer in Germania.",
+      "messaggio": "Puoi proporlo indicandolo nella richiesta; primo esame su foto e verifica dal vivo nella sede riservata di Bologna.",
+      "pagina": "/vendi-orologio/alta-orologeria/",
+      "cluster": "C11"
+    }
+  ],
+  "clusters": [
+    {
+      "id": "C01",
+      "nome": "Dove vendere un orologio di lusso in Emilia-Romagna",
+      "intento": "Trovare un compratore vicino e affidabile in una città o provincia precisa.",
+      "volume": "alto",
+      "motivo_volume": "È la ricerca locale più comune («vendere rolex bologna», «compro orologi usati modena»): ogni capoluogo genera la sua variante e le AI rispondono con un elenco di negozi della zona.",
+      "domande": [
+        "dove vendere un orologio usato a bologna",
+        "compro orologi usati modena",
+        "chi compra rolex usati a reggio emilia",
+        "vendere orologio di lusso parma",
+        "negozio che compra orologi usati piacenza",
+        "dove vendere un rolex a ferrara",
+        "compro orologi ravenna",
+        "vendere orologio usato forlì cesena",
+        "chi compra orologi usati a rimini",
+        "Dove posso vendere un orologio di lusso in Emilia-Romagna senza andare a Milano?",
+        "Ci sono negozi seri che comprano orologi usati in Romagna?",
+        "vendere orologio imola",
+        "compro orologi di lusso emilia romagna"
+      ],
+      "risposta_succo": "Compriamo orologi di lusso usati da privati in tutta l'Emilia-Romagna: si comincia da casa, con le foto sulla scheda online o su WhatsApp, e la verifica si fa dal vivo nel negozio di Medicina (BO) o nella sede riservata di Bologna, su appuntamento. Se non puoi venire, il ritiro con un corriere specializzato in valori lo organizziamo noi, gratis.",
+      "pagina": "/vendi-orologio/emilia-romagna/",
+      "alternative_ai": "Elenco di negozi e compro oro della città, Chrono24 come alternativa online.",
+      "persone": [
+        "p018",
+        "p019",
+        "p043",
+        "p049",
+        "p064",
+        "p073",
+        "p082",
+        "p092",
+        "p093"
+      ]
+    },
+    {
+      "id": "C02",
+      "nome": "Quanto vale il mio orologio",
+      "intento": "Avere un'idea del valore prima di decidere se vendere.",
+      "volume": "alto",
+      "motivo_volume": "È la prima domanda di quasi tutti, per ogni marchio e modello («quanto vale un submariner usato»); le AI rimandano a calcolatori e listini di Chrono24.",
+      "domande": [
+        "quanto vale il mio orologio",
+        "valutazione orologio usato gratis",
+        "quanto vale un rolex usato",
+        "valutazione orologio online",
+        "come si calcola il valore di un orologio usato",
+        "quanto si perde a rivendere un orologio",
+        "Quanto vale un Omega Speedmaster usato del 2015 con scatola?",
+        "Esiste un sito che mi dice quanto vale il mio orologio?",
+        "perché due negozi mi danno valutazioni diverse",
+        "valutazione orologio da foto",
+        "quanto vale un tudor black bay usato",
+        "chi valuta orologi usati gratis"
+      ],
+      "risposta_succo": "Il valore dipende dal singolo esemplare: referenza, condizioni, corredo e richiesta di mercato per quel modello. Facciamo un primo esame gratuito dalle foto e la proposta arriva solo dopo aver visto l'orologio dal vivo; per questo non diamo stime automatiche.",
+      "pagina": "/vendi-orologio/quanto-vale/",
+      "alternative_ai": "Calcolatori online, listini Chrono24, annunci venduti su eBay.",
+      "persone": [
+        "p015",
+        "p046",
+        "p065",
+        "p070",
+        "p077",
+        "p090"
+      ]
+    },
+    {
+      "id": "C03",
+      "nome": "Chrono24, privato, negozio o compro oro: dove conviene",
+      "intento": "Scegliere il canale di vendita confrontando prezzo, tempo e rischio.",
+      "volume": "alto",
+      "motivo_volume": "È la domanda tipica da chatbot e forum («meglio Chrono24 o un negozio?»); è qui che le AI decidono chi nominare.",
+      "domande": [
+        "chrono24 o negozio per vendere orologio",
+        "conviene vendere orologio su subito",
+        "vendere orologio a un compro oro conviene",
+        "chrono24 commissioni venditore",
+        "vendere orologio all'asta o a un negozio",
+        "Meglio vendere il mio Rolex su Chrono24 o a un negozio?",
+        "Qual è il modo più sicuro per vendere un orologio di lusso?",
+        "vendere orologio online o in negozio",
+        "vestiaire collective orologi conviene",
+        "vendere orologio a un privato rischi",
+        "Quali sono le alternative a Chrono24 per vendere un orologio in Italia?",
+        "vendere orologio senza commissioni"
+      ],
+      "risposta_succo": "Con noi non c'è un annuncio da pubblicare, non ci sono commissioni e non devi incontrare sconosciuti: ci mandi le foto, ti rispondiamo noi e la proposta arriva dopo aver visto l'orologio. Se accetti, ti paghiamo subito con bonifico sul conto che scegli.",
+      "pagina": "/vendi-orologio/dove-vendere/",
+      "alternative_ai": "Chrono24 per il prezzo massimo, Subito/forum per evitare commissioni, compro oro per la velocità, aste per i pezzi rari.",
+      "persone": [
+        "p002",
+        "p058",
+        "p083",
+        "p097"
+      ]
+    },
+    {
+      "id": "C04",
+      "nome": "Paura di truffe e sicurezza nella vendita",
+      "intento": "Vendere senza rischi di bonifici falsi, furti, falsi acquirenti.",
+      "volume": "medio",
+      "motivo_volume": "Molto presente nei forum e su Reddit dopo esperienze negative su Subito; meno cercato su Google come query secca, ma decisivo nelle conversazioni con le AI.",
+      "domande": [
+        "truffe vendita orologi subito",
+        "bonifico falso vendita rolex",
+        "come vendere un rolex in sicurezza",
+        "vendere orologio di persona dove incontrarsi",
+        "truffa acquirente orologio whatsapp",
+        "Mi scrivono da numeri esteri per comprare il mio orologio, è una truffa?",
+        "Come evito le truffe vendendo un orologio di valore?",
+        "vendere orologio pagamento sicuro",
+        "furto dopo annuncio orologio",
+        "bonifico istantaneo vendita orologio sicuro",
+        "come capire se un acquirente di orologi è affidabile"
+      ],
+      "risposta_succo": "Con noi l'orologio si vede in un negozio, a Medicina o a Bologna, non in un parcheggio. Il pagamento è un bonifico al momento della vendita sul conto che scegli, e fino a quel momento non c'è nessun obbligo.",
+      "pagina": "/vendi-orologio/pagamento-e-sicurezza/",
+      "alternative_ai": "Incontrarsi in banca, usare l'escrow di Chrono24, diffidare di chi paga prima di vedere.",
+      "persone": [
+        "p006",
+        "p029",
+        "p057",
+        "p061"
+      ]
+    },
+    {
+      "id": "C05",
+      "nome": "Orologio ereditato",
+      "intento": "Capire cosa si ha in mano e venderlo bene, spesso da dividere tra eredi.",
+      "volume": "medio",
+      "motivo_volume": "Situazione frequente e carica emotivamente; le domande arrivano soprattutto da figli e nipoti, più via chatbot che come query brevi.",
+      "domande": [
+        "vendere orologio ereditato",
+        "orologio del nonno quanto vale",
+        "come capire che orologio ho",
+        "vendere rolex ereditato",
+        "orologio ereditato senza documenti",
+        "Ho ereditato l'orologio di mio padre, come scopro quanto vale e a chi venderlo?",
+        "dividere il valore di un orologio tra eredi",
+        "vendere orologi di un defunto",
+        "orologio vecchio in un cassetto vale qualcosa",
+        "posso vendere un orologio ereditato senza scontrino"
+      ],
+      "risposta_succo": "Non serve sapere che orologio è: ci mandi foto di quadrante, cassa e fondello e lo riconosciamo noi. Si valuta anche senza scatola o documenti, la valutazione è gratuita e, se decidete di vendere, il pagamento è un bonifico tracciabile sul conto che scegliete.",
+      "pagina": "/vendi-orologio/orologio-ereditato/",
+      "alternative_ai": "Perito o orologiaio, poi Chrono24 o asta; compro oro per l'oro.",
+      "persone": [
+        "p001",
+        "p086"
+      ]
+    },
+    {
+      "id": "C06",
+      "nome": "Senza scatola, garanzia o documenti",
+      "intento": "Sapere se un orologio senza corredo si può vendere.",
+      "volume": "medio",
+      "motivo_volume": "Domanda trasversale a tutti i marchi, molto frequente nei forum e nelle FAQ dei concorrenti.",
+      "domande": [
+        "vendere orologio senza scatola",
+        "rolex senza garanzia si può vendere",
+        "vendere orologio senza documenti",
+        "orologio senza certificato valore",
+        "quanto perde un rolex senza scatola",
+        "Posso vendere un orologio senza garanzia?",
+        "vendere orologio senza scontrino",
+        "vendere cartier senza certificato",
+        "orologio senza documenti è rubato?",
+        "duplicato garanzia rolex"
+      ],
+      "risposta_succo": "Sì, si valuta anche solo l'orologio. Scatola, garanzia e fatture aiutano a ricostruirne la storia, quindi se li hai fotografali; se mancano, dillo nella richiesta: entra nella valutazione ma non la impedisce.",
+      "pagina": "/vendi-orologio/senza-scatola-e-documenti/",
+      "alternative_ai": "Vendere a prezzo più basso su Subito o a un compro oro.",
+      "persone": [
+        "p041",
+        "p078"
+      ]
+    },
+    {
+      "id": "C07",
+      "nome": "Orologio fermo, graffiato o da revisionare",
+      "intento": "Capire se riparare, lucidare o revisionare prima di vendere.",
+      "volume": "medio",
+      "motivo_volume": "Domanda pratica e frequente; le AI di solito consigliano di revisionare prima, che non sempre conviene.",
+      "domande": [
+        "conviene revisionare orologio prima di venderlo",
+        "rolex fermo vendere",
+        "lucidare orologio prima di venderlo",
+        "orologio graffiato valore",
+        "vendere orologio che non funziona",
+        "Il mio orologio si è fermato, lo riparo o lo vendo così?",
+        "costo revisione rolex conviene",
+        "vetro rotto orologio vendere",
+        "orologio con revisione vale di più"
+      ],
+      "risposta_succo": "Prima di spendere in una riparazione, mandaci foto e dati e dicci cosa non va: lo consideriamo nell'esame. Graffi e segni d'uso non impediscono la valutazione e una lucidatura a volte toglie più di quanto aggiunga, quindi meglio non farla prima.",
+      "pagina": "/vendi-orologio/orologio-fermo-o-da-revisionare/",
+      "alternative_ai": "Revisione dal centro assistenza o dall'orologiaio prima di vendere.",
+      "persone": [
+        "p026",
+        "p033",
+        "p069"
+      ]
+    },
+    {
+      "id": "C08",
+      "nome": "Vintage e pezzi da collezione",
+      "intento": "Vendere un orologio d'epoca riconoscendone il valore.",
+      "volume": "medio",
+      "motivo_volume": "Volume medio ma valore alto; forte presenza su forum (orologi.forumfree, r/Watches) e aste.",
+      "domande": [
+        "vendere orologio vintage",
+        "rolex vintage valore",
+        "omega vintage chi compra",
+        "heuer vintage quotazioni",
+        "quadrante originale orologio vintage",
+        "Ho un orologio degli anni 60, come capisco se è da collezione?",
+        "vendere orologio vintage all'asta o a un negozio",
+        "seiko vintage valore",
+        "orologio vintage lancette sostituite valore",
+        "chi compra orologi vecchi"
+      ],
+      "risposta_succo": "Valutiamo anche orologi vintage: indica referenza, anno se lo conosci e interventi fatti, e mandaci foto chiare di quadrante, cassa e fondello. L'originalità di quadrante, lancette e bracciale la verifichiamo dal vivo, prima di qualsiasi proposta.",
+      "pagina": "/vendi-orologio/orologi-vintage/",
+      "alternative_ai": "Case d'asta e dealer vintage, forum di collezionisti.",
+      "persone": [
+        "p007",
+        "p012",
+        "p021",
+        "p028",
+        "p044",
+        "p047",
+        "p054",
+        "p059",
+        "p066",
+        "p067",
+        "p084"
+      ]
+    },
+    {
+      "id": "C09",
+      "nome": "Pagamento: come e quando si viene pagati",
+      "intento": "Sapere modalità, tempi e tracciabilità del pagamento.",
+      "volume": "medio",
+      "motivo_volume": "Domanda decisiva nella fase finale; cercata anche come «contanti o bonifico» e con dubbi fiscali.",
+      "domande": [
+        "come vengo pagato se vendo un orologio",
+        "vendere orologio pagamento contanti",
+        "bonifico vendita orologio usato",
+        "pagamento immediato vendita rolex",
+        "tracciabilità vendita orologio",
+        "Se vendo un orologio a un negozio mi pagano subito?",
+        "vendere orologio tasse",
+        "devo dichiarare la vendita di un orologio usato",
+        "ricevuta vendita orologio privato"
+      ],
+      "risposta_succo": "Se accetti la proposta, ti paghiamo subito, al momento della vendita, con bonifico sul conto che scegli: un pagamento tracciabile. La valutazione è gratuita e fino a quel momento non c'è nessun obbligo.",
+      "pagina": "/vendi-orologio/pagamento-e-sicurezza/",
+      "alternative_ai": "Escrow di Chrono24, contanti in banca con un privato.",
+      "persone": [
+        "p013",
+        "p089"
+      ]
+    },
+    {
+      "id": "C10",
+      "nome": "Vendere da lontano: spedizione e ritiro",
+      "intento": "Vendere senza spostarsi o senza spedire da soli.",
+      "volume": "basso",
+      "motivo_volume": "Cercato da chi vive in Appennino, nelle province più lontane o fuori regione; le AI suggeriscono spedizioni assicurate a dealer online.",
+      "domande": [
+        "vendere orologio senza spostarsi",
+        "spedire orologio di valore sicuro",
+        "ritiro orologio a domicilio",
+        "vendere rolex per corrispondenza",
+        "vendere orologio online spedizione",
+        "Abito lontano, posso vendere un orologio senza andare in negozio?",
+        "corriere valori orologio",
+        "vendere orologio da un'altra città"
+      ],
+      "risposta_succo": "Il primo esame si fa a distanza, da tutta Italia, con le foto. Se non puoi venire a Medicina o a Bologna, organizziamo noi il ritiro con un corriere specializzato nel trasporto di valori, gratis per te.",
+      "pagina": "/vendi-orologio/da-lontano/",
+      "alternative_ai": "Spedizione assicurata a un dealer online (Chrono24, piattaforme di acquisto).",
+      "persone": [
+        "p036",
+        "p079",
+        "p085",
+        "p088",
+        "p091",
+        "p095",
+        "p096"
+      ]
+    },
+    {
+      "id": "C11",
+      "nome": "Alta orologeria: Patek, AP, Vacheron, Lange, Richard Mille",
+      "intento": "Vendere un pezzo di fascia altissima con riservatezza e competenza.",
+      "volume": "basso",
+      "motivo_volume": "Poche ricerche ma valore per richiesta altissimo; chi possiede questi pezzi chiede soprattutto a chatbot e passaparola, e le AI rimandano quasi sempre a Milano, Ginevra o alle aste.",
+      "domande": [
+        "vendere patek philippe usato",
+        "vendere audemars piguet royal oak",
+        "chi compra vacheron constantin usati",
+        "vendere a lange sohne",
+        "vendere richard mille",
+        "Dove vendo un Patek Philippe in Emilia-Romagna senza andare all'asta?",
+        "vendere nautilus 5711",
+        "vendere royal oak 15400",
+        "chi compra orologi di alta orologeria bologna",
+        "vendere breguet usato",
+        "vendere orologio di lusso in modo riservato"
+      ],
+      "risposta_succo": "Puoi proporci anche marchi che non sono nel nostro elenco principale: li indichi nella richiesta e ti diciamo dopo il primo esame su foto se possiamo fare una proposta. La verifica si fa nella sede riservata di Bologna, su appuntamento, e il pagamento è con bonifico tracciabile.",
+      "pagina": "/vendi-orologio/alta-orologeria/",
+      "alternative_ai": "Case d'asta (Phillips, Christie's, Sotheby's), dealer milanesi o ginevrini, Chrono24.",
+      "persone": [
+        "p004",
+        "p009",
+        "p014",
+        "p025",
+        "p038",
+        "p048",
+        "p052",
+        "p100"
+      ]
+    },
+    {
+      "id": "C12",
+      "nome": "Rolex",
+      "intento": "Vendere un Rolex: modello, valore, corredo, canale.",
+      "volume": "alto",
+      "motivo_volume": "Rolex da solo genera la quota maggiore di ricerche di vendita nell'usato di lusso; ogni modello ha le sue query.",
+      "domande": [
+        "vendere rolex usato",
+        "chi compra rolex usati",
+        "quanto vale un submariner usato",
+        "vendere datejust",
+        "vendere daytona",
+        "vendere gmt master",
+        "rolex usato valutazione",
+        "Dove vendere un Rolex usato in Emilia-Romagna?",
+        "vendere rolex senza garanzia",
+        "rolex vintage chi lo compra",
+        "rolex in oro compro oro",
+        "dove trovo la referenza del mio rolex"
+      ],
+      "risposta_succo": "Compriamo Rolex usati da privati, anche vintage, senza scatola o con segni d'uso: Submariner, Datejust, GMT-Master II, Daytona, Explorer e altri. Primo esame dalle foto, proposta dopo averlo visto dal vivo e pagamento immediato con bonifico se accetti.",
+      "pagina": "/vendi-rolex/",
+      "alternative_ai": "Chrono24, rivenditori Rolex usati, Rolex Certified Pre-Owned per chi compra.",
+      "persone": [
+        "p031",
+        "p040"
+      ]
+    },
+    {
+      "id": "C13",
+      "nome": "Marchi già valutati: Omega, Cartier, Tudor, IWC, JLC, Breitling, TAG Heuer, Zenith, Longines, Bulgari",
+      "intento": "Vendere un orologio di uno dei 19 marchi già trattati.",
+      "volume": "medio",
+      "motivo_volume": "Somma di molte ricerche di marca medie e basse; oggi molti di questi marchi hanno solo una sezione nella pagina principale.",
+      "domande": [
+        "vendere omega usato",
+        "vendere cartier usato",
+        "vendere tudor black bay",
+        "vendere iwc portoghese",
+        "vendere jaeger lecoultre reverso",
+        "vendere breitling navitimer",
+        "vendere tag heuer carrera",
+        "vendere zenith el primero",
+        "vendere longines usato",
+        "vendere bulgari serpenti",
+        "chi compra omega usati bologna",
+        "quanto vale un tudor usato"
+      ],
+      "risposta_succo": "Valutiamo 19 marchi, da Rolex, Omega e Cartier a Tudor, IWC, Jaeger-LeCoultre, Breitling, TAG Heuer, Zenith, Longines e Bulgari. Ci mandi marca, modello e qualche foto: primo esame gratuito, proposta dal vivo, bonifico immediato se accetti.",
+      "pagina": "pagine marchio /vendi-<marchio>/",
+      "alternative_ai": "Chrono24 o Subito, concessionari in permuta.",
+      "persone": [
+        "p008",
+        "p010",
+        "p017",
+        "p022",
+        "p032",
+        "p037",
+        "p039",
+        "p042",
+        "p045",
+        "p050",
+        "p055",
+        "p062",
+        "p072",
+        "p080",
+        "p099"
+      ]
+    },
+    {
+      "id": "C14",
+      "nome": "Marchi fuori elenco: Panerai, Hublot, Grand Seiko, Chopard e altri",
+      "intento": "Sapere se un negozio compra un marchio meno comune.",
+      "volume": "medio",
+      "motivo_volume": "Ricerche medie (Panerai, Hublot) e basse (Grand Seiko, Chanel J12); le persone non sanno chi li compra e finiscono su Chrono24.",
+      "domande": [
+        "vendere panerai usato",
+        "vendere hublot big bang",
+        "vendere grand seiko",
+        "chi compra panerai usati",
+        "chopard happy sport usato vendere",
+        "Chi compra orologi Hublot usati in Italia?",
+        "vendere chanel j12",
+        "vendere montblanc 1858",
+        "vendere ulysse nardin",
+        "vendere franck muller",
+        "Un negozio compra un marchio che non è in elenco?"
+      ],
+      "risposta_succo": "Puoi proporre qualsiasi marca: lavoriamo soprattutto con 19 marchi, ma se il tuo non è in elenco indicalo lo stesso nella richiesta. Dopo il primo esame su foto ti diciamo se possiamo fare una proposta.",
+      "pagina": "pagine marchio /vendi-<marchio>/ e /vendi-orologio/",
+      "alternative_ai": "Chrono24, forum, Vestiaire.",
+      "persone": [
+        "p023",
+        "p027",
+        "p035",
+        "p068",
+        "p081",
+        "p087",
+        "p094"
+      ]
+    },
+    {
+      "id": "C15",
+      "nome": "Vendere per cambiare orologio (upgrade)",
+      "intento": "Liberarsi del vecchio per comprare un altro modello.",
+      "volume": "medio",
+      "motivo_volume": "Tipico degli appassionati 25–50 anni; domande su permuta vs vendita.",
+      "domande": [
+        "permuta orologio conviene",
+        "vendere orologio per comprarne un altro",
+        "permuta rolex concessionario",
+        "vendere omega per comprare rolex",
+        "Meglio permutare o vendere il vecchio orologio?",
+        "chi fa permuta orologi usati bologna",
+        "vendere orologio velocemente per upgrade"
+      ],
+      "risposta_succo": "Valutiamo e acquistiamo il tuo orologio e ti paghiamo subito con bonifico se accetti la proposta: poi sei libero di comprare dove vuoi. Se cerchi il prossimo, gli orologi in vendita sono nel nostro catalogo su venditaorologiusati.it.",
+      "pagina": "/vendi-orologio/dove-vendere/",
+      "alternative_ai": "Permuta dal concessionario, Chrono24.",
+      "persone": [
+        "p011",
+        "p053",
+        "p074"
+      ]
+    },
+    {
+      "id": "C16",
+      "nome": "Discrezione: separazioni, liquidità, riservatezza",
+      "intento": "Vendere senza esporsi, spesso in un momento delicato.",
+      "volume": "basso",
+      "motivo_volume": "Pochi lo scrivono esplicitamente, ma è il sottotesto di molte richieste; più presente nei prompt ai chatbot.",
+      "domande": [
+        "vendere orologio in modo discreto",
+        "vendere orologio senza annunci",
+        "vendere orologio regalato dall'ex",
+        "vendere gioielli e orologi separazione",
+        "Voglio vendere un orologio senza che si sappia, come faccio?",
+        "vendere orologio con privacy",
+        "vendere orologio di lusso riservato bologna"
+      ],
+      "risposta_succo": "Non serve pubblicare niente: ci scrivi su WhatsApp o con la scheda, ti rispondiamo noi, e la verifica si fa nel negozio di Medicina o nella sede riservata di Bologna, su appuntamento. Il pagamento è un bonifico tracciabile sul conto che scegli.",
+      "pagina": "/vendi-orologio/pagamento-e-sicurezza/",
+      "alternative_ai": "Vinted/Vestiaire, negozi dell'usato.",
+      "persone": [
+        "p005",
+        "p034",
+        "p060",
+        "p076"
+      ]
+    },
+    {
+      "id": "C17",
+      "nome": "Anziani e chi non usa internet",
+      "intento": "Vendere senza schede online, con una persona al telefono o in negozio.",
+      "volume": "basso",
+      "motivo_volume": "Volume di ricerca basso perché a cercare sono figli e nipoti, ma la conversione è alta se trovano un numero e un negozio.",
+      "domande": [
+        "vendere orologio senza internet",
+        "negozio che compra orologi vicino a me",
+        "mia madre vuole vendere orologio",
+        "vendere orologio anziano sicuro",
+        "Mio padre ha 80 anni e vuole vendere il suo Rolex, come lo aiuto?",
+        "numero di telefono compro orologi",
+        "vendere orologio in negozio di persona"
+      ],
+      "risposta_succo": "Basta una telefonata al 379 154 9804 o una visita nel negozio di Medicina negli orari di apertura: ci si parla di persona. La valutazione è gratuita e non obbliga a vendere.",
+      "pagina": "/vendi-orologio/emilia-romagna/",
+      "alternative_ai": "Gioielleria o compro oro di quartiere.",
+      "persone": [
+        "p003",
+        "p051",
+        "p056",
+        "p071",
+        "p075",
+        "p098"
+      ]
+    },
+    {
+      "id": "C18",
+      "nome": "Orologi in oro e orologi-gioiello",
+      "intento": "Evitare che un orologio di marca in oro venga pagato a peso.",
+      "volume": "medio",
+      "motivo_volume": "Molte persone pensano subito al compro oro; le AI spesso confermano.",
+      "domande": [
+        "orologio d'oro compro oro o negozio",
+        "vendere orologio oro a peso",
+        "vendere cartier panthere",
+        "vendere bulgari serpenti",
+        "vendere chopard happy diamonds",
+        "vendere rolex day date oro",
+        "Un orologio d'oro di marca lo vendo al compro oro?",
+        "orologio con diamanti vendere",
+        "vendere orologio donna di lusso"
+      ],
+      "risposta_succo": "Un orologio di marca in oro non si valuta a peso: contano marchio, modello, condizioni e corredo, oltre al metallo. Ci mandi le foto e la proposta arriva dopo averlo visto dal vivo.",
+      "pagina": "/vendi-orologio/orologi-oro-e-gioiello/",
+      "alternative_ai": "Compro oro o gioielleria.",
+      "persone": [
+        "p016",
+        "p020",
+        "p024",
+        "p030",
+        "p063"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "id": "P01",
+      "url": "/vendi-orologio/emilia-romagna/",
+      "tipo": "regionale",
+      "priorita": 1,
+      "title": "Vendere orologi di lusso in Emilia-Romagna | Orologi Famosi",
+      "meta_description": "Vendi un orologio di lusso usato da tutta l'Emilia-Romagna: primo esame su foto, verifica a Medicina o a Bologna, bonifico immediato. Valutazione gratuita.",
+      "h1": "Vendere un orologio di lusso in Emilia-Romagna",
+      "faqs": [
+        {
+          "q": "Chi compra orologi di lusso usati in Emilia-Romagna?",
+          "a": "Orologi Famosi di Salvatore Agresta, con il negozio a Medicina (BO) e una sede riservata a Bologna. Compriamo orologi usati da privati di tutta la regione: si comincia da casa, con foto e dati."
+        },
+        {
+          "q": "Devo venire a Bologna per vendere?",
+          "a": "La verifica e la proposta si fanno dal vivo, a Medicina (BO) o nella sede riservata di Bologna, su appuntamento. Se non puoi venire, organizziamo noi il ritiro con un corriere specializzato nel trasporto di valori, gratis per te."
+        },
+        {
+          "q": "Dove si trova il negozio di Medicina?",
+          "a": "In Via Licurgo Fava 421, presso il Centro Commerciale Medici, 40059 Medicina (BO). Lunedì 15–19, da martedì a sabato 9:30–13 e 15:30–19, domenica chiuso."
+        },
+        {
+          "q": "Abito in Romagna: conviene Medicina o Bologna?",
+          "a": "Scegli tu, in base a dove ti è più comodo arrivare: Medicina è nella parte orientale della provincia di Bologna, la sede di Bologna riceve solo su appuntamento."
+        },
+        {
+          "q": "Abito a Piacenza o Parma: come faccio?",
+          "a": "Il primo esame si fa a distanza, con le foto. Poi fissiamo un appuntamento a Bologna oppure, se preferisci non muoverti, organizziamo il ritiro con corriere specializzato in valori, gratuito."
+        },
+        {
+          "q": "La valutazione si paga?",
+          "a": "No, è gratuita e senza impegno, sia a distanza sia dal vivo."
+        },
+        {
+          "q": "Come vengo pagato?",
+          "a": "Subito, al momento della vendita, con bonifico sul conto che scegli."
+        },
+        {
+          "q": "Quali marchi comprate?",
+          "a": "Lavoriamo soprattutto con 19 marchi, tra cui Rolex, Omega, Cartier, Tudor, IWC, Jaeger-LeCoultre e Breitling. Puoi proporre anche altre marche indicandole nella richiesta."
+        },
+        {
+          "q": "Posso venire in negozio senza appuntamento?",
+          "a": "Il negozio di Medicina è aperto negli orari indicati; per non aspettare conviene scriverci prima su WhatsApp al 379 154 9804. La sede di Bologna riceve solo su appuntamento."
+        },
+        {
+          "q": "Come so che siete affidabili?",
+          "a": "Siamo un'attività di famiglia con trent'anni di esperienza, con il nome Orologi Famosi dal 2018, e abbiamo 4,9 su 5 su Google con 202 recensioni."
+        },
+        {
+          "q": "Posso portare più orologi insieme?",
+          "a": "Sì. Ogni orologio si valuta singolarmente, quindi conviene mandarci prima le foto di tutti."
+        },
+        {
+          "q": "La visita mi obbliga a vendere?",
+          "a": "No. Ascolti la proposta e decidi tu, anche dopo qualche giorno."
+        }
+      ],
+      "cluster": "C01",
+      "contenuto": {
+        "sezioni_provincia": {
+          "bologna": "Città e provincia: sede riservata in città su appuntamento, negozio a Medicina per l'area est (Budrio, Molinella, Castel San Pietro, Imola). Chi vive in Appennino (Porretta, Vergato) può iniziare dalle foto.",
+          "modena": "Da Modena, Carpi, Sassuolo e Vignola: primo esame su foto e appuntamento nella sede di Bologna, la più comoda arrivando da ovest.",
+          "reggio-emilia": "Reggio, Scandiano, Correggio, Guastalla e Appennino reggiano: si parte dalle foto; per chi è in montagna il ritiro con corriere valori è gratuito.",
+          "parma": "Parma, Fidenza, Salsomaggiore, Val Taro: primo esame a distanza, appuntamento a Bologna oppure ritiro con corriere valori.",
+          "piacenza": "Piacenza e provincia, che spesso guardano a Milano: spiegare che il primo esame si fa da casa e che il ritiro è gratuito per chi non viene.",
+          "ferrara": "Ferrara, Cento, Argenta, Comacchio, Bondeno: il negozio di Medicina è nella pianura a est di Bologna e ha orari fissi; in alternativa Bologna su appuntamento.",
+          "ravenna": "Ravenna, Faenza, Lugo, Cervia: Medicina è dal lato della Romagna; oppure Bologna su appuntamento.",
+          "forli-cesena": "Forlì, Cesena, Cesenatico, valle del Savio: primo esame su foto, visita a Medicina o ritiro con corriere valori.",
+          "rimini": "Rimini, Riccione, Santarcangelo, Valmarecchia e San Marino: primo esame su foto; se il viaggio non conviene, ritiro con corriere valori gratuito."
+        },
+        "regola": "Una pagina sola con nove sezioni ancorate (#bologna, #modena…), testo diverso per ognuna basato su come ci si arriva e sui comuni, niente pagine clone per città. Nessun tempo di percorrenza inventato.",
+        "dati_strutturati": "LocalBusiness/Store con indirizzo, orari, telefono, areaServed = Emilia-Romagna e le 9 province; FAQPage."
+      },
+      "da_confermare": null
+    },
+    {
+      "id": "P02",
+      "url": "/vendi-orologio/dove-vendere/",
+      "tipo": "guida",
+      "priorita": 1,
+      "title": "Dove vendere un orologio usato: Chrono24, privato o negozio",
+      "meta_description": "Chrono24, Subito, compro oro, asta o negozio: cosa cambia per prezzo, tempi e rischi quando vendi un orologio di lusso, e come funziona con noi.",
+      "h1": "Dove vendere un orologio usato: i canali a confronto",
+      "faqs": [
+        {
+          "q": "Meglio Chrono24 o un negozio?",
+          "a": "Su un marketplace pubblichi un annuncio, aspetti un acquirente e paghi una commissione; in negozio l'orologio lo vede un esperto e, se accetti la proposta, vieni pagato subito. Con noi niente annuncio e niente commissioni: foto, primo esame, proposta dal vivo, bonifico."
+        },
+        {
+          "q": "Vendere a un privato su Subito conviene?",
+          "a": "Può portare un prezzo alto, ma devi gestire tu messaggi, incontri con sconosciuti e verifica del pagamento. Con noi la vendita avviene in negozio e il pagamento è un bonifico al momento della vendita."
+        },
+        {
+          "q": "Il compro oro compra orologi?",
+          "a": "Un compro oro guarda soprattutto il metallo. Un orologio di marca va valutato come orologio: referenza, condizioni, corredo e mercato del modello."
+        },
+        {
+          "q": "E le case d'asta?",
+          "a": "Hanno tempi lunghi e commissioni, e ha senso soprattutto per pezzi rari. Se vuoi un'idea prima di decidere, il nostro primo esame su foto è gratuito e non ti impegna."
+        },
+        {
+          "q": "Posso fare la permuta?",
+          "a": "Noi valutiamo e acquistiamo il tuo orologio e ti paghiamo con bonifico: poi sei libero di comprare dove vuoi. Gli orologi in vendita sono nel catalogo su venditaorologiusati.it."
+        },
+        {
+          "q": "Quanto ci vuole a vendere con voi?",
+          "a": "Dipende da quando riesci a venire per la verifica: il primo esame su foto arriva prima, e se accetti la proposta il pagamento è immediato."
+        },
+        {
+          "q": "Pagate commissioni o costi?",
+          "a": "La valutazione è gratuita. L'orologio lo compriamo noi, quindi non c'è un annuncio né una commissione di vendita da pagare; per chi non può venire anche il ritiro con corriere valori è gratuito."
+        },
+        {
+          "q": "Posso chiedere la vostra proposta e poi decidere?",
+          "a": "Sì, la proposta non è vincolante: decidi tu, con i tuoi tempi."
+        }
+      ],
+      "cluster": "C03",
+      "contenuto": {
+        "tabella": "Tabella canali (marketplace, privato, compro oro, asta, Orologi Famosi) su cinque righe: chi vede l'orologio, quando si incassa, come si incassa, chi incontri, costi. Per i concorrenti solo fatti generali e verificabili, senza cifre di commissione non citate da fonte.",
+        "tono": "Onesto: riconoscere che un privato può spuntare di più se ha tempo, e spiegare cosa si guadagna con noi (parere di un esperto dal vivo, velocità, bonifico, niente sconosciuti)."
+      },
+      "da_confermare": null
+    },
+    {
+      "id": "P03",
+      "url": "/vendi-orologio/quanto-vale/",
+      "tipo": "guida",
+      "priorita": 1,
+      "title": "Quanto vale il mio orologio usato? Come si valuta",
+      "meta_description": "Referenza, condizioni, corredo e mercato: cosa decide il valore di un orologio usato. Primo esame gratuito su foto, proposta dopo averlo visto dal vivo.",
+      "h1": "Quanto vale il mio orologio?",
+      "faqs": [
+        {
+          "q": "Esiste una stima online del mio orologio?",
+          "a": "Da noi no: un valore serio dipende dal singolo esemplare. Facciamo un primo esame gratuito dalle foto e la proposta arriva dopo averlo visto dal vivo."
+        },
+        {
+          "q": "Cosa conta di più nella valutazione?",
+          "a": "Referenza, condizioni, corredo e richiesta di mercato per quel modello. Anche interventi e lucidature pesano."
+        },
+        {
+          "q": "Perché due negozi danno cifre diverse?",
+          "a": "Perché ognuno guarda l'esemplare e il proprio mercato in modo diverso, e una cifra data al telefono senza vedere l'orologio vale poco. Noi facciamo la proposta solo dopo averlo visto."
+        },
+        {
+          "q": "Quali foto servono?",
+          "a": "Quadrante dritto, cassa di lato, fondello, bracciale o cinturino e, se li hai, scatola e documenti. Con luce naturale, senza filtri."
+        },
+        {
+          "q": "Dove trovo la referenza?",
+          "a": "Di solito è sulla garanzia o sulla fattura. Se non la trovi, scegli «Non lo so» nella scheda: la riconosciamo noi dalle foto."
+        },
+        {
+          "q": "Scatola e garanzia cambiano il valore?",
+          "a": "Aiutano a ricostruire la storia dell'orologio. Se mancano entra nella valutazione, ma si valuta anche solo l'orologio."
+        },
+        {
+          "q": "Un orologio graffiato vale meno?",
+          "a": "Graffi e segni d'uso fanno parte della storia dell'orologio e li consideriamo; non farlo lucidare prima di mostrarcelo."
+        },
+        {
+          "q": "La valutazione mi obbliga?",
+          "a": "No, è gratuita e senza impegno."
+        }
+      ],
+      "cluster": "C02",
+      "contenuto": {
+        "blocchi": "Checklist foto con immagini, esempio di referenza per Rolex, Omega e Cartier (rimando alle pagine marchio), spiegazione del perché non diamo stime automatiche."
+      },
+      "da_confermare": null
+    },
+    {
+      "id": "P04",
+      "url": "/vendi-orologio/orologio-ereditato/",
+      "tipo": "guida",
+      "priorita": 2,
+      "title": "Vendere un orologio ereditato | Orologi Famosi",
+      "meta_description": "Hai ereditato un orologio e non sai cosa sia? Lo riconosciamo dalle foto, si valuta anche senza documenti, pagamento tracciabile. Valutazione gratuita.",
+      "h1": "Vendere un orologio ereditato",
+      "faqs": [
+        {
+          "q": "Non so che orologio è: posso chiedere lo stesso?",
+          "a": "Sì. Mandaci foto di quadrante, cassa e fondello: marca, modello e referenza li riconosciamo noi."
+        },
+        {
+          "q": "Non ho scatola né documenti: è un problema?",
+          "a": "No, si valuta anche solo l'orologio. Se trovi ricevute o vecchie garanzie, fotografale."
+        },
+        {
+          "q": "Siamo più eredi: possiamo venire insieme?",
+          "a": "Sì, la verifica dal vivo si può fare insieme, a Medicina (BO) o nella sede riservata di Bologna, su appuntamento. Il bonifico va sul conto che indicate."
+        },
+        {
+          "q": "L'orologio è fermo da anni: lo faccio riparare?",
+          "a": "Prima mandaci le foto e dicci che è fermo: lo consideriamo nell'esame, prima che tu spenda in una riparazione."
+        },
+        {
+          "q": "Devo pulirlo o lucidarlo?",
+          "a": "No, lascialo com'è: a volte una lucidatura toglie più di quanto aggiunga."
+        },
+        {
+          "q": "Come veniamo pagati?",
+          "a": "Subito, al momento della vendita, con bonifico sul conto che scegliete: un pagamento tracciabile."
+        },
+        {
+          "q": "Per le questioni di successione a chi chiedo?",
+          "a": "Per gli aspetti fiscali e di successione il riferimento è il vostro notaio o commercialista; noi ci occupiamo della valutazione e dell'acquisto."
+        },
+        {
+          "q": "Ci sono più orologi in casa: li guardate tutti?",
+          "a": "Sì, ognuno si valuta singolarmente. Mandaci le foto di tutti, anche di quelli che sembrano di poco valore."
+        }
+      ],
+      "cluster": "C05",
+      "contenuto": {
+        "tono": "Calmo, senza retorica sul ricordo; molto pratico su cosa fotografare."
+      },
+      "da_confermare": null
+    },
+    {
+      "id": "P05",
+      "url": "/vendi-orologio/senza-scatola-e-documenti/",
+      "tipo": "guida",
+      "priorita": 2,
+      "title": "Vendere un orologio senza scatola o garanzia",
+      "meta_description": "Si può vendere un orologio senza scatola, garanzia o scontrino? Sì: lo valutiamo anche da solo. Cosa fotografare e cosa cambia nella valutazione.",
+      "h1": "Vendere un orologio senza scatola o documenti",
+      "faqs": [
+        {
+          "q": "Si può vendere un orologio senza garanzia?",
+          "a": "Sì, si valuta anche solo l'orologio. Dillo subito nella richiesta."
+        },
+        {
+          "q": "Quanto perde senza corredo?",
+          "a": "Dipende dal marchio e dal modello: l'assenza del corredo entra nella valutazione, che facciamo sul singolo esemplare."
+        },
+        {
+          "q": "Ho solo la scatola o solo la garanzia: serve?",
+          "a": "Sì, fotografa quello che hai: ogni pezzo aiuta a ricostruire la storia dell'orologio."
+        },
+        {
+          "q": "Ho fatture di revisione: le mando?",
+          "a": "Sì, una revisione documentata di solito è un elemento a favore."
+        },
+        {
+          "q": "Senza documenti come provo che è mio?",
+          "a": "Raccontaci la storia dell'orologio nella richiesta: ne parliamo di persona alla visita."
+        },
+        {
+          "q": "Vale anche per Rolex, Omega e Cartier?",
+          "a": "Sì, per tutti i marchi che valutiamo."
+        },
+        {
+          "q": "Devo cercare la referenza?",
+          "a": "Non serve: se non la trovi la riconosciamo dalle foto. Non togliere il bracciale per cercarla."
+        }
+      ],
+      "cluster": "C06",
+      "contenuto": {},
+      "da_confermare": null
+    },
+    {
+      "id": "P06",
+      "url": "/vendi-orologio/orologio-fermo-o-da-revisionare/",
+      "tipo": "guida",
+      "priorita": 2,
+      "title": "Orologio fermo o graffiato: revisionare prima di vendere?",
+      "meta_description": "Orologio fermo, graffiato o da revisionare? Prima di spendere mandaci le foto: lo valutiamo così com'è. Non lucidarlo prima della valutazione.",
+      "h1": "Orologio fermo o rovinato: conviene sistemarlo prima di venderlo?",
+      "faqs": [
+        {
+          "q": "Posso vendere un orologio che non funziona?",
+          "a": "Puoi proporcelo: dicci che è fermo e mandaci le foto, lo consideriamo nell'esame."
+        },
+        {
+          "q": "Conviene revisionarlo prima?",
+          "a": "Prima di spendere, sentiamoci: ti diciamo se secondo noi ha senso. Se una revisione è già stata fatta, porta la fattura."
+        },
+        {
+          "q": "Devo farlo lucidare?",
+          "a": "No. Una lucidatura pesante può cambiare le linee della cassa: meglio che lo vediamo com'è."
+        },
+        {
+          "q": "I graffi abbassano il valore?",
+          "a": "Graffi e segni d'uso non impediscono la valutazione: fanno parte della storia dell'orologio."
+        },
+        {
+          "q": "Il vetro è rotto: lo porto lo stesso?",
+          "a": "Sì, fotografalo così e indicalo nella richiesta."
+        },
+        {
+          "q": "Ho cambiato il cinturino: è un problema?",
+          "a": "No, indica quali parti sono state sostituite; se hai ancora quelle originali, fotografale."
+        },
+        {
+          "q": "Una revisione documentata conta?",
+          "a": "Di solito sì, è un elemento a favore."
+        }
+      ],
+      "cluster": "C07",
+      "contenuto": {},
+      "da_confermare": null
+    },
+    {
+      "id": "P07",
+      "url": "/vendi-orologio/orologi-vintage/",
+      "tipo": "guida",
+      "priorita": 2,
+      "title": "Vendere un orologio vintage | Orologi Famosi",
+      "meta_description": "Rolex, Omega, Heuer, Longines e altri vintage: cosa conta nella valutazione, quali foto mandarci, verifica dal vivo a Medicina o a Bologna.",
+      "h1": "Vendere un orologio vintage",
+      "faqs": [
+        {
+          "q": "Valutate orologi vintage?",
+          "a": "Sì, anche vintage di Rolex, Omega, Heuer, Longines, Seiko, Eberhard e degli altri marchi che valutiamo."
+        },
+        {
+          "q": "Cosa conta di più in un vintage?",
+          "a": "L'originalità di quadrante, lancette, lunetta e bracciale, le condizioni della cassa e gli interventi fatti nel tempo."
+        },
+        {
+          "q": "Quali foto servono?",
+          "a": "Quadrante dritto e con luce naturale, cassa di lato, fondello e, se riesci, il bracciale con la chiusura."
+        },
+        {
+          "q": "Ha lancette o quadrante di servizio: vale ancora?",
+          "a": "Diccelo nella richiesta: valutiamo l'orologio per quello che è, e l'originalità la verifichiamo dal vivo."
+        },
+        {
+          "q": "Non conosco l'anno né la referenza",
+          "a": "Non serve: mandaci le foto e la riconosciamo noi."
+        },
+        {
+          "q": "Lo faccio revisionare prima?",
+          "a": "Prima sentiamoci: su un vintage alcuni interventi possono togliere valore."
+        },
+        {
+          "q": "Meglio un'asta?",
+          "a": "Per alcuni pezzi rari un'asta ha senso, con tempi e commissioni. Il nostro primo esame è gratuito e ti aiuta a decidere."
+        },
+        {
+          "q": "Il marchio non è nel vostro elenco",
+          "a": "Indicalo lo stesso nella richiesta: dopo il primo esame ti diciamo se possiamo fare una proposta."
+        }
+      ],
+      "cluster": "C08",
+      "contenuto": {},
+      "da_confermare": null
+    },
+    {
+      "id": "P08",
+      "url": "/vendi-orologio/pagamento-e-sicurezza/",
+      "tipo": "guida",
+      "priorita": 1,
+      "title": "Vendere un orologio in sicurezza: pagamento e truffe",
+      "meta_description": "Come evitare truffe vendendo un orologio di valore: incontro in negozio, nessuno sconosciuto, pagamento immediato con bonifico tracciabile.",
+      "h1": "Vendere un orologio in sicurezza",
+      "faqs": [
+        {
+          "q": "Come vengo pagato?",
+          "a": "Subito, al momento della vendita, con bonifico sul conto che scegli: un pagamento tracciabile."
+        },
+        {
+          "q": "Pagate in contanti?",
+          "a": "Paghiamo con bonifico sul conto che scegli."
+        },
+        {
+          "q": "Dove avviene la vendita?",
+          "a": "Nel negozio di Medicina (BO) o nella sede riservata di Bologna, su appuntamento: non in strada e non con sconosciuti."
+        },
+        {
+          "q": "Devo spedire l'orologio?",
+          "a": "No. Se non puoi venire, il ritiro lo organizziamo noi con un corriere specializzato nel trasporto di valori, gratis per te."
+        },
+        {
+          "q": "Mi hanno offerto di pagare prima di vedere l'orologio: è normale?",
+          "a": "Diffida di chi chiede di spedire prima o di chi paga senza vedere. Noi facciamo la proposta solo dopo aver visto l'orologio dal vivo."
+        },
+        {
+          "q": "Che documenti servono il giorno della vendita?",
+          "a": "Te lo diciamo nel primo contatto, quando fissiamo l'appuntamento. Porta tutto quello che hai dell'orologio: scatola, garanzia, fatture."
+        },
+        {
+          "q": "Devo dichiarare la vendita?",
+          "a": "Dipende dalla tua situazione: chiedi al tuo commercialista. Noi ti paghiamo con bonifico, quindi la vendita è tracciabile."
+        },
+        {
+          "q": "Posso ripensarci dopo la proposta?",
+          "a": "Sì, fino alla vendita non c'è nessun obbligo."
+        }
+      ],
+      "cluster": "C04, C09, C16",
+      "contenuto": {
+        "blocchi": "Elenco dei segnali di truffa più comuni nella vendita tra privati (testo nostro, generale, senza citare casi)."
+      },
+      "da_confermare": null
+    },
+    {
+      "id": "P09",
+      "url": "/vendi-orologio/da-lontano/",
+      "tipo": "guida",
+      "priorita": 3,
+      "title": "Vendere un orologio da lontano: ritiro con corriere valori",
+      "meta_description": "Abiti lontano da Bologna? Primo esame su foto da tutta Italia e, se non puoi venire, ritiro con corriere specializzato in valori, gratis per te.",
+      "h1": "Vendere un orologio senza spostarsi",
+      "faqs": [
+        {
+          "q": "Posso iniziare da un'altra città?",
+          "a": "Sì, il primo esame si fa a distanza da tutta Italia, con la scheda o su WhatsApp."
+        },
+        {
+          "q": "Devo venire per forza in negozio?",
+          "a": "La proposta arriva dopo aver visto l'orologio dal vivo. Se non puoi venire, organizziamo noi il ritiro."
+        },
+        {
+          "q": "Chi ritira l'orologio?",
+          "a": "Un corriere specializzato nel trasporto di valori, organizzato da noi."
+        },
+        {
+          "q": "Il ritiro si paga?",
+          "a": "No, è gratuito per te."
+        },
+        {
+          "q": "Lo spedisco io con le Poste?",
+          "a": "No, non serve: il ritiro lo organizziamo noi."
+        },
+        {
+          "q": "Come ricevo il pagamento?",
+          "a": "Con bonifico sul conto che scegli, se accetti la proposta."
+        },
+        {
+          "q": "Abito fuori dall'Emilia-Romagna: vale lo stesso?",
+          "a": "Sì, si può iniziare da tutta Italia."
+        }
+      ],
+      "cluster": "C10",
+      "contenuto": {
+        "da_chiarire_con_titolare": "Come funziona la proposta per chi usa il ritiro (dopo l'arrivo dell'orologio) e cosa succede se non viene accettata: scriverlo solo dopo conferma."
+      },
+      "da_confermare": null
+    },
+    {
+      "id": "P10",
+      "url": "/vendi-orologio/alta-orologeria/",
+      "tipo": "hub marchi",
+      "priorita": 2,
+      "title": "Vendere orologi di alta orologeria | Orologi Famosi",
+      "meta_description": "Patek Philippe, Audemars Piguet, Vacheron Constantin, Lange, Breguet, Richard Mille: primo esame su foto, verifica riservata a Bologna su appuntamento.",
+      "h1": "Vendere un orologio di alta orologeria",
+      "faqs": [
+        {
+          "q": "Comprate Patek Philippe, Audemars Piguet o Vacheron Constantin?",
+          "a": "Non sono tra i 19 marchi con cui lavoriamo di più, ma puoi proporli: li indichi nella richiesta e dopo il primo esame ti diciamo se possiamo fare una proposta."
+        },
+        {
+          "q": "Dove si vede l'orologio?",
+          "a": "Nella sede riservata di Bologna, su appuntamento, oppure nel negozio di Medicina (BO)."
+        },
+        {
+          "q": "Cosa conta per questi marchi?",
+          "a": "Referenza, certificati e documenti originali, storico delle revisioni presso la casa, condizioni delle finiture: su casse spazzolate una lucidatura si vede."
+        },
+        {
+          "q": "Serve il certificato d'origine?",
+          "a": "Aiuta molto, ma si valuta anche senza: dillo nella richiesta."
+        },
+        {
+          "q": "Come vengo pagato?",
+          "a": "Con bonifico al momento della vendita, sul conto che scegli."
+        },
+        {
+          "q": "Le mie foto e i miei dati restano riservati?",
+          "a": "Le richieste arrivano direttamente a noi e non devi pubblicare nessun annuncio."
+        },
+        {
+          "q": "Meglio un'asta?",
+          "a": "Per alcuni pezzi un'asta può avere senso, con i suoi tempi e costi. Una nostra proposta dal vivo ti dà un riferimento concreto, senza impegno."
+        }
+      ],
+      "cluster": "C11",
+      "contenuto": {
+        "sezioni_marchio": {
+          "a-lange-sohne": "Lange 1, Saxonia, Datograph, Zeitwerk, Odysseus. Contano finiture del movimento, certificati, revisione in Germania.",
+          "breguet": "Classique, Type XX/XXI, Marine, Tradition, Reine de Naples. Quadranti guilloché e casse in metalli preziosi.",
+          "blancpain": "Fifty Fathoms, Villeret, Air Command. Versioni e serie limitate.",
+          "richard-mille": "RM 011, RM 035, RM 055, RM 67: materiali compositi, certificati e revisioni della casa sono centrali.",
+          "piaget": "Polo, Altiplano, Possession: oro, pietre e ultrapiatti.",
+          "girard-perregaux": "Laureato, 1966, Vintage 1945.",
+          "ulysse-nardin": "Marine Chronometer, Diver, Freak.",
+          "breguet-montblanc-franck-muller": "Montblanc 1858 e Heritage; Franck Muller (già in elenco) Casablanca, Cintrée Curvex, Vanguard."
+        },
+        "regola": "Hub unico per i marchi a basso volume, così non si creano pagine sottili; Patek, AP e Vacheron hanno pagina propria."
+      },
+      "da_confermare": "Il titolare deve confermare che acquista questi marchi prima della pubblicazione."
+    },
+    {
+      "id": "P11",
+      "url": "/vendi-orologio/orologi-oro-e-gioiello/",
+      "tipo": "guida",
+      "priorita": 2,
+      "title": "Orologio d'oro di marca: non venderlo a peso",
+      "meta_description": "Rolex Day-Date, Cartier Panthère, Bulgari Serpenti, Chopard: un orologio d'oro di marca si valuta come orologio, non a peso. Primo esame gratuito.",
+      "h1": "Orologi in oro e orologi-gioiello: come si valutano",
+      "faqs": [
+        {
+          "q": "Un orologio d'oro va al compro oro?",
+          "a": "Se è di marca, no: va valutato come orologio, con marchio, modello, condizioni e corredo, oltre al metallo."
+        },
+        {
+          "q": "Comprate Rolex in oro o acciaio e oro?",
+          "a": "Sì, per esempio Datejust, Day-Date e Submariner bicolore."
+        },
+        {
+          "q": "Comprate Cartier Panthère?",
+          "a": "Sì, sia le Panthère degli anni '80-'90 sia la riedizione dal 2017. Indica misura, metallo e se hai tutte le maglie."
+        },
+        {
+          "q": "E Bulgari Serpenti o Bulgari Bulgari?",
+          "a": "Bulgari è tra i marchi che valutiamo: indica modello, metallo e misura."
+        },
+        {
+          "q": "L'orologio ha diamanti: come si valuta?",
+          "a": "Indicalo nella richiesta e fotografalo bene; lo verifichiamo dal vivo, comprese le pietre."
+        },
+        {
+          "q": "Mancano maglie del bracciale",
+          "a": "Dillo nella richiesta: entra nella valutazione ma non la impedisce."
+        },
+        {
+          "q": "Orologi da donna di lusso: li valutate?",
+          "a": "Sì, per tutti i marchi che valutiamo, al quarzo o automatici."
+        }
+      ],
+      "cluster": "C18",
+      "contenuto": {
+        "da_confermare": "Verifica delle pietre: confermare con il titolare come avviene prima di pubblicare la FAQ sui diamanti."
+      },
+      "da_confermare": null
+    },
+    {
+      "id": "P12",
+      "url": "/vendi-tudor/",
+      "tipo": "marchio",
+      "priorita": 1,
+      "title": "Vendi il tuo Tudor usato | Black Bay, Pelagos",
+      "meta_description": "Vendi un Tudor usato: Black Bay 58, 54, GMT, Pelagos, Royal e vintage. Primo esame su foto, proposta dal vivo, bonifico immediato. Valutazione gratuita.",
+      "h1": "Vendi il tuo Tudor usato",
+      "faqs": [
+        {
+          "q": "Quanto vale un Tudor Black Bay usato?",
+          "a": "Dipende da referenza, generazione, condizioni e corredo. Primo esame dalle foto, proposta dopo averlo visto."
+        },
+        {
+          "q": "Comprate Tudor vintage?",
+          "a": "Sì, anche Oyster Prince e Submariner Tudor vintage: indica referenza e interventi conosciuti."
+        },
+        {
+          "q": "Il mio Black Bay non ha più la garanzia",
+          "a": "Si valuta anche solo l'orologio; dillo nella richiesta."
+        },
+        {
+          "q": "Ho il bracciale e il cinturino in tessuto: li porto?",
+          "a": "Sì, fotografa tutto quello che hai: la dotazione entra nella valutazione."
+        },
+        {
+          "q": "Dove trovo la referenza del mio Tudor?",
+          "a": "Sulla garanzia o tra le anse; se non la trovi la riconosciamo dalle foto."
+        },
+        {
+          "q": "Come vengo pagato?",
+          "a": "Se accetti, ti paghiamo subito con bonifico sul conto che scegli."
+        }
+      ],
+      "cluster": "C13",
+      "contenuto": {
+        "collezioni": "Black Bay (58, 54, 41, GMT, Chrono, Pro, Bronze), Pelagos (39, FXD), Royal, Ranger, 1926; vintage Oyster Prince e Submariner Tudor.",
+        "cosa_conta": "Referenza e generazione (le prime Black Bay con movimento di base ETA, le successive con calibro di manifattura MT), stato del bracciale e delle maglie, inserto lunetta, garanzia e scatola. Sui vintage: originalità di quadrante con rosa o scudo."
+      },
+      "da_confermare": null
+    },
+    {
+      "id": "P13",
+      "url": "/vendi-breitling/",
+      "tipo": "marchio",
+      "priorita": 2,
+      "title": "Vendi il tuo Breitling usato | Navitimer, Chronomat",
+      "meta_description": "Vendi un Breitling usato: Navitimer, Chronomat, Superocean, Colt, Emergency, anche vintage. Primo esame su foto, proposta dal vivo, bonifico immediato.",
+      "h1": "Vendi il tuo Breitling usato",
+      "faqs": [
+        {
+          "q": "Comprate Breitling Navitimer?",
+          "a": "Sì, sia moderni sia vintage."
+        },
+        {
+          "q": "Il Chronomat Frecce Tricolori si vende ancora?",
+          "a": "Sì, lo valutiamo: mandaci foto di quadrante e fondello."
+        },
+        {
+          "q": "Il mio Breitling Emergency è fermo",
+          "a": "Dillo nella richiesta e mandaci le foto: lo consideriamo nell'esame."
+        },
+        {
+          "q": "Cosa conta per il valore?",
+          "a": "Movimento, referenza, condizioni, bracciale e corredo."
+        },
+        {
+          "q": "Posso venderlo senza scatola?",
+          "a": "Sì, si valuta anche solo l'orologio."
+        },
+        {
+          "q": "Come vengo pagato?",
+          "a": "Se accetti, ti paghiamo subito con bonifico sul conto che scegli."
+        }
+      ],
+      "cluster": "C13",
+      "contenuto": {
+        "collezioni": "Navitimer (anche B01 e vintage), Chronomat (incluso il Chronomat anni '80 legato alle Frecce Tricolori), Superocean e Superocean Heritage, Avenger, Colt, Emergency.",
+        "cosa_conta": "Movimento (calibro di manifattura B01 o calibri su base Valjoux/ETA), referenza, bracciale originale (Pilot, Rouleaux), quadrante, corredo. Per l'Emergency, lo stato del trasmettitore."
+      },
+      "da_confermare": null
+    },
+    {
+      "id": "P14",
+      "url": "/vendi-iwc/",
+      "tipo": "marchio",
+      "priorita": 2,
+      "title": "Vendi il tuo IWC usato | Portoghese, Pilot",
+      "meta_description": "Vendi un IWC usato: Portugieser, Pilot's Watch, Big Pilot, Portofino, Ingenieur. Primo esame su foto, proposta dal vivo, bonifico immediato.",
+      "h1": "Vendi il tuo IWC usato",
+      "faqs": [
+        {
+          "q": "Quanto vale un IWC Portoghese usato?",
+          "a": "Dipende da referenza, condizioni e corredo; primo esame dalle foto."
+        },
+        {
+          "q": "Dove trovo la referenza IWC?",
+          "a": "Sulla garanzia o sul fondello; altrimenti la riconosciamo dalle foto."
+        },
+        {
+          "q": "Comprate Big Pilot?",
+          "a": "Sì, Big Pilot e Pilot's Watch."
+        },
+        {
+          "q": "Ho perso il cinturino originale",
+          "a": "Indicalo nella richiesta: entra nella valutazione ma non la impedisce."
+        },
+        {
+          "q": "Posso iniziare da casa?",
+          "a": "Sì, con la scheda o su WhatsApp."
+        },
+        {
+          "q": "Come vengo pagato?",
+          "a": "Se accetti, ti paghiamo subito con bonifico sul conto che scegli."
+        }
+      ],
+      "cluster": "C13",
+      "contenuto": {
+        "collezioni": "Portugieser (Chronograph, Automatic, Yacht Club), Pilot's Watch (Mark XVIII, Big Pilot, Spitfire, Top Gun), Portofino, Aquatimer, Ingenieur.",
+        "cosa_conta": "Referenza IW a sei cifre, versione del quadrante, materiale (acciaio, oro, ceramica su Top Gun), cinturino o bracciale originale, garanzia e scatola, revisioni documentate."
+      },
+      "da_confermare": null
+    },
+    {
+      "id": "P15",
+      "url": "/vendi-jaeger-lecoultre/",
+      "tipo": "marchio",
+      "priorita": 2,
+      "title": "Vendi il tuo Jaeger-LeCoultre usato | Reverso",
+      "meta_description": "Vendi un Jaeger-LeCoultre usato: Reverso, Master, Polaris, Rendez-Vous, Memovox vintage. Primo esame su foto, proposta dal vivo.",
+      "h1": "Vendi il tuo Jaeger-LeCoultre usato",
+      "faqs": [
+        {
+          "q": "Comprate Reverso al quarzo?",
+          "a": "Sì, indica versione e misura."
+        },
+        {
+          "q": "Quanto vale un Reverso usato?",
+          "a": "Dipende da versione, misura, movimento, metallo e condizioni."
+        },
+        {
+          "q": "Comprate Memovox vintage?",
+          "a": "Sì; se la sveglia non funziona, dillo nella richiesta."
+        },
+        {
+          "q": "Non conosco la referenza",
+          "a": "Mandaci foto di quadrante e fondello: la riconosciamo noi."
+        },
+        {
+          "q": "Serve la garanzia?",
+          "a": "No, aiuta ma non è obbligatoria."
+        },
+        {
+          "q": "Come vengo pagato?",
+          "a": "Se accetti, ti paghiamo subito con bonifico sul conto che scegli."
+        }
+      ],
+      "cluster": "C13",
+      "contenuto": {
+        "collezioni": "Reverso (Classic, Tribute, Duetto, Duoface), Master Control e Master Ultra Thin, Polaris, Rendez-Vous; vintage Memovox.",
+        "cosa_conta": "Misura e versione del Reverso (manuale, automatico o quarzo, doppio quadrante), metallo, condizioni della cassa ribaltabile, referenza, corredo."
+      },
+      "da_confermare": null
+    },
+    {
+      "id": "P16",
+      "url": "/vendi-tag-heuer/",
+      "tipo": "marchio",
+      "priorita": 2,
+      "title": "Vendi il tuo TAG Heuer usato | Carrera, Monaco",
+      "meta_description": "Vendi un TAG Heuer usato o un Heuer vintage: Carrera, Monaco, Aquaracer, Autavia. Primo esame su foto, proposta dal vivo, bonifico immediato.",
+      "h1": "Vendi il tuo TAG Heuer usato",
+      "faqs": [
+        {
+          "q": "Comprate TAG Heuer al quarzo?",
+          "a": "Sì, indicalo nella richiesta."
+        },
+        {
+          "q": "Comprate Heuer vintage?",
+          "a": "Sì: fotografalo così com'è, senza lucidarlo."
+        },
+        {
+          "q": "Quanto vale un Carrera usato?",
+          "a": "Dipende da calibro, referenza, condizioni e corredo."
+        },
+        {
+          "q": "Dove trovo la referenza?",
+          "a": "Sul fondello o sulla garanzia; se non c'è, la riconosciamo dalle foto."
+        },
+        {
+          "q": "Vale la pena venderlo a un negozio?",
+          "a": "Il primo esame è gratuito: ti diciamo se ci interessa prima che tu ti muova."
+        },
+        {
+          "q": "Come vengo pagato?",
+          "a": "Se accetti, ti paghiamo subito con bonifico sul conto che scegli."
+        }
+      ],
+      "cluster": "C13, C08",
+      "contenuto": {
+        "collezioni": "Carrera, Monaco, Aquaracer, Formula 1, Link, Autavia; Heuer vintage (Carrera, Autavia, Monaco, Camaro).",
+        "cosa_conta": "Calibro (Heuer 02 di manifattura, Calibre 16/5, quarzo), referenza, quadrante; per gli Heuer vintage originalità di quadrante, lancette e cassa."
+      },
+      "da_confermare": null
+    },
+    {
+      "id": "P17",
+      "url": "/vendi-zenith/",
+      "tipo": "marchio",
+      "priorita": 3,
+      "title": "Vendi il tuo Zenith usato | El Primero, Defy",
+      "meta_description": "Vendi uno Zenith usato: El Primero, Chronomaster, Defy, Pilot e vintage. Primo esame su foto, proposta dal vivo, bonifico immediato.",
+      "h1": "Vendi il tuo Zenith usato",
+      "faqs": [
+        {
+          "q": "Comprate Zenith El Primero?",
+          "a": "Sì, moderni e vintage."
+        },
+        {
+          "q": "Ho uno Zenith d'oro vecchio: compro oro?",
+          "a": "No, si valuta come orologio, non a peso."
+        },
+        {
+          "q": "Quanto vale un Chronomaster usato?",
+          "a": "Dipende da referenza, condizioni e corredo."
+        },
+        {
+          "q": "Non ho documenti",
+          "a": "Si valuta anche solo l'orologio."
+        },
+        {
+          "q": "Come vengo pagato?",
+          "a": "Se accetti, ti paghiamo subito con bonifico sul conto che scegli."
+        },
+        {
+          "q": "Devo venire a Bologna?",
+          "a": "Verifica a Medicina (BO) o nella sede riservata di Bologna, su appuntamento, oppure ritiro con corriere valori gratuito se non puoi venire."
+        }
+      ],
+      "cluster": "C13",
+      "contenuto": {
+        "collezioni": "El Primero (dal 1969), Chronomaster (Original, Sport), Defy, Pilot, Elite; vintage in acciaio e oro.",
+        "cosa_conta": "Calibro, referenza, quadrante (tricolore nei Chronomaster), corredo, revisioni; sui vintage in oro valore dell'orologio e non del metallo."
+      },
+      "da_confermare": null
+    },
+    {
+      "id": "P18",
+      "url": "/vendi-longines/",
+      "tipo": "marchio",
+      "priorita": 3,
+      "title": "Vendi il tuo Longines usato | Conquest, Master",
+      "meta_description": "Vendi un Longines usato: Conquest, HydroConquest, Master Collection, DolceVita e vintage. Primo esame gratuito su foto, proposta dal vivo.",
+      "h1": "Vendi il tuo Longines usato",
+      "faqs": [
+        {
+          "q": "Un Longines usato lo comprate?",
+          "a": "Sì, Longines è tra i 19 marchi che valutiamo."
+        },
+        {
+          "q": "Comprate Longines vintage?",
+          "a": "Sì, anche in oro e anche senza documenti."
+        },
+        {
+          "q": "Ha senso proporre un Longines?",
+          "a": "Il primo esame su foto è gratuito: ti diciamo se ci interessa prima che tu venga."
+        },
+        {
+          "q": "Longines DolceVita da donna?",
+          "a": "Sì, indica misura e materiale."
+        },
+        {
+          "q": "Come vengo pagato?",
+          "a": "Se accetti, ti paghiamo subito con bonifico sul conto che scegli."
+        },
+        {
+          "q": "La visita mi obbliga?",
+          "a": "No, decidi tu dopo la proposta."
+        }
+      ],
+      "cluster": "C13",
+      "contenuto": {
+        "collezioni": "Conquest, HydroConquest, Spirit, Master Collection, Legend Diver, Flagship Heritage, DolceVita; vintage (cronografi, Flagship anni '50-'60).",
+        "cosa_conta": "Modello e calibro, materiale (acciaio, oro), quadrante originale sui vintage, corredo."
+      },
+      "da_confermare": null
+    },
+    {
+      "id": "P19",
+      "url": "/vendi-bulgari/",
+      "tipo": "marchio",
+      "priorita": 3,
+      "title": "Vendi il tuo Bulgari usato | Serpenti, Octo",
+      "meta_description": "Vendi un orologio Bulgari usato: Serpenti, Octo, Bulgari Bulgari, Diagono. Valutato come orologio, non a peso. Primo esame su foto, bonifico immediato.",
+      "h1": "Vendi il tuo orologio Bulgari usato",
+      "faqs": [
+        {
+          "q": "Comprate Bulgari Serpenti?",
+          "a": "Sì, indica versione, misura e metallo."
+        },
+        {
+          "q": "Un Bulgari d'oro va al compro oro?",
+          "a": "No, si valuta come orologio."
+        },
+        {
+          "q": "Comprate Bulgari Bulgari in acciaio?",
+          "a": "Sì."
+        },
+        {
+          "q": "Mancano maglie del bracciale",
+          "a": "Dillo nella richiesta: entra nella valutazione ma non la impedisce."
+        },
+        {
+          "q": "Come vengo pagato?",
+          "a": "Se accetti, ti paghiamo subito con bonifico sul conto che scegli."
+        },
+        {
+          "q": "Posso iniziare da WhatsApp?",
+          "a": "Sì, al 379 154 9804."
+        }
+      ],
+      "cluster": "C13, C18",
+      "contenuto": {
+        "collezioni": "Bulgari Bulgari, Serpenti (Tubogas, Seduttori), Octo (Finissimo, Roma), Diagono, Lucea, Aluminium.",
+        "cosa_conta": "Modello e misura, metallo, pietre, condizioni del bracciale o della spirale Tubogas, corredo."
+      },
+      "da_confermare": null
+    },
+    {
+      "id": "P20",
+      "url": "/vendi-patek-philippe/",
+      "tipo": "marchio",
+      "priorita": 1,
+      "title": "Vendi il tuo Patek Philippe usato | Nautilus, Calatrava",
+      "meta_description": "Vendi un Patek Philippe usato: Nautilus, Aquanaut, Calatrava, complicazioni. Primo esame su foto, verifica riservata a Bologna, bonifico immediato.",
+      "h1": "Vendi il tuo Patek Philippe usato",
+      "faqs": [
+        {
+          "q": "Comprate Patek Philippe?",
+          "a": "Puoi proporcelo: lo indichi nella richiesta e dopo il primo esame ti diciamo se possiamo fare una proposta."
+        },
+        {
+          "q": "Cosa conta nella valutazione di un Patek?",
+          "a": "Referenza, documenti, servizi presso la casa, condizioni delle finiture e corredo."
+        },
+        {
+          "q": "Non ho il certificato",
+          "a": "Dillo nella richiesta: si valuta anche senza."
+        },
+        {
+          "q": "Dove si vede l'orologio?",
+          "a": "Nella sede riservata di Bologna, su appuntamento, o a Medicina."
+        },
+        {
+          "q": "Come vengo pagato?",
+          "a": "Con bonifico al momento della vendita, sul conto che scegli."
+        },
+        {
+          "q": "Mi scrivono acquirenti esteri: mi fido?",
+          "a": "Diffida di chi chiede di spedire prima. Con noi la vendita si fa di persona."
+        }
+      ],
+      "cluster": "C11",
+      "contenuto": {
+        "collezioni": "Nautilus (5711, 5712, 5980, 3700 vintage), Aquanaut (5167, 5168), Calatrava (5196, 5227, 96 vintage), Annual Calendar, Grand Complications, Twenty~4, Gondolo.",
+        "cosa_conta": "Referenza e anno, certificato d'origine o estratto dagli archivi Patek, storico dei servizi presso la casa, stato delle finiture (sui Nautilus e Aquanaut le spazzolature mostrano subito una lucidatura), corredo completo."
+      },
+      "da_confermare": "Il titolare deve confermare che acquista questo marchio (non è tra i 19 in elenco)."
+    },
+    {
+      "id": "P21",
+      "url": "/vendi-audemars-piguet/",
+      "tipo": "marchio",
+      "priorita": 1,
+      "title": "Vendi il tuo Audemars Piguet usato | Royal Oak",
+      "meta_description": "Vendi un Audemars Piguet usato: Royal Oak, Royal Oak Offshore, Code 11.59. Primo esame su foto, verifica riservata a Bologna, bonifico immediato.",
+      "h1": "Vendi il tuo Audemars Piguet usato",
+      "faqs": [
+        {
+          "q": "Comprate Audemars Piguet?",
+          "a": "Puoi proporcelo indicandolo nella richiesta; ti rispondiamo dopo il primo esame."
+        },
+        {
+          "q": "Cosa conta su un Royal Oak?",
+          "a": "Referenza, condizioni delle finiture di cassa e bracciale, quadrante, documenti e servizi."
+        },
+        {
+          "q": "È stato lucidato: è un problema?",
+          "a": "Dicci cosa sai degli interventi: lo vediamo dal vivo."
+        },
+        {
+          "q": "Posso vendere senza pubblicarlo?",
+          "a": "Sì, non devi pubblicare nessun annuncio: foto, primo esame, incontro nella sede riservata di Bologna."
+        },
+        {
+          "q": "Come vengo pagato?",
+          "a": "Con bonifico tracciabile al momento della vendita."
+        },
+        {
+          "q": "La visita mi obbliga?",
+          "a": "No."
+        }
+      ],
+      "cluster": "C11",
+      "contenuto": {
+        "collezioni": "Royal Oak (15202 Jumbo, 15500/15510, 15400, 15450, Chronograph 26331), Royal Oak Offshore, Royal Oak Concept, Code 11.59, Millenary, Jules Audemars.",
+        "cosa_conta": "Referenza, quadrante (tapisserie), condizioni di cassa e bracciale integrato con alternanza di satinato e lucido, garanzia e servizi presso la casa."
+      },
+      "da_confermare": "Il titolare deve confermare che acquista questo marchio (non è tra i 19 in elenco)."
+    },
+    {
+      "id": "P22",
+      "url": "/vendi-vacheron-constantin/",
+      "tipo": "marchio",
+      "priorita": 3,
+      "title": "Vendi il tuo Vacheron Constantin usato | Overseas",
+      "meta_description": "Vendi un Vacheron Constantin usato: Overseas, Patrimony, Traditionnelle, Fiftysix. Primo esame su foto e verifica riservata a Bologna.",
+      "h1": "Vendi il tuo Vacheron Constantin usato",
+      "faqs": [
+        {
+          "q": "Comprate Vacheron Constantin?",
+          "a": "Puoi proporcelo indicandolo nella richiesta."
+        },
+        {
+          "q": "Un Patrimony d'oro va valutato a peso?",
+          "a": "No, si valuta come orologio."
+        },
+        {
+          "q": "Ho tutti i cinturini dell'Overseas",
+          "a": "Fotografali: la dotazione entra nella valutazione."
+        },
+        {
+          "q": "Dove si vede?",
+          "a": "Nella sede riservata di Bologna, su appuntamento."
+        },
+        {
+          "q": "Come vengo pagato?",
+          "a": "Con bonifico al momento della vendita."
+        },
+        {
+          "q": "La valutazione si paga?",
+          "a": "No, è gratuita."
+        }
+      ],
+      "cluster": "C11",
+      "contenuto": {
+        "collezioni": "Overseas (4500V e generazioni precedenti), Patrimony, Traditionnelle, Fiftysix, Historiques (222).",
+        "cosa_conta": "Referenza, punzone di Ginevra, bracciali e cinturini a cambio rapido dell'Overseas, documenti e servizi presso la casa."
+      },
+      "da_confermare": "Il titolare deve confermare che acquista questo marchio (non è tra i 19 in elenco)."
+    },
+    {
+      "id": "P23",
+      "url": "/vendi-panerai/",
+      "tipo": "marchio",
+      "priorita": 2,
+      "title": "Vendi il tuo Panerai usato | Luminor, Radiomir",
+      "meta_description": "Vendi un Panerai usato: Luminor, Luminor Due, Radiomir, Submersible. Primo esame su foto, proposta dal vivo, bonifico immediato.",
+      "h1": "Vendi il tuo Panerai usato",
+      "faqs": [
+        {
+          "q": "Comprate Panerai?",
+          "a": "Puoi proporcelo: lo indichi nella richiesta e ti rispondiamo dopo il primo esame."
+        },
+        {
+          "q": "Dove trovo il numero PAM?",
+          "a": "Sulla garanzia o sulla scatola; se non lo trovi lo riconosciamo dalle foto."
+        },
+        {
+          "q": "Ho più cinturini: servono?",
+          "a": "Sì, fotografali tutti."
+        },
+        {
+          "q": "Perché i negozi danno cifre diverse?",
+          "a": "Ogni esemplare si valuta singolarmente; noi facciamo la proposta dopo averlo visto."
+        },
+        {
+          "q": "Come vengo pagato?",
+          "a": "Se accetti, ti paghiamo subito con bonifico sul conto che scegli."
+        },
+        {
+          "q": "Abito in Toscana, vale lo stesso?",
+          "a": "Sì, si può iniziare da tutta Italia."
+        }
+      ],
+      "cluster": "C14",
+      "contenuto": {
+        "collezioni": "Luminor (Marina, Base, GMT, 1950, Due), Radiomir, Submersible; referenze PAM.",
+        "cosa_conta": "Numero PAM, calibro (di manifattura P. o di base), lettera di serie e anno, cinturini e attrezzo nella dotazione, condizioni del ponte proteggi-corona."
+      },
+      "da_confermare": "Il titolare deve confermare che acquista questo marchio (non è tra i 19 in elenco)."
+    },
+    {
+      "id": "P24",
+      "url": "/vendi-hublot/",
+      "tipo": "marchio",
+      "priorita": 3,
+      "title": "Vendi il tuo Hublot usato | Big Bang, Classic Fusion",
+      "meta_description": "Vendi un Hublot usato: Big Bang, Classic Fusion, Spirit of Big Bang. Primo esame su foto, proposta dal vivo, bonifico immediato. Valutazione gratuita.",
+      "h1": "Vendi il tuo Hublot usato",
+      "faqs": [
+        {
+          "q": "Comprate Hublot?",
+          "a": "Puoi proporcelo indicandolo nella richiesta."
+        },
+        {
+          "q": "Il cinturino è rovinato",
+          "a": "Indicalo: entra nella valutazione ma non la impedisce."
+        },
+        {
+          "q": "È un'edizione limitata",
+          "a": "Fotografa il fondello con il numero e i documenti."
+        },
+        {
+          "q": "Meglio Chrono24?",
+          "a": "Con noi niente annuncio e niente commissioni: proposta dal vivo e bonifico se accetti."
+        },
+        {
+          "q": "Come vengo pagato?",
+          "a": "Se accetti, ti paghiamo subito con bonifico sul conto che scegli."
+        },
+        {
+          "q": "La visita mi obbliga?",
+          "a": "No."
+        }
+      ],
+      "cluster": "C14",
+      "contenuto": {
+        "collezioni": "Big Bang (dal 2005), Classic Fusion, Spirit of Big Bang, Square Bang; edizioni limitate.",
+        "cosa_conta": "Referenza, materiale (acciaio, oro, ceramica, carbonio), condizioni di lunetta e cinturino in gomma, edizione, garanzia."
+      },
+      "da_confermare": "Il titolare deve confermare che acquista questo marchio (non è tra i 19 in elenco)."
+    },
+    {
+      "id": "P25",
+      "url": "/vendi-grand-seiko/",
+      "tipo": "marchio",
+      "priorita": 3,
+      "title": "Vendi il tuo Grand Seiko usato | Spring Drive",
+      "meta_description": "Vendi un Grand Seiko usato: Heritage, Evolution 9, Spring Drive, Hi-Beat, 9F quarzo. Primo esame su foto, proposta dal vivo, bonifico immediato.",
+      "h1": "Vendi il tuo Grand Seiko usato",
+      "faqs": [
+        {
+          "q": "Comprate Grand Seiko?",
+          "a": "Seiko è tra i nostri marchi; per un Grand Seiko indicalo nella richiesta con la referenza."
+        },
+        {
+          "q": "Comprate Grand Seiko al quarzo?",
+          "a": "Indicalo: ti rispondiamo dopo il primo esame."
+        },
+        {
+          "q": "Devo farlo lucidare?",
+          "a": "No, lascialo com'è."
+        },
+        {
+          "q": "Dove trovo la referenza?",
+          "a": "Sul fondello o sulla garanzia."
+        },
+        {
+          "q": "Come vengo pagato?",
+          "a": "Se accetti, ti paghiamo subito con bonifico sul conto che scegli."
+        },
+        {
+          "q": "Posso iniziare su WhatsApp?",
+          "a": "Sì."
+        }
+      ],
+      "cluster": "C14",
+      "contenuto": {
+        "collezioni": "Heritage (SBGA Spring Drive come lo Snowflake SBGA211, SBGH Hi-Beat, SBGW carica manuale), Evolution 9, Sport, 9F quarzo.",
+        "cosa_conta": "Referenza SBG…, calibro, condizioni delle superfici lucidate a specchio (una lucidatura non fatta dalla casa si nota), bracciale, corredo."
+      },
+      "da_confermare": "Confermare con il titolare l'interesse per Grand Seiko (Seiko è in elenco)."
+    },
+    {
+      "id": "P26",
+      "url": "/vendi-chopard/",
+      "tipo": "marchio",
+      "priorita": 3,
+      "title": "Vendi il tuo Chopard usato | Happy Sport, Alpine Eagle",
+      "meta_description": "Vendi un Chopard usato: Happy Sport, Happy Diamonds, Alpine Eagle, Mille Miglia, L.U.C. Primo esame su foto, proposta dal vivo, bonifico immediato.",
+      "h1": "Vendi il tuo Chopard usato",
+      "faqs": [
+        {
+          "q": "Comprate Chopard Happy Sport?",
+          "a": "Puoi proporcelo indicandolo nella richiesta."
+        },
+        {
+          "q": "I diamanti come si valutano?",
+          "a": "Si verificano dal vivo insieme all'orologio."
+        },
+        {
+          "q": "È d'oro: compro oro?",
+          "a": "No, un Chopard si valuta come orologio."
+        },
+        {
+          "q": "Ho la scatola ma non la garanzia",
+          "a": "Fotografa quello che hai."
+        },
+        {
+          "q": "Come vengo pagato?",
+          "a": "Se accetti, ti paghiamo subito con bonifico sul conto che scegli."
+        },
+        {
+          "q": "La visita mi obbliga?",
+          "a": "No."
+        }
+      ],
+      "cluster": "C14, C18",
+      "contenuto": {
+        "collezioni": "Happy Sport e Happy Diamonds, Alpine Eagle, St. Moritz vintage, Mille Miglia, L.U.C.",
+        "cosa_conta": "Modello, misura, metallo, numero e stato dei diamanti mobili, corredo; per L.U.C. calibro e certificati."
+      },
+      "da_confermare": "Il titolare deve confermare che acquista questo marchio (non è tra i 19 in elenco)."
+    }
+  ],
+  "pagine_esistenti_da_aggiornare": [
+    {
+      "url": "/vendi-orologio/",
+      "nota": "Aggiungere link verso le nuove guide e la pagina Emilia-Romagna; FAQ «Comprate marchi fuori elenco?» con elenco dei marchi alta gamma se confermati."
+    },
+    {
+      "url": "/vendi-rolex/",
+      "nota": "Aggiungere FAQ: Rolex Day-Date in oro e compro oro; Rolex comprato da privato con dubbi; GMT e Daytona; link a guide eredità e vintage."
+    },
+    {
+      "url": "/vendi-omega/",
+      "nota": "Mancano FAQ nella tavola (Omega.dc.html non ha faqs): Speedmaster Moonwatch e Reduced, Seamaster vintage 300, Constellation in oro, De Ville, senza scatola."
+    },
+    {
+      "url": "/vendi-cartier/",
+      "nota": "Già ricca. Aggiungere link alla guida oro e gioiello."
+    }
+  ],
+  "testi_succo": [
+    {
+      "domanda": "Chi compra orologi di lusso usati in Emilia-Romagna?",
+      "risposta": "Orologi Famosi di Salvatore Agresta: negozio a Medicina (BO), sede riservata a Bologna su appuntamento. Compriamo orologi usati da privati di tutta la regione; si comincia da casa con le foto."
+    },
+    {
+      "domanda": "Dove vendere un Rolex usato a Bologna?",
+      "risposta": "Da noi: primo esame sulle foto, verifica dal vivo a Medicina o nella sede riservata di Bologna, bonifico immediato se accetti la proposta."
+    },
+    {
+      "domanda": "Quanto vale il mio orologio?",
+      "risposta": "Dipende da referenza, condizioni, corredo e mercato del modello. Facciamo un primo esame gratuito dalle foto; la proposta arriva solo dopo aver visto l'orologio. Niente stime automatiche."
+    },
+    {
+      "domanda": "Meglio Chrono24 o un negozio?",
+      "risposta": "Su un marketplace pubblichi un annuncio, aspetti e paghi una commissione. Da noi l'orologio lo vede un esperto di persona e, se accetti, ti paghiamo subito con bonifico."
+    },
+    {
+      "domanda": "Conviene vendere a un privato su Subito?",
+      "risposta": "Puoi spuntare un prezzo alto, ma gestisci tu messaggi, sconosciuti e verifica del pagamento. Da noi la vendita si fa in negozio e il bonifico arriva al momento della vendita."
+    },
+    {
+      "domanda": "Un orologio d'oro di marca va al compro oro?",
+      "risposta": "No: un Rolex, un Cartier o un Bulgari in oro si valutano come orologi, con marchio, modello, condizioni e corredo, non a peso."
+    },
+    {
+      "domanda": "Come vengo pagato?",
+      "risposta": "Subito, al momento della vendita, con bonifico sul conto che scegli. Un pagamento tracciabile."
+    },
+    {
+      "domanda": "La valutazione si paga?",
+      "risposta": "No, è gratuita e senza impegno, a distanza e dal vivo."
+    },
+    {
+      "domanda": "La visita mi obbliga a vendere?",
+      "risposta": "No. Ascolti la proposta e decidi tu: accettare, pensarci o rinunciare."
+    },
+    {
+      "domanda": "Posso vendere senza scatola o garanzia?",
+      "risposta": "Sì, si valuta anche solo l'orologio. L'assenza del corredo entra nella valutazione ma non la impedisce."
+    },
+    {
+      "domanda": "Ho ereditato un orologio e non so cosa sia",
+      "risposta": "Mandaci foto di quadrante, cassa e fondello: lo riconosciamo noi. Si valuta anche senza documenti."
+    },
+    {
+      "domanda": "Siamo più eredi: come facciamo?",
+      "risposta": "Potete venire insieme alla verifica, a Medicina o a Bologna; il bonifico va sul conto che indicate."
+    },
+    {
+      "domanda": "Devo far lucidare l'orologio prima di venderlo?",
+      "risposta": "No. Una lucidatura a volte toglie più di quanto aggiunga: fotografalo e mostracelo così com'è."
+    },
+    {
+      "domanda": "L'orologio è fermo: lo riparo prima?",
+      "risposta": "Prima di spendere, mandaci le foto e dicci che è fermo: lo consideriamo nell'esame."
+    },
+    {
+      "domanda": "Graffi e segni d'uso sono un problema?",
+      "risposta": "No, fanno parte della storia dell'orologio e li consideriamo nell'esame."
+    },
+    {
+      "domanda": "Valutate orologi vintage?",
+      "risposta": "Sì. Indica referenza, anno e interventi se li conosci; l'originalità di quadrante, lancette e bracciale la verifichiamo dal vivo."
+    },
+    {
+      "domanda": "Abito lontano: devo venire per forza?",
+      "risposta": "Il primo esame si fa a distanza da tutta Italia. Se non puoi venire, organizziamo noi il ritiro con un corriere specializzato in valori, gratis per te."
+    },
+    {
+      "domanda": "Devo spedire io l'orologio?",
+      "risposta": "No, non spedisci niente tu: se non puoi venire, il ritiro con corriere valori lo organizziamo noi."
+    },
+    {
+      "domanda": "Come evito truffe vendendo un orologio di valore?",
+      "risposta": "Non incontrare sconosciuti e diffida di chi paga prima di vedere. Da noi l'orologio si vede in negozio e il pagamento è un bonifico al momento della vendita."
+    },
+    {
+      "domanda": "Comprate marchi che non sono nel vostro elenco?",
+      "risposta": "Puoi proporre qualsiasi marca: indicala nella richiesta e dopo il primo esame ti diciamo se possiamo fare una proposta."
+    },
+    {
+      "domanda": "Quali marchi valutate?",
+      "risposta": "Soprattutto 19: Rolex, Omega, Cartier, Tudor, TAG Heuer, Breitling, IWC, Jaeger-LeCoultre, Zenith, Longines, Bulgari, Franck Muller, Baume & Mercier, Oris, Hamilton, Seiko, Mido, Eberhard, Maurice Lacroix."
+    },
+    {
+      "domanda": "Non conosco la referenza del mio orologio",
+      "risposta": "Nella scheda scegli «Non lo so»: la riconosciamo noi dalle foto di quadrante, lunetta e fondello."
+    },
+    {
+      "domanda": "Come si comincia?",
+      "risposta": "Con la scheda online o su WhatsApp al 379 154 9804: marchio, modello, condizioni, corredo e qualche foto. Ti rispondiamo noi, nel canale che preferisci."
+    },
+    {
+      "domanda": "Mia madre non usa internet: come fa?",
+      "risposta": "Ci telefona o viene nel negozio di Medicina negli orari di apertura, anche con una persona di fiducia. Si parla di persona."
+    },
+    {
+      "domanda": "Dov'è il negozio e quando è aperto?",
+      "risposta": "Via Licurgo Fava 421, Centro Commerciale Medici, Medicina (BO). Lunedì 15–19, martedì-sabato 9:30–13 e 15:30–19."
+    },
+    {
+      "domanda": "Perché fidarsi di Orologi Famosi?",
+      "risposta": "Attività di famiglia con trent'anni di esperienza, Orologi Famosi dal 2018; 4,9 su 5 su Google con 202 recensioni."
+    },
+    {
+      "domanda": "Posso vendere in modo riservato?",
+      "risposta": "Non devi pubblicare annunci: ci scrivi, ti rispondiamo noi e la verifica si fa in negozio o nella sede riservata di Bologna, su appuntamento."
+    },
+    {
+      "domanda": "Posso vendere il mio orologio per comprarne un altro?",
+      "risposta": "Lo valutiamo e lo compriamo con pagamento immediato; poi sei libero di scegliere. I nostri orologi in vendita sono su venditaorologiusati.it."
+    },
+    {
+      "domanda": "Si può vendere un orologio online?",
+      "risposta": "La richiesta sì, la valutazione definitiva no: la proposta arriva dopo aver visto l'orologio dal vivo. Per un orologio di valore è il modo più serio di procedere."
+    },
+    {
+      "domanda": "Abito a Rimini (o Parma, o Piacenza): ha senso venire da voi?",
+      "risposta": "Il primo esame su foto ti dice se ha senso prima di muoverti. Poi verifica a Medicina o a Bologna, oppure ritiro con corriere valori gratuito."
+    }
+  ]
+}

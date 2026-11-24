@@ -53,7 +53,7 @@ export const BUSINESS = {
   ],
   sameAs: ['https://www.google.com/maps?cid=9961046583457619943', 'https://www.orologifamosi.com/vendi-orologio/', 'https://www.facebook.com/OROLOGIFAMOSI/', 'https://www.instagram.com/orologifamosi/'],
   rating: { value: 4.9, count: 202 },
-  brands: ['Rolex', 'Omega', 'Cartier', 'Tudor', 'TAG Heuer', 'Breitling', 'IWC', 'Jaeger-LeCoultre', 'Zenith', 'Longines', 'Bulgari', 'Franck Muller', 'Baume & Mercier', 'Oris', 'Hamilton', 'Seiko', 'Mido', 'Eberhard', 'Maurice Lacroix'],
+  brands: ['Rolex', 'Omega', 'Cartier', 'Tudor', 'TAG Heuer', 'Breitling', 'IWC', 'Jaeger-LeCoultre', 'Zenith', 'Longines', 'Bulgari', 'Franck Muller', 'Baume & Mercier', 'Oris', 'Hamilton', 'Seiko', 'Mido', 'Eberhard', 'Maurice Lacroix', 'Patek Philippe', 'Audemars Piguet', 'Vacheron Constantin', 'Panerai', 'Hublot'],
   // Medicina è la sede reale; Bologna e i comuni limitrofi sono bacini di provenienza (allegato 02).
   areaServed: ['Medicina', 'Bologna', 'Imola', 'Castel San Pietro Terme', 'Castel Guelfo di Bologna', 'Dozza', 'Mordano', 'Ozzano dell\'Emilia', 'San Lazzaro di Savena', 'Budrio', 'Castenaso', 'Granarolo dell\'Emilia', 'Lugo', 'Massa Lombarda', 'Conselice', 'Castel Bolognese', 'Bagnara di Romagna'],
 };

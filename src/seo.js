@@ -32,6 +32,8 @@ export function business() {
 
 function breadcrumb(page, title) {
   const items = [{ name: 'Vendi il tuo orologio', url: SITE + LINKS.Main }];
+  if (page.parent) items.push({ name: page.parent.name, url: SITE + page.parent.route });
+  if (page.crumb) { items.push({ name: page.crumb, url: SITE + page.route }); return { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: items.map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it.name, item: it.url })) }; }
   const crumb = page.brand ? `Vendi il tuo ${page.brand} usato` : page.kind === 'about' ? 'Chi è Salvatore Agresta' : page.kind === 'contact' ? 'Contatti' : title.split(/ [·|:] /)[0];
   if (page.route !== LINKS.Main) items.push({ name: crumb, url: SITE + page.route });
   return {
@@ -62,14 +64,28 @@ function service(page, description, canonical) {
 /** I 19 marchi della pagina generale: pagina dedicata per Rolex, Omega e Cartier, scheda in pagina per gli altri. */
 const slug = (b) => b.toLowerCase().replace(/&/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const OWN = { Rolex: LINKS.Rolex, Omega: LINKS.Omega, Cartier: LINKS.Cartier };
+/** Pagine marchio costruite sulla tavola Guida (src/content.js): si aggiungono qui da sole. */
+export function registerBrandPage(brand, route) { OWN[brand] = route; }
 function brandList() {
   return {
     '@context': 'https://schema.org', '@type': 'ItemList',
-    name: 'Marchi di orologi usati che Orologi Famosi valuta e acquista',
+    name: 'Marchi di orologi usati che Orologi Famosi valuta e acquista da privati',
     itemListElement: B.brands.map((b, i) => ({
       '@type': 'ListItem', position: i + 1,
       item: { '@type': 'Service', name: `Valutazione e acquisto ${b} usati`, brand: { '@type': 'Brand', name: b }, provider: { '@id': ORG_ID }, url: SITE + (OWN[b] || `${LINKS.Main}#${slug(b)}`) },
     })),
+  };
+}
+
+/** Guide: articolo firmato da Salvatore, perché la competenza sia attribuita a una persona reale. */
+function article(page, title, description, canonical, ogImage) {
+  return {
+    '@context': 'https://schema.org', '@type': 'Article', '@id': `${canonical}#articolo`,
+    headline: page.data?.h1 || title, description, inLanguage: 'it-IT', mainEntityOfPage: canonical,
+    author: { '@id': PERSON_ID, '@type': 'Person', name: B.founder, url: SITE + LINKS.Salvatore }, publisher: { '@id': ORG_ID },
+    datePublished: page.published || '2026-11-24', dateModified: page.modified || page.published || '2026-11-24',
+    about: (page.about || []).map((a) => ({ '@type': 'Thing', name: a })),
+    ...(ogImage && !ogImage.endsWith('/') ? { image: ogImage } : {}),
   };
 }
 
@@ -105,6 +121,7 @@ export function jsonLd(page, { canonical, title, description, ogImage, faqs }) {
   if (page.kind === 'landing') list.push(service(page, description, canonical));
   if (page.kind === 'landing' && !page.brand) list.push(brandList());
   if (page.kind === 'about') list.push(person());
+  if (page.kind === 'guide') list.push(article(page, title, description, canonical, ogImage));
   if (faqs?.length) list.push(faqPage(faqs));
   return list;
 }
