@@ -51,7 +51,7 @@ export const BUSINESS = {
     { days: ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], opens: '09:30', closes: '13:00' },
     { days: ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], opens: '15:30', closes: '19:00' },
   ],
-  sameAs: ['https://www.google.com/maps?cid=9961046583457619943', 'https://www.orologifamosi.com/vendi-orologio/', 'https://www.facebook.com/OROLOGIFAMOSI/', 'https://www.instagram.com/orologifamosi/'],
+  sameAs: ['https://www.google.com/maps?cid=9961046583457619943', 'https://www.orologifamosi.com/vendi-orologio/', 'https://www.facebook.com/OROLOGIFAMOSI/', 'https://www.instagram.com/orologifamosi/', 'https://www.ebay.it/str/orologifamosi', 'https://www.subito.it/utente/8733272'],
   rating: { value: 4.9, count: 202 },
   /** Coordinate del Centro Commerciale Medicì (OpenStreetMap), dove c'è il negozio della scheda Google. */
   geo: { lat: 44.47945, lng: 11.63667 },
