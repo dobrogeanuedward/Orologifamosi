@@ -7,6 +7,8 @@
  */
 import fs from 'node:fs';
 import { registerBrandPage } from './seo.js';
+const CATALOGO = (() => { try { return JSON.parse(fs.readFileSync(new URL('./catalogo.json', import.meta.url), 'utf8')); } catch { return {}; } })();
+const CAT_URL = 'https://www.venditaorologiusati.it/catalogo';
 
 /** FAQ aggiuntive dalla mappa delle conversazioni (100 persone, 18 cluster): si uniscono a quelle scritte qui, senza doppioni. */
 const MAPPA = (() => { try { return JSON.parse(fs.readFileSync(new URL('../strategy/mappa-conversazioni.json', import.meta.url), 'utf8')).pages || []; } catch { return []; } })();
@@ -596,6 +598,20 @@ const brands = [
     ] },
 ];
 
+/** Orologi veri passati da Orologi Famosi, con il link alla scheda originale del catalogo. */
+function shelfFor(b) {
+  const c = CATALOGO[b.slug];
+  if (!c?.items?.length) return null;
+  const sold = c.items.filter((i) => i.sold).length;
+  return {
+    nav: 'Passati dal nostro tavolo',
+    h: `${b.brand} passati dal nostro tavolo`,
+    p: `Alcuni ${b.brand} che abbiamo valutato, comprato e rivenduto${sold ? ': quelli segnati «Venduto» hanno già un nuovo proprietario' : ''}. Ogni foto porta alla scheda originale nel catalogo di Orologi Famosi.`,
+    items: c.items,
+    all: c.catalog, allLabel: `Tutti i ${b.brand} del catalogo, per chi vuole comprare →`,
+  };
+}
+
 function brandPage(b) {
   const route = `/vendi-${b.slug}/`;
   registerBrandPage(b.brand, route);
@@ -608,7 +624,7 @@ function brandPage(b) {
       h1: `Vendi il tuo ${b.brand} usato`, lead: b.lead, brief: b.brief, brand: b.brand, hero: b.hero,
       points: ['Valutazione gratuita e senza impegno, fatta di persona da Salvatore.', 'Primo esame a distanza su foto, da tutta Italia.', 'Proposta dopo averlo visto dal vivo, pagamento immediato con bonifico.'],
       sections: [
-        { id: 'collezioni', nav: 'Le collezioni', h: `I ${b.brand} che valutiamo`, list: b.collections, note: `Il tuo ${b.brand} non è in elenco? Proponilo lo stesso nella richiesta.` },
+        { id: 'collezioni', nav: 'Le collezioni', h: `I ${b.brand} che valutiamo`, list: b.collections, note: `Il tuo ${b.brand} non è in elenco? Proponilo lo stesso nella richiesta. Questa pagina è per chi vende: se cerchi un orologio da comprare, il catalogo è su venditaorologiusati.it.` },
         { id: 'valutazione', nav: 'Cosa conta', h: `Cosa conta nella valutazione di un ${b.brand}`, p: ['Ogni orologio si valuta singolarmente, ma su questo marchio guardiamo con particolare attenzione:'], bullets: b.matters },
         { id: 'come', nav: 'Come funziona', h: 'Come funziona',
           list: [
@@ -622,6 +638,7 @@ function brandPage(b) {
         { q: `Dove vendere un ${b.brand} usato in Emilia-Romagna?`, a: `Puoi proporlo a ${FATTI}. Si comincia online con le foto, la verifica e la proposta si fanno dal vivo. Da tutta la regione, e da tutta Italia, il ritiro con corriere specializzato è gratuito se non puoi venire.` },
         { q: 'La valutazione mi obbliga a vendere?', a: 'No. La valutazione è gratuita, a distanza e dal vivo. Dopo aver ascoltato la proposta decidi tu, con calma.' },
       ]),
+      shelf: shelfFor(b),
       related: [card.valore, card.dove, card.marchi, card.regione],
       ctaH: `Raccontaci il tuo ${b.brand}`,
       ctaP: 'Mandaci qualche foto con la scheda o su WhatsApp. Facciamo un primo esame a distanza e ti rispondiamo noi, senza impegno.',

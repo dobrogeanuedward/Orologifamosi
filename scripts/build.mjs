@@ -45,6 +45,8 @@ const copyDir = (from, to) => { fs.mkdirSync(path.join(DIST, to), { recursive: t
 copyDir(path.join(SRC, 'project/fonts'), `${ASSETS}/fonts`);
 // immagini delle email (testate, icone, foto): servite da www.orologifamosi.com/of-assets/email/
 copyDir(path.join(SRC, 'email'), `${ASSETS}/email`);
+// foto degli orologi passati da Orologi Famosi (dal catalogo di venditaorologiusati.it), per le pagine marchio
+copyDir(path.join(SRC, 'catalogo'), `${ASSETS}/catalogo`);
 if (!CDN) {
   copyDir(path.join(SRC, 'project/media'), `${ASSETS}/media`);
   copyDir(path.join(SRC, 'blobs'), `${ASSETS}/img`);

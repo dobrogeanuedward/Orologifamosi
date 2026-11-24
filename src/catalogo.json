@@ -1,0 +1,164 @@
+{
+ "tudor": {
+  "items": [
+   {
+    "t": "Tudor Black Bay 54 Ref. M79000B-0001 Blu del 2026",
+    "href": "https://www.venditaorologiusati.it/scheda/tudor-black-bay-54-ref.-m79000b-0001-blu-del-2026-236",
+    "img": "/of-assets/catalogo/236_0s.jpg",
+    "sold": true
+   },
+   {
+    "t": "Tudor Black Bay 58 GMT Ref. 7939G1A0NRU",
+    "href": "https://www.venditaorologiusati.it/scheda/tudor-black-bay-58-gmt-ref.-7939g1a0nru-224",
+    "img": "/of-assets/catalogo/224_0s.jpg",
+    "sold": true
+   },
+   {
+    "t": "Tudor Montecarlo Ref. 70330N del 2010",
+    "href": "https://www.venditaorologiusati.it/scheda/tudor-montecarlo-ref.-70330n-del-2010-198",
+    "img": "/of-assets/catalogo/198_0s.jpg",
+    "sold": true
+   },
+   {
+    "t": "Tudor Black Bay GMT Ref. 79830RB",
+    "href": "https://www.venditaorologiusati.it/scheda/tudor-black-bay-gmt-ref.-79830rb-196",
+    "img": "/of-assets/catalogo/196_0s.jpg",
+    "sold": true
+   },
+   {
+    "t": "Tudor Heritage Black Bay Dark ref. 79230DK",
+    "href": "https://www.venditaorologiusati.it/scheda/tudor-heritage-black-bay-dark-ref.-79230dk-193",
+    "img": "/of-assets/catalogo/193_0s.jpg",
+    "sold": true
+   },
+   {
+    "t": "Tudor M79470 Black Bay Pro 39mm 2026",
+    "href": "https://www.venditaorologiusati.it/scheda/tudor-m79470-black-bay-pro-39mm-2026-187",
+    "img": "/of-assets/catalogo/187_0s.jpg",
+    "sold": true
+   }
+  ],
+  "catalog": "https://www.venditaorologiusati.it/catalogo/tudor-5",
+  "count": 24
+ },
+ "iwc": {
+  "items": [
+   {
+    "t": "IWC Portugieser Chronograph IW371401 41mm Full Set",
+    "href": "https://www.venditaorologiusati.it/scheda/iwc-portugieser-chronograph-iw371401-41mm-full-set-225",
+    "img": "/of-assets/catalogo/225_0s.jpg",
+    "sold": true
+   },
+   {
+    "t": "IWC Pilot's Watch Mark XVIII Ref.IW327009",
+    "href": "https://www.venditaorologiusati.it/scheda/iwc-pilot%27s-watch-mark-xviii-ref.iw327009-210",
+    "img": "/of-assets/catalogo/210_0s.jpg",
+    "sold": true
+   },
+   {
+    "t": "IWC Portoghese ref. IW371446",
+    "href": "https://www.venditaorologiusati.it/scheda/iwc-portoghese-ref.-iw371446-190",
+    "img": "/of-assets/catalogo/190_0s.jpg",
+    "sold": true
+   },
+   {
+    "t": "IWC Portoghese ref. IW371401",
+    "href": "https://www.venditaorologiusati.it/scheda/iwc-portoghese-ref.-iw371401-188",
+    "img": "/of-assets/catalogo/188_0s.jpg",
+    "sold": true
+   },
+   {
+    "t": "IWC Pilot's Watch Chronograph IW378003 BLU",
+    "href": "https://www.venditaorologiusati.it/scheda/iwc-pilot%27s-watch-chronograph-iw378003-blu-154",
+    "img": "/of-assets/catalogo/154_0s.jpg",
+    "sold": true
+   },
+   {
+    "t": "IWC Portofino Automatic Ref. IW351324 34 mm Del 2002 Full Set",
+    "href": "https://www.venditaorologiusati.it/scheda/iwc-portofino-automatic-ref.-iw351324-34-mm-del-2002-full-set-240",
+    "img": "/of-assets/catalogo/240_0s.jpg",
+    "sold": false
+   }
+  ],
+  "catalog": "https://www.venditaorologiusati.it/catalogo/iwc-14",
+  "count": 7
+ },
+ "jaeger-lecoultre": {
+  "items": [
+   {
+    "t": "Jaeger-LeCoultre Reverso 270.8.62 full set 1998",
+    "href": "https://www.venditaorologiusati.it/scheda/jaeger-lecoultre-reverso-270.8.62-full-set-1998-216",
+    "img": "/of-assets/catalogo/216_0s.jpg",
+    "sold": true
+   }
+  ],
+  "catalog": "https://www.venditaorologiusati.it/catalogo/jaeger-lecoultre-18",
+  "count": 1
+ },
+ "breitling": {
+  "items": [
+   {
+    "t": "Breitling Colt superquartz A73380",
+    "href": "https://www.venditaorologiusati.it/scheda/breitling-colt-superquartz-a73380-106",
+    "img": "/of-assets/catalogo/106_0s.jpg",
+    "sold": true
+   },
+   {
+    "t": "Breitling chronomat 44 pilot A44355",
+    "href": "https://www.venditaorologiusati.it/scheda/breitling-chronomat-44-pilot-a44355-123",
+    "img": "/of-assets/catalogo/123_0s.jpg",
+    "sold": true
+   },
+   {
+    "t": "Breitling Emergency ref. E56121 del 2005",
+    "href": "https://www.venditaorologiusati.it/scheda/breitling-emergency-ref.-e56121-del-2005-185",
+    "img": "/of-assets/catalogo/185_0s.jpg",
+    "sold": false
+   }
+  ],
+  "catalog": "https://www.venditaorologiusati.it/catalogo/breitling-12",
+  "count": 3
+ },
+ "tag-heuer": {
+  "items": [
+   {
+    "t": "Tag Heuer Monaco Calibre 6 Ref. W2110-0",
+    "href": "https://www.venditaorologiusati.it/scheda/tag-heuer-monaco-calibre-6-ref.-w2110-0-176",
+    "img": "/of-assets/catalogo/176_0s.jpg",
+    "sold": true
+   },
+   {
+    "t": "tag heuer aquaracer titanium",
+    "href": "https://www.venditaorologiusati.it/scheda/tag-heuer-aquaracer-titanium-126",
+    "img": "/of-assets/catalogo/126_0s.jpg",
+    "sold": true
+   },
+   {
+    "t": "Tag Heuer Monaco BLU",
+    "href": "https://www.venditaorologiusati.it/scheda/tag-heuer-monaco-blu-96",
+    "img": "/of-assets/catalogo/96_0s.jpg",
+    "sold": true
+   },
+   {
+    "t": "Tag Heuer Monaco Steve Mcqueen",
+    "href": "https://www.venditaorologiusati.it/scheda/tag-heuer-monaco-steve-mcqueen-86",
+    "img": "/of-assets/catalogo/86_0s.jpg",
+    "sold": true
+   },
+   {
+    "t": "Tag Heuer Monaco GULF",
+    "href": "https://www.venditaorologiusati.it/scheda/tag-heuer-monaco-gulf-26",
+    "img": "/of-assets/catalogo/26_0s.jpg",
+    "sold": true
+   },
+   {
+    "t": "Heuer Chronograph Ref. 12 \"Big Shield\" PVD del 1977",
+    "href": "https://www.venditaorologiusati.it/scheda/heuer-chronograph-ref.-12-%22big-shield%22-pvd-del-1977-235",
+    "img": "/of-assets/catalogo/235_0s.jpg",
+    "sold": false
+   }
+  ],
+  "catalog": "https://www.venditaorologiusati.it/catalogo/tag-heuer-3",
+  "count": 8
+ }
+}
